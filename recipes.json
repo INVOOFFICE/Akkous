@@ -70,7 +70,10 @@
       "difficulty": "Easy",
       "featured": true,
       "trending": true,
-      "relatedRecipeIds": []
+      "relatedRecipeIds": [
+        "shawarma-53028",
+        "spanish-chicken-53164"
+      ]
     },
     {
       "mealId": "53029",
@@ -130,7 +133,9 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
-        "thai-fried-rice-with-prawns-peas-53198"
+        "karbonader-lean-beef-patties-with-caramelized-onions-53125",
+        "kenyan-beef-curry-53112",
+        "shawarma-53028"
       ]
     },
     {
@@ -194,8 +199,9 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
-        "mulukhiyah-53029",
-        "syrian-spaghetti-53093"
+        "noodle-bowl-salad-53245",
+        "seafood-fideua-52836",
+        "chilli-prawn-linguine-52839"
       ]
     },
     {
@@ -253,7 +259,9 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
-        "thai-fried-rice-with-prawns-peas-53198"
+        "chilli-prawn-linguine-52839",
+        "lasagne-52844",
+        "kenyan-beef-curry-53112"
       ]
     },
     {
@@ -309,7 +317,682 @@
       "difficulty": "Easy",
       "featured": false,
       "trending": true,
-      "relatedRecipeIds": []
+      "relatedRecipeIds": [
+        "spanish-chicken-53164"
+      ]
+    },
+    {
+      "mealId": "52968",
+      "id": "mbuzi-choma-roasted-goat-52968",
+      "title": "Mbuzi Choma",
+      "category": "Goat",
+      "origin": "Kenyan",
+      "image": "https://www.themealdb.com/images/media/meals/cuio7s1555492979.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/cuio7s1555492979.jpg",
+      "ingredients": [
+        "1 kg Goat Meat",
+        "1 kg Corn Flour",
+        "2 Tomatoes",
+        "Pinch Salt",
+        "1 Onion",
+        "1 Green Chilli",
+        "1  bunch Coriander Leaves"
+      ],
+      "instructions": "1. Faire rôtir la viande de chèvre à feu moyen pendant 50 minutes en l'assaisonnant de sel. 2. Préparer l'ugali en faisant bouillir l'eau et le sel, puis en incorporant lentement la farine de maïs. 3. Réduire le feu et continuer à remuer régulièrement pendant 10 minutes. 4. Retirer du feu et laisser refroidir. 5. Former des boules d'ugali avec les mains humides. 6. Préparer le kachumbari en mélangeant les tomates, oignons, piments et coriandre.",
+      "steps": [
+        "Faire rôtir la viande de chèvre à feu moyen pendant 50 minutes en l'assaisonnant de sel.",
+        "2. Préparer l'ugali en faisant bouillir l'eau et le sel, puis en incorporant lentement la farine de maïs.",
+        "3. Réduire le feu et continuer à remuer régulièrement pendant 10 minutes.",
+        "4. Retirer du feu et laisser refroidir.",
+        "5. Former des boules d'ugali avec les mains humides.",
+        "6. Préparer le kachumbari en mélangeant les tomates, oignons, piments et coriandre."
+      ],
+      "description": "Mbuzi Choma (Kenyan) — easy goat recipe with 7 ingredients and 6 steps. Ready in 42 min. Includes exact ingredients and clear instructions.",
+      "tags": [
+        "plat principal",
+        "viande de chèvre",
+        "cuisine kenyane",
+        "rôti",
+        "ugali",
+        "kachumbari",
+        "BBQ",
+        "africain",
+        "Goat",
+        "Kenyan"
+      ],
+      "datePublished": "2026-04-12",
+      "publishDate": "2026-04-12T00:00:00",
+      "addedDate": "2026-04-12T17:27:28",
+      "status": "PUBLISHED",
+      "slug": "mbuzi-choma-roasted-goat-52968",
+      "youtube": "",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "42 min",
+      "prepTime": "18 min",
+      "totalTime": "60 min",
+      "servings": 4,
+      "difficulty": "Medium",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "jamaican-curry-goat-53354",
+        "kenyan-beef-curry-53112",
+        "chilli-prawn-linguine-52839"
+      ]
+    },
+    {
+      "mealId": "53164",
+      "id": "spanish-chicken-53164",
+      "title": "Poulet Espagnol",
+      "category": "Chicken",
+      "origin": "Spanish",
+      "image": "https://www.themealdb.com/images/media/meals/pqulvm1763282839.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/pqulvm1763282839.jpg",
+      "ingredients": [
+        "8 Chicken Thighs",
+        "3 sliced thinly Onion",
+        "2 teaspoons Paprika",
+        "Zest and juice of 1 Lemon",
+        "Handful Parsley",
+        "150ml Chicken Stock",
+        "1 tablespoon Olive Oil"
+      ],
+      "instructions": "1. Préchauffez le four à 190C/170C ventilé/gaz 5. Mettez tous les ingrédients dans un grand plat allant au four. Mélangez le tout avec vos mains et assaisonnez. 2. Faites cuire pendant 45 minutes, en remuant les oignons après 20 minutes, jusqu'à ce que le poulet soit doré et les oignons tendres. Servez avec du riz.",
+      "steps": [
+        "Préchauffez le four à 190C/170C ventilé/gaz",
+        "5. Mettez tous les ingrédients dans un grand plat allant au four. Mélangez le tout avec vos mains et assaisonnez.",
+        "2. Faites cuire pendant 45 minutes, en remuant les oignons après 20 minutes, jusqu'à ce que le poulet soit doré et les oignons tendres. Servez avec du riz."
+      ],
+      "description": "Poulet Espagnol (Spanish) — easy chicken recipe with 7 ingredients and 3 steps. Ready in 45 min. Includes exact ingredients and clear instructions.",
+      "tags": [
+        "poulet",
+        "cuisine espagnole",
+        "plat principal",
+        "riz",
+        "oignons",
+        "paprika",
+        "olive",
+        "facile",
+        "Chicken",
+        "Spanish"
+      ],
+      "datePublished": "2026-04-12",
+      "publishDate": "2026-04-12T00:00:00",
+      "addedDate": "2026-04-12T17:27:28",
+      "status": "PUBLISHED",
+      "slug": "spanish-chicken-53164",
+      "youtube": "https://www.youtube.com/watch?v=fKqSOn5NCrk",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "45 min",
+      "prepTime": "20 min",
+      "totalTime": "65 min",
+      "servings": 4,
+      "difficulty": "Easy",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "shawarma-53028",
+        "sweet-and-sour-chicken-53376",
+        "seafood-fideua-52836"
+      ]
+    },
+    {
+      "mealId": "53125",
+      "id": "karbonader-lean-beef-patties-with-caramelized-onions-53125",
+      "title": "Karbonader Norvégien",
+      "category": "Beef",
+      "origin": "Norwegian",
+      "image": "https://www.themealdb.com/images/media/meals/0bpjb11763075817.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/0bpjb11763075817.jpg",
+      "ingredients": [
+        "2 Onion",
+        "1 tablespoon Butter",
+        "1 lb Ground Beef",
+        "1/2 teaspoon Salt",
+        "1/2 teaspoon Pepper",
+        "1/2 teaspoon Nutmeg",
+        "1/2 tbs Cornstarch",
+        "50 ml Water",
+        "2 tblsp Butter"
+      ],
+      "instructions": "1. Faites cuire les oignons émincés dans du beurre à feu moyen jusqu'à caramelisation. 2. Mélangez la viande hachée, l'oignon râpé, le sel, le poivre, la noix de muscade, la fécule de maïs et l'eau dans un bol. 3. Formez des galettes et faites-les dorer des deux côtés dans du beurre à feu vif, puis réduisez à feu doux pendant 2-3 minutes.",
+      "steps": [
+        "Faites cuire les oignons émincés dans du beurre à feu moyen jusqu'à caramelisation.",
+        "2. Mélangez la viande hachée, l'oignon râpé, le sel, le poivre, la noix de muscade, la fécule de maïs et l'eau dans un bol.",
+        "3. Formez des galettes et faites-les dorer des deux côtés dans du beurre à feu vif, puis réduisez à feu doux pendant 2-3 minutes."
+      ],
+      "description": "Karbonader Norvégien (Norwegian) — easy beef recipe with 9 ingredients and 3 steps. Ready in 10 min. Includes exact ingredients and clear instructions.",
+      "tags": [
+        "viande hachée",
+        "karbonader",
+        "norvégien",
+        "plat principal",
+        "caramelisé",
+        "beurre",
+        "oignon",
+        "rapide",
+        "Beef",
+        "Norwegian"
+      ],
+      "datePublished": "2026-04-12",
+      "publishDate": "2026-04-12T00:00:00",
+      "addedDate": "2026-04-12T17:27:28",
+      "status": "PUBLISHED",
+      "slug": "karbonader-lean-beef-patties-with-caramelized-onions-53125",
+      "youtube": "https://www.youtube.com/watch?v=HDWgGMJqvgw",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "10 min",
+      "prepTime": "10 min",
+      "totalTime": "3 min",
+      "servings": 4,
+      "difficulty": "Easy",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "kenyan-beef-curry-53112",
+        "mulukhiyah-53029",
+        "jamaican-curry-goat-53354"
+      ]
+    },
+    {
+      "mealId": "53245",
+      "id": "noodle-bowl-salad-53245",
+      "title": "Salade de nouilles vietnamiennes",
+      "category": "Seafood",
+      "origin": "Vietnamese",
+      "image": "https://www.themealdb.com/images/media/meals/zry07j1763779321.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/zry07j1763779321.jpg",
+      "ingredients": [
+        "125g Rice Noodles",
+        "200g Sugar Snap Peas",
+        "2 tsp Sesame Seed Oil",
+        "4 sliced Spring Onions",
+        "Handful Coriander",
+        "150g Hot Smoked Flaked Salmon",
+        "To serve Pretzels",
+        "3  tablespoons Soy Sauce",
+        "1 tablespoon Clear Honey",
+        "1 tablespoon Lemon Juice",
+        "1 tablespoon Ground Nut Oil",
+        "1 clove finely chopped Garlic",
+        "Knob Ginger"
+      ],
+      "instructions": "1. Faites tremper les nouilles dans un grand bol d'eau bouillante pendant 4 minutes avec les pois sucrés. Égouttez, rincez à l'eau froide, puis égouttez à nouveau. 2. Mélangez les ingrédients de la sauce. 3. Disposez les oignons, coriandre et saumon sur les nouilles, versez la sauce et mélangez le tout.",
+      "steps": [
+        "Faites tremper les nouilles dans un grand bol d'eau bouillante pendant 4 minutes avec les pois sucrés. Égouttez, rincez à l'eau froide, puis égouttez à nouveau.",
+        "2. Mélangez les ingrédients de la sauce.",
+        "3. Disposez les oignons, coriandre et saumon sur les nouilles, versez la sauce et mélangez le tout."
+      ],
+      "description": "Salade de nouilles vietnamiennes (Vietnamese) — easy seafood recipe with 13 ingredients and 3 steps. Ready in 10 min. Includes exact ingredients and clear …",
+      "tags": [
+        "salade",
+        "nouilles",
+        "poisson",
+        "cuisine vietnamienne",
+        "sauce soja",
+        "plat léger",
+        "repas rapide",
+        "cuisine asiatique",
+        "Seafood",
+        "Vietnamese"
+      ],
+      "datePublished": "2026-04-12",
+      "publishDate": "2026-04-12T00:00:00",
+      "addedDate": "2026-04-12T17:27:28",
+      "status": "PUBLISHED",
+      "slug": "noodle-bowl-salad-53245",
+      "youtube": "https://www.youtube.com/watch?v=7EAdKeikJ9o",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "10 min",
+      "prepTime": "10 min",
+      "totalTime": "4 min",
+      "servings": 4,
+      "difficulty": "Easy",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "thai-fried-rice-with-prawns-peas-53198",
+        "seafood-fideua-52836"
+      ]
+    },
+    {
+      "mealId": "52844",
+      "id": "lasagne-52844",
+      "title": "Lasagne italienne",
+      "category": "Pasta",
+      "origin": "Italian",
+      "image": "https://www.themealdb.com/images/media/meals/wtsvxx1511296896.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/wtsvxx1511296896.jpg",
+      "ingredients": [
+        "1 tblsp Olive Oil",
+        "2 Bacon",
+        "1 finely chopped Onion",
+        "1 Stick Celery",
+        "1 medium Carrots",
+        "2 cloves chopped Garlic",
+        "500g Minced Beef",
+        "1 tbls Tomato Puree",
+        "800g Chopped Tomatoes",
+        "1 tblsp Honey",
+        "500g Lasagne Sheets",
+        "400ml Creme Fraiche",
+        "125g Mozzarella Balls",
+        "50g Parmesan Cheese",
+        "Topping Basil Leaves"
+      ],
+      "instructions": "1. Chauffez l'huile dans une grande casserole. 2. Ajoutez le bacon et faites-le cuire pendant quelques minutes jusqu'à ce qu'il commence à dorer. 3. Ajoutez l'oignon, le céleri et les carottes, et faites-les cuire à feu moyen pendant 5 minutes en remuant occasionnellement. 4. Ajoutez l'ail et faites-le cuire pendant 1 minute. 5. Ajoutez la viande hachée et faites-la cuire en la cassant avec une cuillère en bois pendant environ 6 minutes jusqu'à ce qu'elle soit bien dorée. 6. Ajoutez la purée de tomate et faites-la cuire pendant 1 minute en la mélangeant bien avec la viande et les légumes. 7. Ajoutez les tomates concassées et faites-les cuire pendant 20 minutes. 8. Préchauffez le four à 200C/180C avec ventilateur. 9. Assemblez les lasagnes en alternant les couches de sauce et de pâtes. 10. Versez la crème fraîche sur le dessus et parsemez de mozzarella et de parmesan. 11. Faites cuire pendant 25-30 minutes jusqu'à ce que le dessus soit doré et bouillonnant.",
+      "steps": [
+        "Chauffez l'huile dans une grande casserole.",
+        "2. Ajoutez le bacon et faites-le cuire pendant quelques minutes jusqu'à ce qu'il commence à dorer.",
+        "3. Ajoutez l'oignon, le céleri et les carottes, et faites-les cuire à feu moyen pendant 5 minutes en remuant occasionnellement.",
+        "4. Ajoutez l'ail et faites-le cuire pendant 1 minute.",
+        "5. Ajoutez la viande hachée et faites-la cuire en la cassant avec une cuillère en bois pendant environ 6 minutes jusqu'à ce qu'elle soit bien dorée.",
+        "6. Ajoutez la purée de tomate et faites-la cuire pendant 1 minute en la mélangeant bien avec la viande et les légumes.",
+        "7. Ajoutez les tomates concassées et faites-les cuire pendant 20 minutes.",
+        "8. Préchauffez le four à 200C/180C avec ventilateur.",
+        "9. Assemblez les lasagnes en alternant les couches de sauce et de pâtes.",
+        "10. Versez la crème fraîche sur le dessus et parsemez de mozzarella et de parmesan.",
+        "11. Faites cuire pendant 25-30 minutes jusqu'à ce que le dessus soit doré et bouillonnant."
+      ],
+      "description": "Lasagne italienne (Italian) — easy pasta recipe with 15 ingredients and 11 steps. Ready in 44 min. Includes exact ingredients and clear instructions.",
+      "tags": [
+        "lasagne",
+        "pâtes",
+        "italien",
+        "viande hachée",
+        "fromage",
+        "casserole",
+        "plat principal",
+        "cuisine italienne",
+        "Pasta",
+        "Italian"
+      ],
+      "datePublished": "2026-04-12",
+      "publishDate": "2026-04-12T00:00:00",
+      "addedDate": "2026-04-12T17:27:28",
+      "status": "PUBLISHED",
+      "slug": "lasagne-52844",
+      "youtube": "https://www.youtube.com/watch?v=gfhfsBPt46s",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "44 min",
+      "prepTime": "19 min",
+      "totalTime": "63 min",
+      "servings": 4,
+      "difficulty": "Hard",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "chilli-prawn-linguine-52839",
+        "syrian-spaghetti-53093",
+        "karbonader-lean-beef-patties-with-caramelized-onions-53125"
+      ]
+    },
+    {
+      "mealId": "53354",
+      "id": "jamaican-curry-goat-53354",
+      "title": "Curry de Chèvre Jamaïcain",
+      "category": "Goat",
+      "origin": "Jamaican",
+      "image": "https://www.themealdb.com/images/media/meals/uc9qp11764796575.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/uc9qp11764796575.jpg",
+      "ingredients": [
+        "3 Lbs Goat Meat",
+        "2.5 tbsp Jamaican Curry Powder",
+        "1/2 tsp Ground Ginger",
+        "1/2 tsp All-purpose Seasoning",
+        "1/4 tsp Allspice",
+        "1 chopped Onion",
+        "6 cloves sliced Garlic",
+        "3 sprigs Thyme",
+        "2 tablespoons Oil",
+        "1 1/4 cup Water",
+        "1 Scotch Bonnet",
+        "1 large Russet Potato",
+        "To taste Salt",
+        "To taste Pepper"
+      ],
+      "instructions": "1. Rincez la viande de chèvre avec du vinaigre et de l'eau. 2. Assaisonnez la viande de chèvre avec 1 ½ cuillère à table de poudre de curry, assaisonnement à tout usage, gingembre en poudre, piment de la Jamaïque, oignon, ail et thym. Laissez mariner pendant au moins 4 heures ou toute la nuit. 3. Retirez l'oignon et l'ail de la viande de chèvre et mettez-les de côté. 4. Faites chauffer de l'huile dans une cocotte-minute électrique et ajoutez la viande de chèvre pour la faire dorer, environ 2-3 minutes de chaque côté. 5. Ajoutez les oignons et l'ail et faites-les revenir jusqu'à ce qu'ils soient tendres, environ 4 minutes. 6. Ajoutez la viande de chèvre et de l'eau dans la cocotte-minute et couvrez-la. Faites cuire pendant 40 minutes à haute pression. 7. Laissez la pression se dégager naturellement pendant 10 minutes, puis libérez la pression restante. 8. Ajoutez les pommes de terre et un piment Scotch Bonnet entier et faites cuire pendant 10-15 minutes, jusqu'à ce que les pommes de terre soient tendres.",
+      "steps": [
+        "Rincez la viande de chèvre avec du vinaigre et de l'eau.",
+        "2. Assaisonnez la viande de chèvre avec 1 ½ cuillère à table de poudre de curry, assaisonnement à tout usage, gingembre en poudre, piment de la Jamaïque, oignon, ail et thym. Laissez mariner pendant au moins 4 heures ou toute la nuit.",
+        "3. Retirez l'oignon et l'ail de la viande de chèvre et mettez-les de côté.",
+        "4. Faites chauffer de l'huile dans une cocotte-minute électrique et ajoutez la viande de chèvre pour la faire dorer, environ 2-3 minutes de chaque côté.",
+        "5. Ajoutez les oignons et l'ail et faites-les revenir jusqu'à ce qu'ils soient tendres, environ 4 minutes.",
+        "6. Ajoutez la viande de chèvre et de l'eau dans la cocotte-minute et couvrez-la. Faites cuire pendant 40 minutes à haute pression.",
+        "7. Laissez la pression se dégager naturellement pendant 10 minutes, puis libérez la pression restante.",
+        "8. Ajoutez les pommes de terre et un piment Scotch Bonnet entier et faites cuire pendant 10-15 minutes, jusqu'à ce que les pommes de terre soient tendres."
+      ],
+      "description": "Curry de Chèvre Jamaïcain (Jamaican) — easy goat recipe with 14 ingredients and 8 steps. Ready in 50 min. Includes exact ingredients and clear instructions.",
+      "tags": [
+        "curry",
+        "chèvre",
+        "jamaïcain",
+        "plat principal",
+        "cuisine caribéenne",
+        "ragoût",
+        "cocotte-minute",
+        "rapide",
+        "Goat",
+        "Jamaican"
+      ],
+      "datePublished": "2026-04-12",
+      "publishDate": "2026-04-12T00:00:00",
+      "addedDate": "2026-04-12T17:45:31",
+      "status": "PUBLISHED",
+      "slug": "jamaican-curry-goat-53354",
+      "youtube": "https://www.youtube.com/watch?v=SrX2KMsWbF4",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "50 min",
+      "prepTime": "22 min",
+      "totalTime": "72 min",
+      "servings": 4,
+      "difficulty": "Medium",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "mbuzi-choma-roasted-goat-52968",
+        "karbonader-lean-beef-patties-with-caramelized-onions-53125",
+        "kenyan-beef-curry-53112"
+      ]
+    },
+    {
+      "mealId": "53028",
+      "id": "shawarma-53028",
+      "title": "Shawarma Égyptien",
+      "category": "Chicken",
+      "origin": "Egyptian",
+      "image": "https://www.themealdb.com/images/media/meals/kcv6hj1598733479.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/kcv6hj1598733479.jpg",
+      "ingredients": [
+        "1 kg Chicken Thighs",
+        "1 tbs Coriander",
+        "1 tbs Cumin",
+        "1 tbs Cardamom",
+        "1 tsp Cayenne Pepper",
+        "2 tsp Paprika",
+        "2 tbs Lemon Juice",
+        "3 tbs Olive Oil",
+        "1 cup Greek Yogurt",
+        "1 Garlic Clove",
+        "1 tsp Cumin",
+        "Splash Lemon Juice",
+        "Sliced Lettuce",
+        "Sliced Tomato",
+        "6 Pita Bread"
+      ],
+      "instructions": "1. Mélangez les ingrédients de la marinade dans un sac ziplock ou un bol. 2. Ajoutez le poulet et assurez-vous que chaque pièce est bien enrobée. 3. Laissez mariner pendant la nuit ou jusqu'à 24 heures. 4. Préparez la sauce au yaourt en mélangeant les ingrédients dans un bol, puis couvrez et placez au réfrigérateur. 5. Faites chauffer le grill ou une grande poêle à feu moyen-élevé. 6. Placez le poulet sur le grill et faites cuire pendant 4-5 minutes de chaque côté. 7. Laissez reposer le poulet pendant 5 minutes avant de le trancher et de le servir.",
+      "steps": [
+        "Mélangez les ingrédients de la marinade dans un sac ziplock ou un bol.",
+        "2. Ajoutez le poulet et assurez-vous que chaque pièce est bien enrobée.",
+        "3. Laissez mariner pendant la nuit ou jusqu'à 24 heures.",
+        "4. Préparez la sauce au yaourt en mélangeant les ingrédients dans un bol, puis couvrez et placez au réfrigérateur.",
+        "5. Faites chauffer le grill ou une grande poêle à feu moyen-élevé.",
+        "6. Placez le poulet sur le grill et faites cuire pendant 4-5 minutes de chaque côté.",
+        "7. Laissez reposer le poulet pendant 5 minutes avant de le trancher et de le servir."
+      ],
+      "description": "Shawarma Égyptien (Egyptian) — easy chicken recipe with 15 ingredients and 7 steps. Ready in 10 min. Includes exact ingredients and clear instructions.",
+      "tags": [
+        "Shawarma",
+        "Poulet",
+        "Cuisine Égyptienne",
+        "Grillé",
+        "Plat Rapide",
+        "Yaourt",
+        "Pita",
+        "BBQ",
+        "Chicken",
+        "Egyptian"
+      ],
+      "datePublished": "2026-04-12",
+      "publishDate": "2026-04-12T00:00:00",
+      "addedDate": "2026-04-12T17:45:31",
+      "status": "PUBLISHED",
+      "slug": "shawarma-53028",
+      "youtube": "https://www.youtube.com/watch?v=3lxUIeKDgic",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "10 min",
+      "prepTime": "10 min",
+      "totalTime": "10 min",
+      "servings": 4,
+      "difficulty": "Medium",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "sweet-and-sour-chicken-53376",
+        "spanish-chicken-53164",
+        "mulukhiyah-53029"
+      ]
+    },
+    {
+      "mealId": "53112",
+      "id": "kenyan-beef-curry-53112",
+      "title": "Curry de Boeuf Kényan",
+      "category": "Beef",
+      "origin": "Kenyan",
+      "image": "https://www.themealdb.com/images/media/meals/lqampv1762325397.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/lqampv1762325397.jpg",
+      "ingredients": [
+        "4 cups Water",
+        "2 Lbs Sirloin Steak tips",
+        "4 Garlic Clove",
+        "2 teaspoons Ground Ginger",
+        "2 tblsp Oil",
+        "2 medium Red Onions",
+        "4 Tomato",
+        "2 tblsp Paprika",
+        "1/2 teaspoon Black Pepper",
+        "2 teaspoons Curry Powder",
+        "4 tablespoons Tomato Puree",
+        "Dash Salt",
+        "1 Chilli",
+        "Leaves Cilantro"
+      ],
+      "instructions": "1. Faites bouillir 4 tasses d'eau dans une casserole ou une marmite. 2. Ajoutez le boeuf, l'ail et le gingembre, et remuez bien. 3. Faites mijoter pendant 20 minutes. 4. Retirez du feu et égouttez, en réservant l'eau pour plus tard. 5. Faites chauffer 2 cuillères à soupe d'huile dans la casserole à feu moyen. 6. Ajoutez les oignons et faites-les cuire jusqu'à ce qu'ils soient tendres. 7. Ajoutez les tomates et continuez à cuire jusqu'à ce qu'elles se décomposent. 8. Ajoutez le boeuf égoutté et remuez bien. 9. Ajoutez le paprika, le poivre, la poudre de curry, la pâte de tomate et le sel, et remuez bien. 10. Ajoutez l'eau réservée et faites bouillir, puis réduisez le feu et laissez mijoter pendant environ 1 heure.",
+      "steps": [
+        "Faites bouillir 4 tasses d'eau dans une casserole ou une marmite.",
+        "2. Ajoutez le boeuf, l'ail et le gingembre, et remuez bien.",
+        "3. Faites mijoter pendant 20 minutes.",
+        "4. Retirez du feu et égouttez, en réservant l'eau pour plus tard.",
+        "5. Faites chauffer 2 cuillères à soupe d'huile dans la casserole à feu moyen.",
+        "6. Ajoutez les oignons et faites-les cuire jusqu'à ce qu'ils soient tendres.",
+        "7. Ajoutez les tomates et continuez à cuire jusqu'à ce qu'elles se décomposent.",
+        "8. Ajoutez le boeuf égoutté et remuez bien.",
+        "9. Ajoutez le paprika, le poivre, la poudre de curry, la pâte de tomate et le sel, et remuez bien.",
+        "10. Ajoutez l'eau réservée et faites bouillir, puis réduisez le feu et laissez mijoter pendant environ 1 heure."
+      ],
+      "description": "Curry de Boeuf Kényan (Kenyan) — easy beef recipe with 14 ingredients and 10 steps. Ready in 10 min. Includes exact ingredients and clear instructions.",
+      "tags": [
+        "curry",
+        "boeuf",
+        "kényan",
+        "plat principal",
+        "cuisine africaine",
+        "mijoté",
+        "sauce tomate",
+        "poudre de curry",
+        "Beef",
+        "Kenyan"
+      ],
+      "datePublished": "2026-04-12",
+      "publishDate": "2026-04-12T00:00:00",
+      "addedDate": "2026-04-12T17:45:31",
+      "status": "PUBLISHED",
+      "slug": "kenyan-beef-curry-53112",
+      "youtube": "https://www.youtube.com/watch?v=NxrOueTLiqA",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "10 min",
+      "prepTime": "10 min",
+      "totalTime": "20 min",
+      "servings": 4,
+      "difficulty": "Hard",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "karbonader-lean-beef-patties-with-caramelized-onions-53125",
+        "mulukhiyah-53029",
+        "mbuzi-choma-roasted-goat-52968"
+      ]
+    },
+    {
+      "mealId": "52836",
+      "id": "seafood-fideua-52836",
+      "title": "Fideuà de fruits de mer",
+      "category": "Seafood",
+      "origin": "Spanish",
+      "image": "https://www.themealdb.com/images/media/meals/wqqvyq1511179730.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/wqqvyq1511179730.jpg",
+      "ingredients": [
+        "400g Mussels",
+        "8 Prawns",
+        "2 pinches Saffron",
+        "350g Vermicelli Pasta",
+        "5 tblsp Olive Oil",
+        "1 large Onions",
+        "3 cloves Garlic",
+        "2 tbs Paprika",
+        "1 tail Monkfish",
+        "4 Baby Squid",
+        "650ml Fish Stock",
+        "2 large Tomatoes",
+        "Juice of 1 Lemon",
+        "Topping Parsley"
+      ],
+      "instructions": "1. Préparez les moules en les rinçant et en éliminant celles dont les coquilles sont brisées. 2. Faites tremper le safran dans 50ml d'eau chaude pendant 10 minutes. 3. Faites chauffer l'huile dans une grande poêle et ajoutez l'oignon, puis le garlic. 4. Ajoutez les vermicelles et faites-les dorer pendant 5 minutes. 5. Ajoutez le poisson, les calamars et le safran, puis versez le bouillon de poisson. 6. Faites cuire pendant 6 minutes, puis ajoutez les moules et les crevettes. 7. Laissez cuire pendant 6 minutes supplémentaires, puis servez avec du citron et du persil.",
+      "steps": [
+        "Préparez les moules en les rinçant et en éliminant celles dont les coquilles sont brisées.",
+        "2. Faites tremper le safran dans 50ml d'eau chaude pendant 10 minutes.",
+        "3. Faites chauffer l'huile dans une grande poêle et ajoutez l'oignon, puis le garlic.",
+        "4. Ajoutez les vermicelles et faites-les dorer pendant 5 minutes.",
+        "5. Ajoutez le poisson, les calamars et le safran, puis versez le bouillon de poisson.",
+        "6. Faites cuire pendant 6 minutes, puis ajoutez les moules et les crevettes.",
+        "7. Laissez cuire pendant 6 minutes supplémentaires, puis servez avec du citron et du persil."
+      ],
+      "description": "Fideuà de fruits de mer (Spanish) — easy seafood recipe with 14 ingredients and 7 steps. Ready in 17 min. Includes exact ingredients and clear instructions.",
+      "tags": [
+        "fideuà",
+        "fruits de mer",
+        "pâtes",
+        "safran",
+        "cuisine espagnole",
+        "poisson",
+        "moules",
+        "crevettes",
+        "plat principal",
+        "Seafood"
+      ],
+      "datePublished": "2026-04-12",
+      "publishDate": "2026-04-12T00:00:00",
+      "addedDate": "2026-04-12T17:45:31",
+      "status": "PUBLISHED",
+      "slug": "seafood-fideua-52836",
+      "youtube": "https://www.youtube.com/watch?v=itsFEc8W468",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "17 min",
+      "prepTime": "10 min",
+      "totalTime": "27 min",
+      "servings": 4,
+      "difficulty": "Medium",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "thai-fried-rice-with-prawns-peas-53198",
+        "noodle-bowl-salad-53245",
+        "spanish-chicken-53164"
+      ]
+    },
+    {
+      "mealId": "52839",
+      "id": "chilli-prawn-linguine-52839",
+      "title": "Linguine aux crevettes piquantes",
+      "category": "Pasta",
+      "origin": "Italian",
+      "image": "https://www.themealdb.com/images/media/meals/usywpp1511189717.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/usywpp1511189717.jpg",
+      "ingredients": [
+        "280g Linguine Pasta",
+        "200g Sugar Snap Peas",
+        "2 tblsp Olive Oil",
+        "2 cloves chopped Garlic Clove",
+        "1 large Red Chilli",
+        "24 Skinned King Prawns",
+        "12 Cherry Tomatoes",
+        "Handful Basil Leaves",
+        "Leaves Lettuce",
+        "to serve Bread",
+        "2 tbsp Fromage Frais",
+        "Grated Zest of 2 Lime",
+        "2 tsp Caster Sugar"
+      ],
+      "instructions": "1. Faites cuire les pâtes selon les instructions du paquet, en ajoutant les pois sucrés pour la dernière minute. 2. Dans un wok ou une grande poêle, faites chauffer l'huile, puis ajoutez l'ail et le piment, et faites cuire à feu doux pendant 30 secondes. 3. Ajoutez les crevettes et faites cuire à feu vif pendant 3 minutes en remuant fréquemment. 4. Ajoutez les tomates et faites cuire pendant 3 minutes en remuant occasionnellement. 5. Égouttez les pâtes et les pois sucrés, puis mélangez-les avec le mélange de crevettes et de tomates.",
+      "steps": [
+        "Faites cuire les pâtes selon les instructions du paquet, en ajoutant les pois sucrés pour la dernière minute.",
+        "2. Dans un wok ou une grande poêle, faites chauffer l'huile, puis ajoutez l'ail et le piment, et faites cuire à feu doux pendant 30 secondes.",
+        "3. Ajoutez les crevettes et faites cuire à feu vif pendant 3 minutes en remuant fréquemment.",
+        "4. Ajoutez les tomates et faites cuire pendant 3 minutes en remuant occasionnellement.",
+        "5. Égouttez les pâtes et les pois sucrés, puis mélangez-les avec le mélange de crevettes et de tomates."
+      ],
+      "description": "Linguine aux crevettes piquantes (Italian) — easy pasta recipe with 13 ingredients and 5 steps. Ready in 10 min. Includes exact ingredients and clear instr…",
+      "tags": [
+        "pâtes",
+        "crevettes",
+        "italien",
+        "piment",
+        "pois sucrés",
+        "tomates",
+        "basilic",
+        "plat principal",
+        "cuisine rapide",
+        "Pasta"
+      ],
+      "datePublished": "2026-04-12",
+      "publishDate": "2026-04-12T00:00:00",
+      "addedDate": "2026-04-12T17:45:31",
+      "status": "PUBLISHED",
+      "slug": "chilli-prawn-linguine-52839",
+      "youtube": "https://www.youtube.com/watch?v=SC17Mc70Db0",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "10 min",
+      "prepTime": "10 min",
+      "totalTime": "6 min",
+      "servings": 4,
+      "difficulty": "Easy",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "lasagne-52844",
+        "syrian-spaghetti-53093",
+        "seafood-fideua-52836"
+      ]
     }
   ]
 }
