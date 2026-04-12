@@ -16,7 +16,8 @@
  *    functions from the Apps Script editor. First run creates the "Recipes" tab.
  * 5. Déclencheurs automatiques :
  *    - Menu Sheet → « ⑨ Installer les déclencheurs » (une fois, puis accepter
- *      l’autorisation « gérer les déclencheurs »). Heures dans CONFIG (TRIGGER_*).
+ *      l’autorisation « gérer les déclencheurs »). Par défaut : un pipeline quotidien
+ *      fetch → mark PUBLISHED → push GitHub (CONFIG.USE_CHAINED_PIPELINE_TRIGGER + TRIGGER_PIPELINE_HOUR).
  *    - Ou manuellement : éditeur Apps Script → Déclencheurs (icône horloge) →
  *      Ajouter un déclencheur → Type « Dans le temps » → fonction + horaire.
  *    - « ⑩ Supprimer les déclencheurs Akkous » enlève ceux créés par ⑨.
@@ -36,11 +37,12 @@
  *
  * PUBLICATION vs REMPLISSAGE
  * --------------------------
- * Tu peux ajouter beaucoup de lignes d’un coup (RECIPES_PER_DAY élevé) tout en
- * ne “publiant” qu’une recette par jour calendaire : mets PUBLISH_STAGGER à
- * 'day'. Les dates en colonne Publish Date se suivent jour après jour ; avec un
- * déclencheur quotidien sur markPublishedRecipes, un seul passage à PUBLISHED
- * par jour en moyenne (selon l’heure PUBLISH_HOUR).
+ * PUBLISH_STAGGER (CONFIG) :
+ * - 'batch' : chaque run de ② assigne la même Publish Date à toutes les recettes
+ *   du lot (RECIPES_PER_DAY), comme 5 lignes le même jour — puis markPublished
+ *   les passe ensemble quand la date/heure est dépassée.
+ * - 'day' : une date différente par recette (file ~1 article / jour calendaire).
+ * - 'hour' : même jour calendaire, heures 9h, 10h, 11h… (décalage horaire).
  *
  * PERMISSIONS
  * -----------
@@ -62,11 +64,11 @@ const CONFIG = {
   /** First article hour (local script timezone) */
   PUBLISH_HOUR: 9,
   /**
-   * 'hour' = même jour : 9h, 10h, 11h… (plusieurs “publiables” le même jour).
-   * 'day'  = une date par recette : demain 9h, après-demain 9h… (file d’attente).
-   * Idéal si tu remplis le sheet en masse mais tu veux ~1 article / jour.
+   * 'batch' = même date/heure pour tout le lot du jour (RECIPES_PER_DAY lignes).
+   * 'hour'  = même jour calendaire : 9h, 10h, 11h… (mark dépend de l’heure).
+   * 'day'   = une date par recette : J+1, J+2… (~1 article / jour).
    */
-  PUBLISH_STAGGER: 'day',
+  PUBLISH_STAGGER: 'batch',
   /** Optional; default Session.getScriptTimeZone() */
   TIMEZONE: '',
   /**
@@ -153,17 +155,24 @@ const CONFIG = {
   LOG_LEVEL_WARN: 'WARN',
   LOG_LEVEL_ERROR: 'ERROR',
   /**
-   * Heures des déclencheurs installFeastablyTriggers() (menu ⑨).
-   * Entiers 0–23 dans le fuseau du script (TIMEZONE ou fuseau du projet).
-   * Réglage type « marché US » : heures bas Maroc ≈ fin de soirée / minuit côté EST
-   * (rappel pratique : EST ≈ heure Maroc − 5 h ; si la soustraction est négative, c’est la veille en EST).
-   * TRIGGER_PUSH_GITHUB_HOUR : -1 pour désactiver le push planifié.
+   * Déclencheurs (menu ⑨) — alignés GitHub Pages : recipes.json → Actions → pages statiques.
+   *
+   * USE_CHAINED_PIPELINE_TRIGGER : un seul trigger quotidien enchaîne dans l’ordre
+   *   fetch TheMealDB → markPublishedRecipes → pushRecipesToGitHub (plus de course entre triggers).
+   *   Heure = TRIGGER_PIPELINE_HOUR (fuseau script).
+   *
+   * Si false : trois triggers séparés aux heures TRIGGER_FETCH_HOUR, TRIGGER_MARK_PUBLISHED_HOUR,
+   * TRIGGER_PUSH_GITHUB_HOUR (l’ordre le même jour n’est pas garanti par Google si mêmes heures).
+   * TRIGGER_PUSH_GITHUB_HOUR : -1 pour désactiver uniquement le push planifié (mode 3 triggers).
    */
-  /** Fetch TheMealDB — 2 h Maroc ≈ 21 h EST (veille) */
+  USE_CHAINED_PIPELINE_TRIGGER: true,
+  /** Heure du pipeline quotidien (fetch + mark + push) quand USE_CHAINED_PIPELINE_TRIGGER est true. */
+  TRIGGER_PIPELINE_HOUR: 4,
+  /** Fetch TheMealDB (si pipeline désactivé : trigger séparé) */
   TRIGGER_FETCH_HOUR: 2,
-  /** SCHEDULED → PUBLISHED — 3 h Maroc ≈ 22 h EST (veille) */
+  /** SCHEDULED → PUBLISHED (si pipeline désactivé) */
   TRIGGER_MARK_PUBLISHED_HOUR: 3,
-  /** Push recipes.json + sitemap — 4 h Maroc ≈ 23 h EST (veille) */
+  /** Push recipes.json + sitemap (si pipeline désactivé) */
   TRIGGER_PUSH_GITHUB_HOUR: 4,
   /** Indexation GSC (batch) — 5 h Maroc ≈ minuit EST (début journée calendaire US) */
   TRIGGER_GSC_INDEX_HOUR: 5,
@@ -180,7 +189,10 @@ const CONFIG = {
   GSC_PRIVATE_KEY: '',
   /** OAuth2 scope for URL notifications */
   GSC_SCOPE: 'https://www.googleapis.com/auth/indexing',
-  /** SEO export hardening */
+  /**
+   * Si true : évalue le SEO à l’export et log des WARN — ne bloque plus l’inclusion dans recipes.json
+   * (toutes les lignes PUBLISHED partent sur GitHub ; le gate sert au suivi / menu ⑭).
+   */
   SEO_QUALITY_GATE_ENABLED: true,
   SEO_MIN_TITLE_LEN: 8,
   SEO_MIN_INGREDIENTS: 3,
@@ -239,6 +251,7 @@ function onOpen() {
       .addItem('⑤ Nettoyer lignes publiées (> CLEANUP_DAYS)', 'cleanOldRecipes')
       .addSeparator()
       .addItem('▶ Enchaîner ② puis ③ (test chaîne)', 'testRunFetchThenMarkPublished')
+      .addItem('▶ Pipeline complet ②→③→④ (comme auto / GitHub)', 'testRunFetchMarkPushPipeline')
       .addSeparator()
       .addItem('⑦ Rapport automatisation (panneau)', 'showAutomationDashboard')
       .addItem('⑧ Ouvrir onglet AutomationLog', 'openAutomationLogSheet')
@@ -277,6 +290,25 @@ function testRunFetchThenMarkPublished() {
     logAutomation_(CONFIG.LOG_LEVEL_ERROR, 'testRunFetchThenMarkPublished', String(e));
     throw e;
   }
+}
+
+/**
+ * Même ordre et même robustesse que le déclencheur quotidien (dailyAkkousChainedPipeline_) :
+ * fetch → mark PUBLISHED → push recipes.json + sitemap sur GitHub.
+ * Pour tester bout en bout sans attendre l’heure du trigger.
+ */
+function testRunFetchMarkPushPipeline() {
+  logAutomation_(
+    CONFIG.LOG_LEVEL_INFO,
+    'testRunFetchMarkPushPipeline',
+    'Test manuel pipeline complet (fetch → mark → push)'
+  );
+  dailyAkkousChainedPipeline_();
+  SpreadsheetApp.getActiveSpreadsheet().toast(
+    'Pipeline terminé : fetch → mark → push. Voir AutomationLog et le dépôt GitHub.',
+    'Akkous',
+    10
+  );
 }
 
 /**
@@ -559,6 +591,7 @@ const FEASTABLY_TRIGGER_HANDLERS_ = [
   'fetchAndScheduleRecipes',
   'markPublishedRecipes',
   'pushRecipesToGitHub',
+  'dailyAkkousChainedPipeline_',
   'submitDailyIndexingBatchToGsc',
   'cleanOldRecipes',
 ];
@@ -596,6 +629,30 @@ function removeFeastablyTriggersOnly_() {
  * Crée les déclencheurs horaires Akkous (supprime d’abord les anciens du même type).
  * À lancer une fois depuis le menu ⑨ ; accepter l’autorisation « gérer les déclencheurs ».
  */
+/**
+ * Pipeline quotidien : ordre fixe pour TheMealDB → feuille → PUBLISHED → GitHub (recipes.json + sitemap).
+ * À utiliser avec un seul déclencheur (CONFIG.USE_CHAINED_PIPELINE_TRIGGER).
+ */
+function dailyAkkousChainedPipeline_() {
+  logAutomation_(CONFIG.LOG_LEVEL_INFO, 'dailyAkkousChainedPipeline_', 'Démarrage (fetch → mark → push)');
+  try {
+    fetchAndScheduleRecipes();
+  } catch (e1) {
+    logAutomation_(CONFIG.LOG_LEVEL_ERROR, 'dailyAkkousChainedPipeline_', 'fetch: ' + String(e1));
+  }
+  try {
+    markPublishedRecipes();
+  } catch (e2) {
+    logAutomation_(CONFIG.LOG_LEVEL_ERROR, 'dailyAkkousChainedPipeline_', 'markPublished: ' + String(e2));
+  }
+  try {
+    pushRecipesToGitHub();
+  } catch (e3) {
+    logAutomation_(CONFIG.LOG_LEVEL_ERROR, 'dailyAkkousChainedPipeline_', 'push: ' + String(e3));
+  }
+  logAutomation_(CONFIG.LOG_LEVEL_INFO, 'dailyAkkousChainedPipeline_', 'Fin pipeline');
+}
+
 function installFeastablyTriggers() {
   removeFeastablyTriggersOnly_();
   const tz = getTimezone_();
@@ -604,28 +661,39 @@ function installFeastablyTriggers() {
   const hPush = CONFIG.TRIGGER_PUSH_GITHUB_HOUR;
   const hIndex = clampTriggerHour_(CONFIG.TRIGGER_GSC_INDEX_HOUR, 9);
   const hClean = clampTriggerHour_(CONFIG.TRIGGER_CLEAN_HOUR, 5);
+  const chained = CONFIG.USE_CHAINED_PIPELINE_TRIGGER === true;
+  const hPipe = clampTriggerHour_(CONFIG.TRIGGER_PIPELINE_HOUR, 4);
 
-  ScriptApp.newTrigger('fetchAndScheduleRecipes')
-    .timeBased()
-    .inTimezone(tz)
-    .everyDays(1)
-    .atHour(hFetch)
-    .create();
-
-  ScriptApp.newTrigger('markPublishedRecipes')
-    .timeBased()
-    .inTimezone(tz)
-    .everyDays(1)
-    .atHour(hMark)
-    .create();
-
-  if (hPush >= 0 && hPush <= 23) {
-    ScriptApp.newTrigger('pushRecipesToGitHub')
+  if (chained) {
+    ScriptApp.newTrigger('dailyAkkousChainedPipeline_')
       .timeBased()
       .inTimezone(tz)
       .everyDays(1)
-      .atHour(clampTriggerHour_(hPush, 8))
+      .atHour(hPipe)
       .create();
+  } else {
+    ScriptApp.newTrigger('fetchAndScheduleRecipes')
+      .timeBased()
+      .inTimezone(tz)
+      .everyDays(1)
+      .atHour(hFetch)
+      .create();
+
+    ScriptApp.newTrigger('markPublishedRecipes')
+      .timeBased()
+      .inTimezone(tz)
+      .everyDays(1)
+      .atHour(hMark)
+      .create();
+
+    if (hPush >= 0 && hPush <= 23) {
+      ScriptApp.newTrigger('pushRecipesToGitHub')
+        .timeBased()
+        .inTimezone(tz)
+        .everyDays(1)
+        .atHour(clampTriggerHour_(hPush, 8))
+        .create();
+    }
   }
 
   if (CONFIG.GSC_INDEXING_ENABLED) {
@@ -647,22 +715,36 @@ function installFeastablyTriggers() {
   logAutomation_(
     CONFIG.LOG_LEVEL_INFO,
     'installFeastablyTriggers',
-    'Créés : fetch @' +
-      hFetch +
-      'h, mark @' +
-      hMark +
-      'h' +
-      (hPush >= 0 && hPush <= 23 ? ', push @' + hPush + 'h' : ', pas de push') +
-      (CONFIG.GSC_INDEXING_ENABLED ? ', index @' + hIndex + 'h' : ', index OFF') +
-      ', clean ' +
-      String(CONFIG.TRIGGER_CLEAN_WEEKDAY) +
-      ' @' +
-      hClean +
-      'h'
+    chained
+      ? 'Créés : pipeline chaîné dailyAkkousChainedPipeline_ @' +
+          hPipe +
+          'h (fetch→mark→push)' +
+          (CONFIG.GSC_INDEXING_ENABLED ? ', index @' + hIndex + 'h' : ', index OFF') +
+          ', clean ' +
+          String(CONFIG.TRIGGER_CLEAN_WEEKDAY) +
+          ' @' +
+          hClean +
+          'h'
+      : 'Créés : fetch @' +
+          hFetch +
+          'h, mark @' +
+          hMark +
+          'h' +
+          (hPush >= 0 && hPush <= 23 ? ', push @' + hPush + 'h' : ', pas de push') +
+          (CONFIG.GSC_INDEXING_ENABLED ? ', index @' + hIndex + 'h' : ', index OFF') +
+          ', clean ' +
+          String(CONFIG.TRIGGER_CLEAN_WEEKDAY) +
+          ' @' +
+          hClean +
+          'h'
   );
   try {
     SpreadsheetApp.getUi().alert(
-      'Déclencheurs installés.\n\nVérifie : éditeur Apps Script → icône Déclencheurs (horloge).\nTu peux ajuster les heures dans CONFIG puis relancer ⑨.'
+      'Déclencheurs installés.\n\n' +
+        (CONFIG.USE_CHAINED_PIPELINE_TRIGGER === true
+          ? 'Mode pipeline : une seule exécution quotidienne enchaîne fetch → mark → push (heure TRIGGER_PIPELINE_HOUR).\n'
+          : 'Mode classique : trois déclencheurs séparés (TRIGGER_FETCH / MARK / PUSH).\n') +
+        'Vérifie : éditeur Apps Script → Déclencheurs (horloge). Ajuste CONFIG puis relance ⑨.'
     );
   } catch (e) {
     Logger.log('installFeastablyTriggers UI: %s', e);
@@ -1288,7 +1370,7 @@ function pushRecipesToGitHub() {
     logAutomation_(
       CONFIG.LOG_LEVEL_WARN,
       'pushRecipesToGitHub',
-      'Push annulé : 0 recette exportée (aucune PUBLISHED, ou SEO gate / feuille vide). GitHub inchangé — pas de recipes: [].'
+      'Push annulé : 0 ligne PUBLISHED à exporter (dates futures ? ou feuille vide). Le SEO gate ne bloque plus l’export — vérifie statuts / Publish Date.'
     );
     return;
   }
@@ -2099,6 +2181,9 @@ function getPublishSlots_(count, sheet) {
   if (CONFIG.PUBLISH_STAGGER === 'day') {
     return getPublishSlotsByDay_(count, sheet);
   }
+  if (CONFIG.PUBLISH_STAGGER === 'batch') {
+    return getPublishSlotsByBatchDay_(count, sheet);
+  }
   return getPublishSlotsByHour_(count);
 }
 
@@ -2164,6 +2249,49 @@ function getPublishSlotsByDay_(count, sheet) {
         0
       )
     );
+  }
+  return slots;
+}
+
+/**
+ * Même date et heure (PUBLISH_HOUR) pour chaque recette du lot : prochain “jour
+ * de publication” après le max SCHEDULED existant (ou demain), puis count copies.
+ */
+function getPublishSlotsByBatchDay_(count, sheet) {
+  const maxSched = getMaxScheduledPublishDate_(sheet);
+  const tomorrowAtHour = getTomorrowAtPublishHour_();
+  let cursor;
+  if (!maxSched) {
+    cursor = tomorrowAtHour;
+  } else {
+    const nextAfterMax = new Date(
+      maxSched.getFullYear(),
+      maxSched.getMonth(),
+      maxSched.getDate() + 1,
+      CONFIG.PUBLISH_HOUR,
+      0,
+      0,
+      0
+    );
+    cursor =
+      nextAfterMax.getTime() > tomorrowAtHour.getTime()
+        ? nextAfterMax
+        : tomorrowAtHour;
+  }
+
+  const slotMs = new Date(
+    cursor.getFullYear(),
+    cursor.getMonth(),
+    cursor.getDate(),
+    CONFIG.PUBLISH_HOUR,
+    0,
+    0,
+    0
+  ).getTime();
+
+  const slots = [];
+  for (let i = 0; i < count; i++) {
+    slots.push(new Date(slotMs));
   }
   return slots;
 }
@@ -2363,6 +2491,324 @@ function defaultExportSite_() {
   };
 }
 
+/**
+ * Dérive des étapes à partir des instructions brutes (TheMealDB = souvent un seul paragraphe).
+ * Essaie dans l’ordre : retours à la ligne → repères numérotés → frontières de phrases.
+ * Aucune étape « inventée » : si le SEO gate rejette encore, c’est voulu.
+ *
+ * @param {string} recipeId Identifiant recette (meal id ou row label) pour les logs.
+ * @param {string} rawInstructions Texte colonne Instructions.
+ * @returns {string[]} Étapes filtrées (trim, longueur > 10).
+ */
+function validateAndFixSteps_(recipeId, rawInstructions) {
+  const minSteps = Math.max(1, parseInt(CONFIG.SEO_MIN_STEPS, 10) || 3);
+  const raw = String(rawInstructions || '');
+  const id = String(recipeId || 'unknown');
+
+  const s1 = filterStepsByMinLength_(splitStepsByNewlines_(raw));
+  if (s1.length >= minSteps) {
+    logVerbWarningsForSteps_(id, s1);
+    return s1;
+  }
+
+  const s2 = filterStepsByMinLength_(splitStepsByNumberedPatterns_(raw));
+  if (s2.length >= minSteps) {
+    logAutomation_(
+      CONFIG.LOG_LEVEL_INFO,
+      'validateAndFixSteps_',
+      'INFO: steps enriched — id=' + id + ' → ' + s2.length + ' steps detected (strategy 2)'
+    );
+    logVerbWarningsForSteps_(id, s2);
+    return s2;
+  }
+
+  const s3 = filterStepsByMinLength_(splitStepsBySentenceBoundaries_(raw));
+  if (s3.length >= minSteps) {
+    logAutomation_(
+      CONFIG.LOG_LEVEL_INFO,
+      'validateAndFixSteps_',
+      'INFO: steps enriched — id=' + id + ' → ' + s3.length + ' steps detected (strategy 3)'
+    );
+    logVerbWarningsForSteps_(id, s3);
+    return s3;
+  }
+
+  const best = pickBestStepCandidate_(s1, s2, s3);
+  logVerbWarningsForSteps_(id, best);
+  return best;
+}
+
+/** Garde le plus grand nombre d’étapes valides si aucune stratégie n’atteint SEO_MIN_STEPS. */
+function pickBestStepCandidate_(a, b, c) {
+  const arr = [a || [], b || [], c || []];
+  arr.sort(function (x, y) {
+    return y.length - x.length;
+  });
+  return arr[0];
+}
+
+function filterStepsByMinLength_(steps) {
+  const minLen = 10;
+  return (steps || [])
+    .map(function (s) {
+      return String(s || '').trim();
+    })
+    .filter(function (s) {
+      return s.length > minLen;
+    });
+}
+
+function splitStepsByNewlines_(raw) {
+  return String(raw || '')
+    .replace(/\r\n/g, '\n')
+    .split(/\n+/)
+    .map(function (s) {
+      return s.trim();
+    })
+    .filter(Boolean);
+}
+
+/**
+ * Découpe sur 1. 2) Step 1: Step 1 - (insensible à la casse), y compris numéros en milieu de ligne.
+ */
+function splitStepsByNumberedPatterns_(raw) {
+  var text = String(raw || '').replace(/\r\n/g, '\n').trim();
+  if (!text) return [];
+  var markers = [];
+  var re1 = /(?:^|\n)\s*(?:(?:step\s*)?\d+[\.\):]\s*|step\s*\d+\s*[:\\-]+\s*)/gi;
+  var m;
+  while ((m = re1.exec(text)) !== null) {
+    markers.push({ start: m.index, after: m.index + m[0].length });
+  }
+  var re2 = /\s+(?=(?:step\s*)?\d+[\.\):]\s)/gi;
+  while ((m = re2.exec(text)) !== null) {
+    markers.push({ start: m.index, after: m.index + m[0].length });
+  }
+  var re3 = /\s+(?=step\s*\d+\s*[:\\-]+\s*)/gi;
+  while ((m = re3.exec(text)) !== null) {
+    markers.push({ start: m.index, after: m.index + m[0].length });
+  }
+  markers.sort(function (a, b) {
+    return a.start - b.start;
+  });
+  var dedup = [];
+  for (var i = 0; i < markers.length; i++) {
+    var cur = markers[i];
+    if (dedup.length && dedup[dedup.length - 1].start === cur.start) {
+      if (cur.after > dedup[dedup.length - 1].after) {
+        dedup[dedup.length - 1] = cur;
+      }
+    } else {
+      dedup.push(cur);
+    }
+  }
+  if (!dedup.length) return [];
+  var parts = [];
+  var last = 0;
+  for (var j = 0; j < dedup.length; j++) {
+    if (dedup[j].start > last) {
+      var chunk = text.substring(last, dedup[j].start).trim();
+      if (chunk) parts.push(chunk);
+    }
+    last = dedup[j].after;
+  }
+  if (last < text.length) {
+    parts.push(text.substring(last).trim());
+  }
+  return parts.filter(Boolean);
+}
+
+/**
+ * Phrase suivie de . ! ? puis espace(s) puis majuscule (EN/FR courantes).
+ */
+function splitStepsBySentenceBoundaries_(raw) {
+  var text = String(raw || '')
+    .replace(/\r\n/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+  if (!text) return [];
+  var upper = 'A-ZÀÁÂÄÆÇÉÈÊËÌÍÎÏÒÓÔÖÙÚÛÜÝŸÑ';
+  var re = new RegExp('([.!?])\\s+(?=[' + upper + '])', 'g');
+  var out = [];
+  var last = 0;
+  var m;
+  while ((m = re.exec(text)) !== null) {
+    var end = m.index + 1;
+    var seg = text.substring(last, end).trim();
+    if (seg) out.push(seg);
+    last = m.index + m[0].length;
+  }
+  if (last < text.length) {
+    out.push(text.substring(last).trim());
+  }
+  return out.filter(Boolean);
+}
+
+/** Retire un préfixe du type "1." ou "Step 2:" avant le test de verbe. */
+function stripLeadingStepNumberPrefix_(step) {
+  return String(step || '')
+    .replace(/^\s*(?:(?:step\s*)?\d+[\.\):]\s*|step\s*\d+\s*[:\\-]+\s*)/i, '')
+    .trim();
+}
+
+/** Verbes de cuisine EN/FR (premier mot après préfixe numéroté éventuel). */
+function stepHasLeadingCookingVerb_(step) {
+  var body = stripLeadingStepNumberPrefix_(step);
+  if (!body) return false;
+  var first = body
+    .toLowerCase()
+    .replace(/^[^a-zàáâäæçéèêëìíîïòóôöùúûüýÿñ]+/i, '')
+    .split(/\s+/)[0];
+  if (!first) return false;
+  var verbs = {
+    // English
+    prepare: 1,
+    preheat: 1,
+    wash: 1,
+    peel: 1,
+    chop: 1,
+    dice: 1,
+    slice: 1,
+    mince: 1,
+    grate: 1,
+    mix: 1,
+    stir: 1,
+    whisk: 1,
+    combine: 1,
+    heat: 1,
+    add: 1,
+    pour: 1,
+    cook: 1,
+    boil: 1,
+    simmer: 1,
+    fry: 1,
+    bake: 1,
+    roast: 1,
+    grill: 1,
+    season: 1,
+    taste: 1,
+    serve: 1,
+    place: 1,
+    remove: 1,
+    drain: 1,
+    transfer: 1,
+    cover: 1,
+    reduce: 1,
+    blend: 1,
+    knead: 1,
+    roll: 1,
+    cut: 1,
+    melt: 1,
+    brush: 1,
+    spread: 1,
+    fold: 1,
+    grease: 1,
+    line: 1,
+    rinse: 1,
+    soak: 1,
+    toast: 1,
+    steam: 1,
+    brown: 1,
+    deglaze: 1,
+    skim: 1,
+    strain: 1,
+    beat: 1,
+    cream: 1,
+    sift: 1,
+    measure: 1,
+    turn: 1,
+    flip: 1,
+    rest: 1,
+    repeat: 1,
+    continue: 1,
+    finish: 1,
+    bring: 1,
+    set: 1,
+    leave: 1,
+    allow: 1,
+    return: 1,
+    toss: 1,
+    sprinkle: 1,
+    drizzle: 1,
+    divide: 1,
+    reserve: 1,
+    coat: 1,
+    stack: 1,
+    wrap: 1,
+    chill: 1,
+    freeze: 1,
+    thaw: 1,
+    microwave: 1,
+    // French (infinitif / impératif courant)
+    préparer: 1,
+    laver: 1,
+    éplucher: 1,
+    eplucher: 1,
+    couper: 1,
+    mélanger: 1,
+    melanger: 1,
+    chauffer: 1,
+    ajouter: 1,
+    cuire: 1,
+    faire: 1,
+    verser: 1,
+    battre: 1,
+    fouetter: 1,
+    émincer: 1,
+    emincer: 1,
+    hacher: 1,
+    râper: 1,
+    raper: 1,
+    assaisonner: 1,
+    goûter: 1,
+    gouter: 1,
+    servir: 1,
+    disposer: 1,
+    retirer: 1,
+    égoutter: 1,
+    egoutter: 1,
+    couvrir: 1,
+    réduire: 1,
+    reduire: 1,
+    mixer: 1,
+    pétrir: 1,
+    petrir: 1,
+    étaler: 1,
+    etaler: 1,
+    fondre: 1,
+    griller: 1,
+    rôtir: 1,
+    rotir: 1,
+    bouillir: 1,
+    mijoter: 1,
+    frire: 1,
+    enfourner: 1,
+    garnir: 1,
+    refroidir: 1,
+    mélangez: 1,
+    melangez: 1,
+    coupez: 1,
+    ajoutez: 1,
+    versez: 1,
+    cuisez: 1,
+    chauffez: 1,
+  };
+  var w = first.replace(/[^a-zàáâäæçéèêëìíîïòóôöùúûüýÿñ-]/gi, '');
+  return verbs.hasOwnProperty(w);
+}
+
+function logVerbWarningsForSteps_(recipeId, steps) {
+  (steps || []).forEach(function (step, index) {
+    if (!stepHasLeadingCookingVerb_(step)) {
+      logAutomation_(
+        CONFIG.LOG_LEVEL_WARN,
+        'validateAndFixSteps_',
+        'WARN: step missing verb — id=' + String(recipeId) + ' step=' + index
+      );
+    }
+  });
+}
+
 function buildExportPayload_(sheet) {
   const site = defaultExportSite_();
   const last = sheet.getLastRow();
@@ -2413,20 +2859,17 @@ function buildExportPayload_(sheet) {
     }
 
     const instructions = String(row[CONFIG.COL.INSTRUCTIONS - 1] || '');
-    const steps = instructions
-      .split(/\n/)
-      .map((s) => s.trim())
-      .filter(Boolean);
-
     const origin = String(row[CONFIG.COL.ORIGIN - 1] || '').trim();
     const slug = String(row[CONFIG.COL.SLUG - 1] || '').trim();
     const idMeal = String(row[CONFIG.COL.ID - 1] || '').trim();
     const recipeId = slug || idMeal;
-
     const title = String(row[CONFIG.COL.TITLE - 1] || '').trim();
     const category = String(row[CONFIG.COL.CATEGORY - 1] || '').trim();
     const youtube = String(row[CONFIG.COL.YOUTUBE - 1] || '').trim();
     const thumb = String(row[CONFIG.COL.IMAGE - 1] || '').trim();
+
+    const steps = validateAndFixSteps_(idMeal || slug || 'row-' + (r + 2), instructions);
+
     const recipeTimes = inferRecipeTimes_(steps);
     const description = buildSeoDescription_({
       title,
@@ -2451,12 +2894,11 @@ function buildExportPayload_(sheet) {
       logAutomation_(
         CONFIG.LOG_LEVEL_WARN,
         'buildExportPayload_',
-        'Recette ignorée (SEO gate) id=' +
+        'SEO export (non bloquant, recette incluse) id=' +
           (idMeal || slug || 'row-' + (r + 2)) +
           ' — ' +
           seoCheck.reasons.join('; ')
       );
-      continue;
     }
 
     recipes.push({

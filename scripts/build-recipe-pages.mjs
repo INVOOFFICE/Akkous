@@ -23,45 +23,32 @@ function escapeHtml(s) {
     .replace(/"/g, "&quot;");
 }
 
-function normalizeRecipeCategoryKey(raw) {
-  const s = String(raw || "")
+/** Aligné sur main.js : slug depuis la colonne Category du sheet. */
+function slugifyCategoryKey(raw) {
+  const s = String(raw ?? "")
+    .trim()
     .toLowerCase()
-    .trim();
-  if (!s) return "other";
-  if (s === "breakfast") return "breakfast";
-  if (s === "lunch") return "lunch";
-  if (s === "dinner") return "dinner";
-  if (s === "dessert" || s === "desserts") return "desserts";
-  if (s.includes("drink")) return "drinks";
-  const dinnerLike = [
-    "chicken",
-    "beef",
-    "seafood",
-    "pasta",
-    "lamb",
-    "pork",
-    "goat",
-    "side",
-    "vegetarian",
-    "vegan",
-  ];
-  if (dinnerLike.includes(s)) return "dinner";
-  if (s === "miscellaneous" || s === "misc") return "other";
-  return "other";
+    .replace(/\s+/g, "-");
+  const cleaned = s
+    .replace(/[^a-z0-9-]/g, "")
+    .replace(/-+/g, "-")
+    .replace(/^-|-$/g, "");
+  return cleaned || "uncategorized";
 }
 
-const CATEGORY_LABEL = {
-  all: "All",
-  breakfast: "Breakfast",
-  lunch: "Lunch",
-  dinner: "Dinner",
-  desserts: "Desserts",
-  drinks: "Drinks",
-  other: "Other",
-};
+function normalizeRecipeCategoryKey(raw) {
+  return slugifyCategoryKey(raw);
+}
 
 function categoryLabel(key) {
-  return CATEGORY_LABEL[key] || key;
+  if (!key || key === "all") return "All";
+  const fixed = { uncategorized: "Uncategorized" };
+  if (fixed[key]) return fixed[key];
+  return key
+    .split("-")
+    .filter(Boolean)
+    .map((w) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
+    .join(" ");
 }
 
 function prettyCategoryDisplay(raw, normalizedKey) {

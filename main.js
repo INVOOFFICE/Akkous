@@ -32,6 +32,10 @@
     site: {},
     activeCategory: "all",
     searchQuery: "",
+    /** Slugs de catégories présents dans recipes.json (après refreshDerivedCategories_) */
+    categoryKeys: [],
+    /** 'all' + chaque slug (pour ?cat= et nav) */
+    validCategorySet: null,
   };
 
   function $(sel, root) {
@@ -191,39 +195,29 @@
     return new URL(".", window.location.href).href;
   }
 
+  /** index.html depuis la page courante (racine ou recipes/slug/). */
+  function homeIndexFileUrl() {
+    return siteRootRelativePrefix() + "index.html";
+  }
+
   /**
-   * Catégories TheMealDB (et proches) → buckets du site pour les filtres
-   * (breakfast / lunch / dinner / desserts / drinks).
+   * Slug stable depuis la colonne Category du sheet (TheMealDB) — même clé pour
+   * filtres, ?cat=, JSON-LD et pages statiques (build-recipe-pages.mjs).
    */
-  function normalizeRecipeCategoryKey(raw) {
+  function slugifyCategoryKey(raw) {
     var s = String(raw || "")
+      .trim()
       .toLowerCase()
-      .trim();
-    if (!s) return "dinner";
-    if (s === "breakfast") return "breakfast";
-    if (s === "lunch") return "lunch";
-    if (s === "dinner") return "dinner";
-    if (s === "dessert" || s === "desserts") return "desserts";
-    if (s.indexOf("drink") !== -1) return "drinks";
-    if (
-      s === "chicken" ||
-      s === "pork" ||
-      s === "lamb" ||
-      s === "goat" ||
-      s === "beef"
-    ) {
-      return "dinner";
-    }
-    if (
-      s === "pasta" ||
-      s === "seafood" ||
-      s === "vegan" ||
-      s === "vegetarian" ||
-      s === "side"
-    ) {
-      return "lunch";
-    }
-    return "dinner";
+      .replace(/\s+/g, "-");
+    s = s
+      .replace(/[^a-z0-9-]/g, "")
+      .replace(/-+/g, "-")
+      .replace(/^-|-$/g, "");
+    return s || "uncategorized";
+  }
+
+  function normalizeRecipeCategoryKey(raw) {
+    return slugifyCategoryKey(raw);
   }
 
   function prettyCategoryDisplay(raw, normalizedKey) {
@@ -758,16 +752,156 @@
   }
 
   function categoryLabel(key) {
+    if (!key || key === "all") return "All";
     var map = {
-      all: "All",
-      breakfast: "Breakfast",
-      lunch: "Lunch",
-      dinner: "Dinner",
-      desserts: "Desserts",
-      drinks: "Drinks",
-      other: "Other",
+      uncategorized: "Uncategorized",
     };
-    return map[key] || key;
+    if (map[key]) return map[key];
+    return key
+      .split("-")
+      .filter(Boolean)
+      .map(function (w) {
+        return w.charAt(0).toUpperCase() + w.slice(1).toLowerCase();
+      })
+      .join(" ");
+  }
+
+  function refreshDerivedCategories_() {
+    var seen = {};
+    var keys = [];
+    state.recipes.forEach(function (r) {
+      var k = r.category;
+      if (!k || seen[k]) return;
+      seen[k] = true;
+      keys.push(k);
+    });
+    keys.sort(function (a, b) {
+      return categoryLabel(a).localeCompare(categoryLabel(b));
+    });
+    state.categoryKeys = keys;
+    state.validCategorySet = new Set(keys);
+    state.validCategorySet.add("all");
+  }
+
+  function categoryRowMeta(key) {
+    var sample = state.recipes.find(function (r) {
+      return r.category === key;
+    });
+    var label =
+      (sample && sample.categoryDisplay) || categoryLabel(key);
+    var count = state.recipes.filter(function (r) {
+      return r.category === key;
+    }).length;
+    return { key: key, label: label, count: count };
+  }
+
+  var SPOTLIGHT_BLURB = {
+    chicken: "From quick sautés to slow roasts",
+    beef: "Steaks, stews, and bold flavors",
+    seafood: "Fish, shellfish, and coastal dishes",
+    pasta: "Noodles, sauces, and baked classics",
+    vegetarian: "Plant-forward plates full of flavor",
+    vegan: "Fully plant-based favorites",
+    goat: "Rich curries and tender cuts",
+    pork: "Roasts, chops, and weekday meals",
+    lamb: "Roasts, chops, and aromatic dishes",
+    side: "Sides that complete the meal",
+    dessert: "Sweet endings for any occasion",
+    desserts: "Sweet endings for any occasion",
+    breakfast: "Morning favorites",
+    miscellaneous: "More ideas to explore",
+  };
+
+  function spotlightBlurb(key, label, count) {
+    if (SPOTLIGHT_BLURB[key]) return SPOTLIGHT_BLURB[key];
+    var n = count || 0;
+    return (
+      n +
+      (n === 1 ? " recipe" : " recipes") +
+      " — explore " +
+      label
+    );
+  }
+
+  function renderCategorySpotlight() {
+    var grid = $("#category-spotlight-grid");
+    if (!grid) return;
+    if (!state.categoryKeys.length) {
+      grid.innerHTML =
+        '<p class="empty-state" role="status">Publish recipes to see categories here.</p>';
+      return;
+    }
+    grid.innerHTML = state.categoryKeys
+      .map(function (key) {
+        var meta = categoryRowMeta(key);
+        var href =
+          homeIndexFileUrl() +
+          "?cat=" +
+          encodeURIComponent(meta.key) +
+          "#recipe-grid";
+        var desc = spotlightBlurb(meta.key, meta.label, meta.count);
+        return (
+          '<a class="category-spotlight__card" role="listitem" href="' +
+          escapeHtml(href) +
+          '">' +
+          "<strong>" +
+          escapeHtml(meta.label) +
+          "</strong><span>" +
+          escapeHtml(desc) +
+          "</span></a>"
+        );
+      })
+      .join("");
+  }
+
+  function renderFilterPills() {
+    var inner = $("#category-filter-pills");
+    if (!inner) return;
+    var pills = [
+      '<button type="button" class="filter-pill" data-category="all" aria-pressed="true">All</button>',
+    ];
+    state.categoryKeys.forEach(function (key) {
+      var meta = categoryRowMeta(key);
+      pills.push(
+        '<button type="button" class="filter-pill" data-category="' +
+        escapeHtml(meta.key) +
+        '" aria-pressed="false">' +
+        escapeHtml(meta.label) +
+        "</button>"
+      );
+    });
+    inner.innerHTML = pills.join("");
+  }
+
+  function renderNavCategoryLinks() {
+    var wrap = $("#nav-category-links");
+    if (!wrap) return;
+    var home = homeIndexFileUrl();
+    var parts = [
+      '<a class="nav__link" href="' +
+        escapeHtml(home + "#recipe-grid") +
+        '" data-nav-cat="all">All</a>',
+    ];
+    state.categoryKeys.forEach(function (key) {
+      var meta = categoryRowMeta(key);
+      parts.push(
+        '<a class="nav__link" href="' +
+        escapeHtml(
+          home + "?cat=" + encodeURIComponent(meta.key) + "#recipe-grid"
+        ) +
+        '" data-nav-cat="' +
+        escapeHtml(meta.key) +
+        '">' +
+        escapeHtml(meta.label) +
+        "</a>"
+      );
+    });
+    wrap.innerHTML = parts.join("");
+  }
+
+  function initGlobalCategoryNav_() {
+    renderNavCategoryLinks();
+    initNavCategoryLinks();
   }
 
   function matchesFilters(recipe) {
@@ -1606,13 +1740,11 @@
     if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
-  var VALID_CATS = ["all", "breakfast", "lunch", "dinner", "desserts", "drinks"];
-
   function initNavCategoryLinks() {
     $$("a[data-nav-cat]").forEach(function (link) {
       link.addEventListener("click", function (e) {
         var cat = link.getAttribute("data-nav-cat") || "all";
-        if (VALID_CATS.indexOf(cat) === -1) return;
+        if (!state.validCategorySet || !state.validCategorySet.has(cat)) return;
         if (isHomePage()) {
           e.preventDefault();
           if (typeof history !== "undefined" && history.replaceState) {
@@ -1631,12 +1763,16 @@
   function initCategoryFromUrl() {
     var params = new URLSearchParams(window.location.search);
     var cat = (params.get("cat") || "all").toLowerCase();
-    if (VALID_CATS.indexOf(cat) === -1) cat = "all";
+    if (!state.validCategorySet || !state.validCategorySet.has(cat)) {
+      cat = "all";
+    }
     setFilter(cat);
   }
 
   function initHomePage() {
     applyBranding();
+    renderCategorySpotlight();
+    renderFilterPills();
     initHeroCarousel();
     renderTrending();
     initSearchQueryFromUrl();
@@ -1657,8 +1793,9 @@
 
     loadData()
       .then(function () {
-        initNavCategoryLinks();
+        refreshDerivedCategories_();
         initRecipePageSearchRedirect();
+        initGlobalCategoryNav_();
         if (isRecipePage()) {
           applyBranding();
           renderRecipePage();

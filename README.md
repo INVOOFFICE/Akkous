@@ -133,7 +133,7 @@ Le dossier **`google-apps-script/`** documente et versionne le code à coller da
 
 | Fichier | Usage |
 |---------|--------|
-| **`code.gs`** | TheMealDB → feuille **Recipes**, statuts SCHEDULED / PUBLISHED, export JSON (`author` = nom du blog, `origin` = cuisine), push GitHub annulé si **0** recette exportée, Groq (SEO), GSC, newsletter (`doPost`). |
+| **`code.gs`** | TheMealDB → feuille **Recipes**, statuts SCHEDULED / PUBLISHED, export JSON (`author` = nom du blog, `origin` = cuisine), découpe des **étapes** depuis les instructions (retours à la ligne → numéros `1.` / `Step 1:` → phrases), **sans étapes inventées**, push GitHub annulé si **0** recette exportée, Groq (SEO), GSC, newsletter (`doPost`). |
 | **`AutomationDashboard.html`** | À ajouter dans le même projet Apps Script sous le nom **`AutomationDashboard`** pour le menu rapport (panneau latéral). |
 
 **Propriétés du script** (recommandé, plutôt que secrets dans le code) :
