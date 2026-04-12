@@ -1,0 +1,48 @@
+# After recipes.json changes (e.g. Google Apps Script), generate recipes/<slug>/index.html
+# and sitemap.xml so /recipes/.../ URLs exist on GitHub Pages (avoids 404).
+name: Build static recipe pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "recipes.json"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: static-recipes-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Generate recipes/ and sitemap.xml
+        run: node scripts/build-recipe-pages.mjs
+
+      - name: Commit and push if changed
+        env:
+          BRANCH: ${{ github.ref_name }}
+        run: |
+          set -e
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add recipes sitemap.xml
+          if git diff --staged --quiet; then
+            echo "No changes (static pages already match recipes.json)."
+            exit 0
+          fi
+          git commit -m "chore: regenerate static recipe pages"
+          # Integrate any commit that landed on the branch between checkout and push (rare).
+          git pull --rebase origin "$BRANCH"
+          git push origin "HEAD:refs/heads/$BRANCH"

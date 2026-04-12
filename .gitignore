@@ -1,0 +1,64 @@
+# =============================================================================
+# Feastably — fichiers à ne pas envoyer sur GitHub
+# =============================================================================
+
+# --- Système d’exploitation ---
+.DS_Store
+Thumbs.db
+desktop.ini
+*~
+
+# --- Secrets & variables d’environnement ---
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+
+# --- Google Apps Script (clasp en local) ---
+# Jeton OAuth : ne JAMAIS committer (accès à ton compte Google).
+.clasprc.json
+# Cache clasp
+.claspignore.bak
+
+# Si tu préfères ne PAS versionner le dossier Apps Script (code uniquement sur Google),
+# décommente la ligne suivante :
+# google-apps-script/
+
+# --- Node.js (si tu ajoutes des outils npm plus tard) ---
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# --- Logs & dossiers temporaires ---
+*.log
+.tmp/
+temp/
+cache/
+
+# --- Archives / exports locaux ---
+*.zip
+*.tar
+*.tar.gz
+
+# --- Éditeurs (optionnel) ---
+.idea/
+.vscode/
+*.sublime-*
+
+# --- Local automation workspace ---
+Puppeteer/
+TwitterBot/
+InstagramBot/
+FacebookBot/
+
+# Journaux du tableau de bord des bots
+BotDashboard/logs/
+
+# --- Indexation Google (Search Console) ---
+IndexationGoogle/.env
+IndexationGoogle/.pw-session-gsc/
+IndexationGoogle/state_gsc.json
+IndexationGoogle/last-run-report-gsc.json
+IndexationGoogle/logs/

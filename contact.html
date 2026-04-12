@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FCGFES19LW"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-FCGFES19LW");
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2269008589730162"
+      crossorigin="anonymous"
+    ></script>
+    <meta name="description" content="Contactez Akkous via WhatsApp pour toute demande." />
+    <meta name="robots" content="index,follow" />
+    <title>Contact — Akkous</title>
+    <link rel="canonical" href="https://akkous.com/contact.html" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="site-header" role="banner">
+      <nav class="nav container" aria-label="Primary">
+        <a class="nav__brand" href="index.html">Akkous</a>
+      </nav>
+    </header>
+
+    <main class="legal-page container" id="main-content">
+      <section class="legal-page__content">
+        <h1>Contact</h1>
+        <p>
+          Envoyez votre demande via ce formulaire. Le message sera transmis vers WhatsApp.
+        </p>
+
+        <div class="contact-card">
+          <form class="contact-form" id="contact-form" novalidate>
+            <div class="contact-form__field">
+              <label for="contact-name">Nom</label>
+              <input id="contact-name" name="name" type="text" required />
+            </div>
+            <div class="contact-form__field">
+              <label for="contact-email">Email</label>
+              <input id="contact-email" name="email" type="email" required />
+            </div>
+            <div class="contact-form__field">
+              <label for="contact-subject">Sujet</label>
+              <input id="contact-subject" name="subject" type="text" required />
+            </div>
+            <div class="contact-form__field">
+              <label for="contact-message">Message</label>
+              <textarea id="contact-message" name="message" required></textarea>
+            </div>
+            <div class="contact-form__actions">
+              <button type="submit" class="newsletter__btn">Envoyer via WhatsApp</button>
+              <a
+                class="contact-whatsapp-link"
+                href="https://wa.me/212630230803"
+                target="_blank"
+                rel="noopener noreferrer"
+              >Ouvrir WhatsApp directement</a>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer" role="contentinfo">
+      <div class="container">
+        <div class="footer__top">
+          <a class="footer__brand" href="index.html">Akkous</a>
+          <nav class="footer__nav" aria-label="Footer">
+            <a href="index.html">Home</a>
+            <a href="conditions-utilisation.html">Conditions d’utilisation</a>
+            <a href="politique-confidentialite.html">Politique de confidentialité</a>
+            <a href="contact.html">Contact</a>
+          </nav>
+        </div>
+        <div class="footer__bottom">
+          <p>© <span id="footer-year">2026</span> Akkous — From your kitchen to the world</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById("footer-year").textContent = new Date().getFullYear();
+      document.getElementById("contact-form").addEventListener("submit", function (e) {
+        e.preventDefault();
+        var name = document.getElementById("contact-name").value.trim();
+        var email = document.getElementById("contact-email").value.trim();
+        var subject = document.getElementById("contact-subject").value.trim();
+        var message = document.getElementById("contact-message").value.trim();
+        if (!name || !email || !subject || !message) return;
+
+        var text = [
+          "Nouveau message depuis Akkous",
+          "Nom: " + name,
+          "Email: " + email,
+          "Sujet: " + subject,
+          "",
+          "Message:",
+          message,
+        ].join("\n");
+        var url = "https://wa.me/212630230803?text=" + encodeURIComponent(text);
+        window.open(url, "_blank", "noopener");
+      });
+    </script>
+  </body>
+</html>
