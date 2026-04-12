@@ -82,8 +82,8 @@
       "trending": true,
       "relatedRecipeIds": [
         "creamy-tomato-soup-52841",
-        "bread-omelette-53076",
-        "jamaican-curry-goat-53354"
+        "quick-gazpacho-53173",
+        "cream-cheese-tart-52779"
       ]
     },
     {
@@ -147,9 +147,9 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
-        "vegan-banh-mi-53250",
-        "broccoli-stilton-soup-52842",
-        "jamaican-curry-goat-53354"
+        "fasoliyyeh-bi-z-zayt-syrian-green-beans-with-olive-oil-53092",
+        "red-onion-pickle-53115",
+        "vegan-banh-mi-53250"
       ]
     },
     {
@@ -207,9 +207,9 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
+        "ratatouille-52908",
         "chickpea-fajitas-52870",
-        "thai-pumpkin-soup-53210",
-        "creamy-tomato-soup-52841"
+        "falafel-pita-sandwich-with-tahini-sauce-53091"
       ]
     },
     {
@@ -269,7 +269,9 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
-        "bread-omelette-53076"
+        "bread-omelette-53076",
+        "cream-cheese-tart-52779",
+        "jamaican-cornmeal-porridge-53363"
       ]
     },
     {
@@ -328,8 +330,8 @@
       "trending": true,
       "relatedRecipeIds": [
         "aubergine-hummus-grills-53278",
-        "thai-pumpkin-soup-53210",
-        "creamy-tomato-soup-52841"
+        "falafel-pita-sandwich-with-tahini-sauce-53091",
+        "ratatouille-52908"
       ]
     },
     {
@@ -393,8 +395,8 @@
       "trending": true,
       "relatedRecipeIds": [
         "broccoli-stilton-soup-52842",
-        "thai-pumpkin-soup-53210",
-        "aubergine-hummus-grills-53278"
+        "cream-cheese-tart-52779",
+        "quick-gazpacho-53173"
       ]
     },
     {
@@ -452,9 +454,9 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
-        "roast-fennel-and-aubergine-paella-52942",
-        "aubergine-hummus-grills-53278",
-        "bread-omelette-53076"
+        "fasoliyyeh-bi-z-zayt-syrian-green-beans-with-olive-oil-53092",
+        "red-onion-pickle-53115",
+        "roast-fennel-and-aubergine-paella-52942"
       ]
     },
     {
@@ -518,7 +520,7 @@
       "relatedRecipeIds": [
         "aubergine-hummus-grills-53278",
         "chickpea-fajitas-52870",
-        "creamy-tomato-soup-52841"
+        "falafel-pita-sandwich-with-tahini-sauce-53091"
       ]
     },
     {
@@ -570,9 +572,9 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
-        "fruit-and-cream-cheese-breakfast-pastries-52957",
-        "broccoli-stilton-soup-52842",
-        "creamy-tomato-soup-52841"
+        "smoked-haddock-kedgeree-52964",
+        "jamaican-cornmeal-porridge-53363",
+        "fruit-and-cream-cheese-breakfast-pastries-52957"
       ]
     },
     {
@@ -637,9 +639,631 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
-        "thai-pumpkin-soup-53210",
+        "mbuzi-choma-roasted-goat-52968",
+        "jamaican-cornmeal-porridge-53363",
+        "thai-pumpkin-soup-53210"
+      ]
+    },
+    {
+      "mealId": "52779",
+      "id": "cream-cheese-tart-52779",
+      "title": "Cream Cheese Tart",
+      "category": "Starter",
+      "origin": "American",
+      "image": "https://www.themealdb.com/images/media/meals/wurrux1468416624.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/wurrux1468416624.jpg",
+      "ingredients": [
+        "250g Flour",
+        "125g Butter",
+        "1 Egg",
+        "Pinch Salt",
+        "300g Cheese",
+        "100ml milk Milk",
+        "3 Eggs",
+        "100g Parmesan Cheese",
+        "350g Plum tomatoes",
+        "3tbsp White Vinegar",
+        "1 tbsp Honey",
+        "Topping Basil"
+      ],
+      "instructions": "1. Make a dough from 250g flour, 125g butter, 1 egg, and a pinch of salt, then press it into a tart form and refrigerate. 2. Stir 300g cream cheese and 100ml milk until smooth, then add 3 eggs, 100g grated parmesan cheese, and season with salt, pepper, and nutmeg. 3. Prick the crust bottom with a fork, pour in the filling, and bake at 175 degrees C for 25 minutes, covering with foil after 12.5 minutes. 4. Slice 350g mini tomatoes and combine with 3tbsp olive oil, 3tbsp white vinegar, 1 tbsp honey, salt, and pepper in a pan. 5. Place the tomato slices on the tart, avoiding excess liquid, and decorate with basil leaves.",
+      "steps": [
+        "Make a dough from 250g flour, 125g butter, 1 egg, and a pinch of salt, then press it into a tart form and refrigerate.",
+        "2. Stir 300g cream cheese and 100ml milk until smooth, then add 3 eggs, 100g grated parmesan cheese, and season with salt, pepper, and nutmeg.",
+        "3. Prick the crust bottom with a fork, pour in the filling, and bake at 175 degrees C for 25 minutes, covering with foil after 12.5 minutes.",
+        "4. Slice 350g mini tomatoes and combine with 3tbsp olive oil, 3tbsp white vinegar, 1 tbsp honey, salt, and pepper in a pan.",
+        "5. Place the tomato slices on the tart, avoiding excess liquid, and decorate with basil leaves."
+      ],
+      "description": "Cream Cheese Tart (American) — easy starter recipe with 12 ingredients and 5 steps. Ready in 20 min. Includes exact ingredients and clear instructions.",
+      "tags": [
+        "Tart",
+        "Savory",
+        "Cheesy",
+        "American",
+        "Baked",
+        "Cream Cheese",
+        "Parmesan",
+        "Tomato",
+        "Starter",
+        "Cream"
+      ],
+      "datePublished": "2026-04-12",
+      "publishDate": "2026-04-12T00:00:00",
+      "addedDate": "2026-04-12T19:08:54",
+      "status": "PUBLISHED",
+      "slug": "cream-cheese-tart-52779",
+      "youtube": "https://www.youtube.com/watch?v=UhQPwO4uymo",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "20 min",
+      "prepTime": "10 min",
+      "totalTime": "30 min",
+      "servings": 4,
+      "difficulty": "Easy",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
         "broccoli-stilton-soup-52842",
+        "creamy-tomato-soup-52841",
+        "fruit-and-cream-cheese-breakfast-pastries-52957"
+      ]
+    },
+    {
+      "mealId": "53092",
+      "id": "fasoliyyeh-bi-z-zayt-syrian-green-beans-with-olive-oil-53092",
+      "title": "Fasoliyyeh Bi Z-Zayt",
+      "category": "Vegan",
+      "origin": "Syrian",
+      "image": "https://www.themealdb.com/images/media/meals/21yc5s1760524759.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/21yc5s1760524759.jpg",
+      "ingredients": [
+        "16 ounces Green Beans",
+        "1/4 cup Olive Oil",
+        "Dash Salt",
+        "1 clove Garlic",
+        "1/4 cup Cilantro"
+      ],
+      "instructions": "1. Place green beans in a large pot and drizzle with olive oil. 2. Season with salt to taste and cover the pot. 3. Cook over medium-high heat, stirring occasionally, until beans are cooked to desired doneness. 4. Add cilantro and garlic, and cook until cilantro starts to wilt.",
+      "steps": [
+        "Place green beans in a large pot and drizzle with olive oil.",
+        "2. Season with salt to taste and cover the pot.",
+        "3. Cook over medium-high heat, stirring occasionally, until beans are cooked to desired doneness.",
+        "4. Add cilantro and garlic, and cook until cilantro starts to wilt."
+      ],
+      "description": "Fasoliyyeh Bi Z-Zayt (Syrian) — easy vegan recipe with 5 ingredients and 4 steps. Includes exact ingredients and clear instructions.",
+      "tags": [
+        "Vegan",
+        "Syrian",
+        "Green Beans",
+        "Olive Oil",
+        "Steamed",
+        "Side Dish",
+        "Main Course",
+        "Mediterranean",
+        "Fasoliyyeh"
+      ],
+      "datePublished": "2026-04-12",
+      "publishDate": "2026-04-12T00:00:00",
+      "addedDate": "2026-04-12T19:08:54",
+      "status": "PUBLISHED",
+      "slug": "fasoliyyeh-bi-z-zayt-syrian-green-beans-with-olive-oil-53092",
+      "youtube": "https://www.youtube.com/watch?v=_EadiEPxQI0",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "",
+      "prepTime": "",
+      "totalTime": "",
+      "servings": 4,
+      "difficulty": "Easy",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "red-onion-pickle-53115",
+        "roast-fennel-and-aubergine-paella-52942",
+        "vegan-banh-mi-53250"
+      ]
+    },
+    {
+      "mealId": "53091",
+      "id": "falafel-pita-sandwich-with-tahini-sauce-53091",
+      "title": "Syrian Falafel Sandwich",
+      "category": "Vegetarian",
+      "origin": "Syrian",
+      "image": "https://www.themealdb.com/images/media/meals/ae6clc1760524712.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/ae6clc1760524712.jpg",
+      "ingredients": [
+        "12 Falafel",
+        "1/4 cup Tahini",
+        "1/4 cup Water",
+        "2 tablespoons Lemon Juice",
+        "2 cloves Garlic",
+        "1/4 tsp Paprika",
+        "6 Pita Bread",
+        "1 Lettuce",
+        "1 Tomato",
+        "1/2 Cucumber",
+        "1 Dill Pickles",
+        "1/4 Red Onions",
+        "3 tsp Harissa Spice"
+      ],
+      "instructions": "1. Preheat oven to 450°F (230°C). 2. Place falafel on a baking sheet and bake for 8-10 minutes. 3. Whisk tahini, water, lemon juice, garlic, and paprika together. 4. Cut pita bread to form a pocket. 5. Fill each pita with 2 falafel, lettuce, tomato, cucumber, pickle, and red onion. 6. Drizzle with tahini sauce and harissa.",
+      "steps": [
+        "Preheat oven to 450°F (230°C).",
+        "2. Place falafel on a baking sheet and bake for 8-10 minutes.",
+        "3. Whisk tahini, water, lemon juice, garlic, and paprika together.",
+        "4. Cut pita bread to form a pocket.",
+        "5. Fill each pita with 2 falafel, lettuce, tomato, cucumber, pickle, and red onion.",
+        "6. Drizzle with tahini sauce and harissa."
+      ],
+      "description": "Syrian Falafel Sandwich (Syrian) — easy vegetarian recipe with 13 ingredients and 6 steps. Ready in 10 min. Includes exact ingredients and clear instructions.",
+      "tags": [
+        "vegetarian",
+        "falafel",
+        "pita sandwich",
+        "Syrian cuisine",
+        "Middle Eastern",
+        "street food",
+        "easy",
+        "lunch",
+        "Syrian"
+      ],
+      "datePublished": "2026-04-12",
+      "publishDate": "2026-04-12T00:00:00",
+      "addedDate": "2026-04-12T19:08:54",
+      "status": "PUBLISHED",
+      "slug": "falafel-pita-sandwich-with-tahini-sauce-53091",
+      "youtube": "https://www.youtube.com/watch?v=wt8nApxP5fE",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "10 min",
+      "prepTime": "10 min",
+      "totalTime": "10 min",
+      "servings": 4,
+      "difficulty": "Medium",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "aubergine-hummus-grills-53278",
+        "chickpea-fajitas-52870",
+        "ratatouille-52908"
+      ]
+    },
+    {
+      "mealId": "52964",
+      "id": "smoked-haddock-kedgeree-52964",
+      "title": "Smoked Haddock Kedgeree",
+      "category": "Breakfast",
+      "origin": "Indian",
+      "image": "https://www.themealdb.com/images/media/meals/1550441275.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/1550441275.jpg",
+      "ingredients": [
+        "50g Butter",
+        "1 chopped Onion",
+        "3 Pods Cardamom",
+        "1/4 tsp Turmeric",
+        "1 small Cinnamon Stick",
+        "Sprigs of fresh Bay Leaf",
+        "450g Basmati Rice",
+        "1 Litre Chicken Stock",
+        "750g Smoked Haddock",
+        "3 Eggs",
+        "3 tblsp chopped Parsley",
+        "1 chopped Lemon"
+      ],
+      "instructions": "1. Melt 50g butter in a saucepan, add 1 chopped onion, and cook for 5 minutes. 2. Stir in cardamom, turmeric, cinnamon, and bay leaves, then cook for 1 minute. 3. Add 450g basmati rice and stir to coat. 4. Pour in 1 litre chicken stock, bring to a boil, then cover and cook for 12 minutes. 5. Cook 750g smoked haddock for 4 minutes, then cool. 6. Hard-boil 3 eggs for 8 minutes. 7. Flake the fish, peel and chop the eggs, and fork them into the rice. 8. Season with salt, pepper, and parsley, then serve.",
+      "steps": [
+        "Melt 50g butter in a saucepan, add 1 chopped onion, and cook for 5 minutes.",
+        "2. Stir in cardamom, turmeric, cinnamon, and bay leaves, then cook for 1 minute.",
+        "3. Add 450g basmati rice and stir to coat.",
+        "4. Pour in 1 litre chicken stock, bring to a boil, then cover and cook for 12 minutes.",
+        "5. Cook 750g smoked haddock for 4 minutes, then cool.",
+        "6. Hard-boil 3 eggs for 8 minutes.",
+        "7. Flake the fish, peel and chop the eggs, and fork them into the rice.",
+        "8. Season with salt, pepper, and parsley, then serve."
+      ],
+      "description": "Smoked Haddock Kedgeree (Indian) — easy breakfast recipe with 12 ingredients and 8 steps. Ready in 20 min. Includes exact ingredients and clear instructions.",
+      "tags": [
+        "Breakfast",
+        "Fish",
+        "Indian",
+        "Rice",
+        "Smoked",
+        "Seafood",
+        "Brunch",
+        "Haddock"
+      ],
+      "datePublished": "2026-04-12",
+      "publishDate": "2026-04-12T00:00:00",
+      "addedDate": "2026-04-12T19:08:54",
+      "status": "PUBLISHED",
+      "slug": "smoked-haddock-kedgeree-52964",
+      "youtube": "https://www.youtube.com/watch?v=QqdzDCWS4gQ",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "20 min",
+      "prepTime": "10 min",
+      "totalTime": "30 min",
+      "servings": 4,
+      "difficulty": "Medium",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "bread-omelette-53076",
+        "fruit-and-cream-cheese-breakfast-pastries-52957",
+        "jamaican-cornmeal-porridge-53363"
+      ]
+    },
+    {
+      "mealId": "52968",
+      "id": "mbuzi-choma-roasted-goat-52968",
+      "title": "Kenyan Mbuzi Choma",
+      "category": "Goat",
+      "origin": "Kenyan",
+      "image": "https://www.themealdb.com/images/media/meals/cuio7s1555492979.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/cuio7s1555492979.jpg",
+      "ingredients": [
+        "1 kg Goat Meat",
+        "1 kg Corn Flour",
+        "2 Tomatoes",
+        "Pinch Salt",
+        "1 Onion",
+        "1 Green Chilli",
+        "1  bunch Coriander Leaves"
+      ],
+      "instructions": "1. Roast goat meat over medium heat for 50 minutes, salting as you turn it. 2. Boil water and salt, then stir in cornmeal slowly. 3. Reduce heat, stir regularly, and smash lumps for 10 minutes. 4. Remove from heat and cool. 5. Form ugali into a ball with wet hands. 6. Mix tomatoes, onions, chili, and coriander for kachumbari. 7. Serve with ugali and kachumbari.",
+      "steps": [
+        "Roast goat meat over medium heat for 50 minutes, salting as you turn it.",
+        "2. Boil water and salt, then stir in cornmeal slowly.",
+        "3. Reduce heat, stir regularly, and smash lumps for 10 minutes.",
+        "4. Remove from heat and cool.",
+        "5. Form ugali into a ball with wet hands.",
+        "6. Mix tomatoes, onions, chili, and coriander for kachumbari.",
+        "7. Serve with ugali and kachumbari."
+      ],
+      "description": "Kenyan Mbuzi Choma (Kenyan) — easy goat recipe with 7 ingredients and 7 steps. Ready in 42 min. Includes exact ingredients and clear instructions.",
+      "tags": [
+        "Roasted Goat",
+        "Kenyan",
+        "BBQ",
+        "Meat",
+        "Cornmeal",
+        "Goat",
+        "African",
+        "Traditional",
+        "Mbuzi"
+      ],
+      "datePublished": "2026-04-12",
+      "publishDate": "2026-04-12T00:00:00",
+      "addedDate": "2026-04-12T19:08:54",
+      "status": "PUBLISHED",
+      "slug": "mbuzi-choma-roasted-goat-52968",
+      "youtube": "",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "42 min",
+      "prepTime": "18 min",
+      "totalTime": "60 min",
+      "servings": 4,
+      "difficulty": "Medium",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "jamaican-curry-goat-53354",
+        "jamaican-cornmeal-porridge-53363"
+      ]
+    },
+    {
+      "mealId": "53173",
+      "id": "quick-gazpacho-53173",
+      "title": "Spanish Gazpacho",
+      "category": "Starter",
+      "origin": "Spanish",
+      "image": "https://www.themealdb.com/images/media/meals/h5qmn31763304965.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/h5qmn31763304965.jpg",
+      "ingredients": [
+        "250g Passata",
+        "1 chopped Red Pepper",
+        "1 chopped Red Chilli",
+        "1 clove peeled crushed Garlic",
+        "1 teaspoon Sherry vinegar",
+        "Juice of 1/2 Lime"
+      ],
+      "instructions": "1. Whizz passata, red pepper, chilli, garlic, sherry vinegar, and lime juice in a blender until smooth. 2. Season to taste. 3. Serve with ice cubes.",
+      "steps": [
+        "Whizz passata, red pepper, chilli, garlic, sherry vinegar, and lime juice in a blender until smooth.",
+        "2. Season to taste.",
+        "3. Serve with ice cubes."
+      ],
+      "description": "Spanish Gazpacho (Spanish) — easy starter recipe with 6 ingredients and 3 steps. Includes exact ingredients and clear instructions.",
+      "tags": [
+        "gazpacho",
+        "soup",
+        "spanish cuisine",
+        "cold dish",
+        "blender recipe",
+        "quick meal",
+        "starter",
+        "summer food",
+        "Spanish"
+      ],
+      "datePublished": "2026-04-12",
+      "publishDate": "2026-04-12T00:00:00",
+      "addedDate": "2026-04-12T19:09:26",
+      "status": "PUBLISHED",
+      "slug": "quick-gazpacho-53173",
+      "youtube": "https://www.youtube.com/watch?v=sJzHIxlDTHc",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "",
+      "prepTime": "",
+      "totalTime": "",
+      "servings": 4,
+      "difficulty": "Easy",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "broccoli-stilton-soup-52842",
+        "cream-cheese-tart-52779",
         "creamy-tomato-soup-52841"
+      ]
+    },
+    {
+      "mealId": "53115",
+      "id": "red-onion-pickle-53115",
+      "title": "Norwegian Red Onion Pickle",
+      "category": "Vegan",
+      "origin": "Norwegian",
+      "image": "https://www.themealdb.com/images/media/meals/ppodrp1762325183.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/ppodrp1762325183.jpg",
+      "ingredients": [
+        "3 Large Red Onions",
+        "2 tsp Sea Salt",
+        "200ml Cider Vinegar",
+        "50g Granulated Sugar",
+        "1 tsp Black Pepper",
+        "4 Bay Leaves"
+      ],
+      "instructions": "1. Peel and slice onions into half-moon pieces. 2. Brine onions with salt for an hour. 3. Simmer vinegar, water, and sugar for a couple of minutes. 4. Pack onions into jars with pepper and bay leaves. 5. Cover with warm vinegar and seal.",
+      "steps": [
+        "Peel and slice onions into half-moon pieces.",
+        "2. Brine onions with salt for an hour.",
+        "3. Simmer vinegar, water, and sugar for a couple of minutes.",
+        "4. Pack onions into jars with pepper and bay leaves.",
+        "5. Cover with warm vinegar and seal."
+      ],
+      "description": "Norwegian Red Onion Pickle (Norwegian) — easy vegan recipe with 6 ingredients and 5 steps. Includes exact ingredients and clear instructions.",
+      "tags": [
+        "pickle",
+        "red onion",
+        "vegan",
+        "Norwegian",
+        "condiment",
+        "side dish",
+        "homemade",
+        "jarred"
+      ],
+      "datePublished": "2026-04-12",
+      "publishDate": "2026-04-12T00:00:00",
+      "addedDate": "2026-04-12T19:09:26",
+      "status": "PUBLISHED",
+      "slug": "red-onion-pickle-53115",
+      "youtube": "https://www.youtube.com/watch?v=3z2jTcsL28g",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "",
+      "prepTime": "",
+      "totalTime": "",
+      "servings": 4,
+      "difficulty": "Easy",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "fasoliyyeh-bi-z-zayt-syrian-green-beans-with-olive-oil-53092",
+        "roast-fennel-and-aubergine-paella-52942",
+        "vegan-banh-mi-53250"
+      ]
+    },
+    {
+      "mealId": "52908",
+      "id": "ratatouille-52908",
+      "title": "French Ratatouille",
+      "category": "Vegetarian",
+      "origin": "French",
+      "image": "https://www.themealdb.com/images/media/meals/wrpwuu1511786491.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/wrpwuu1511786491.jpg",
+      "ingredients": [
+        "2 large Aubergine",
+        "4 Courgettes",
+        "2 Yellow Pepper",
+        "4 large Tomato",
+        "5 tbs Olive Oil",
+        "Bunch Basil",
+        "1 medium Onion",
+        "3 finely chopped Garlic Clove",
+        "1 tsp Red Wine Vinegar",
+        "1 tsp Sugar"
+      ],
+      "instructions": "1. Cut the aubergines into 1.5cm chunks. 2. Slice the courgettes into 1.5cm slices. 3. Chop the peppers into bite-size chunks. 4. Score and peel the tomatoes, then chop the flesh. 5. Sauté the aubergines in 2 tbsp olive oil for 5 mins on each side. 6. Fry the courgettes and peppers in olive oil for 5 mins. 7. Cook the onion and garlic in the pan, then add vinegar, sugar, and tomatoes. 8. Return the vegetables to the pan and cook for 5 mins.",
+      "steps": [
+        "Cut the aubergines into 1.5cm chunks.",
+        "2. Slice the courgettes into 1.5cm slices.",
+        "3. Chop the peppers into bite-size chunks.",
+        "4. Score and peel the tomatoes, then chop the flesh.",
+        "5. Sauté the aubergines in 2 tbsp olive oil for 5 mins on each side.",
+        "6. Fry the courgettes and peppers in olive oil for 5 mins.",
+        "7. Cook the onion and garlic in the pan, then add vinegar, sugar, and tomatoes.",
+        "8. Return the vegetables to the pan and cook for 5 mins."
+      ],
+      "description": "French Ratatouille (French) — easy vegetarian recipe with 10 ingredients and 8 steps. Ready in 10 min. Includes exact ingredients and clear instructions.",
+      "tags": [
+        "Vegetarian",
+        "French",
+        "Side Dish",
+        "Grilled",
+        "Ratatouille",
+        "Vegetables",
+        "Olive Oil",
+        "Summer Dish"
+      ],
+      "datePublished": "2026-04-12",
+      "publishDate": "2026-04-12T00:00:00",
+      "addedDate": "2026-04-12T19:09:26",
+      "status": "PUBLISHED",
+      "slug": "ratatouille-52908",
+      "youtube": "https://www.youtube.com/watch?v=BFdQUgAFtGU",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "10 min",
+      "prepTime": "10 min",
+      "totalTime": "15 min",
+      "servings": 4,
+      "difficulty": "Medium",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "aubergine-hummus-grills-53278",
+        "chickpea-fajitas-52870",
+        "falafel-pita-sandwich-with-tahini-sauce-53091"
+      ]
+    },
+    {
+      "mealId": "53363",
+      "id": "jamaican-cornmeal-porridge-53363",
+      "title": "Jamaican Cornmeal Porridge",
+      "category": "Breakfast",
+      "origin": "Jamaican",
+      "image": "https://www.themealdb.com/images/media/meals/sng9bm1765320170.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/sng9bm1765320170.jpg",
+      "ingredients": [
+        "4 cups Water",
+        "380g Coconut Milk",
+        "1 cup Fine Yellow Cornmeal",
+        "1 1/2 tsp Vanilla Extract",
+        "1/2 tsp Ground Cinnamon",
+        "1/2 tsp Ground Nutmeg",
+        "1/4 tsp Ground Allspice",
+        "1/2 cup Sweetened Condensed Milk"
+      ],
+      "instructions": "1. Add 2 ½ cups water and 1 can coconut milk to a 4 QT heavy bottomed pot and bring to a boil over medium-high heat. 2. Whisk 1 cup cornmeal and 1 ½ cup water in a large mixing cup until smooth. 3. Whisk in cornmeal mixture and cook for 1 minute. 4. Reduce heat to low, cover, and cook for 15-20 minutes, stirring occasionally. 5. Stir in vanilla extract, cinnamon, nutmeg, and all-spice 5 minutes before done. 6. Remove from heat and sweeten with condensed milk.",
+      "steps": [
+        "Add 2 ½ cups water and 1 can coconut milk to a 4 QT heavy bottomed pot and bring to a boil over medium-high heat.",
+        "2. Whisk 1 cup cornmeal and 1 ½ cup water in a large mixing cup until smooth.",
+        "3. Whisk in cornmeal mixture and cook for 1 minute.",
+        "4. Reduce heat to low, cover, and cook for 15-20 minutes, stirring occasionally.",
+        "5. Stir in vanilla extract, cinnamon, nutmeg, and all-spice 5 minutes before done.",
+        "6. Remove from heat and sweeten with condensed milk."
+      ],
+      "description": "Jamaican Cornmeal Porridge (Jamaican) — easy breakfast recipe with 8 ingredients and 6 steps. Ready in 16 min. Includes exact ingredients and clear instruc…",
+      "tags": [
+        "breakfast",
+        "cornmeal",
+        "coconut milk",
+        "porridge",
+        "Jamaican",
+        "warm",
+        "comforting",
+        "easy"
+      ],
+      "datePublished": "2026-04-12",
+      "publishDate": "2026-04-12T00:00:00",
+      "addedDate": "2026-04-12T19:09:26",
+      "status": "PUBLISHED",
+      "slug": "jamaican-cornmeal-porridge-53363",
+      "youtube": "https://www.youtube.com/watch?v=NACm9tDACRc",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "16 min",
+      "prepTime": "10 min",
+      "totalTime": "26 min",
+      "servings": 4,
+      "difficulty": "Medium",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "bread-omelette-53076",
+        "fruit-and-cream-cheese-breakfast-pastries-52957",
+        "smoked-haddock-kedgeree-52964"
+      ]
+    },
+    {
+      "mealId": "52823",
+      "id": "salmon-prawn-risotto-52823",
+      "title": "Seafood Risotto",
+      "category": "Seafood",
+      "origin": "Italian",
+      "image": "https://www.themealdb.com/images/media/meals/xxrxux1503070723.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/xxrxux1503070723.jpg",
+      "ingredients": [
+        "50g/2oz butter",
+        "1 finely chopped onion",
+        "150g rice",
+        "125ml white wine",
+        "1 litre hot vegetable stock",
+        "The juice and zest of one lemon",
+        "240g large King Prawns",
+        "150g salmon",
+        "100g tips blanched briefly in boiling water asparagus",
+        "ground black pepper",
+        "50g shavings Parmesan"
+      ],
+      "instructions": "1. Melt 50g butter in a pan and cook 1 chopped onion until soft. 2. Add 150g rice and stir to coat. 3. Add 125ml white wine and cook until absorbed. 4. Gradually add 1 litre hot stock, stirring until absorbed. 5. Season with lemon juice, zest, and pepper. 6. Grill salmon and serve with prawns, asparagus, and Parmesan.",
+      "steps": [
+        "Melt 50g butter in a pan and cook 1 chopped onion until soft.",
+        "2. Add 150g rice and stir to coat.",
+        "3. Add 125ml white wine and cook until absorbed.",
+        "4. Gradually add 1 litre hot stock, stirring until absorbed.",
+        "5. Season with lemon juice, zest, and pepper.",
+        "6. Grill salmon and serve with prawns, asparagus, and Parmesan."
+      ],
+      "description": "Seafood Risotto (Italian) — easy seafood recipe with 11 ingredients and 6 steps. Includes exact ingredients and clear instructions.",
+      "tags": [
+        "Seafood",
+        "Risotto",
+        "Italian",
+        "Prawns",
+        "Salmon",
+        "Asparagus",
+        "White Wine",
+        "Parmesan"
+      ],
+      "datePublished": "2026-04-12",
+      "publishDate": "2026-04-12T00:00:00",
+      "addedDate": "2026-04-12T19:09:26",
+      "status": "PUBLISHED",
+      "slug": "salmon-prawn-risotto-52823",
+      "youtube": "https://www.youtube.com/watch?v=V2PMvBv52IE",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "",
+      "prepTime": "",
+      "totalTime": "",
+      "servings": 4,
+      "difficulty": "Medium",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "cream-cheese-tart-52779",
+        "smoked-haddock-kedgeree-52964"
       ]
     }
   ]
