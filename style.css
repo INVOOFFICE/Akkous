@@ -290,22 +290,49 @@ input:focus-visible {
   letter-spacing: 0.08em;
   color: var(--muted);
   margin-right: 0.25rem;
+  flex-shrink: 0;
 }
 
+/**
+ * Rangée des catégories : une seule ligne + défilement horizontal (évite 2 lignes
+ * disgracieuses quand il y a ~15 entrées TheMealDB).
+ */
 .nav__category-links {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: center;
-  gap: 0.35rem;
+  gap: 0.3rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+  padding: 0.2rem 0;
+  overscroll-behavior-x: contain;
+}
+
+.nav__category-links::-webkit-scrollbar {
+  height: 5px;
+}
+
+.nav__category-links::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.nav__category-links::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 999px;
 }
 
 .nav__link {
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   font-weight: 500;
   color: var(--text);
-  padding: 0.35rem 0.6rem;
+  padding: 0.3rem 0.55rem;
   border-radius: 999px;
   transition: background var(--transition), color var(--transition);
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 
 .nav__link:hover {
@@ -370,6 +397,48 @@ input:focus-visible {
     flex: unset;
     gap: 1.25rem;
   }
+
+  /* Ligne 1 : marque + recherche + thème | Ligne 2 : Browse + carrousel de liens */
+  .nav {
+    flex-wrap: wrap;
+    row-gap: 0;
+    column-gap: 1rem;
+  }
+
+  .nav__categories {
+    flex: 1 1 100%;
+    width: 100%;
+    max-width: 100%;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 0.65rem;
+    margin-top: 0.5rem;
+    padding-top: 0.55rem;
+    border-top: 1px solid color-mix(in srgb, var(--border) 85%, transparent);
+  }
+
+  .nav__categories-label {
+    margin-right: 0;
+    padding-top: 0.05rem;
+  }
+
+  .nav__category-links {
+    flex: 1;
+    min-width: 0;
+    mask-image: linear-gradient(
+      to right,
+      black 0,
+      black calc(100% - 2rem),
+      transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+      to right,
+      black 0,
+      black calc(100% - 2rem),
+      transparent 100%
+    );
+  }
+
 }
 
 @media (max-width: 959px) {
@@ -391,6 +460,20 @@ input:focus-visible {
   .nav__categories {
     width: 100%;
     padding-top: 0.5rem;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.45rem;
+  }
+
+  .nav__categories-label {
+    margin-right: 0;
+  }
+
+  .nav__category-links {
+    width: 100%;
+    max-width: 100%;
+    mask-image: none;
+    -webkit-mask-image: none;
   }
 }
 

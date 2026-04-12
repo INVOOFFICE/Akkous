@@ -92,7 +92,16 @@ const CONFIG = {
   GITHUB_BRANCH: 'main',
   /** Origine canonique (sitemap + Indexing API) ; doit matcher site.canonicalOrigin dans recipes.json */
   SITE_ORIGIN: 'https://akkous.com',
+  /**
+   * API publique TheMealDB : clé de test `1` = jeu de données en anglais (strMeal,
+   * strInstructions, ingrédients). Pas de paramètre de langue : c’est toujours l’anglais.
+   */
   API_BASE: 'https://www.themealdb.com/api/json/v1/1/',
+  /**
+   * Langue du contenu exporté (site en `lang="en"`). Groq doit réécrire en anglais ;
+   * sans cela, le modèle peut sortir du français malgré une source EN.
+   */
+  RECIPE_CONTENT_LANGUAGE: 'en',
   /**
    * Noms de catégories TheMealDB (filter.php?c=…) — liste de secours si l’API
    * categories.php est indisponible. Ordre aligné sur l’API v1.
@@ -795,8 +804,17 @@ function callGroqForRecipeSeo_(title, category, origin, ingredients, instruction
   const model = String(CONFIG.GROQ_MODEL || 'llama-3.3-70b-versatile').trim();
   const maxTitle = Math.max(20, parseInt(CONFIG.GEMINI_MAX_TITLE_LEN, 10) || 60);
 
+  const lang = String(CONFIG.RECIPE_CONTENT_LANGUAGE || 'en')
+    .trim()
+    .toLowerCase();
+  const langRule =
+    lang === 'fr'
+      ? '\nLangue : français uniquement pour title, instructions et tags (ton naturel, SEO).'
+      : '\nLanguage: English only for title, instructions, and tags. The source is from TheMealDB (already English): keep everything in English, natural SEO tone. Do not translate to French or any other language.';
+
   const prompt =
-    'Tu es expert SEO + rédaction web pour akkous.com. Langue : alignée sur le contenu source (FR ou EN), ton naturel et fiable.' +
+    'Tu es expert SEO + rédaction web pour akkous.com.' +
+    langRule +
     '\nObjectifs doubles :' +
     '\n(1) Moteurs de recherche : titre clair pour l’intention "recette", mots-clés principaux (plat, type de cuisine si pertinent), pas de bourrage.' +
     '\n(2) IA de recherche (aperçus, assistants) : instructions structurées et factuelles, faciles à citer ou résumer ; pas de HTML ; pas d’affirmations médicales ou garanties de classement.' +
