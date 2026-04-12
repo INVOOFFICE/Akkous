@@ -71,6 +71,250 @@
       "featured": true,
       "trending": true,
       "relatedRecipeIds": []
+    },
+    {
+      "mealId": "53029",
+      "id": "mulukhiyah-53029",
+      "title": "Mulukhiyah égyptien",
+      "category": "Beef",
+      "origin": "Egyptian",
+      "image": "https://www.themealdb.com/images/media/meals/x372ug1598733932.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/x372ug1598733932.jpg",
+      "ingredients": [
+        "800g Mulukhiyah",
+        "1 chopped Onion",
+        "300g Beef",
+        "1 tsp Salt",
+        "1 Litre Water",
+        "1 Garlic Clove",
+        "1/2 cup Olive Oil"
+      ],
+      "instructions": "1. Faites sauter les oignons dans 3-4 cuillères à soupe d'huile d'olive. 2. Ajoutez les cubes de boeuf, faites-les dorer 3-4 min de chaque côté. 3. Ajoutez 1 litre d'eau pour couvrir la viande, puis faites cuire à feu moyen jusqu'à ce que la viande soit cuite. 4. Ajoutez la mulukhiyah congelée, remuez jusqu'à ce qu'elle dégèle complètement et commence à bouillir. 5. Dans une autre poêle, faites chauffer 1/4 à 1/2 tasse d'huile d'olive avec les gousses d'ail à feu doux jusqu'à sentir l'odeur de l'ail. 6. Ajoutez l'huile et l'ail à la mulukhiyah, puis laissez mijoter 5-10 min. 7. Assaisonnez de sel à votre goût.",
+      "steps": [
+        "Faites sauter les oignons dans 3-4 cuillères à soupe d'huile d'olive.",
+        "2. Ajoutez les cubes de boeuf, faites-les dorer 3-4 min de chaque côté.",
+        "3. Ajoutez 1 litre d'eau pour couvrir la viande, puis faites cuire à feu moyen jusqu'à ce que la viande soit cuite.",
+        "4. Ajoutez la mulukhiyah congelée, remuez jusqu'à ce qu'elle dégèle complètement et commence à bouillir.",
+        "5. Dans une autre poêle, faites chauffer 1/4 à 1/2 tasse d'huile d'olive avec les gousses d'ail à feu doux jusqu'à sentir l'odeur de l'ail.",
+        "6. Ajoutez l'huile et l'ail à la mulukhiyah, puis laissez mijoter 5-10 min.",
+        "7. Assaisonnez de sel à votre goût."
+      ],
+      "description": "Mulukhiyah égyptien (Egyptian) — easy beef recipe with 7 ingredients and 7 steps. Ready in 10 min. Includes exact ingredients and clear instructions.",
+      "tags": [
+        "recette égyptienne",
+        "plat de boeuf",
+        "mulukhiyah",
+        "cuisine moyen-orientale",
+        "riz court grain",
+        "pain pita",
+        "épicé",
+        "rapide",
+        "Beef",
+        "Egyptian"
+      ],
+      "datePublished": "2026-04-12",
+      "publishDate": "2026-04-12T00:00:00",
+      "addedDate": "2026-04-12T16:58:13",
+      "status": "PUBLISHED",
+      "slug": "mulukhiyah-53029",
+      "youtube": "https://www.youtube.com/watch?v=vWc5JzgAkIQ",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "10 min",
+      "prepTime": "10 min",
+      "totalTime": "14 min",
+      "servings": 4,
+      "difficulty": "Medium",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "syrian-spaghetti-53093",
+        "thai-fried-rice-with-prawns-peas-53198"
+      ]
+    },
+    {
+      "mealId": "53198",
+      "id": "thai-fried-rice-with-prawns-peas-53198",
+      "title": "Riz frit thaï aux crevettes",
+      "category": "Seafood",
+      "origin": "Thai",
+      "image": "https://www.themealdb.com/images/media/meals/hblwvg1763478203.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/hblwvg1763478203.jpg",
+      "ingredients": [
+        "2 tbsp Vegetable Oil",
+        "1 sliced Red Onions",
+        "2 sliced Garlic Clove",
+        "1 sliced Red Chilli",
+        "250g Raw King Prawns",
+        "140g Brown Rice",
+        "75g Frozen Peas",
+        "1 tablespoon Soy Sauce",
+        "1 tablespoon Fish Sauce",
+        "Bunch Coriander",
+        "4 large Egg",
+        "To serve Hotsauce"
+      ],
+      "instructions": "1. Chauffez 1 cuillère à soupe d'huile dans un wok, ajoutez l'oignon, l'ail et le piment, et faites cuire pendant 2-3 minutes jusqu'à ce qu'ils soient dorés. Ajoutez les crevettes et faites cuire pendant 1 minute. Versez le riz et les pois, et continuez à remuer jusqu'à ce que le mélange soit très chaud. Ajoutez la sauce soja et la sauce poisson, puis mélangez avec la coriandre hachée. Gardez au chaud pendant que vous faites frire les œufs. 2. Chauffez l'huile restante dans une poêle et faites frire les œufs avec un peu d'assaisonnement. Divisez le mélange de riz frit entre 4 bols et garnissez chaque bol d'un œuf frit. Servez parsemé de coriandre, avec de la sauce piquante si vous le souhaitez.",
+      "steps": [
+        "Chauffez 1 cuillère à soupe d'huile dans un wok, ajoutez l'oignon, l'ail et le piment, et faites cuire pendant 2-3 minutes jusqu'à ce qu'ils soient dorés.",
+        "Ajoutez les crevettes et faites cuire pendant 1 minute.",
+        "Versez le riz et les pois, et continuez à remuer jusqu'à ce que le mélange soit très chaud.",
+        "Ajoutez la sauce soja et la sauce poisson, puis mélangez avec la coriandre hachée.",
+        "Gardez au chaud pendant que vous faites frire les œufs. 2.",
+        "Chauffez l'huile restante dans une poêle et faites frire les œufs avec un peu d'assaisonnement.",
+        "Divisez le mélange de riz frit entre 4 bols et garnissez chaque bol d'un œuf frit.",
+        "Servez parsemé de coriandre, avec de la sauce piquante si vous le souhaitez."
+      ],
+      "description": "Riz frit thaï aux crevettes (Thai) — easy seafood recipe with 12 ingredients and 8 steps. Ready in 10 min. Includes exact ingredients and clear instructions.",
+      "tags": [
+        "riz frit",
+        "crevettes",
+        "cuisine thaï",
+        "plat principal",
+        "rapide",
+        "œufs",
+        "sauce soja",
+        "pois",
+        "Seafood",
+        "Thai"
+      ],
+      "datePublished": "2026-04-12",
+      "publishDate": "2026-04-12T00:00:00",
+      "addedDate": "2026-04-12T16:58:13",
+      "status": "PUBLISHED",
+      "slug": "thai-fried-rice-with-prawns-peas-53198",
+      "youtube": "https://www.youtube.com/watch?v=9wZAYbPcF-I",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "10 min",
+      "prepTime": "10 min",
+      "totalTime": "4 min",
+      "servings": 4,
+      "difficulty": "Medium",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "syrian-spaghetti-53093",
+        "mulukhiyah-53029"
+      ]
+    },
+    {
+      "mealId": "53093",
+      "id": "syrian-spaghetti-53093",
+      "title": "Spaghetti Syrien",
+      "category": "Pasta",
+      "origin": "Syrian",
+      "image": "https://www.themealdb.com/images/media/meals/5fu4ew1760524857.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/5fu4ew1760524857.jpg",
+      "ingredients": [
+        "16 ounces Spaghetti",
+        "8 ounces Tomato Sauce",
+        "6 oz Tomato Puree",
+        "1 teaspoon Cinnamon",
+        "1/4 cup Vegetable Oil",
+        "Dash Salt",
+        "Dash Pepper"
+      ],
+      "instructions": "1. Préchauffez le four à 175 degrés C. 2. Faites cuire les spaghettis dans de l'eau légèrement salée pendant 8 à 10 minutes. 3. Mélangez la sauce tomate, le concentré de tomate, la cannelle, l'huile, le sel et le poivre avec les spaghettis cuits. 4. Mettez le mélange dans un plat à four préchauffé et faites cuire pendant 1 heure.",
+      "steps": [
+        "Préchauffez le four à 175 degrés C.",
+        "2. Faites cuire les spaghettis dans de l'eau légèrement salée pendant 8 à 10 minutes.",
+        "3. Mélangez la sauce tomate, le concentré de tomate, la cannelle, l'huile, le sel et le poivre avec les spaghettis cuits.",
+        "4. Mettez le mélange dans un plat à four préchauffé et faites cuire pendant 1 heure."
+      ],
+      "description": "Spaghetti Syrien (Syrian) — easy pasta recipe with 7 ingredients and 4 steps. Ready in 10 min. Includes exact ingredients and clear instructions.",
+      "tags": [
+        "pâtes",
+        "syrien",
+        "sauce tomate",
+        "cuisine méditerranéenne",
+        "plat principal",
+        "four",
+        "spaghettis",
+        "rapide",
+        "Pasta",
+        "Syrian"
+      ],
+      "datePublished": "2026-04-12",
+      "publishDate": "2026-04-12T00:00:00",
+      "addedDate": "2026-04-12T16:58:13",
+      "status": "PUBLISHED",
+      "slug": "syrian-spaghetti-53093",
+      "youtube": "https://www.youtube.com/watch?v=MGmaX9Uv_Gs",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "10 min",
+      "prepTime": "10 min",
+      "totalTime": "10 min",
+      "servings": 4,
+      "difficulty": "Easy",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "thai-fried-rice-with-prawns-peas-53198",
+        "mulukhiyah-53029"
+      ]
+    },
+    {
+      "mealId": "53078",
+      "id": "beetroot-soup-borscht-53078",
+      "title": "Borscht Ukrainien",
+      "category": "Vegetarian",
+      "origin": "Ukrainian",
+      "image": "https://www.themealdb.com/images/media/meals/zadvgb1699012544.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/zadvgb1699012544.jpg",
+      "ingredients": [
+        "3 Beetroot",
+        "4 tbs Olive Oil",
+        "1 Chicken Stock Cube",
+        "6 cups Water",
+        "3 Potatoes",
+        "1 can Cannellini Beans",
+        "Garnish Dill"
+      ],
+      "instructions": "1. Émincez les betteraves et faites-les cuire dans 6 tasses d'eau avec un cube de bouillon de poulet pendant 15 minutes. 2. Ajoutez les pommes de terre et l'huile d'olive, puis portez à ébullition jusqu'à ce que les pommes de terre soient tendres. 3. Ajoutez les haricots cannellini et faites cuire pendant 5 minutes supplémentaires.",
+      "steps": [
+        "Émincez les betteraves et faites-les cuire dans 6 tasses d'eau avec un cube de bouillon de poulet pendant 15 minutes.",
+        "2. Ajoutez les pommes de terre et l'huile d'olive, puis portez à ébullition jusqu'à ce que les pommes de terre soient tendres.",
+        "3. Ajoutez les haricots cannellini et faites cuire pendant 5 minutes supplémentaires."
+      ],
+      "description": "Borscht Ukrainien (Ukrainian) — easy vegetarian recipe with 7 ingredients and 3 steps. Ready in 10 min. Includes exact ingredients and clear instructions.",
+      "tags": [
+        "soupe",
+        "betterave",
+        "végétarien",
+        "ukrainien",
+        "facile",
+        "hiver",
+        "légumes",
+        "potage",
+        "Vegetarian",
+        "Ukrainian"
+      ],
+      "datePublished": "2026-04-12",
+      "publishDate": "2026-04-12T00:00:00",
+      "addedDate": "2026-04-12T16:58:13",
+      "status": "PUBLISHED",
+      "slug": "beetroot-soup-borscht-53078",
+      "youtube": "https://www.youtube.com/watch?v=6CXgPVw_-0g",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "10 min",
+      "prepTime": "10 min",
+      "totalTime": "20 min",
+      "servings": 4,
+      "difficulty": "Easy",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": []
     }
   ]
 }
