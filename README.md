@@ -1,147 +1,178 @@
-# Akkous — static recipe blog
+# Akkous
 
-A mobile-first food blog built with **HTML, CSS, and vanilla JavaScript**, ready for [GitHub Pages](https://pages.github.com/). The homepage and `recipe.html` work **without** a build: push the repo and enable Pages from the root (or `/docs` if you move files—this project expects `index.html` at the site root).
+Blog de recettes **statique** (HTML, CSS, JavaScript), pensé pour **[GitHub Pages](https://pages.github.com/)**.  
+Site public : **https://akkous.com** (fichier `CNAME` à la racine).
 
-**SEO (optional but recommended):** run `node scripts/build-recipe-pages.mjs` after changing `recipes.json` to generate **`recipes/<slug>/index.html`** for each recipe (Open Graph + JSON-LD in the initial HTML) and refresh **`sitemap.xml`**. Commit the `recipes/` folder with the rest. This complements Pinterest and search engines: each pin or crawler hits a **real URL** with **`og:title`**, **`og:description`**, and **`og:image`** already in the document.
+Les données éditoriales vivent dans **`recipes.json`**. Le front charge ce fichier en **`fetch()`** ; un script Node optionnel génère des **pages HTML par recette** (`recipes/<slug>/index.html`) pour le SEO et les aperçus sociaux (Open Graph, JSON-LD).
 
-## Run locally
+---
 
-Because the site loads `recipes.json` with `fetch()`, open it through a local server (not as a `file://` URL):
+## Sommaire
+
+- [Architecture](#architecture)
+- [Structure du dépôt](#structure-du-dépôt)
+- [Prérequis](#prérequis)
+- [Développement local](#développement-local)
+- [Contenu : `recipes.json`](#contenu--recipesjson)
+- [Build des pages recette + sitemap](#build-des-pages-recette--sitemap)
+- [GitHub Actions](#github-actions)
+- [Automatisation Google (Sheets + Apps Script)](#automatisation-google-sheets--apps-script)
+- [Déploiement GitHub Pages](#déploiement-github-pages)
+- [Dépannage](#dépannage)
+
+---
+
+## Architecture
+
+| Couche | Rôle |
+|--------|------|
+| **`index.html` + `main.js` + `style.css`** | Accueil, grille, filtres, recherche, chargement de `recipes.json`. |
+| **`recipe.html` + `main.js`** | Page recette dynamique (`?id=…` ou URL `/recipes/<slug>/`). |
+| **`recipes.json`** | Source de vérité : objet `{ site, recipes[] }`. |
+| **`recipes/<slug>/index.html`** | Généré par Node : même gabarit que `recipe.html`, métadonnées déjà dans le HTML. |
+| **`sitemap.xml`** | Régénéré par le script Node (URLs canoniques `/recipes/<slug>/`). |
+| **Apps Script** | Optionnel : remplit une feuille Google, pousse `recipes.json` + `sitemap.xml` sur GitHub via l’API. |
+
+---
+
+## Structure du dépôt
+
+| Chemin | Description |
+|--------|-------------|
+| `index.html` | Page d’accueil. |
+| `recipe.html` | Modèle recette (utilisé en SPA et comme base du build statique). |
+| `main.js` | Logique applicative (données, navigation, SEO dynamique, newsletter, etc.). |
+| `style.css` | Thème et composants. |
+| `recipes.json` | Contenu du blog. |
+| `recipes/` | Dossiers `recipes/<slug>/index.html` générés — **à versionner** avec Git. |
+| `scripts/build-recipe-pages.mjs` | Générateur de pages statiques + `sitemap.xml`. |
+| `.github/workflows/build-static-recipes.yml` | CI : régénère `recipes/` après un push sur `recipes.json`. |
+| `google-apps-script/` | `code.gs` (automation), `AutomationDashboard.html` (rapport). |
+| `assets/` | Favicon et fichiers statiques. |
+| `conditions-utilisation.html`, `politique-confidentialite.html`, `contact.html` | Pages légales / contact. |
+| `robots.txt`, `ads.txt`, `.nojekyll` | SEO / annonces / désactivation Jekyll sur Pages. |
+
+---
+
+## Prérequis
+
+- **Navigateur** pour consulter le site.
+- **Serveur HTTP local** pour développer (le `fetch` de `recipes.json` ne fonctionne pas en `file://`).
+- **Node.js 18+** (recommandé 20) uniquement si tu lances le générateur de pages ou la CI en local.
+
+---
+
+## Développement local
 
 ```bash
-# Python 3
+# Exemple avec Python
 python -m http.server 8080
 
-# Node (npx)
+# Ou avec npx
 npx serve .
 ```
 
-Then visit `http://localhost:8080` (or the port shown).
+Ouvre `http://localhost:8080` (ou le port indiqué).
 
-## Deploy on GitHub Pages
+---
 
-1. Push this folder to a GitHub repository.
-2. **Settings → Pages → Build and deployment**: Source **Deploy from a branch**, branch **main** (or **master**), folder **`/` (root)**.
-3. The root file **`.nojekyll`** tells GitHub not to process the site with Jekyll (so files like `recipes.json` are served as-is).
+## Contenu : `recipes.json`
 
-Asset links are **relative** (`style.css`, `assets/…`). Recipe links from the UI point to **`/recipes/<slug>/`** when static pages exist; **`recipe.html?id=<id>`** remains supported as a fallback. Relative paths resolve for both `username.github.io/repo-name/` project sites and custom domains.
+Format racine :
 
-## Content: `recipes.json`
+```json
+{
+  "site": {
+    "name": "Akkous",
+    "canonicalOrigin": "https://akkous.com",
+    "tagline": "…",
+    "newsletterWebAppUrl": "…"
+  },
+  "recipes": [ /* objets recette */ ]
+}
+```
 
-**`recipes.json` is the single source of truth.** The homepage and every recipe page read from it at runtime.
+Chaque recette contient notamment : `id` / `slug`, `title`, `description`, `category`, `ingredients`, `steps` (ou `instructions`), `image`, `author`, temps, `tags`, `datePublished`, etc. Les catégories du filtre sont normalisées côté JS (ex. `dinner`, `desserts`, `drinks`).
 
-### Top-level shape
+---
 
-| Field | Purpose |
-|--------|---------|
-| `site` | Blog name, tagline, newsletter copy. |
-| `recipes` | Array of recipe objects. |
+## Build des pages recette + sitemap
 
-### `site` object
+À la racine du dépôt :
 
-| Field | Required | Description |
-|--------|----------|-------------|
-| `name` | Recommended | Shown in the header, footer, and titles. |
-| `tagline` | Optional | Not rendered by default; available for future use. |
-| `logoText` | Optional | Same as `name` unless you want a shorter logo label. |
-| `newsletterHeading` | Optional | Heading above the signup form. |
-| `newsletterSubtext` | Optional | Subtext under the heading. |
+```bash
+node scripts/build-recipe-pages.mjs
+```
 
-### Each recipe object
+Effets :
 
-| Field | Required | Description |
-|--------|----------|-------------|
-| `id` | **Yes** | Stable slug (lowercase, hyphens). Canonical recipe URLs: **`/recipes/your-id/`** after the static build; legacy **`recipe.html?id=your-id`** still works. |
-| `title` | **Yes** | Display name. |
-| `description` | **Yes** | Short summary (SEO, cards, intro). |
-| `author` | **Yes** | Object: `name` (string), `avatar` (image URL). |
-| `cookTime` | Recommended | Label shown on cards, e.g. `"28 min"`. Used for Schema.org `cookTime` when it matches `… min`. |
-| `prepTime` | Optional | Same format; maps to Schema.org `prepTime` when parseable. |
-| `totalTime` | Optional | Fallback label if `cookTime` is missing. |
-| `servings` | Recommended | Number; shown on the recipe page and in JSON-LD `recipeYield`. |
-| `difficulty` | Recommended | e.g. `"Easy"`, `"Medium"`, `"Hard"` (badge on grid cards). |
-| `category` | **Yes** | One of: `breakfast`, `lunch`, `dinner`, `desserts`, `drinks` (lowercase). Drives filters and navigation. |
-| `tags` | Optional | String array; first tag can appear on trending cards; all feed search. |
-| `featured` | Optional | If `true`, pinned first in the homepage hero carousel when present. |
-| `trending` | Optional | Legacy flag (homepage now shows latest recipes by publish date). |
-| `image` | **Yes** | Full-width hero URL. |
-| `imageCard` | Optional | Taller/card crop; falls back to `image`. |
-| `ingredients` | **Yes** | Array of strings (one line each). |
-| `steps` | **Yes** | Array of strings (one paragraph per step). |
-| `relatedRecipeIds` | Optional | Array of other recipes’ `id` values for the “Related recipes” section (up to three are shown). |
-| `datePublished` | Optional | ISO date string for Schema.org (default in code is `2026-01-01` if omitted). |
+- crée ou met à jour **`recipes/<slug>/index.html`** pour chaque entrée valide ;
+- réécrit **`sitemap.xml`** (home, pages statiques, une URL par recette) ;
+- supprime les dossiers **`recipes/<slug>/`** qui ne sont plus dans `recipes.json` (évite les pages fantômes).
 
-### Adding a new recipe
+Ensuite : **commit** `recipes/`, `sitemap.xml`, et éventuellement `recipes.json`.
 
-1. Copy an existing entry in the `recipes` array.
-2. Assign a **unique** `id`.
-3. Set `category` to one of the six values above.
-4. Use **absolute** image URLs (e.g. from your repo under `assets/` as `assets/my-photo.jpg`, or a CDN).
-5. Optionally set `featured: true` to pin one recipe first in the hero carousel.
-6. List `relatedRecipeIds` pointing at real `id` values.
+> **Attention :** si `recipes.json` est vide ou sans slugs valides, le script efface toutes les pages générées précédemment. Garde un export correct avant de lancer le build en production.
 
-After you commit and push, GitHub Pages will serve the updated JSON on the next deploy. If you use the SEO build, run **`node scripts/build-recipe-pages.mjs`** before pushing so new or changed recipes get matching **`recipes/<slug>/index.html`** files (important for Pinterest previews and Google).
+---
 
-## Files
+## GitHub Actions
 
-| File | Role |
-|------|------|
-| `index.html` | Homepage layout and sections. |
-| `recipe.html` | Recipe template; content filled by `main.js`. |
-| `style.css` | Layout, theme (light/dark), components. |
-| `main.js` | Data load, filters, search, recipe view, SEO helpers, UI behavior. |
-| `recipes.json` | All editorial content. |
-| `recipes/<slug>/index.html` | Generated by `scripts/build-recipe-pages.mjs` (SEO + social previews in HTML). |
-| `scripts/build-recipe-pages.mjs` | Builds static recipe pages and rewrites `sitemap.xml`. |
-| `assets/` | Static files (e.g. `favicon.svg`). |
-| `.nojekyll` | Disables Jekyll on GitHub Pages. |
+Workflow : **`.github/workflows/build-static-recipes.yml`**
 
-## Social previews (Open Graph) and Pinterest
+- **Déclencheurs :** push sur `main` qui modifie **`recipes.json`**, ou exécution manuelle (**Run workflow**).
+- **Étapes :** `checkout` → Node 20 → `node scripts/build-recipe-pages.mjs` → commit + push de `recipes/` et `sitemap.xml` si changements (bot `github-actions`).
 
-- **Static recipe URLs** (`/recipes/<slug>/`): meta tags are **in the HTML** from the build—best for **Pinterest Rich Pins**, messaging apps, and Google.
-- **`recipe.html`**: tags are **updated in JavaScript** after `recipes.json` loads; fine for the live site, weaker for bots that do not execute JS.
+**Important :** le dossier **`recipes/`** à la racine **ne doit pas** être listé dans **`.gitignore`** (sinon `git add recipes` échoue dans la CI).
 
-Pin the **canonical recipe URL** (the `/recipes/.../` page) so previews use the baked-in `og:image` and title.
+---
 
-## Project status (updated)
+## Automatisation Google (Sheets + Apps Script)
 
-The blog is currently in a production-ready state with active SEO and automation hardening:
+Le dossier **`google-apps-script/`** documente et versionne le code à coller dans le projet Apps Script lié au classeur :
 
-- Homepage upgraded to a modern layout (hero carousel, latest slider, category spotlight, trust strip, polished mobile UI).
-- Recipe pages include dynamic SEO meta updates, Recipe + Breadcrumb JSON-LD, and a visible FAQ block with FAQPage JSON-LD.
-- Core SEO files are in place at root: `robots.txt`, `sitemap.xml`, `ads.txt`, Search Console verification file.
-- Legal/contact pages are available and linked in footers:
-  - `conditions-utilisation.html`
-  - `politique-confidentialite.html`
-  - `contact.html` (contact form opens WhatsApp to `+212630230803`)
-- Card imagery now uses descriptive `alt` text generated from recipe data.
-- Canonical and social tags are set on home and updated dynamically on recipe pages.
+| Fichier | Usage |
+|---------|--------|
+| **`code.gs`** | TheMealDB → feuille **Recipes**, statuts SCHEDULED / PUBLISHED, export JSON (`author` = nom du blog, `origin` = cuisine), push GitHub annulé si **0** recette exportée, Groq (SEO), GSC, newsletter (`doPost`). |
+| **`AutomationDashboard.html`** | À ajouter dans le même projet Apps Script sous le nom **`AutomationDashboard`** pour le menu rapport (panneau latéral). |
 
-## Google Apps Script automation (sheet → site)
+**Propriétés du script** (recommandé, plutôt que secrets dans le code) :
 
-`google-apps-script/code.gs` handles:
+- `GITHUB_TOKEN` — PAT avec accès **repo** (contenu).
+- `GITHUB_REPO` — `propriétaire/nom-du-depot` (ex. `INVOOFFICE/Akkous`).
+- `GROQ_API_KEY`, `GSC_CLIENT_EMAIL`, `GSC_PRIVATE_KEY`, `NEWSLETTER_WEB_APP_URL`, etc. selon les fonctions utilisées.
 
-- Daily fetch/schedule/publish workflow for recipes.
-- GitHub push for both `recipes.json` and `sitemap.xml` in one run (HTML under `recipes/<slug>/` is **not** generated in Apps Script—run `node scripts/build-recipe-pages.mjs` locally after pulling or editing JSON, then push again if you want static pages on Pages).
-- SEO quality gate during export (minimum content checks, auto-enrichment, auto-related recipes).
-- Daily GSC indexing batch trigger (`submitDailyIndexingBatchToGsc`) using service-account credentials from Script Properties.
-- Weekly SEO monitoring report data (`getSeoMonitoringReport`) used by the dashboard.
+Le menu du tableur (**🍳 Akkous**) propose entre autres :
 
-`google-apps-script/AutomationDashboard.html` now includes:
+- **③** marquer les recettes **PUBLISHED** quand la date est passée ;
+- **④** pousser **`recipes.json`** + **`sitemap.xml`** sur GitHub.
 
-- Automation log table (INFO/WARN/ERROR).
-- SEO monitoring cards for 7-day KPIs (errors, warnings, index submissions, success rate).
-- Top SEO errors and prioritized “pages to improve” list.
+L’export vers GitHub ne contient en général que les lignes **PUBLISHED**. Les pages HTML sous **`recipes/<slug>/`** sont produites par **GitHub Actions** (ou par un `node scripts/...` local), pas par Apps Script.
 
-## Script properties required (recommended)
+---
 
-- `GITHUB_TOKEN`
-- `GITHUB_REPO`
-- `NEWSLETTER_WEB_APP_URL`
-- `GSC_CLIENT_EMAIL`
-- `GSC_PRIVATE_KEY`
-- `SPREADSHEET_ID` (required for Web App dashboard mode if not bound to an active sheet)
+## Déploiement GitHub Pages
 
-## License
+1. Pousser ce dépôt sur GitHub.
+2. **Réglages → Pages** : source **Deploy from a branch**, branche **`main`**, dossier **`/` (root)**.
+3. Le fichier **`.nojekyll`** évite que Jekyll ignore des fichiers nécessaires.
 
-Use and modify freely for your own blog.
+Les liens relatifs fonctionnent pour un site projet (`username.github.io/repo/`) ou un domaine custom (`CNAME`).
+
+---
+
+## Dépannage
+
+| Problème | Piste |
+|----------|--------|
+| Page blanche ou pas de recettes en local | Servir le site via **http://**, pas `file://`. |
+| `recipes.json` vide sur GitHub | Vérifier les lignes **PUBLISHED** dans la feuille et le **SEO quality gate** dans Apps Script qui peut exclure des lignes. |
+| Workflow Actions en échec sur `git add recipes` | Retirer toute règle qui ignore **`recipes/`** dans `.gitignore`. |
+| Sitemap sans URLs recettes | Relancer le build Node ; vérifier que `recipes[]` n’est pas vide. |
+| Croix rouge sur un fichier mais verte sur la racine | GitHub affiche le statut des **checks pour le dernier commit ayant modifié ce fichier** ; ce n’est pas forcément le même SHA que la tête de `main`. |
+
+---
+
+## Licence
+
+Utilisation et modification libres pour ton propre blog.

@@ -136,14 +136,23 @@ function estimateReadMinutes(recipe) {
   return Math.max(2, Math.round(words / 200));
 }
 
+/** JSON-LD : évite de mettre la cuisine (origin) comme nom d’auteur (aligné Apps Script + main.js). */
+function schemaAuthorName(recipe, siteName) {
+  const sn = siteName || "Akkous";
+  const raw = recipe.author && recipe.author.name;
+  if (!raw || !String(raw).trim()) return sn;
+  const name = String(raw).trim();
+  const origin = recipe.origin && String(recipe.origin).trim();
+  if (origin && origin.toLowerCase() === name.toLowerCase()) return sn;
+  return name;
+}
+
 function buildRecipeFaqItems(recipe) {
   const t = recipe.title || "this recipe";
   const total = recipe.totalTime || "";
   const cook = recipe.cookTime || "";
   const prep = recipe.prepTime || "";
   const servings = recipe.servings || 4;
-  const category =
-    recipe.categoryDisplay || categoryLabel(recipe.category) || "meal";
   const ingredientHint = (recipe.ingredients || [])
     .slice(0, 2)
     .map((s) => String(s || "").trim())
@@ -163,9 +172,8 @@ function buildRecipeFaqItems(recipe) {
   let serveAnswer =
     "Serve " +
     t +
-    " with simple sides like salad, rice, or roasted vegetables. It works well as a " +
-    category.toLowerCase() +
-    " for about " +
+    " with simple sides like salad, rice, or roasted vegetables. " +
+    "Plan for about " +
     servings +
     " serving" +
     (servings === 1 ? "" : "s") +
@@ -214,7 +222,7 @@ function buildJsonLd(recipe, pageUrl, site) {
     image: recipe.image ? [recipe.image] : undefined,
     author: {
       "@type": "Person",
-      name: (recipe.author && recipe.author.name) || siteName,
+      name: schemaAuthorName(recipe, siteName),
     },
     publisher,
     datePublished:
@@ -256,7 +264,7 @@ function buildJsonLd(recipe, pageUrl, site) {
     };
   }
 
-  const homeUrl = canon ? canon + "/index.html" : pageUrl.replace(/\/recipes\/[^/]+\/$/, "/index.html");
+  const homeUrl = canon ? canon + "/" : pageUrl.replace(/\/recipes\/[^/]+\/$/, "/");
   const breadcrumb = {
     "@type": "BreadcrumbList",
     itemListElement: [

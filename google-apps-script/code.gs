@@ -24,10 +24,11 @@
  *    Copie aussi automation-dashboard.html du repo vers Apps Script sous le nom
  *    AutomationDashboard.html pour le panneau latéral (voir fichier à la racine du projet).
  * 7. Push GitHub : sans token/repo → message « skipped ». Remplir CONFIG ou
- *    Réglages du projet → Propriétés du script : GITHUB_TOKEN (PAT), GITHUB_REPO (user/repo).
- *    recipes.json + sitemap : uniquement les lignes PUBLISHED (pas les SCHEDULED). Les fichiers
- *    HTML par recette (recipes/{slug}/index.html) se génèrent avec
- *    « node scripts/build-recipe-pages.mjs » — à lancer après un push du JSON si besoin.
+ *    Propriétés du script : GITHUB_TOKEN (PAT), GITHUB_REPO (ex. INVOOFFICE/Akkous).
+ *    recipes.json + sitemap : uniquement les lignes PUBLISHED. Si l’export est vide, le push
+ *    est annulé (évite d’écraser le site avec recipes: []). Les pages HTML recipes/<slug>/
+ *    sont régénérées sur GitHub par l’action « Build static recipe pages » après chaque push
+ *    de recipes.json (ou en local : node scripts/build-recipe-pages.mjs).
  * 8. Newsletter : menu « ⑪ Feuille newsletter » puis Déployer → Application Web (doPost).
  *    Propriété du script NEWSLETTER_WEB_APP_URL = URL /exec → incluse dans recipes.json au push.
  * 9. SEO Groq : propriété GROQ_API_KEY + menu ② (nouvelles lignes uniquement). Modèle CONFIG.GROQ_MODEL (OpenAI-compatible).
@@ -77,7 +78,7 @@ const CONFIG = {
    */
   GITHUB_TOKEN: '',
   /**
-   * Dépôt cible « propriétaire/nom » (ex. monuser/food). Peut aussi être défini
+   * Dépôt cible « propriétaire/nom » (ex. INVOOFFICE/Akkous). Peut aussi être défini
    * en propriété du script GITHUB_REPO.
    */
   GITHUB_REPO: '',
@@ -1283,6 +1284,14 @@ function pushRecipesToGitHub() {
   );
   const sheet = getRecipesSheetOrThrow_();
   const payload = buildExportPayload_(sheet);
+  if (!payload.recipes || payload.recipes.length === 0) {
+    logAutomation_(
+      CONFIG.LOG_LEVEL_WARN,
+      'pushRecipesToGitHub',
+      'Push annulé : 0 recette exportée (aucune PUBLISHED, ou SEO gate / feuille vide). GitHub inchangé — pas de recipes: [].'
+    );
+    return;
+  }
   const [owner, repo] = parseRepo_(gh.repo);
   const tz = getTimezone_();
   const dayStamp = Utilities.formatDate(new Date(), tz, 'yyyy-MM-dd');
@@ -2316,9 +2325,22 @@ function uniqueSlug_(title, idMeal) {
   return base + '-' + String(idMeal || '');
 }
 
+/** Avatar défaut pour author dans recipes.json (aligné main.js / fiches statiques). */
+const BLOG_DEFAULT_AUTHOR_AVATAR_ =
+  'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80';
+
 /**
- * Même structure que le recipes.json statique du site (site + recipes).
- * Le front lit data.recipes ; un tableau seul ne s’affichait pas sur l’index.
+ * Auteur dans JSON = nom du blog (pas origin/TheMealDB en « personne »).
+ * La cuisine reste dans recipe.origin (affichage + recipeCuisine côté site).
+ */
+function recipeAuthorForBlogExport_(siteName) {
+  const name = String(siteName || 'Akkous').trim() || 'Akkous';
+  return { name: name, avatar: BLOG_DEFAULT_AUTHOR_AVATAR_ };
+}
+
+/**
+ * Même structure que recipes.json sur GitHub Pages : { site, recipes }.
+ * canonicalOrigin suit CONFIG.SITE_ORIGIN (un seul endroit à changer pour un autre domaine).
  */
 function defaultExportSite_() {
   const props = PropertiesService.getScriptProperties();
@@ -2327,15 +2349,16 @@ function defaultExportSite_() {
     CONFIG.NEWSLETTER_WEB_APP_URL ||
     ''
   ).trim();
+  const canon = String(CONFIG.SITE_ORIGIN || 'https://akkous.com')
+    .trim()
+    .replace(/\/+$/, '');
   return {
     name: 'Akkous',
-    /** Origine canonique du site (sans slash final) — JSON-LD Organization @id sur les recettes */
-    canonicalOrigin: 'https://akkous.com',
+    canonicalOrigin: canon,
     tagline: 'Fresh recipes for every table',
     logoText: 'Akkous',
     newsletterHeading: 'Get recipes in your inbox',
     newsletterSubtext: 'Weekly seasonal ideas—no spam, unsubscribe anytime.',
-    /** URL /exec du déploiement Web App ; le site lit ce champ pour poster le formulaire */
     newsletterWebAppUrl,
   };
 }
@@ -2457,11 +2480,7 @@ function buildExportPayload_(sheet) {
       status,
       slug: slug || recipeId,
       youtube,
-      author: {
-        name: origin || 'TheMealDB',
-        avatar:
-          'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80',
-      },
+      author: recipeAuthorForBlogExport_(site.name),
       cookTime: recipeTimes.cookTimeLabel,
       prepTime: recipeTimes.prepTimeLabel,
       totalTime: recipeTimes.totalTimeLabel,

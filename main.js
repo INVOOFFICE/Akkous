@@ -1118,6 +1118,17 @@
     });
   }
 
+  /** JSON-LD : ne pas confondre cuisine (origin) et auteur (aligné build-recipe-pages.mjs + export Sheet). */
+  function schemaAuthorName(recipe) {
+    var site = state.site.name || "Akkous";
+    var raw = recipe.author && recipe.author.name;
+    if (!raw || !String(raw).trim()) return site;
+    var name = String(raw).trim();
+    var origin = recipe.origin && String(recipe.origin).trim();
+    if (origin && origin.toLowerCase() === name.toLowerCase()) return site;
+    return name;
+  }
+
   function buildRecipeSchemaNode(recipe) {
     var base = getBaseUrl().replace(/\/+$/, "");
     var url = absoluteRecipePageUrl(recipe);
@@ -1151,7 +1162,7 @@
       image: recipe.image ? [recipe.image] : undefined,
       author: {
         "@type": "Person",
-        name: (recipe.author && recipe.author.name) || state.site.name || "Akkous",
+        name: schemaAuthorName(recipe),
       },
       publisher: publisher,
       datePublished:
@@ -1199,8 +1210,12 @@
   }
 
   function buildRecipeBreadcrumbSchema(recipe) {
+    var canon =
+      state.site &&
+      state.site.canonicalOrigin &&
+      String(state.site.canonicalOrigin).trim().replace(/\/+$/, "");
     var base = getBaseUrl();
-    var home = base + "index.html";
+    var home = canon ? canon + "/" : String(base || "").replace(/\/+$/, "") + "/";
     var itemUrl = absoluteRecipePageUrl(recipe);
     return {
       "@type": "BreadcrumbList",
@@ -1227,7 +1242,6 @@
     var cook = recipe.cookTime || "";
     var prep = recipe.prepTime || "";
     var servings = recipe.servings || 4;
-    var category = recipe.categoryDisplay || categoryLabel(recipe.category) || "meal";
     var ingredientHint = (recipe.ingredients || [])
       .slice(0, 2)
       .map(function (s) {
@@ -1247,9 +1261,8 @@
     var serveAnswer =
       "Serve " +
       t +
-      " with simple sides like salad, rice, or roasted vegetables. It works well as a " +
-      category.toLowerCase() +
-      " for about " +
+      " with simple sides like salad, rice, or roasted vegetables. " +
+      "Plan for about " +
       servings +
       " serving" +
       (servings === 1 ? "" : "s") +
