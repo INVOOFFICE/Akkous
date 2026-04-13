@@ -1348,6 +1348,11 @@ input:focus-visible {
   z-index: 110;
 }
 
+/* Author `display: flex` above wins over the default [hidden] rule; force hide when dismissed. */
+.pwa-install-banner[hidden] {
+  display: none !important;
+}
+
 .pwa-install-banner__text {
   margin: 0;
   font-size: 0.9rem;

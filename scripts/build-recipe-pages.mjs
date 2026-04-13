@@ -345,6 +345,7 @@ function buildStaticRecipePage(template, recipe, site) {
     <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
     <meta name="googlebot" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
     <meta name="pinterest-rich-pin" content="true" />
+    <meta name="p:domain_verify" content="1e49b9312c23dd1bba6b615c270a0e3c" />
     <meta property="og:title" content="${escapeHtml(title)}" />
     <meta
       property="og:description"

@@ -88,6 +88,7 @@ const CONFIG = {
   GITHUB_FILE: 'recipes.json',
   /** Sitemap poussé avec recipes.json ; URLs recettes = recipeSeoUrl_ → /recipes/{slug}/ */
   GITHUB_SITEMAP_FILE: 'sitemap.xml',
+  GITHUB_LLMS_FILE: 'llms.txt',
   /** Branche GitHub ciblée par le push (un seul commit JSON + sitemap évite deux déploiements Pages annulés) */
   GITHUB_BRANCH: 'main',
   /** Origine canonique (sitemap + Indexing API) ; doit matcher site.canonicalOrigin dans recipes.json */
@@ -147,6 +148,7 @@ const CONFIG = {
     'Slug',
     'YouTube',
     'Added Date',
+    'MetaDescription',
   ],
   COL: {
     ID: 1,
@@ -162,6 +164,7 @@ const CONFIG = {
     SLUG: 11,
     YOUTUBE: 12,
     ADDED_DATE: 13,
+    META_DESCRIPTION: 14,
   },
   STATUS_SCHEDULED: 'SCHEDULED',
   STATUS_PUBLISHED: 'PUBLISHED',
@@ -264,7 +267,7 @@ function onOpen() {
       .addSeparator()
       .addItem('② Récupérer & planifier (RECIPES_PER_DAY)', 'fetchAndScheduleRecipes')
       .addItem('③ Marquer PUBLISHED (dates déjà passées)', 'markPublishedRecipes')
-      .addItem('④ Pousser recipes.json + sitemap.xml sur GitHub', 'pushRecipesToGitHub')
+      .addItem('④ Pousser recipes.json + sitemap.xml + llms.txt sur GitHub', 'pushRecipesToGitHub')
       .addItem('⑤ Nettoyer lignes publiées (> CLEANUP_DAYS)', 'cleanOldRecipes')
       .addSeparator()
       .addItem('▶ Enchaîner ② puis ③ (test chaîne)', 'testRunFetchThenMarkPublished')
@@ -503,57 +506,13 @@ function getSeoMonitoringReport() {
 function rankPagesToImprove_(recipes) {
   return (recipes || [])
     .map((r) => {
-      const issues = [];
-      let score = 100;
       const title = String(r.title || '').trim();
-      const desc = String(r.description || '').trim();
-      const ingredients = r.ingredients || [];
-      const steps = r.steps || [];
-      const tags = r.tags || [];
-      const image = String(r.image || '').trim();
-
-      if (!title || title.length < 12) {
-        issues.push('Title too short');
-        score -= 18;
-      }
-      if (!desc || desc.length < 110) {
-        issues.push('Description too short');
-        score -= 16;
-      }
-      if (ingredients.length < 4) {
-        issues.push('Few ingredients');
-        score -= 12;
-      }
-      if (steps.length < 4) {
-        issues.push('Few instructions steps');
-        score -= 14;
-      }
-      if (tags.length < 2) {
-        issues.push('Not enough tags');
-        score -= 10;
-      }
-      if (!/^https?:\/\//i.test(image)) {
-        issues.push('Image URL invalid');
-        score -= 20;
-      }
-      if (!r.cookTime && !r.totalTime) {
-        issues.push('Missing time label');
-        score -= 8;
-      }
-      if (!r.relatedRecipeIds || !r.relatedRecipeIds.length) {
-        issues.push('No related links');
-        score -= 8;
-      }
-      if (!r.youtube) {
-        issues.push('No video link');
-        score -= 4;
-      }
-      if (score < 0) score = 0;
+      const quality = evaluateSeoQuality_(r);
       return {
         id: String(r.id || ''),
         title: title || 'Untitled',
-        issues: issues,
-        score: score,
+        issues: quality.reasons || [],
+        score: Number(quality.score || 0),
       };
     })
     .filter((x) => x.issues.length > 0)
@@ -804,29 +763,20 @@ function callGroqForRecipeSeo_(title, category, origin, ingredients, instruction
   const model = String(CONFIG.GROQ_MODEL || 'llama-3.3-70b-versatile').trim();
   const maxTitle = Math.max(20, parseInt(CONFIG.GEMINI_MAX_TITLE_LEN, 10) || 60);
 
-  const lang = String(CONFIG.RECIPE_CONTENT_LANGUAGE || 'en')
-    .trim()
-    .toLowerCase();
-  const langRule =
-    lang === 'fr'
-      ? '\nLangue : français uniquement pour title, instructions et tags (ton naturel, SEO).'
-      : '\nLanguage: English only for title, instructions, and tags. The source is from TheMealDB (already English): keep everything in English, natural SEO tone. Do not translate to French or any other language.';
-
   const prompt =
-    'Tu es expert SEO + rédaction web pour akkous.com.' +
-    langRule +
-    '\nObjectifs doubles :' +
-    '\n(1) Moteurs de recherche : titre clair pour l’intention "recette", mots-clés principaux (plat, type de cuisine si pertinent), pas de bourrage.' +
-    '\n(2) IA de recherche (aperçus, assistants) : instructions structurées et factuelles, faciles à citer ou résumer ; pas de HTML ; pas d’affirmations médicales ou garanties de classement.' +
-    '\nRéécris UNIQUEMENT ces trois champs à partir du contexte ci-dessous.' +
-    '\nRègles strictes :' +
-    '\n- title : accrocheur, contient le nom du plat (ou équivalent clair), peut inclure origine/catégorie si utile et court ; max ' +
-    maxTitle +
-    ' caractères (compte bien).' +
-    '\n- instructions : étapes numérotées 1. 2. 3. … ; une action principale par étape ; temps ou température si connus dans le texte source ; cohérent avec les ingrédients listés.' +
-    '\n- tags : exactement entre 5 et 8 tags ; mélange utile pour recherche + IA : type de plat, protéine ou ingrédient principal, méthode (grillé, four, etc.), cuisine ou région si pertinent, occasion (ex. BBQ, rapide) ; virgules, sans #, sans doublons évidents.' +
-    '\nRéponds UNIQUEMENT avec un objet JSON valide, sans markdown, sans texte avant/après. Clés exactes : "title", "instructions", "tags".' +
-    '\n\nContexte JSON (améliore, ne copie pas mot à mot) :\n' +
+    'You are an English SEO recipe editor for akkous.com.' +
+    '\nWrite in strict English only.' +
+    '\nReturn valid JSON only. No markdown. No extra text.' +
+    '\nRequired keys: "title", "metaDescription", "instructions", "tags", "hook", "tip".' +
+    '\nConstraints:' +
+    '\n- title: 45-60 characters, natural, includes dish intent, no keyword stuffing.' +
+    '\n- metaDescription: 140-155 characters, natural and click-worthy, no keyword stuffing.' +
+    '\n- instructions: numbered plain text steps (1. 2. 3.), one main action per step, fact-based only.' +
+    '\n- tags: 5-8 comma-separated tags, no #, no duplicates, SEO useful.' +
+    '\n- hook: 1-2 sentences, max 180 characters, answers "why cook this today".' +
+    '\n- tip: 1 practical pro tip, max 160 characters.' +
+    '\nDo not invent medical claims or guaranteed ranking claims.' +
+    '\n\nContext JSON (rewrite, do not copy verbatim):\n' +
     JSON.stringify({
       title: title || '',
       category: category || '',
@@ -928,6 +878,9 @@ function callGroqForRecipeSeo_(title, category, origin, ingredients, instruction
   const outTitle = String(parsed.title || '').trim().replace(/\s+/g, ' ');
   const outInstr = String(parsed.instructions || '').trim();
   let outTags = String(parsed.tags || '').trim();
+  let outMetaDescription = String(parsed.metaDescription || '').trim().replace(/\s+/g, ' ');
+  let outHook = String(parsed.hook || '').trim().replace(/\s+/g, ' ');
+  let outTip = String(parsed.tip || '').trim().replace(/\s+/g, ' ');
   if (!outTitle || !outInstr) {
     throw new Error('Groq a renvoyé title ou instructions vide.');
   }
@@ -936,8 +889,26 @@ function callGroqForRecipeSeo_(title, category, origin, ingredients, instruction
     titleSeo = titleSeo.substring(0, maxTitle - 1).trim() + '…';
   }
   outTags = outTags.replace(/^[\s#,]+|[\s#,]+$/g, '').replace(/\s*,\s*/g, ', ');
+  const tagList = outTags
+    .split(',')
+    .map((s) => s.trim())
+    .filter(Boolean);
+  if (tagList.length > 8) outTags = tagList.slice(0, 8).join(', ');
 
-  return { title: titleSeo, instructions: outInstr, tags: outTags };
+  if (outMetaDescription.length < 140 || outMetaDescription.length > 155) {
+    outMetaDescription = '';
+  }
+  if (outHook.length > 180) outHook = outHook.slice(0, 179).trim() + '…';
+  if (outTip.length > 160) outTip = outTip.slice(0, 159).trim() + '…';
+
+  return {
+    title: titleSeo,
+    instructions: outInstr,
+    tags: outTags,
+    metaDescription: outMetaDescription,
+    hook: outHook,
+    tip: outTip,
+  };
 }
 
 /**
@@ -960,6 +931,9 @@ function enrichRecipeSheetRowWithGroq_(sheet, rowNum) {
   sheet.getRange(rowNum, CONFIG.COL.TITLE).setValue(seo.title);
   sheet.getRange(rowNum, CONFIG.COL.INSTRUCTIONS).setValue(seo.instructions);
   sheet.getRange(rowNum, CONFIG.COL.TAGS).setValue(seo.tags);
+  if (seo.metaDescription && seo.metaDescription.length >= 140 && seo.metaDescription.length <= 155) {
+    sheet.getRange(rowNum, CONFIG.COL.META_DESCRIPTION).setValue(seo.metaDescription);
+  }
 }
 
 /**
@@ -1389,7 +1363,7 @@ function pushRecipesToGitHub() {
   logAutomation_(
     CONFIG.LOG_LEVEL_INFO,
     'pushRecipesToGitHub',
-    'Démarrage PUT ' + CONFIG.GITHUB_FILE + ' + ' + CONFIG.GITHUB_SITEMAP_FILE
+    'Démarrage PUT ' + CONFIG.GITHUB_FILE + ' + ' + CONFIG.GITHUB_SITEMAP_FILE + ' + ' + CONFIG.GITHUB_LLMS_FILE
   );
   const sheet = getRecipesSheetOrThrow_();
   const payload = buildExportPayload_(sheet);
@@ -1406,15 +1380,24 @@ function pushRecipesToGitHub() {
   const dayStamp = Utilities.formatDate(new Date(), tz, 'yyyy-MM-dd');
   const recipesJson = JSON.stringify(payload, null, 2);
   const sitemapXml = buildSitemapXmlFromPayload_(payload);
+  const llmsTxt = buildLlmsTxt_(payload);
 
   const commitMsg = '🍽️ Akkous recipes + sitemap — ' + dayStamp;
-  const ok = gitPushRecipesAndSitemapOneCommit_(owner, repo, recipesJson, sitemapXml, commitMsg, gh.token);
+  const ok = gitPushRecipesAndSitemapOneCommit_(
+    owner,
+    repo,
+    recipesJson,
+    sitemapXml,
+    llmsTxt,
+    commitMsg,
+    gh.token
+  );
 
   if (ok) {
     logAutomation_(
       CONFIG.LOG_LEVEL_INFO,
       'pushRecipesToGitHub',
-      'OK : recipes.json + sitemap.xml (1 commit) sur GitHub — un seul déploiement Pages'
+      'OK : recipes.json + sitemap.xml + llms.txt (1 commit) sur GitHub — un seul déploiement Pages'
     );
   }
 }
@@ -1424,7 +1407,7 @@ function pushRecipesToGitHub() {
  * Évite deux commits successifs qui déclenchent deux workflows GitHub Pages ;
  * le second annulait souvent le premier (« Canceling since a higher priority waiting request… »).
  */
-function gitPushRecipesAndSitemapOneCommit_(owner, repo, recipesJson, sitemapXml, message, token) {
+function gitPushRecipesAndSitemapOneCommit_(owner, repo, recipesJson, sitemapXml, llmsTxt, message, token) {
   const branch = String(CONFIG.GITHUB_BRANCH || 'main').trim() || 'main';
   const apiRoot = 'https://api.github.com/repos/' + encodeURIComponent(owner) + '/' + encodeURIComponent(repo);
   const headers = {
@@ -1495,6 +1478,12 @@ function gitPushRecipesAndSitemapOneCommit_(owner, repo, recipesJson, sitemapXml
           mode: '100644',
           type: 'blob',
           content: String(sitemapXml || ''),
+        },
+        {
+          path: CONFIG.GITHUB_LLMS_FILE.replace(/^\//, ''),
+          mode: '100644',
+          type: 'blob',
+          content: String(llmsTxt || ''),
         },
       ],
     };
@@ -1666,6 +1655,55 @@ function buildSitemapXmlFromPayload_(payload) {
 
   lines.push('</urlset>');
   return lines.join('\n');
+}
+
+function buildLlmsTxt_(payload) {
+  try {
+    const site = payload && payload.site ? payload.site : {};
+    const recipes = payload && Array.isArray(payload.recipes) ? payload.recipes : [];
+    const base =
+      String(site.canonicalOrigin || CONFIG.SITE_ORIGIN || 'https://akkous.com')
+        .trim()
+        .replace(/\/+$/, '') || 'https://akkous.com';
+    const tagline = String(site.tagline || 'Fresh recipes for every table').trim();
+
+    const lines = [];
+    lines.push('# Akkous');
+    lines.push('');
+    lines.push('> ' + tagline);
+    lines.push('');
+    lines.push('## Recipes');
+    lines.push('');
+
+    recipes.forEach((r) => {
+      const title = String((r && r.title) || '').trim();
+      const slug = String((r && (r.slug || r.id)) || '').trim();
+      if (!title || !slug) return;
+      const origin = String((r && r.origin) || '').trim() || 'Unknown';
+      const category = String((r && r.category) || '').trim() || 'Unknown';
+      const url = base + '/recipes/' + encodeURIComponent(slug) + '/';
+      lines.push('- [' + title + '](' + url + ') — ' + origin + ' | ' + category);
+    });
+
+    lines.push('');
+    lines.push('## About');
+    lines.push('- All recipes include ingredients, step-by-step instructions, cooking time, difficulty level, and cultural origin.');
+    lines.push('- All content is in English.');
+    lines.push('- New recipes are published daily.');
+    lines.push('');
+    lines.push('## Allowed usage');
+    lines.push('- AI assistants may summarize, cite, and recommend recipes from this site.');
+    lines.push('- Please link back to the original recipe page when referencing content.');
+    lines.push('');
+    lines.push('## Structure');
+    lines.push('- Recipe pages: ' + base + '/recipes/{slug}/');
+    lines.push('- Sitemap: ' + base + '/sitemap.xml');
+    lines.push('- Data: ' + base + '/recipes.json');
+    return lines.join('\n');
+  } catch (e) {
+    logAutomation_(CONFIG.LOG_LEVEL_WARN, 'buildLlmsTxt_', String(e));
+    return '';
+  }
 }
 
 function normalizeIsoDate_(v) {
@@ -2221,12 +2259,20 @@ function getRecipesSheetOrThrow_() {
   if (!sh) {
     throw new Error('Sheet "' + CONFIG.SHEET_NAME + '" not found. Run fetchAndScheduleRecipes first.');
   }
+  if (sh.getLastColumn() < CONFIG.HEADERS.length) {
+    sh.getRange(1, 1, 1, CONFIG.HEADERS.length).setValues([CONFIG.HEADERS]);
+  }
   return sh;
 }
 
 function ensureRecipesSheet_(ss) {
   let sheet = ss.getSheetByName(CONFIG.SHEET_NAME);
-  if (sheet) return sheet;
+  if (sheet) {
+    if (sheet.getLastColumn() < CONFIG.HEADERS.length) {
+      sheet.getRange(1, 1, 1, CONFIG.HEADERS.length).setValues([CONFIG.HEADERS]);
+    }
+    return sheet;
+  }
 
   sheet = ss.insertSheet(CONFIG.SHEET_NAME);
   const headerRange = sheet.getRange(1, 1, 1, CONFIG.HEADERS.length);
@@ -2236,7 +2282,7 @@ function ensureRecipesSheet_(ss) {
   headerRange.setBackground('#E8572A');
   sheet.setFrozenRows(1);
 
-  const widths = [100, 220, 100, 100, 280, 360, 320, 160, 150, 100, 200, 220, 150];
+  const widths = [100, 220, 100, 100, 280, 360, 320, 160, 150, 100, 200, 220, 150, 360];
   for (let c = 0; c < widths.length; c++) {
     sheet.setColumnWidth(c + 1, widths[c]);
   }
@@ -2530,6 +2576,7 @@ function mealToRow_(meal, publishDate, status, addedDate) {
     slug,
     meal.strYoutube || '',
     addedDate,
+    '',
   ];
 }
 
@@ -2994,7 +3041,8 @@ function buildExportPayload_(sheet) {
     const steps = validateAndFixSteps_(idMeal || slug || 'row-' + (r + 2), instructions);
 
     const recipeTimes = inferRecipeTimes_(steps);
-    const description = buildSeoDescription_({
+    const metaDescriptionRaw = String(row[CONFIG.COL.META_DESCRIPTION - 1] || '').trim();
+    const heuristicDescription = buildSeoDescription_({
       title,
       category,
       origin,
@@ -3004,6 +3052,10 @@ function buildExportPayload_(sheet) {
       prepTime: recipeTimes.prepTimeLabel,
       totalTime: recipeTimes.totalTimeLabel,
     });
+    const description =
+      metaDescriptionRaw.length >= 140 && metaDescriptionRaw.length <= 155
+        ? metaDescriptionRaw
+        : heuristicDescription;
     const normalizedTags = normalizeTags_(tags, title, category, origin);
     const difficulty = inferDifficultyFromSteps_(steps);
     const seoCheck = evaluateSeoQuality_({
@@ -3012,6 +3064,7 @@ function buildExportPayload_(sheet) {
       ingredients,
       steps,
       description,
+      tags: normalizedTags,
     });
     if (CONFIG.SEO_QUALITY_GATE_ENABLED && !seoCheck.ok) {
       logAutomation_(
@@ -3151,23 +3204,67 @@ function evaluateSeoQuality_(recipe) {
   const ingredients = recipe.ingredients || [];
   const steps = recipe.steps || [];
   const description = String(recipe.description || '').trim();
+  const tags = recipe.tags || [];
+  const related = Array.isArray(recipe.relatedRecipeIds) ? recipe.relatedRecipeIds : null;
+  let score = 0;
 
-  if (!title || title.length < CONFIG.SEO_MIN_TITLE_LEN) {
+  // 20 pts — title quality
+  if (title.length >= 45 && title.length <= 60) {
+    score += 20;
+  } else if (title.length >= CONFIG.SEO_MIN_TITLE_LEN) {
+    score += 10;
+    reasons.push('title length outside 45-60');
+  } else {
     reasons.push('title too short');
   }
-  if (!/^https?:\/\//i.test(image)) {
-    reasons.push('image URL missing/invalid');
-  }
-  if (ingredients.length < CONFIG.SEO_MIN_INGREDIENTS) {
-    reasons.push('not enough ingredients');
-  }
-  if (steps.length < CONFIG.SEO_MIN_STEPS) {
-    reasons.push('not enough steps');
-  }
-  if (description.length < 80) {
+
+  // 20 pts — description quality
+  if (description.length >= 140 && description.length <= 155) {
+    score += 20;
+  } else if (description.length >= 80) {
+    score += 10;
+    reasons.push('description length outside 140-155');
+  } else {
     reasons.push('description too short');
   }
-  return { ok: reasons.length === 0, reasons };
+
+  // 20 pts — ingredients/steps quality
+  let structPts = 0;
+  if (ingredients.length >= CONFIG.SEO_MIN_INGREDIENTS) structPts += 10;
+  else reasons.push('not enough ingredients');
+  if (steps.length >= CONFIG.SEO_MIN_STEPS) structPts += 10;
+  else reasons.push('not enough steps');
+  score += structPts;
+
+  // 15 pts — tags quality
+  if (tags.length >= 5 && tags.length <= 8) {
+    score += 15;
+  } else if (tags.length >= 2) {
+    score += 8;
+    reasons.push('tags count outside 5-8');
+  } else {
+    reasons.push('not enough tags');
+  }
+
+  // 15 pts — image quality
+  if (/^https?:\/\//i.test(image)) {
+    score += 15;
+  } else {
+    reasons.push('image URL missing/invalid');
+  }
+
+  // 10 pts — related links
+  if (related === null) {
+    score += 10;
+  } else if (related.length >= 1) {
+    score += 10;
+  } else {
+    reasons.push('no related links');
+  }
+
+  if (score < 0) score = 0;
+  if (score > 100) score = 100;
+  return { ok: score >= 70, reasons, score };
 }
 
 function attachAutoRelatedRecipeIds_(recipes, maxRel) {
@@ -3202,20 +3299,34 @@ function runSeoAuditPreview() {
     const sheet = getRecipesSheetOrThrow_();
     const payload = buildExportPayload_(sheet);
     const recipes = payload.recipes || [];
+    const ranked = rankPagesToImprove_(recipes);
     let weakDesc = 0;
     let weakSteps = 0;
+    let totalScore = 0;
+    let lowScoreCount = 0;
     recipes.forEach((r) => {
       if (String(r.description || '').length < 110) weakDesc++;
       if ((r.steps || []).length < CONFIG.SEO_MIN_STEPS) weakSteps++;
+      const q = evaluateSeoQuality_(r);
+      totalScore += Number(q.score || 0);
+      if (Number(q.score || 0) < 70) lowScoreCount++;
     });
+    const avgScore = recipes.length ? Math.round(totalScore / recipes.length) : 0;
     const msg =
       'Audit SEO export\n\n' +
       'Recettes exportées: ' +
       recipes.length +
+      '\nSEO score moyen: ' +
+      avgScore +
+      '/100' +
+      '\nPages < 70/100: ' +
+      lowScoreCount +
       '\nDescriptions courtes: ' +
       weakDesc +
       '\nRecettes avec peu d’étapes: ' +
       weakSteps +
+      '\nPages à améliorer (top): ' +
+      ranked.length +
       '\n\nVoir AutomationLog pour les détails SEO gate.';
     SpreadsheetApp.getUi().alert(msg);
     logAutomation_(CONFIG.LOG_LEVEL_INFO, 'runSeoAuditPreview', msg.replace(/\n/g, ' | '));

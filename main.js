@@ -425,6 +425,7 @@
       banner.setAttribute("aria-live", "polite");
       banner.setAttribute("aria-label", "Install app");
       banner.hidden = true;
+      banner.setAttribute("aria-hidden", "true");
       banner.innerHTML =
         '<p class="pwa-install-banner__text">Install Akkous for faster access and offline support.</p>' +
         '<div class="pwa-install-banner__actions">' +
@@ -436,15 +437,17 @@
       closeBtn = banner.querySelector("#pwa-install-close");
       closeBtn.addEventListener("click", function () {
         banner.hidden = true;
+        banner.setAttribute("aria-hidden", "true");
         localStorage.setItem(DISMISS_KEY, String(Date.now()));
       });
       installBtn.addEventListener("click", function () {
         if (!deferredPrompt) return;
-        deferredPrompt.prompt();
-        deferredPrompt.userChoice.finally(function () {
-          deferredPrompt = null;
-          banner.hidden = true;
-        });
+        banner.hidden = true;
+        banner.setAttribute("aria-hidden", "true");
+        var promptEvent = deferredPrompt;
+        deferredPrompt = null;
+        promptEvent.prompt();
+        promptEvent.userChoice.finally(function () {});
       });
     }
 
@@ -454,10 +457,14 @@
       if (!canShowBanner()) return;
       ensureBanner();
       banner.hidden = false;
+      banner.setAttribute("aria-hidden", "false");
     });
 
     window.addEventListener("appinstalled", function () {
-      if (banner) banner.hidden = true;
+      if (banner) {
+        banner.hidden = true;
+        banner.setAttribute("aria-hidden", "true");
+      }
       localStorage.removeItem(DISMISS_KEY);
     });
   }

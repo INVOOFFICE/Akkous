@@ -23,6 +23,7 @@ If the script is standalone (not bound to the sheet), set `CONFIG.SHEET_ID`.
 |------|------|
 | `code.gs` | Core logic (`CONFIG`, menu actions, API calls, export pipeline, triggers). |
 | `AutomationDashboard.html` | Optional sidebar/report UI file for the Apps Script project. |
+| `llms.txt` | Generated file listing all published recipes for AI search engines (ChatGPT, Perplexity, Google AI Overviews). Pushed automatically with each GitHub commit. |
 
 ---
 
@@ -30,7 +31,7 @@ If the script is standalone (not bound to the sheet), set `CONFIG.SHEET_ID`.
 
 Expected columns (auto-created if needed):
 
-`ID`, `Title`, `Category`, `Origin`, `Image URL`, `Ingredients`, `Instructions`, `Tags`, `Publish Date`, `Status`, `Slug`, `YouTube`, `Added Date`.
+`ID`, `Title`, `Category`, `Origin`, `Image URL`, `Ingredients`, `Instructions`, `Tags`, `Publish Date`, `Status`, `Slug`, `YouTube`, `Added Date`, `MetaDescription`.
 
 - `Status` flow: `SCHEDULED` -> `PUBLISHED` when publish date/time is reached.
 - GitHub export typically includes `PUBLISHED` rows only.
@@ -42,7 +43,7 @@ Expected columns (auto-created if needed):
 Main actions include:
 - fetch/import recipes;
 - mark scheduled rows as published;
-- export and push `recipes.json` + `sitemap.xml`;
+- export and push `recipes.json` + `sitemap.xml` + `llms.txt`;
 - install/remove triggers;
 - run optional SEO/newsletter/indexing helpers;
 - run Groq enrichment on selected or scheduled rows.
@@ -71,9 +72,28 @@ After major script edits, reinstall triggers to refresh handlers.
 | `RECIPE_CONTENT_LANGUAGE` | Must stay `en` for English-only output. |
 | `CATEGORIES` | Fallback category list; API taxonomy cache is also supported. |
 | `GITHUB_*` | Repository/branch/file paths for export commits. |
+| `GITHUB_LLMS_FILE` | Path in repo for the llms.txt file (AI search engines). |
 | `SEO_QUALITY_GATE_ENABLED` | SEO warnings gate (non-blocking mode currently). |
 
 Store secrets in Script Properties instead of hardcoding.
+
+---
+
+## Groq SEO output contract
+
+Groq enrichment uses strict English output and valid JSON only.
+
+Expected JSON keys from `callGroqForRecipeSeo_()`:
+- `title` (45-60 chars target)
+- `metaDescription` (140-155 chars target)
+- `instructions` (numbered steps)
+- `tags` (5-8 tags)
+- `hook` (1-2 sentences, max 180 chars)
+- `tip` (1 pro tip, max 160 chars)
+
+If optional fields are missing, the script falls back safely:
+- missing/invalid `metaDescription` -> heuristic `buildSeoDescription_()`
+- missing `hook`/`tip` -> ignored (no pipeline break)
 
 ---
 
@@ -93,10 +113,36 @@ Store secrets in Script Properties instead of hardcoding.
 
 1. Fetch meal data from TheMealDB (English source).
 2. Convert meal payloads into rows (`mealToRow_`).
-3. Optionally enrich title/instructions/tags with Groq (`RECIPE_CONTENT_LANGUAGE: 'en'`).
+3. Optionally enrich title/instructions/tags/metaDescription with Groq (`RECIPE_CONTENT_LANGUAGE: 'en'`).
 4. Mark scheduled rows as published based on publish date.
 5. Build export payload with site metadata + recipes.
 6. Push `recipes.json` and `sitemap.xml` to GitHub.
+6b. Build `llms.txt` (AI search engines index) from published recipes list.
+
+During export, `description` in `recipes.json` uses:
+1) `MetaDescription` sheet value if valid (140-155 chars), else
+2) heuristic fallback description.
+
+---
+
+## SEO scoring model
+
+`evaluateSeoQuality_()` returns `ok`, `reasons`, and `score` (0-100).
+
+Weighted score:
+- Title quality: 20 pts
+- Description quality: 20 pts
+- Ingredients/steps quality: 20 pts
+- Tags quality: 15 pts
+- Image quality: 15 pts
+- Related links: 10 pts
+
+`runSeoAuditPreview()` now reports:
+- average SEO score,
+- number of pages below 70/100,
+- plus existing quality counters.
+
+`rankPagesToImprove_()` uses this score while preserving `issues/reasons` compatibility.
 
 ---
 
