@@ -1776,6 +1776,7 @@
     var canon = document.querySelector('link[rel="canonical"]');
     var url =
       canon && canon.href ? canon.href : window.location.href;
+    var ingredients = Array.isArray(recipe.ingredients) ? recipe.ingredients : [];
 
     var xBtn = $("#share-x");
     if (xBtn) {
@@ -1806,6 +1807,24 @@
           "_blank",
           "noopener,noreferrer,width=750,height=550"
         );
+      });
+    }
+
+    var whatsappBtn = $("#share-whatsapp");
+    if (whatsappBtn) {
+      whatsappBtn.addEventListener("click", function () {
+        var ingredientsText = ingredients.length
+          ? ingredients.map(function (item) { return "- " + item; }).join("\n")
+          : "- (No ingredients listed)";
+        var message =
+          "Try this recipe: " +
+          title +
+          "\n\nIngredients:\n" +
+          ingredientsText +
+          "\n\nLink: " +
+          url;
+        var waUrl = "https://wa.me/?text=" + encodeURIComponent(message);
+        window.open(waUrl, "_blank", "noopener,noreferrer");
       });
     }
 

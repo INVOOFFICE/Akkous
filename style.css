@@ -442,6 +442,18 @@ input:focus-visible {
 }
 
 @media (max-width: 959px) {
+  .nav__toggle {
+    display: none;
+  }
+
+  .nav__panel,
+  .nav__panel[aria-hidden="true"],
+  .nav__panel[aria-hidden="false"] {
+    display: contents;
+    border: none;
+    padding: 0;
+  }
+
   .nav {
     flex-wrap: wrap;
   }
