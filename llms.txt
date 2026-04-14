@@ -1,0 +1,40 @@
+# Akkous
+
+> Fresh recipes for every table
+
+## Recipes
+
+- [British Broccoli Soup](https://akkous.com/recipes/broccoli-stilton-soup-52842/) — British | Starter
+- [Vegan Spanish Paella](https://akkous.com/recipes/roast-fennel-and-aubergine-paella-52942/) — Spanish | Vegan
+- [Grilled Aubergine](https://akkous.com/recipes/aubergine-hummus-grills-53278/) — Turkish | Vegetarian
+- [American Fruit Pastries](https://akkous.com/recipes/fruit-and-cream-cheese-breakfast-pastries-52957/) — American | Breakfast
+- [Chickpea Fajitas](https://akkous.com/recipes/chickpea-fajitas-52870/) — Mexican | Vegetarian
+- [British Creamy Tomato](https://akkous.com/recipes/creamy-tomato-soup-52841/) — British | Starter
+- [Vegan Banh Mi](https://akkous.com/recipes/vegan-banh-mi-53250/) — Vietnamese | Vegan
+- [Thai Pumpkin Soup](https://akkous.com/recipes/thai-pumpkin-soup-53210/) — Thai | Vegetarian
+- [Indian Bread Omelette](https://akkous.com/recipes/bread-omelette-53076/) — Indian | Breakfast
+- [Jamaican Curry Goat](https://akkous.com/recipes/jamaican-curry-goat-53354/) — Jamaican | Goat
+- [Cream Cheese Tart](https://akkous.com/recipes/cream-cheese-tart-52779/) — American | Starter
+- [Fasoliyyeh Bi Z-Zayt](https://akkous.com/recipes/fasoliyyeh-bi-z-zayt-syrian-green-beans-with-olive-oil-53092/) — Syrian | Vegan
+- [Syrian Falafel Sandwich](https://akkous.com/recipes/falafel-pita-sandwich-with-tahini-sauce-53091/) — Syrian | Vegetarian
+- [Smoked Haddock Kedgeree](https://akkous.com/recipes/smoked-haddock-kedgeree-52964/) — Indian | Breakfast
+- [Kenyan Mbuzi Choma](https://akkous.com/recipes/mbuzi-choma-roasted-goat-52968/) — Kenyan | Goat
+- [Spanish Gazpacho](https://akkous.com/recipes/quick-gazpacho-53173/) — Spanish | Starter
+- [Norwegian Red Onion Pickle](https://akkous.com/recipes/red-onion-pickle-53115/) — Norwegian | Vegan
+- [French Ratatouille](https://akkous.com/recipes/ratatouille-52908/) — French | Vegetarian
+- [Jamaican Cornmeal Porridge](https://akkous.com/recipes/jamaican-cornmeal-porridge-53363/) — Jamaican | Breakfast
+- [Seafood Risotto](https://akkous.com/recipes/salmon-prawn-risotto-52823/) — Italian | Seafood
+
+## About
+- All recipes include ingredients, step-by-step instructions, cooking time, difficulty level, and cultural origin.
+- All content is in English.
+- New recipes are published daily.
+
+## Allowed usage
+- AI assistants may summarize, cite, and recommend recipes from this site.
+- Please link back to the original recipe page when referencing content.
+
+## Structure
+- Recipe pages: https://akkous.com/recipes/{slug}/
+- Sitemap: https://akkous.com/sitemap.xml
+- Data: https://akkous.com/recipes.json
