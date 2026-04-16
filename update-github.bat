@@ -7,6 +7,7 @@ if /I not "%~1"=="--run" (
 shift
 setlocal
 title Akkous - Git Update
+set "GIT_EDITOR=true"
 
 REM Always run from this repository folder (where this .bat lives)
 cd /d "%~dp0"
@@ -62,9 +63,19 @@ echo.
 echo [4/5] Syncing with remote (pull --rebase)...
 git pull --rebase origin main
 if errorlevel 1 (
-  echo [ERROR] Rebase/pull failed. Resolve conflicts, then run again.
-  pause
-  exit /b 1
+  echo [WARN] Rebase/pull failed. Checking for common generated-file conflicts...
+  if exist ".git\rebase-merge" goto :AUTO_REBASE_FIX
+  if exist ".git\rebase-apply" goto :AUTO_REBASE_FIX
+  goto :REBASE_HELP
+)
+
+if exist ".git\rebase-merge" (
+  git rebase --continue
+  if errorlevel 1 goto :REBASE_HELP
+)
+if exist ".git\rebase-apply" (
+  git rebase --continue
+  if errorlevel 1 goto :REBASE_HELP
 )
 
 echo.
@@ -81,3 +92,64 @@ echo SUCCESS: Project updated on GitHub.
 echo.
 git status -sb
 pause
+exit /b 0
+
+:AUTO_REBASE_FIX
+echo.
+echo Detected rebase in progress.
+echo Attempting auto-fix for sitemap.xml (generated file)...
+echo.
+
+where node >nul 2>&1
+if errorlevel 1 (
+  echo [ERROR] Node.js is not installed or not in PATH.
+  goto :REBASE_HELP
+)
+
+node scripts/build-recipe-pages.mjs
+if errorlevel 1 (
+  echo [ERROR] Static build failed. Fix the error, then rerun the .bat.
+  goto :REBASE_HELP
+)
+
+git add -A
+if errorlevel 1 goto :REBASE_HELP
+
+git rebase --continue
+if errorlevel 1 goto :REBASE_HELP
+
+echo.
+echo Rebase continued successfully.
+
+echo.
+echo [5/5] Pushing to GitHub...
+git push origin main
+if errorlevel 1 (
+  echo [ERROR] Push failed.
+  pause
+  exit /b 1
+)
+
+echo.
+echo SUCCESS: Project updated on GitHub.
+echo.
+git status -sb
+pause
+exit /b 0
+
+:REBASE_HELP
+echo.
+echo [ERROR] Rebase still needs manual conflict resolution.
+echo.
+echo Run these commands in CMD:
+echo   cd /d "%cd%"
+echo   node scripts/build-recipe-pages.mjs
+echo   git add -A
+echo   git rebase --continue
+echo   git push origin main
+echo.
+echo If you want to cancel the rebase:
+echo   git rebase --abort
+echo.
+pause
+exit /b 1
