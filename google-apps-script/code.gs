@@ -286,6 +286,8 @@ function onOpen() {
       .addItem('⑮ Export Pinterest (Title/Image/Ingredients/URL)', 'buildPinterestExportSheet')
       .addItem('⑯ Enrichir SEO (Groq) — lignes sélectionnées (Recipes)', 'runGroqSeoEnrichSelectedRows')
       .addItem('⑰ Enrichir SEO (Groq) — toutes les SCHEDULED (option avancée)', 'runGroqSeoEnrichAllScheduled')
+      .addItem('⑱ Imageexport', 'buildImageExportSheet')
+      .addItem('⑲ Videoexport', 'buildVideoExportSheet')
       .addToUi();
   } catch (e) {
     Logger.log('onOpen: %s', e);
@@ -2553,6 +2555,100 @@ function buildPinterestExportSheet() {
 
   SpreadsheetApp.getUi().alert(
     'Export Pinterest prêt : ' + out.length + ' ligne(s) dans "' + exportSheetName + '".'
+  );
+}
+
+/**
+ * Crée / met à jour la feuille "Imageexport" depuis "Recipes":
+ * Title | Image URL
+ */
+function buildImageExportSheet() {
+  const exportSheetName = 'Imageexport';
+  const ss = getSpreadsheet_();
+  const src = getRecipesSheetOrThrow_();
+
+  let dst = ss.getSheetByName(exportSheetName);
+  if (!dst) {
+    dst = ss.insertSheet(exportSheetName);
+  } else {
+    dst.clearContents();
+  }
+
+  const header = ['Title', 'Image URL'];
+  dst.getRange(1, 1, 1, header.length).setValues([header]);
+  dst.getRange(1, 1, 1, header.length).setFontWeight('bold');
+  dst.setFrozenRows(1);
+
+  const last = src.getLastRow();
+  if (last < 2) {
+    SpreadsheetApp.getUi().alert('Aucune donnée dans Recipes.');
+    return;
+  }
+
+  const values = src.getRange(2, 1, last - 1, CONFIG.HEADERS.length).getValues();
+  const out = [];
+  for (let i = 0; i < values.length; i++) {
+    const row = values[i];
+    const title = String(row[CONFIG.COL.TITLE - 1] || '').trim();
+    const imageUrl = String(row[CONFIG.COL.IMAGE - 1] || '').trim();
+    if (!imageUrl) continue;
+    out.push([title, imageUrl]);
+  }
+
+  if (out.length > 0) {
+    dst.getRange(2, 1, out.length, header.length).setValues(out);
+    dst.autoResizeColumns(1, header.length);
+  }
+
+  SpreadsheetApp.getUi().alert(
+    'Imageexport prêt : ' + out.length + ' ligne(s) dans "' + exportSheetName + '".'
+  );
+}
+
+/**
+ * Crée / met à jour la feuille "Videoexport" depuis "Recipes":
+ * Title | YouTube
+ */
+function buildVideoExportSheet() {
+  const exportSheetName = 'Videoexport';
+  const ss = getSpreadsheet_();
+  const src = getRecipesSheetOrThrow_();
+
+  let dst = ss.getSheetByName(exportSheetName);
+  if (!dst) {
+    dst = ss.insertSheet(exportSheetName);
+  } else {
+    dst.clearContents();
+  }
+
+  const header = ['Title', 'YouTube'];
+  dst.getRange(1, 1, 1, header.length).setValues([header]);
+  dst.getRange(1, 1, 1, header.length).setFontWeight('bold');
+  dst.setFrozenRows(1);
+
+  const last = src.getLastRow();
+  if (last < 2) {
+    SpreadsheetApp.getUi().alert('Aucune donnée dans Recipes.');
+    return;
+  }
+
+  const values = src.getRange(2, 1, last - 1, CONFIG.HEADERS.length).getValues();
+  const out = [];
+  for (let i = 0; i < values.length; i++) {
+    const row = values[i];
+    const title = String(row[CONFIG.COL.TITLE - 1] || '').trim();
+    const youtube = String(row[CONFIG.COL.YOUTUBE - 1] || '').trim();
+    if (!youtube) continue;
+    out.push([title, youtube]);
+  }
+
+  if (out.length > 0) {
+    dst.getRange(2, 1, out.length, header.length).setValues(out);
+    dst.autoResizeColumns(1, header.length);
+  }
+
+  SpreadsheetApp.getUi().alert(
+    'Videoexport prêt : ' + out.length + ' ligne(s) dans "' + exportSheetName + '".'
   );
 }
 
