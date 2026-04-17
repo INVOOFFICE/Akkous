@@ -269,9 +269,9 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
+        "salmon-eggs-eggs-benedict-52962",
         "bread-omelette-53076",
-        "cream-cheese-tart-52779",
-        "dutch-poffertjes-mini-pancakes-53379"
+        "cream-cheese-tart-52779"
       ]
     },
     {
@@ -897,8 +897,8 @@
       "trending": true,
       "relatedRecipeIds": [
         "bread-omelette-53076",
-        "dutch-poffertjes-mini-pancakes-53379",
-        "fruit-and-cream-cheese-breakfast-pastries-52957"
+        "salmon-eggs-eggs-benedict-52962",
+        "dutch-poffertjes-mini-pancakes-53379"
       ]
     },
     {
@@ -1263,6 +1263,7 @@
       "trending": true,
       "relatedRecipeIds": [
         "cream-cheese-tart-52779",
+        "salmon-eggs-eggs-benedict-52962",
         "smoked-haddock-kedgeree-52964"
       ]
     },
@@ -1497,8 +1498,8 @@
       "trending": true,
       "relatedRecipeIds": [
         "beef-rendang-53053",
-        "chicken-mushroom-hotpot-52846",
-        "broccoli-stilton-soup-52842"
+        "karbonader-lean-beef-patties-with-caramelized-onions-53125",
+        "traditional-croatian-goulash-53057"
       ]
     },
     {
@@ -1740,8 +1741,9 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
+        "traditional-croatian-goulash-53057",
         "corned-beef-hash-53096",
-        "tortang-talong-53075"
+        "karbonader-lean-beef-patties-with-caramelized-onions-53125"
       ]
     },
     {
@@ -1804,9 +1806,9 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
+        "chicken-enchilada-casserole-52765",
         "broccoli-stilton-soup-52842",
-        "corned-beef-hash-53096",
-        "creamy-tomato-soup-52841"
+        "corned-beef-hash-53096"
       ]
     },
     {
@@ -1870,6 +1872,313 @@
         "dutch-poffertjes-mini-pancakes-53379",
         "bread-omelette-53076",
         "broccoli-stilton-soup-52842"
+      ]
+    },
+    {
+      "mealId": "52962",
+      "id": "salmon-eggs-eggs-benedict-52962",
+      "title": "Smoked Salmon Eggs Benedict",
+      "category": "Breakfast",
+      "origin": "American",
+      "image": "https://www.themealdb.com/images/media/meals/1550440197.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/1550440197.jpg",
+      "ingredients": [
+        "4 Eggs",
+        "2 tbs White Wine Vinegar",
+        "2 English Muffins",
+        "To serve Butter",
+        "8 slices Smoked Salmon",
+        "2 tsp Lemon Juice",
+        "2 tsp White Wine Vinegar",
+        "3 Yolkes Egg",
+        "125g Unsalted Butter"
+      ],
+      "instructions": "1. Make the Hollandaise sauce by whisking egg yolks with lemon juice and vinegar. 2. Poach eggs in simmering water with vinegar. 3. Toast and butter English muffins, then top with smoked salmon, eggs, and Hollandaise sauce.",
+      "steps": [
+        "Make the Hollandaise sauce by whisking egg yolks with lemon juice and vinegar.",
+        "2. Poach eggs in simmering water with vinegar.",
+        "3. Toast and butter English muffins, then top with smoked salmon, eggs, and Hollandaise sauce."
+      ],
+      "description": "Smoked Salmon Eggs Benedict (American) — easy breakfast recipe with 9 ingredients and 3 steps. Includes exact ingredients and clear instructions.",
+      "tags": [
+        "Breakfast",
+        "Brunch",
+        "Smoked Salmon",
+        "Eggs Benedict",
+        "English Muffins",
+        "Seafood",
+        "Recipe",
+        "Delicious",
+        "American",
+        "Smoked"
+      ],
+      "datePublished": "2026-04-16",
+      "publishDate": "2026-04-16T09:00:00",
+      "addedDate": "2026-04-15T04:06:55",
+      "status": "PUBLISHED",
+      "slug": "salmon-eggs-eggs-benedict-52962",
+      "youtube": "https://www.youtube.com/watch?v=Woiiet4vQ58",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "",
+      "prepTime": "",
+      "totalTime": "",
+      "servings": 4,
+      "difficulty": "Easy",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "fruit-and-cream-cheese-breakfast-pastries-52957",
+        "smoked-haddock-kedgeree-52964",
+        "bread-omelette-53076"
+      ]
+    },
+    {
+      "mealId": "53057",
+      "id": "traditional-croatian-goulash-53057",
+      "title": "Hearty Croatian Beef Stew",
+      "category": "Beef",
+      "origin": "Croatian",
+      "image": "https://www.themealdb.com/images/media/meals/n1hcou1628770088.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/n1hcou1628770088.jpg",
+      "ingredients": [
+        "500g Beef",
+        "2 chopped Onions",
+        "2 chopped Carrots",
+        "2 cloves Garlic",
+        "2 Bay Leaf",
+        "200ml Red Wine",
+        "2 Litres Water",
+        "3 tbs Mustard",
+        "1tbsp Salt",
+        "1/2 tsp Pepper",
+        "1/2 tsp Paprika",
+        "2 tbs Vegetable Oil"
+      ],
+      "instructions": "1. Cut beef into 3x3 cm pieces and marinate in mustard and spices for 1 hour.,2. Fry the meat in oil until browned, then set aside.,3. Cook onions and carrots over low heat for 15 minutes.,4. Add meat, bay leaves, garlic, and wine, simmering for 10-15 minutes.,5. Add liquid, cover, and cook over low heat for 1 hour, stirring occasionally.,6. Add remaining water and cook for 30-45 minutes.",
+      "steps": [
+        "Cut beef into 3x3 cm pieces and marinate in mustard and spices for 1 hour.,2.",
+        "Fry the meat in oil until browned, then set aside.,3.",
+        "Cook onions and carrots over low heat for 15 minutes.,4.",
+        "Add meat, bay leaves, garlic, and wine, simmering for 10-15 minutes.,5.",
+        "Add liquid, cover, and cook over low heat for 1 hour, stirring occasionally.,6.",
+        "Add remaining water and cook for 30-45 minutes."
+      ],
+      "description": "Hearty Croatian Beef Stew (Croatian) — easy beef recipe with 12 ingredients and 6 steps. Ready in 52 min. Includes exact ingredients and clear instructions.",
+      "tags": [
+        "Beef Stew",
+        "Croatian Cuisine",
+        "Hearty Meals",
+        "Soup",
+        "Stew Recipes",
+        "European Food",
+        "Comfort Food",
+        "Winter Meals",
+        "Beef",
+        "Croatian"
+      ],
+      "datePublished": "2026-04-16",
+      "publishDate": "2026-04-16T09:00:00",
+      "addedDate": "2026-04-15T04:06:55",
+      "status": "PUBLISHED",
+      "slug": "traditional-croatian-goulash-53057",
+      "youtube": "https://www.youtube.com/watch?v=ipEz5u2T7KM",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "52 min",
+      "prepTime": "23 min",
+      "totalTime": "75 min",
+      "servings": 4,
+      "difficulty": "Medium",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "beef-rendang-53053",
+        "karbonader-lean-beef-patties-with-caramelized-onions-53125",
+        "corned-beef-hash-53096"
+      ]
+    },
+    {
+      "mealId": "52765",
+      "id": "chicken-enchilada-casserole-52765",
+      "title": "Chicken Enchilada Bake",
+      "category": "Chicken",
+      "origin": "Mexican",
+      "image": "https://www.themealdb.com/images/media/meals/qtuwxu1468233098.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/qtuwxu1468233098.jpg",
+      "ingredients": [
+        "14 oz jar Enchilada sauce",
+        "3 Cups shredded Monterey Jack cheese",
+        "6 corn tortillas",
+        "2 chicken breasts"
+      ],
+      "instructions": "1. Cook chicken in Enchilada sauce on low heat for 20 minutes. 2. Shred the chicken with two forks. 3. Preheat oven to 375 F degrees. 4. Layer tortillas, chicken, sauce, and cheese in a baking dish. 5. Bake for 20 to 30 minutes uncovered.",
+      "steps": [
+        "Cook chicken in Enchilada sauce on low heat for 20 minutes.",
+        "2. Shred the chicken with two forks.",
+        "3. Preheat oven to 375 F degrees.",
+        "4. Layer tortillas, chicken, sauce, and cheese in a baking dish.",
+        "5. Bake for 20 to 30 minutes uncovered."
+      ],
+      "description": "Chicken Enchilada Bake (Mexican) — easy chicken recipe with 4 ingredients and 5 steps. Ready in 35 min. Includes exact ingredients and clear instructions.",
+      "tags": [
+        "Mexican Food",
+        "Casserole",
+        "Chicken Recipes",
+        "Easy Dinner",
+        "Cheese",
+        "Chicken",
+        "Mexican",
+        "Enchilada"
+      ],
+      "datePublished": "2026-04-16",
+      "publishDate": "2026-04-16T09:00:00",
+      "addedDate": "2026-04-15T04:06:55",
+      "status": "PUBLISHED",
+      "slug": "chicken-enchilada-casserole-52765",
+      "youtube": "https://www.youtube.com/watch?v=EtVkwVKLc_M",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "35 min",
+      "prepTime": "15 min",
+      "totalTime": "50 min",
+      "servings": 4,
+      "difficulty": "Easy",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "chicken-mushroom-hotpot-52846",
+        "chickpea-fajitas-52870"
+      ]
+    },
+    {
+      "mealId": "53293",
+      "id": "pistachio-cake-53293",
+      "title": "Pistachio Raspberry Cake",
+      "category": "Dessert",
+      "origin": "Polish",
+      "image": "https://www.themealdb.com/images/media/meals/xvgpng1764121726.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/xvgpng1764121726.jpg",
+      "ingredients": [
+        "250g Butter",
+        "200g Pistachio",
+        "80g Plain Flour",
+        "1 tsp Baking Powder",
+        "225g Caster Sugar",
+        "4 Egg",
+        "1 tsp Vanilla Extract",
+        "100g Icing Sugar",
+        "250g Mascarpone",
+        "200ml Double Cream",
+        "100g Pistachio Paste",
+        "400g Raspberries",
+        "1 Unwaxed Lime"
+      ],
+      "instructions": "1. Preheat the oven to 180C/160C fan/gas 4 and prepare a 23cm springform cake tin.,2. Mix the ground pistachios, flour, baking powder, and salt in a bowl.,3. Beat the butter and sugar until fluffy, then add eggs one at a time, beating well after each addition.",
+      "steps": [
+        "Preheat the oven to 180C/160C fan/gas 4 and prepare a 23cm springform cake tin.,2.",
+        "Mix the ground pistachios, flour, baking powder, and salt in a bowl.,3.",
+        "Beat the butter and sugar until fluffy, then add eggs one at a time, beating well after each addition."
+      ],
+      "description": "Pistachio Raspberry Cake (Polish) — easy dessert recipe with 13 ingredients and 3 steps. Includes exact ingredients and clear instructions.",
+      "tags": [
+        "cake",
+        "pistachio",
+        "raspberry",
+        "mascarpone",
+        "dessert",
+        "polish",
+        "baking",
+        "creamy"
+      ],
+      "datePublished": "2026-04-16",
+      "publishDate": "2026-04-16T09:00:00",
+      "addedDate": "2026-04-15T04:06:55",
+      "status": "PUBLISHED",
+      "slug": "pistachio-cake-53293",
+      "youtube": "https://www.youtube.com/watch?v=ACpikfieDP0",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "",
+      "prepTime": "",
+      "totalTime": "",
+      "servings": 4,
+      "difficulty": "Easy",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "creamy-tomato-soup-52841"
+      ]
+    },
+    {
+      "mealId": "53125",
+      "id": "karbonader-lean-beef-patties-with-caramelized-onions-53125",
+      "title": "Norwegian Beef Patties with Caramelized Onions",
+      "category": "Beef",
+      "origin": "Norwegian",
+      "image": "https://www.themealdb.com/images/media/meals/0bpjb11763075817.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/0bpjb11763075817.jpg",
+      "ingredients": [
+        "2 Onion",
+        "1 tablespoon Butter",
+        "1 lb Ground Beef",
+        "1/2 teaspoon Salt",
+        "1/2 teaspoon Pepper",
+        "1/2 teaspoon Nutmeg",
+        "1/2 tbs Cornstarch",
+        "50 ml Water",
+        "2 tblsp Butter"
+      ],
+      "instructions": "1. Grate half an onion and set aside.,2. Slice the rest of the onions and fry in butter on low/medium heat until caramelized.,3. Mix together ground beef, grated onion, salt, pepper, nutmeg, cornstarch, and water in a bowl.,4. Form into a sausage and cut 6 patties, making a light grid pattern in each patty.,5. Brown both sides of the patties in butter on high heat, then turn down to low heat and fry for another 2 – 3 minutes.",
+      "steps": [
+        "Grate half an onion and set aside.,2.",
+        "Slice the rest of the onions and fry in butter on low/medium heat until caramelized.,3.",
+        "Mix together ground beef, grated onion, salt, pepper, nutmeg, cornstarch, and water in a bowl.,4.",
+        "Form into a sausage and cut 6 patties, making a light grid pattern in each patty.,5.",
+        "Brown both sides of the patties in butter on high heat, then turn down to low heat and fry for another 2 – 3 minutes."
+      ],
+      "description": "Norwegian Beef Patties with Caramelized Onions (Norwegian) — easy beef recipe with 9 ingredients and 5 steps. Ready in 10 min. Includes exact ingredients a…",
+      "tags": [
+        "Norwegian cuisine",
+        "beef patties",
+        "caramelized onions",
+        "lean beef",
+        "traditional recipes",
+        "European dishes",
+        "comfort food",
+        "dinner ideas",
+        "Beef",
+        "Norwegian"
+      ],
+      "datePublished": "2026-04-16",
+      "publishDate": "2026-04-16T09:00:00",
+      "addedDate": "2026-04-15T04:06:55",
+      "status": "PUBLISHED",
+      "slug": "karbonader-lean-beef-patties-with-caramelized-onions-53125",
+      "youtube": "https://www.youtube.com/watch?v=HDWgGMJqvgw",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "10 min",
+      "prepTime": "10 min",
+      "totalTime": "3 min",
+      "servings": 4,
+      "difficulty": "Easy",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "traditional-croatian-goulash-53057",
+        "beef-rendang-53053",
+        "corned-beef-hash-53096"
       ]
     }
   ]

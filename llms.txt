@@ -34,6 +34,11 @@
 - [Delicious Beef Rendang](https://akkous.com/recipes/beef-rendang-53053/) — Malaysian | Beef
 - [Hearty Chicken Mushroom Hotpot](https://akkous.com/recipes/chicken-mushroom-hotpot-52846/) — British | Chicken
 - [Hearty Dutch Stamppot](https://akkous.com/recipes/stamppot-52980/) — Dutch | Pork
+- [Smoked Salmon Eggs Benedict](https://akkous.com/recipes/salmon-eggs-eggs-benedict-52962/) — American | Breakfast
+- [Hearty Croatian Beef Stew](https://akkous.com/recipes/traditional-croatian-goulash-53057/) — Croatian | Beef
+- [Chicken Enchilada Bake](https://akkous.com/recipes/chicken-enchilada-casserole-52765/) — Mexican | Chicken
+- [Pistachio Raspberry Cake](https://akkous.com/recipes/pistachio-cake-53293/) — Polish | Dessert
+- [Norwegian Beef Patties with Caramelized Onions](https://akkous.com/recipes/karbonader-lean-beef-patties-with-caramelized-onions-53125/) — Norwegian | Beef
 
 ## About
 - All recipes include ingredients, step-by-step instructions, cooking time, difficulty level, and cultural origin.
