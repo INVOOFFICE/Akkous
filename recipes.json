@@ -1263,9 +1263,9 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
+        "venetian-duck-ragu-52838",
         "fettucine-alfredo-52835",
-        "cream-cheese-tart-52779",
-        "salmon-eggs-eggs-benedict-52962"
+        "cream-cheese-tart-52779"
       ]
     },
     {
@@ -1560,8 +1560,8 @@
       "trending": true,
       "relatedRecipeIds": [
         "fettucine-alfredo-52835",
-        "syrian-rice-with-meat-53095",
-        "falafel-pita-sandwich-with-tahini-sauce-53091"
+        "venetian-duck-ragu-52838",
+        "syrian-rice-with-meat-53095"
       ]
     },
     {
@@ -1870,9 +1870,9 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
+        "barbecue-pork-buns-53242",
         "dutch-poffertjes-mini-pancakes-53379",
-        "beef-wellington-52803",
-        "bread-omelette-53076"
+        "beef-wellington-52803"
       ]
     },
     {
@@ -2119,7 +2119,7 @@
       "relatedRecipeIds": [
         "polskie-nalesniki-polish-pancakes-53022",
         "battenberg-cake-52894",
-        "jamaican-sweet-potato-pudding-53344"
+        "jam-roly-poly-52890"
       ]
     },
     {
@@ -2390,9 +2390,9 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
+        "jam-roly-poly-52890",
         "pistachio-cake-53293",
-        "jamaican-sweet-potato-pudding-53344",
-        "polskie-nalesniki-polish-pancakes-53022"
+        "jamaican-sweet-potato-pudding-53344"
       ]
     },
     {
@@ -2456,9 +2456,9 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
+        "lamb-tagine-52843",
         "hot-cumin-lamb-wrap-with-crunchy-slaw-spicy-mayo-53258",
-        "lamb-pilaf-plov-53083",
-        "lamb-biryani-52805"
+        "lamb-pilaf-plov-53083"
       ]
     },
     {
@@ -2703,8 +2703,8 @@
       "trending": true,
       "relatedRecipeIds": [
         "pistachio-cake-53293",
-        "jamaican-sweet-potato-pudding-53344",
-        "battenberg-cake-52894"
+        "jam-roly-poly-52890",
+        "jamaican-sweet-potato-pudding-53344"
       ]
     },
     {
@@ -2772,7 +2772,7 @@
       "relatedRecipeIds": [
         "hot-cumin-lamb-wrap-with-crunchy-slaw-spicy-mayo-53258",
         "lamb-pilaf-plov-53083",
-        "spanish-style-slow-cooked-lamb-shoulder-beans-53175"
+        "lamb-tagine-52843"
       ]
     },
     {
@@ -2838,7 +2838,7 @@
       "relatedRecipeIds": [
         "syrian-rice-with-meat-53095",
         "duck-confit-52907",
-        "beef-rendang-53053"
+        "syrian-bread-53089"
       ]
     },
     {
@@ -3033,9 +3033,9 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
+        "jam-roly-poly-52890",
         "polskie-nalesniki-polish-pancakes-53022",
-        "battenberg-cake-52894",
-        "pistachio-cake-53293"
+        "battenberg-cake-52894"
       ]
     },
     {
@@ -3159,9 +3159,9 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
+        "syrian-bread-53089",
         "chakchouka-52969",
-        "duck-confit-52907",
-        "syrian-spaghetti-53093"
+        "duck-confit-52907"
       ]
     },
     {
@@ -3287,8 +3287,8 @@
       "trending": true,
       "relatedRecipeIds": [
         "battenberg-cake-52894",
-        "jamaican-sweet-potato-pudding-53344",
-        "pistachio-cake-53293"
+        "jam-roly-poly-52890",
+        "jamaican-sweet-potato-pudding-53344"
       ]
     },
     {
@@ -3409,7 +3409,7 @@
       "relatedRecipeIds": [
         "syrian-rice-with-meat-53095",
         "chakchouka-52969",
-        "white-chocolate-creme-brulee-52917"
+        "syrian-bread-53089"
       ]
     },
     {
@@ -3466,9 +3466,330 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
+        "venetian-duck-ragu-52838",
         "syrian-spaghetti-53093",
-        "salmon-prawn-risotto-52823",
-        "creamy-tomato-soup-52841"
+        "salmon-prawn-risotto-52823"
+      ]
+    },
+    {
+      "mealId": "52890",
+      "id": "jam-roly-poly-52890",
+      "title": "Raspberry Jam Roly-Poly Dessert",
+      "category": "Dessert",
+      "origin": "British",
+      "image": "https://www.themealdb.com/images/media/meals/ysqupp1511640538.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/ysqupp1511640538.jpg",
+      "ingredients": [
+        "50g Butter",
+        "250g Self-raising Flour",
+        "1 small Vanilla",
+        "50g Suet",
+        "150ml Milk",
+        "100g Raspberry Jam",
+        "to serve Custard"
+      ],
+      "instructions": "1. Preheat oven to 180C/160C fan/gas 4,2. Prepare a large sheet of foil and greaseproof paper,3. Mix butter, flour, and vanilla seeds in a food processor,4. Combine suet and milk to form a sticky dough,5. Roll out the dough and spread the jam, leaving a gap along one edge,6. Roll up the dough and seal the edges,7. Cook for 1 hour and let it sit for 5 minutes before serving",
+      "steps": [
+        "Preheat oven to 180C/160C fan/gas 4,2.",
+        "Prepare a large sheet of foil and greaseproof paper,3.",
+        "Mix butter, flour, and vanilla seeds in a food processor,4.",
+        "Combine suet and milk to form a sticky dough,5.",
+        "Roll out the dough and spread the jam, leaving a gap along one edge,6.",
+        "Roll up the dough and seal the edges,7.",
+        "Cook for 1 hour and let it sit for 5 minutes before serving"
+      ],
+      "description": "Raspberry Jam Roly-Poly Dessert (British) — easy dessert recipe with 7 ingredients and 7 steps. Ready in 10 min. Includes exact ingredients and clear instr…",
+      "tags": [
+        "British dessert",
+        "raspberry jam",
+        "sweet treats",
+        "traditional recipes",
+        "dessert ideas",
+        "homemade pudding",
+        "classic desserts",
+        "comfort food",
+        "Dessert",
+        "British"
+      ],
+      "datePublished": "2026-04-21",
+      "publishDate": "2026-04-21T09:00:00",
+      "addedDate": "2026-04-19T04:06:54",
+      "status": "PUBLISHED",
+      "slug": "jam-roly-poly-52890",
+      "youtube": "https://www.youtube.com/watch?v=5ZYWVQ8imVA",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "10 min",
+      "prepTime": "10 min",
+      "totalTime": "5 min",
+      "servings": 4,
+      "difficulty": "Medium",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "battenberg-cake-52894",
+        "jamaican-sweet-potato-pudding-53344",
+        "polskie-nalesniki-polish-pancakes-53022"
+      ]
+    },
+    {
+      "mealId": "52843",
+      "id": "lamb-tagine-52843",
+      "title": "Moroccan Lamb Stew",
+      "category": "Lamb",
+      "origin": "Moroccan",
+      "image": "https://www.themealdb.com/images/media/meals/yuwtuu1511295751.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/yuwtuu1511295751.jpg",
+      "ingredients": [
+        "2 tblsp Olive Oil",
+        "1 finely sliced Onion",
+        "2 chopped Carrots",
+        "500g Lamb Leg",
+        "2 cloves minced Garlic",
+        "½ tsp Cumin",
+        "½ tsp Ginger",
+        "¼ tsp Saffron",
+        "1 tsp Cinnamon",
+        "1 tblsp Honey",
+        "100g Apricot",
+        "1 Vegetable Stock Cube",
+        "1 medium chopped Butternut Squash",
+        "Steamed Couscous",
+        "Chopped Parsley"
+      ],
+      "instructions": "1. Heat olive oil in a pan and cook onion and carrot until softened,2. Add lamb, brown it, then stir in garlic and spices,3. Add honey, apricots, and stock cube, then pour in boiling water,4. Simmer for 1 hour, then cook for 30 minutes more with the lid off,5. Stir in butternut squash and cook until tender",
+      "steps": [
+        "Heat olive oil in a pan and cook onion and carrot until softened,2.",
+        "Add lamb, brown it, then stir in garlic and spices,3.",
+        "Add honey, apricots, and stock cube, then pour in boiling water,4.",
+        "Simmer for 1 hour, then cook for 30 minutes more with the lid off,5.",
+        "Stir in butternut squash and cook until tender"
+      ],
+      "description": "Moroccan Lamb Stew (Moroccan) — easy lamb recipe with 15 ingredients and 5 steps. Ready in 20 min. Includes exact ingredients and clear instructions.",
+      "tags": [
+        "lamb stew",
+        "moroccan cuisine",
+        "comfort food",
+        "slow cooking",
+        "one pot meal",
+        "african recipes",
+        "meat dishes",
+        "winter recipes",
+        "Lamb",
+        "Moroccan"
+      ],
+      "datePublished": "2026-04-21",
+      "publishDate": "2026-04-21T09:00:00",
+      "addedDate": "2026-04-19T04:06:54",
+      "status": "PUBLISHED",
+      "slug": "lamb-tagine-52843",
+      "youtube": "https://www.youtube.com/watch?v=bR5Cqu84S_k",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "20 min",
+      "prepTime": "10 min",
+      "totalTime": "30 min",
+      "servings": 4,
+      "difficulty": "Easy",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "spanish-style-slow-cooked-lamb-shoulder-beans-53175",
+        "hot-cumin-lamb-wrap-with-crunchy-slaw-spicy-mayo-53258",
+        "lamb-biryani-52805"
+      ]
+    },
+    {
+      "mealId": "53089",
+      "id": "syrian-bread-53089",
+      "title": "Homemade Syrian Bread",
+      "category": "Miscellaneous",
+      "origin": "Syrian",
+      "image": "https://www.themealdb.com/images/media/meals/54xzk31760524666.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/54xzk31760524666.jpg",
+      "ingredients": [
+        "1 and 1/8 cup Water",
+        "2 tblsp Vegetable Oil",
+        "1/2 teaspoon Sugar",
+        "1 1/2 tsp Salt",
+        "3 Cups Flour",
+        "1 1/2 tsp Yeast"
+      ],
+      "instructions": "1. Place ingredients in the bread machine. 2. Select Dough cycle and press Start. 3. Preheat oven to 475 degrees F. 4. Divide dough into eight pieces and form into rounds. 5. Roll into thin circles and cook on preheated baking sheets",
+      "steps": [
+        "Place ingredients in the bread machine.",
+        "2. Select Dough cycle and press Start.",
+        "3. Preheat oven to 475 degrees F.",
+        "4. Divide dough into eight pieces and form into rounds.",
+        "5. Roll into thin circles and cook on preheated baking sheets"
+      ],
+      "description": "Homemade Syrian Bread (Syrian) — easy miscellaneous recipe with 6 ingredients and 5 steps. Includes exact ingredients and clear instructions.",
+      "tags": [
+        "Syrian bread",
+        "homemade bread",
+        "flatbread",
+        "Middle Eastern recipes",
+        "bread machine recipes",
+        "easy bread",
+        "crispy bread",
+        "soft bread",
+        "Miscellaneous",
+        "Syrian"
+      ],
+      "datePublished": "2026-04-21",
+      "publishDate": "2026-04-21T09:00:00",
+      "addedDate": "2026-04-19T04:06:54",
+      "status": "PUBLISHED",
+      "slug": "syrian-bread-53089",
+      "youtube": "https://www.youtube.com/watch?v=Pjzj0dws0Yk",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "",
+      "prepTime": "",
+      "totalTime": "",
+      "servings": 4,
+      "difficulty": "Easy",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "syrian-rice-with-meat-53095",
+        "chakchouka-52969",
+        "duck-confit-52907"
+      ]
+    },
+    {
+      "mealId": "52838",
+      "id": "venetian-duck-ragu-52838",
+      "title": "Duck Ragu Pasta",
+      "category": "Pasta",
+      "origin": "Italian",
+      "image": "https://www.themealdb.com/images/media/meals/qvrwpt1511181864.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/qvrwpt1511181864.jpg",
+      "ingredients": [
+        "1 tbls Olive Oil",
+        "4 Duck Legs",
+        "2 finely chopped Onions",
+        "2 cloves minced Garlic",
+        "2 tsp ground Cinnamon",
+        "2 tsp Plain Flour",
+        "250ml Red Wine",
+        "800g Chopped Tomatoes",
+        "1 Chicken Stock Cube",
+        "3 sprigs Rosemary",
+        "2 Bay Leaves",
+        "1 tsp Sugar",
+        "2 tbs Milk",
+        "600g Paccheri Pasta",
+        "Grated Parmesan Cheese"
+      ],
+      "instructions": "1. Heat oil in a large pan and brown duck legs on all sides for 10 mins.,2. Add onions and cook until softened, then add garlic and cook for 1 min.,3. Stir in cinnamon and flour, then add wine, tomatoes, stock, herbs, and sugar.,4. Simmer for 2 hrs, then shred the duck meat and add back to the sauce.,5. Cook pasta, then combine with the ragu and top with Parmesan cheese.",
+      "steps": [
+        "Heat oil in a large pan and brown duck legs on all sides for 10 mins.,2.",
+        "Add onions and cook until softened, then add garlic and cook for 1 min.,3.",
+        "Stir in cinnamon and flour, then add wine, tomatoes, stock, herbs, and sugar.,4.",
+        "Simmer for 2 hrs, then shred the duck meat and add back to the sauce.,5.",
+        "Cook pasta, then combine with the ragu and top with Parmesan cheese."
+      ],
+      "description": "Duck Ragu Pasta (Italian) — easy pasta recipe with 15 ingredients and 5 steps. Ready in 10 min. Includes exact ingredients and clear instructions.",
+      "tags": [
+        "pasta",
+        "duck",
+        "Italian",
+        "ragu",
+        "comfort food",
+        "Parmesan",
+        "rosemary",
+        "bay leaves"
+      ],
+      "datePublished": "2026-04-21",
+      "publishDate": "2026-04-21T09:00:00",
+      "addedDate": "2026-04-19T04:06:54",
+      "status": "PUBLISHED",
+      "slug": "venetian-duck-ragu-52838",
+      "youtube": "https://www.youtube.com/watch?v=oWQDVgjB_Lw",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "10 min",
+      "prepTime": "10 min",
+      "totalTime": "11 min",
+      "servings": 4,
+      "difficulty": "Easy",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "fettucine-alfredo-52835",
+        "syrian-spaghetti-53093",
+        "salmon-prawn-risotto-52823"
+      ]
+    },
+    {
+      "mealId": "53242",
+      "id": "barbecue-pork-buns-53242",
+      "title": "Vietnamese Pork Buns",
+      "category": "Pork",
+      "origin": "Vietnamese",
+      "image": "https://www.themealdb.com/images/media/meals/tzsy461763769901.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/tzsy461763769901.jpg",
+      "ingredients": [
+        "85g Sugar",
+        "500g White Bread Mix",
+        "1 tablespoon Sunflower Oil",
+        "12 Bacon",
+        "Knob Ginger",
+        "2 cloves chopped Garlic",
+        "2 tablespoons Soy Sauce",
+        "3  tablespoons Clear Honey",
+        "3  tablespoons Tomato Puree",
+        "1 beaten Egg"
+      ],
+      "instructions": "1. Mix sugar into bread mix, add water, knead for 5 mins. 2. Fry bacon, ginger, garlic, then add soy, honey, tomato purée. 3. Assemble buns, rise for 30 mins, brush with egg, bake for 20 mins",
+      "steps": [
+        "Mix sugar into bread mix, add water, knead for 5 mins.",
+        "2. Fry bacon, ginger, garlic, then add soy, honey, tomato purée.",
+        "3. Assemble buns, rise for 30 mins, brush with egg, bake for 20 mins"
+      ],
+      "description": "Vietnamese Pork Buns (Vietnamese) — easy pork recipe with 10 ingredients and 3 steps. Ready in 38 min. Includes exact ingredients and clear instructions.",
+      "tags": [
+        "pork buns",
+        "Vietnamese food",
+        "barbecue",
+        "Asian recipes",
+        "bread making",
+        "snacks",
+        "meals",
+        "baking",
+        "Pork",
+        "Vietnamese"
+      ],
+      "datePublished": "2026-04-21",
+      "publishDate": "2026-04-21T09:00:00",
+      "addedDate": "2026-04-19T04:06:54",
+      "status": "PUBLISHED",
+      "slug": "barbecue-pork-buns-53242",
+      "youtube": "https://www.youtube.com/watch?v=T3mBULRIcY8",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "38 min",
+      "prepTime": "17 min",
+      "totalTime": "55 min",
+      "servings": 4,
+      "difficulty": "Easy",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "stamppot-52980",
+        "vegan-banh-mi-53250",
+        "battenberg-cake-52894"
       ]
     }
   ]
