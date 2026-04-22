@@ -1026,11 +1026,24 @@
     return true;
   }
 
+  function updateGridHeading() {
+    var heading = $("#grid-heading");
+    if (!heading) return;
+    if (state.activeCategory === "all") {
+      heading.textContent = "All Recipes";
+    } else {
+      var meta = categoryRowMeta(state.activeCategory);
+      heading.textContent = (meta.label || categoryLabel(state.activeCategory)) + " Recipes";
+    }
+  }
+
   function renderGrid() {
     var grid = $("#recipe-grid");
     if (!grid) return;
 
-    var list = state.recipes.filter(matchesFilters);
+    updateGridHeading();
+
+    var list = sortRecipesByPublishDateDesc(state.recipes.filter(matchesFilters));
 
     if (!list.length) {
       var msg =
@@ -1708,11 +1721,16 @@
       .slice(0, 3);
 
     if (!related.length) {
-      related = state.recipes
-        .filter(function (r) {
-          return r.id !== recipe.id;
+      related = sortRecipesByPublishDateDesc(
+        state.recipes.filter(function (r) {
+          return r.id !== recipe.id && r.category === recipe.category;
         })
-        .slice(0, 3);
+      ).slice(0, 3);
+      if (!related.length) {
+        related = sortRecipesByPublishDateDesc(
+          state.recipes.filter(function (r) { return r.id !== recipe.id; })
+        ).slice(0, 3);
+      }
     }
 
     var relRoot = $("#related-grid");
