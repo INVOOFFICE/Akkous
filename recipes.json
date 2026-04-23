@@ -574,7 +574,7 @@
       "relatedRecipeIds": [
         "smoked-haddock-kedgeree-52964",
         "dutch-poffertjes-mini-pancakes-53379",
-        "jamaican-cornmeal-porridge-53363"
+        "home-made-mandazi-52967"
       ]
     },
     {
@@ -959,8 +959,8 @@
       "trending": true,
       "relatedRecipeIds": [
         "jamaican-curry-goat-53354",
-        "lamb-biryani-52805",
-        "battenberg-cake-52894"
+        "home-made-mandazi-52967",
+        "lamb-biryani-52805"
       ]
     },
     {
@@ -1440,7 +1440,7 @@
       "relatedRecipeIds": [
         "bread-omelette-53076",
         "fruit-and-cream-cheese-breakfast-pastries-52957",
-        "jamaican-cornmeal-porridge-53363"
+        "home-made-mandazi-52967"
       ]
     },
     {
@@ -1499,8 +1499,8 @@
       "trending": true,
       "relatedRecipeIds": [
         "beef-wellington-52803",
-        "beef-rendang-53053",
-        "jamaican-beef-patties-52938"
+        "minced-beef-pie-52876",
+        "beef-rendang-53053"
       ]
     },
     {
@@ -1619,7 +1619,7 @@
       "relatedRecipeIds": [
         "aubergine-hummus-grills-53278",
         "ratatouille-52908",
-        "chickpea-fajitas-52870"
+        "sichuan-eggplant-53374"
       ]
     },
     {
@@ -1872,7 +1872,7 @@
       "relatedRecipeIds": [
         "barbecue-pork-buns-53242",
         "dutch-poffertjes-mini-pancakes-53379",
-        "beef-wellington-52803"
+        "minced-beef-pie-52876"
       ]
     },
     {
@@ -1998,9 +1998,9 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
+        "minced-beef-pie-52876",
         "beef-rendang-53053",
-        "jiggs-dinner-53335",
-        "karbonader-lean-beef-patties-with-caramelized-onions-53125"
+        "jiggs-dinner-53335"
       ]
     },
     {
@@ -2119,7 +2119,7 @@
       "relatedRecipeIds": [
         "polskie-nalesniki-polish-pancakes-53022",
         "battenberg-cake-52894",
-        "jam-roly-poly-52890"
+        "christmas-cake-52990"
       ]
     },
     {
@@ -2181,8 +2181,8 @@
       "trending": true,
       "relatedRecipeIds": [
         "jiggs-dinner-53335",
-        "traditional-croatian-goulash-53057",
-        "beef-rendang-53053"
+        "minced-beef-pie-52876",
+        "traditional-croatian-goulash-53057"
       ]
     },
     {
@@ -2254,8 +2254,8 @@
       "trending": true,
       "relatedRecipeIds": [
         "beef-wellington-52803",
-        "beef-rendang-53053",
-        "corned-beef-hash-53096"
+        "minced-beef-pie-52876",
+        "beef-rendang-53053"
       ]
     },
     {
@@ -2390,9 +2390,9 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
+        "christmas-cake-52990",
         "jam-roly-poly-52890",
-        "pistachio-cake-53293",
-        "jamaican-sweet-potato-pudding-53344"
+        "pistachio-cake-53293"
       ]
     },
     {
@@ -2517,6 +2517,7 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
+        "sichuan-eggplant-53374",
         "sweet-and-sour-chicken-53376"
       ]
     },
@@ -2579,7 +2580,7 @@
       "relatedRecipeIds": [
         "beef-rendang-53053",
         "karbonader-lean-beef-patties-with-caramelized-onions-53125",
-        "traditional-croatian-goulash-53057"
+        "minced-beef-pie-52876"
       ]
     },
     {
@@ -2897,9 +2898,9 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
+        "minced-beef-pie-52876",
         "corned-beef-hash-53096",
-        "jamaican-beef-patties-52938",
-        "beef-rendang-53053"
+        "jamaican-beef-patties-52938"
       ]
     },
     {
@@ -3287,8 +3288,8 @@
       "trending": true,
       "relatedRecipeIds": [
         "battenberg-cake-52894",
-        "jam-roly-poly-52890",
-        "jamaican-sweet-potato-pudding-53344"
+        "christmas-cake-52990",
+        "jam-roly-poly-52890"
       ]
     },
     {
@@ -3530,8 +3531,8 @@
       "trending": true,
       "relatedRecipeIds": [
         "battenberg-cake-52894",
-        "jamaican-sweet-potato-pudding-53344",
-        "polskie-nalesniki-polish-pancakes-53022"
+        "christmas-cake-52990",
+        "jamaican-sweet-potato-pudding-53344"
       ]
     },
     {
@@ -3790,6 +3791,326 @@
         "stamppot-52980",
         "vegan-banh-mi-53250",
         "battenberg-cake-52894"
+      ]
+    },
+    {
+      "mealId": "52794",
+      "id": "vegan-chocolate-cake-52794",
+      "title": "Vegan Chocolate Delight Cake",
+      "category": "Vegan",
+      "origin": "American",
+      "image": "https://www.themealdb.com/images/media/meals/qxutws1486978099.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/qxutws1486978099.jpg",
+      "ingredients": [
+        "1 1/4 cup Self-raising Flour",
+        "1/2 cup coco sugar",
+        "1/3 cup raw cacao",
+        "1 tsp baking powder",
+        "2 flax eggs",
+        "1/2 cup almond milk",
+        "1 tsp vanilla",
+        "1/2 cup boiling water"
+      ],
+      "instructions": "1. Preheat oven to 180 degrees. 2. Mix dry ingredients and blend with wet ones. 3. Pour into a cake pan and bake for 45 minutes",
+      "steps": [
+        "Preheat oven to 180 degrees.",
+        "2. Mix dry ingredients and blend with wet ones.",
+        "3. Pour into a cake pan and bake for 45 minutes"
+      ],
+      "description": "Vegan Chocolate Delight Cake (American) — easy vegan recipe with 8 ingredients and 3 steps. Ready in 31 min. Includes exact ingredients and clear instructi…",
+      "tags": [
+        "Vegan",
+        "Chocolate",
+        "Cake",
+        "Dessert",
+        "American",
+        "Plant Based",
+        "Sweet Treats"
+      ],
+      "datePublished": "2026-04-22",
+      "publishDate": "2026-04-22T09:00:00",
+      "addedDate": "2026-04-20T04:06:58",
+      "status": "PUBLISHED",
+      "slug": "vegan-chocolate-cake-52794",
+      "youtube": "https://www.youtube.com/watch?v=C3pAgB7pync",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "31 min",
+      "prepTime": "14 min",
+      "totalTime": "45 min",
+      "servings": 4,
+      "difficulty": "Easy",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "fasoliyyeh-bi-z-zayt-syrian-green-beans-with-olive-oil-53092",
+        "padron-peppers-53150",
+        "red-onion-pickle-53115"
+      ]
+    },
+    {
+      "mealId": "53374",
+      "id": "sichuan-eggplant-53374",
+      "title": "Sichuan Style Eggplant Dish",
+      "category": "Vegetarian",
+      "origin": "Chinese",
+      "image": "https://www.themealdb.com/images/media/meals/1oz4nb1765687990.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/1oz4nb1765687990.jpg",
+      "ingredients": [
+        "1.5 pounds sliced Egg Plants",
+        "2 tablespoons Peanut Oil",
+        "1/4 cup Chicken Stock",
+        "2 tsp Sugar",
+        "1/2 tsp Soy Sauce",
+        "1 ½ tbsp Chilli Bean Paste",
+        "2 tsp Sichuan Pepper",
+        "2 tsp Ginger",
+        "5 cloves Garlic",
+        "1 tsp Cornstarch",
+        "2 tsp Apple Cider Vinegar",
+        "4 Chopped Scallions",
+        "Garnish Cilantro"
+      ],
+      "instructions": "1. Chop eggplant into large batons and set aside.,2. Mix chicken stock, sugar, and soy sauce in a bowl.,3. Combine chili bean paste, garlic, ginger, and Sichuan peppercorns in another bowl.,4. Sauté eggplant in a wok or large sauté pan over medium-high heat.,5. Add the chili bean paste mixture and sauté until fragrant.,6. Add the chicken stock mixture and simmer for 90 seconds.,7. Stir in the cornstarch mixture until the sauce thickens.,8. Add scallions and vinegar, cooking for 15 seconds.",
+      "steps": [
+        "Chop eggplant into large batons and set aside.,2.",
+        "Mix chicken stock, sugar, and soy sauce in a bowl.,3.",
+        "Combine chili bean paste, garlic, ginger, and Sichuan peppercorns in another bowl.,4.",
+        "Sauté eggplant in a wok or large sauté pan over medium-high heat.,5.",
+        "Add the chili bean paste mixture and sauté until fragrant.,6.",
+        "Add the chicken stock mixture and simmer for 90 seconds.,7.",
+        "Stir in the cornstarch mixture until the sauce thickens.,8.",
+        "Add scallions and vinegar, cooking for 15 seconds."
+      ],
+      "description": "Sichuan Style Eggplant Dish (Chinese) — easy vegetarian recipe with 13 ingredients and 8 steps. Includes exact ingredients and clear instructions.",
+      "tags": [
+        "Sichuan cuisine",
+        "eggplant recipes",
+        "vegetarian dishes",
+        "Chinese food",
+        "spicy food",
+        "wok recipes",
+        "Vegetarian",
+        "Chinese",
+        "Sichuan",
+        "Style"
+      ],
+      "datePublished": "2026-04-22",
+      "publishDate": "2026-04-22T09:00:00",
+      "addedDate": "2026-04-20T04:06:58",
+      "status": "PUBLISHED",
+      "slug": "sichuan-eggplant-53374",
+      "youtube": "https://www.youtube.com/watch?v=j54Af9gBmzo",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "",
+      "prepTime": "",
+      "totalTime": "",
+      "servings": 4,
+      "difficulty": "Medium",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "tortang-talong-53075",
+        "aubergine-hummus-grills-53278",
+        "chickpea-fajitas-52870"
+      ]
+    },
+    {
+      "mealId": "52967",
+      "id": "home-made-mandazi-52967",
+      "title": "Kenyan Mandazi Recipe",
+      "category": "Breakfast",
+      "origin": "Kenyan",
+      "image": "https://www.themealdb.com/images/media/meals/thazgm1555350962.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/thazgm1555350962.jpg",
+      "ingredients": [
+        "750g Self-raising Flour",
+        "6 tablespoons Sugar",
+        "2 Eggs",
+        "1 cup Milk"
+      ],
+      "instructions": "1. Mix flour, cinnamon, and sugar. 2. Whisk egg into milk. 3. Combine wet and dry mixtures to form a dough. 4. Knead the dough for 3-4 minutes. 5. Rest the dough for 15 minutes. 6. Roll out the dough to 1cm thickness. 7. Cut into desired sizes. 8. Deep fry until light brown.",
+      "steps": [
+        "Mix flour, cinnamon, and sugar.",
+        "2. Whisk egg into milk.",
+        "3. Combine wet and dry mixtures to form a dough.",
+        "4. Knead the dough for 3-4 minutes.",
+        "5. Rest the dough for 15 minutes.",
+        "6. Roll out the dough to 1cm thickness.",
+        "7. Cut into desired sizes.",
+        "8. Deep fry until light brown."
+      ],
+      "description": "Kenyan Mandazi Recipe (Kenyan) — easy breakfast recipe with 4 ingredients and 8 steps. Ready in 10 min. Includes exact ingredients and clear instructions.",
+      "tags": [
+        "African Food",
+        "Breakfast",
+        "Snack",
+        "Baking",
+        "Egg",
+        "Flour",
+        "Milk",
+        "Sugar",
+        "Kenyan",
+        "Mandazi"
+      ],
+      "datePublished": "2026-04-22",
+      "publishDate": "2026-04-22T09:00:00",
+      "addedDate": "2026-04-20T04:06:58",
+      "status": "PUBLISHED",
+      "slug": "home-made-mandazi-52967",
+      "youtube": "",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "10 min",
+      "prepTime": "10 min",
+      "totalTime": "19 min",
+      "servings": 4,
+      "difficulty": "Medium",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "bread-omelette-53076",
+        "dutch-poffertjes-mini-pancakes-53379",
+        "fruit-and-cream-cheese-breakfast-pastries-52957"
+      ]
+    },
+    {
+      "mealId": "52876",
+      "id": "minced-beef-pie-52876",
+      "title": "Hearty Beef Pie",
+      "category": "Beef",
+      "origin": "British",
+      "image": "https://www.themealdb.com/images/media/meals/xwutvy1511555540.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/xwutvy1511555540.jpg",
+      "ingredients": [
+        "2 tbs Vegetable Oil",
+        "500g Minced Beef",
+        "1 chopped Onion",
+        "1 tbls Tomato Puree",
+        "1 ½ tbsp Plain Flour",
+        "75g Mushrooms",
+        "250ml Beef Stock",
+        "Dash Worcestershire Sauce",
+        "400g Shortcrust Pastry",
+        "1 Egg Yolks"
+      ],
+      "instructions": "1. Preheat the oven to 200C/400F/Gas 6.,2. Heat oil in a deep frying pan and fry the beef mince for 4-5 minutes.,3. Add the onion and cook for 2-3 minutes, then stir in the tomato purée.,4. Stir in the flour, mushrooms, beef stock, and Worcestershire sauce, then simmer for 20 minutes.,5. Roll out the pastry and drape it over the pie dish, pressing firmly onto the edges.,6. Decorate with pastry leaves and brush with egg yolk, then bake for 20-25 minutes.",
+      "steps": [
+        "Preheat the oven to 200C/400F/Gas 6.,2.",
+        "Heat oil in a deep frying pan and fry the beef mince for 4-5 minutes.,3.",
+        "Add the onion and cook for 2-3 minutes, then stir in the tomato purée.,4.",
+        "Stir in the flour, mushrooms, beef stock, and Worcestershire sauce, then simmer for 20 minutes.,5.",
+        "Roll out the pastry and drape it over the pie dish, pressing firmly onto the edges.,6.",
+        "Decorate with pastry leaves and brush with egg yolk, then bake for 20-25 minutes."
+      ],
+      "description": "Hearty Beef Pie (British) — easy beef recipe with 10 ingredients and 6 steps. Ready in 37 min. Includes exact ingredients and clear instructions.",
+      "tags": [
+        "Beef Pie",
+        "British Food",
+        "Comfort Food",
+        "Meat Pie",
+        "Pastry",
+        "Hearty Meals",
+        "Savory Dishes",
+        "Beef",
+        "British",
+        "Hearty"
+      ],
+      "datePublished": "2026-04-22",
+      "publishDate": "2026-04-22T09:00:00",
+      "addedDate": "2026-04-20T04:06:58",
+      "status": "PUBLISHED",
+      "slug": "minced-beef-pie-52876",
+      "youtube": "https://www.youtube.com/watch?v=QY47h-uqq5g",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "37 min",
+      "prepTime": "16 min",
+      "totalTime": "53 min",
+      "servings": 4,
+      "difficulty": "Medium",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "beef-wellington-52803",
+        "corned-beef-hash-53096",
+        "traditional-croatian-goulash-53057"
+      ]
+    },
+    {
+      "mealId": "52990",
+      "id": "christmas-cake-52990",
+      "title": "Traditional Christmas Cake",
+      "category": "Dessert",
+      "origin": "British",
+      "image": "https://www.themealdb.com/images/media/meals/ldnrm91576791881.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/ldnrm91576791881.jpg",
+      "ingredients": [
+        "200g Butter",
+        "200g Muscovado Sugar",
+        "200g Plain Flour",
+        "4 Beaten Eggs",
+        "50g Ground Almonds",
+        "100ml Sherry",
+        "85g Candied Peel",
+        "85g Glace Cherry",
+        "250g Raisins",
+        "250g Currants",
+        "100g Pecan Nuts",
+        "Grated zest of 1 Lemon",
+        "1 ½ tbsp Mixed Spice",
+        "1 ½ tbsp Rose water",
+        "1/2 tsp Vanilla Extract",
+        "1/2 tsp Baking Powder"
+      ],
+      "instructions": "1. Heat oven to 160C/fan 140C/gas 3.,2. Line the base and sides of a 20 cm round, 7.5 cm deep cake tin.,3. Beat the butter and sugar with an electric hand mixer for 1-2 mins until very creamy and pale in colour.",
+      "steps": [
+        "Heat oven to 160C/fan 140C/gas 3.,2.",
+        "Line the base and sides of a 20 cm round, 7.5 cm deep cake tin.,3.",
+        "Beat the butter and sugar with an electric hand mixer for 1-2 mins until very creamy and pale in colour."
+      ],
+      "description": "Traditional Christmas Cake (British) — easy dessert recipe with 16 ingredients and 3 steps. Ready in 10 min. Includes exact ingredients and clear instructi…",
+      "tags": [
+        "Christmas",
+        "cake",
+        "dessert",
+        "traditional",
+        "holiday",
+        "spices",
+        "raisins",
+        "homemade",
+        "British"
+      ],
+      "datePublished": "2026-04-22",
+      "publishDate": "2026-04-22T09:00:00",
+      "addedDate": "2026-04-20T04:06:58",
+      "status": "PUBLISHED",
+      "slug": "christmas-cake-52990",
+      "youtube": "https://www.youtube.com/watch?v=34yeL8TstO0",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "10 min",
+      "prepTime": "10 min",
+      "totalTime": "2 min",
+      "servings": 4,
+      "difficulty": "Easy",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "battenberg-cake-52894",
+        "jam-roly-poly-52890",
+        "pistachio-cake-53293"
       ]
     }
   ]
