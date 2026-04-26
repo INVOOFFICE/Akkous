@@ -641,7 +641,7 @@
       "relatedRecipeIds": [
         "jamaican-beef-patties-52938",
         "mbuzi-choma-roasted-goat-52968",
-        "jamaican-cornmeal-porridge-53363"
+        "brown-stew-chicken-52940"
       ]
     },
     {
@@ -2117,9 +2117,9 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
+        "polish-doughnuts-paczki-53298",
         "polskie-nalesniki-polish-pancakes-53022",
-        "battenberg-cake-52894",
-        "christmas-cake-52990"
+        "battenberg-cake-52894"
       ]
     },
     {
@@ -2704,8 +2704,8 @@
       "trending": true,
       "relatedRecipeIds": [
         "pistachio-cake-53293",
-        "churros-53153",
-        "jam-roly-poly-52890"
+        "polish-doughnuts-paczki-53298",
+        "churros-53153"
       ]
     },
     {
@@ -2771,9 +2771,9 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
+        "lamb-rogan-josh-52808",
         "hot-cumin-lamb-wrap-with-crunchy-slaw-spicy-mayo-53258",
-        "lamb-pilaf-plov-53083",
-        "lamb-tagine-52843"
+        "lamb-pilaf-plov-53083"
       ]
     },
     {
@@ -3227,9 +3227,9 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
+        "brown-stew-chicken-52940",
         "chicken-couscous-52850",
-        "chicken-enchilada-casserole-52765",
-        "chicken-mushroom-hotpot-52846"
+        "chicken-enchilada-casserole-52765"
       ]
     },
     {
@@ -4613,9 +4613,9 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
+        "brown-stew-chicken-52940",
         "chicken-enchilada-casserole-52765",
-        "chicken-mushroom-hotpot-52846",
-        "chicken-shawarma-with-homemade-garlic-herb-yoghurt-sauce-53218"
+        "chicken-mushroom-hotpot-52846"
       ]
     },
     {
@@ -4736,6 +4736,313 @@
         "beef-caldereta-53070",
         "beef-rendang-53053",
         "beef-wellington-52803"
+      ]
+    },
+    {
+      "mealId": "53006",
+      "id": "moussaka-53006",
+      "title": "Moussaka",
+      "category": "Beef",
+      "origin": "Greek",
+      "image": "https://www.themealdb.com/images/media/meals/ctg8jd1585563097.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/ctg8jd1585563097.jpg",
+      "ingredients": [
+        "500g Beef",
+        "1 large Aubergine",
+        "150g Greek Yogurt",
+        "1 beaten Egg",
+        "3 tbs Parmesan",
+        "400g Tomato",
+        "4 tbs Tomato Puree",
+        "350g Potatoes"
+      ],
+      "instructions": "Heat the grill to high. Brown the beef in a deep ovenproof frying pan over a high heat for 5 mins. Meanwhile, prick the aubergine with a fork, then microwave on High for 3-5 mins until soft. Mix the yogurt, egg and parmesan together, then add a little seasoning.\n\nStir the tomatoes, purée and potatoes in with the beef with some seasoning and heat through. Smooth the surface of the beef mixture with the back of a spoon, then slice the cooked aubergine and arrange on top. Pour the yogurt mixture over the aubergines, smooth out evenly, then grill until the topping has set and turned golden.",
+      "steps": [
+        "Heat the grill to high.",
+        "Brown the beef in a deep ovenproof frying pan over a high heat for 5 mins.",
+        "Meanwhile, prick the aubergine with a fork, then microwave on High for 3-5 mins until soft.",
+        "Mix the yogurt, egg and parmesan together, then add a little seasoning.",
+        "Stir the tomatoes, purée and potatoes in with the beef with some seasoning and heat through.",
+        "Smooth the surface of the beef mixture with the back of a spoon, then slice the cooked aubergine and arrange on top.",
+        "Pour the yogurt mixture over the aubergines, smooth out evenly, then grill until the topping has set and turned golden."
+      ],
+      "description": "Moussaka (Greek) — easy beef recipe with 8 ingredients and 7 steps. Ready in 10 min. Includes exact ingredients and clear instructions.",
+      "tags": [
+        "Beef",
+        "Greek",
+        "Moussaka"
+      ],
+      "datePublished": "2026-04-25",
+      "publishDate": "2026-04-25T09:00:00",
+      "addedDate": "2026-04-23T04:06:54",
+      "status": "PUBLISHED",
+      "slug": "moussaka-53006",
+      "youtube": "https://www.youtube.com/watch?v=8U_29i9Qp5U",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "10 min",
+      "prepTime": "10 min",
+      "totalTime": "10 min",
+      "servings": 4,
+      "difficulty": "Medium",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "beef-caldereta-53070",
+        "beef-rendang-53053",
+        "beef-wellington-52803"
+      ]
+    },
+    {
+      "mealId": "52940",
+      "id": "brown-stew-chicken-52940",
+      "title": "Brown Stew Chicken",
+      "category": "Chicken",
+      "origin": "Jamaican",
+      "image": "https://www.themealdb.com/images/media/meals/sypxpx1515365095.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/sypxpx1515365095.jpg",
+      "ingredients": [
+        "1 whole Chicken",
+        "1 chopped Tomato",
+        "2 chopped Onions",
+        "2 chopped Garlic Clove",
+        "1 chopped Red Pepper",
+        "1 chopped Carrots",
+        "1 Lime",
+        "2 tsp Thyme",
+        "1 tsp Allspice",
+        "2 tbs Soy Sauce",
+        "2 tsp Cornstarch",
+        "2 cups Coconut Milk",
+        "1 tbs Vegetable Oil"
+      ],
+      "instructions": "Squeeze lime over chicken and rub well. Drain off excess lime juice.\nCombine tomato, scallion, onion, garlic, pepper, thyme, pimento and soy sauce in a large bowl with the chicken pieces. Cover and marinate at least one hour.\nHeat oil in a dutch pot or large saucepan. Shake off the seasonings as you remove each piece of chicken from the marinade. Reserve the marinade for sauce.\nLightly brown the chicken a few pieces at a time in very hot oil. Place browned chicken pieces on a plate to rest while you brown the remaining pieces.\nDrain off excess oil and return the chicken to the pan. Pour the marinade over the chicken and add the carrots. Stir and cook over medium heat for 10 minutes.\nMix flour and coconut milk and add to stew, stirring constantly. Turn heat down to minimum and cook another 20 minutes or until tender.",
+      "steps": [
+        "Squeeze lime over chicken and rub well. Drain off excess lime juice.",
+        "Combine tomato, scallion, onion, garlic, pepper, thyme, pimento and soy sauce in a large bowl with the chicken pieces. Cover and marinate at least one hour.",
+        "Heat oil in a dutch pot or large saucepan. Shake off the seasonings as you remove each piece of chicken from the marinade. Reserve the marinade for sauce.",
+        "Lightly brown the chicken a few pieces at a time in very hot oil. Place browned chicken pieces on a plate to rest while you brown the remaining pieces.",
+        "Drain off excess oil and return the chicken to the pan. Pour the marinade over the chicken and add the carrots. Stir and cook over medium heat for 10 minutes.",
+        "Mix flour and coconut milk and add to stew, stirring constantly. Turn heat down to minimum and cook another 20 minutes or until tender."
+      ],
+      "description": "Brown Stew Chicken (Jamaican) — easy chicken recipe with 13 ingredients and 6 steps. Ready in 20 min. Includes exact ingredients and clear instructions.",
+      "tags": [
+        "Stew",
+        "Chicken",
+        "Jamaican",
+        "Brown"
+      ],
+      "datePublished": "2026-04-25",
+      "publishDate": "2026-04-25T09:00:00",
+      "addedDate": "2026-04-23T04:06:54",
+      "status": "PUBLISHED",
+      "slug": "brown-stew-chicken-52940",
+      "youtube": "https://www.youtube.com/watch?v=_gFB1fkNhXs",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "20 min",
+      "prepTime": "10 min",
+      "totalTime": "30 min",
+      "servings": 4,
+      "difficulty": "Medium",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "chicken-couscous-52850",
+        "chicken-enchilada-casserole-52765",
+        "chicken-mushroom-hotpot-52846"
+      ]
+    },
+    {
+      "mealId": "52857",
+      "id": "pumpkin-pie-52857",
+      "title": "Pumpkin Pie",
+      "category": "Dessert",
+      "origin": "American",
+      "image": "https://www.themealdb.com/images/media/meals/usuqtp1511385394.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/usuqtp1511385394.jpg",
+      "ingredients": [
+        "750g Pumpkin",
+        "350g Shortcrust Pastry",
+        "Dusting Plain Flour",
+        "140g Caster Sugar",
+        "½ tsp Salt",
+        "½ tsp Nutmeg",
+        "1 tsp Cinnamon",
+        "2 Beaten Eggs",
+        "25g Butter",
+        "175g Milk",
+        "1 tblsp Icing Sugar"
+      ],
+      "instructions": "Place the pumpkin in a large saucepan, cover with water and bring to the boil. Cover with a lid and simmer for 15 mins or until tender. Drain pumpkin; let cool.\nHeat oven to 180C/160C fan/gas 4. Roll out the pastry on a lightly floured surface and use it to line a 22cm loose-bottomed tart tin. Chill for 15 mins. Line the pastry with baking parchment and baking beans, then bake for 15 mins. Remove the beans and paper, and cook for a further 10 mins until the base is pale golden and biscuity. Remove from the oven and allow to cool slightly.\nIncrease oven to 220C/200C fan/gas 7. Push the cooled pumpkin through a sieve into a large bowl. In a separate bowl, combine the sugar, salt, nutmeg and half the cinnamon. Mix in the beaten eggs, melted butter and milk, then add to the pumpkin purée and stir to combine. Pour into the tart shell and cook for 10 mins, then reduce the temperature to 180C/160C fan/gas 4. Continue to bake for 35-40 mins until the filling has just set.\nLeave to cool, then remove the pie from the tin. Mix the remaining cinnamon with the icing sugar and dust over the pie. Serve chilled.",
+      "steps": [
+        "Place the pumpkin in a large saucepan, cover with water and bring to the boil. Cover with a lid and simmer for 15 mins or until tender. Drain pumpkin; let cool.",
+        "Heat oven to 180C/160C fan/gas 4. Roll out the pastry on a lightly floured surface and use it to line a 22cm loose-bottomed tart tin. Chill for 15 mins. Line the pastry with baking parchment and baking beans, then bake for 15 mins. Remove the beans and paper, and cook for a further 10 mins until the base is pale golden and biscuity. Remove from the oven and allow to cool slightly.",
+        "Increase oven to 220C/200C fan/gas 7. Push the cooled pumpkin through a sieve into a large bowl. In a separate bowl, combine the sugar, salt, nutmeg and half the cinnamon. Mix in the beaten eggs, melted butter and milk, then add to the pumpkin purée and stir to combine. Pour into the tart shell and cook for 10 mins, then reduce the temperature to 180C/160C fan/gas 4. Continue to bake for 35-40 mins until the filling has just set.",
+        "Leave to cool, then remove the pie from the tin. Mix the remaining cinnamon with the icing sugar and dust over the pie. Serve chilled."
+      ],
+      "description": "Pumpkin Pie (American) — easy dessert recipe with 11 ingredients and 4 steps. Ready in 73 min. Includes exact ingredients and clear instructions.",
+      "tags": [
+        "Halloween",
+        "Pie",
+        "Desert",
+        "Dessert",
+        "American",
+        "Pumpkin"
+      ],
+      "datePublished": "2026-04-25",
+      "publishDate": "2026-04-25T09:00:00",
+      "addedDate": "2026-04-23T04:06:54",
+      "status": "PUBLISHED",
+      "slug": "pumpkin-pie-52857",
+      "youtube": "https://www.youtube.com/watch?v=hpapqEeb36k",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "73 min",
+      "prepTime": "32 min",
+      "totalTime": "105 min",
+      "servings": 4,
+      "difficulty": "Easy",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "battenberg-cake-52894",
+        "christmas-cake-52990",
+        "churros-53153"
+      ]
+    },
+    {
+      "mealId": "52808",
+      "id": "lamb-rogan-josh-52808",
+      "title": "Lamb Rogan josh",
+      "category": "Lamb",
+      "origin": "Indian",
+      "image": "https://www.themealdb.com/images/media/meals/vvstvq1487342592.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/vvstvq1487342592.jpg",
+      "ingredients": [
+        "2 quartered Onion",
+        "4 tbsp Sunflower Oil",
+        "4 cloves Garlic",
+        "Thumb sized peeled and very finely grated Ginger",
+        "2 tbsp Madras Paste",
+        "2 tsp Paprika",
+        "1 cinnamon stick",
+        "6 bashed to break shells Cardamom",
+        "4 Cloves",
+        "2 Bay Leaf",
+        "1 tbsp Tomato Purée",
+        "1kg cubed Lamb",
+        "150ml Greek yogurt",
+        "Garnish chopped Coriander"
+      ],
+      "instructions": "Put the onions in a food processor and whizz until very finely chopped. Heat the oil in a large heavy-based pan, then fry the onion with the lid on, stirring every now and then, until it is really golden and soft. Add the garlic and ginger, then fry for 5 mins more.\nTip the curry paste, all the spices and the bay leaves into the pan, with the tomato purée. Stir well over the heat for about 30 secs, then add the meat and 300ml water. Stir to mix, turn down the heat, then add the yogurt.\nCover the pan, then gently simmer for 40-60 mins until the meat is tender and the sauce nice and thick. Serve scattered with coriander, with plain basmati or pilau rice.",
+      "steps": [
+        "Put the onions in a food processor and whizz until very finely chopped. Heat the oil in a large heavy-based pan, then fry the onion with the lid on, stirring every now and then, until it is really golden and soft. Add the garlic and ginger, then fry for 5 mins more.",
+        "Tip the curry paste, all the spices and the bay leaves into the pan, with the tomato purée. Stir well over the heat for about 30 secs, then add the meat and 300ml water. Stir to mix, turn down the heat, then add the yogurt.",
+        "Cover the pan, then gently simmer for 40-60 mins until the meat is tender and the sauce nice and thick. Serve scattered with coriander, with plain basmati or pilau rice."
+      ],
+      "description": "Lamb Rogan josh (Indian) — easy lamb recipe with 14 ingredients and 3 steps. Ready in 45 min. Includes exact ingredients and clear instructions.",
+      "tags": [
+        "Curry",
+        "Spicy",
+        "Alcoholic",
+        "Lamb",
+        "Indian",
+        "Rogan"
+      ],
+      "datePublished": "2026-04-25",
+      "publishDate": "2026-04-25T09:00:00",
+      "addedDate": "2026-04-23T04:06:54",
+      "status": "PUBLISHED",
+      "slug": "lamb-rogan-josh-52808",
+      "youtube": "https://www.youtube.com/watch?v=NZVo32n7iS8",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "45 min",
+      "prepTime": "20 min",
+      "totalTime": "65 min",
+      "servings": 4,
+      "difficulty": "Easy",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "lamb-biryani-52805",
+        "hot-cumin-lamb-wrap-with-crunchy-slaw-spicy-mayo-53258",
+        "lamb-pilaf-plov-53083"
+      ]
+    },
+    {
+      "mealId": "53298",
+      "id": "polish-doughnuts-paczki-53298",
+      "title": "Polish doughnuts (Pączki)",
+      "category": "Dessert",
+      "origin": "Polish",
+      "image": "https://www.themealdb.com/images/media/meals/x6jqog1764359857.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/x6jqog1764359857.jpg",
+      "ingredients": [
+        "10g Yeast",
+        "1 tsp Caster Sugar",
+        "1 tablespoon Flour",
+        "125ml Milk",
+        "7 Egg Yolks",
+        "15g Sugar",
+        "10g Caster Sugar",
+        "1 tsp Vanilla Extract",
+        "500g Flour",
+        "200ml Double Cream",
+        "15g Butter",
+        "125ml Jam",
+        "10g Ground Almonds",
+        "For frying Oil",
+        "75g Icing Sugar",
+        "Juice of 1/2 Lemon",
+        "Dash Almond Essence",
+        "50g Almonds"
+      ],
+      "instructions": "step 1\nTo make the leaven, mix the yeast with the sugar and flour, and stir in the warm milk. Set aside in a warm place for 30 minutes.\n\nstep 2\nFor the dough, put egg yolks into a heatproof bowl and add the sugar and vanilla sugar. Set the bowl over a pan of simmering water and whisk until smooth and thick.\n\nstep 3\nSift the flour into the bowl of a stand mixer, add the beaten yolks and the warm cream, mix thoroughly, then add a pinch of salt and the leaven. Bring together to make a dough and knead for 10 minutes (or 15-20 if doing this by hand).\n\nstep 4\nWhen the dough stops sticking to your hands, pour in the cooled melted butter and knead for a few more minutes. Cover with a cloth and leave in a warm place to rise for at least 1 hr-1 hr 30 mins.\n\nstep 5\nMix the jam with the ground almonds and spoon into a piping bag or jam syringe. Divide the dough into 16 pieces and shape them into doughnuts. Cover and leave to rise for 30 mins.\n\nstep 6\nFill a deep pan or a deep fat fryer one third full of oil or melted lard and heat it until it is 180C – if you don’t have a thermometer, drop in a small chunk of bread. The oil is ready when it browns in about 30 secs. Add the doughnuts and fry, turning them once for about 1-2 mins on each side (a thin lighter ring should form in the middle). After removing, drain the doughnuts of excess fat on some kitchen paper.",
+      "steps": [
+        "To make the leaven, mix the yeast with the sugar and flour, and stir in the warm milk. Set aside in a warm place for 30 minutes.",
+        "For the dough, put egg yolks into a heatproof bowl and add the sugar and vanilla sugar. Set the bowl over a pan of simmering water and whisk until smooth and thick.",
+        "Sift the flour into the bowl of a stand mixer, add the beaten yolks and the warm cream, mix thoroughly, then add a pinch of salt and the leaven. Bring together to make a dough and knead for 10 minutes (or 15-20 if doing this by hand).",
+        "When the dough stops sticking to your hands, pour in the cooled melted butter and knead for a few more minutes. Cover with a cloth and leave in a warm place to rise for at least 1 hr-1 hr 30 mins.",
+        "Mix the jam with the ground almonds and spoon into a piping bag or jam syringe. Divide the dough into 16 pieces and shape them into doughnuts. Cover and leave to rise for 30 mins.",
+        "Fill a deep pan or a deep fat fryer one third full of oil or melted lard and heat it until it is 180C – if you don’t have a thermometer, drop in a small chunk of bread. The oil is ready when it browns in about 30 secs. Add the doughnuts and fry, turning them once for about 1-2 mins on each side (a thin lighter ring should form in the middle). After removing, drain the doughnuts of excess fat on some kitchen paper."
+      ],
+      "description": "Polish doughnuts (Pączki) (Polish) — easy dessert recipe with 18 ingredients and 6 steps. Ready in 71 min. Includes exact ingredients and clear instructions.",
+      "tags": [
+        "Dessert",
+        "Polish",
+        "Doughnuts"
+      ],
+      "datePublished": "2026-04-25",
+      "publishDate": "2026-04-25T09:00:00",
+      "addedDate": "2026-04-23T04:06:54",
+      "status": "PUBLISHED",
+      "slug": "polish-doughnuts-paczki-53298",
+      "youtube": "https://www.youtube.com/watch?v=17jL5nZrgPw",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "71 min",
+      "prepTime": "31 min",
+      "totalTime": "102 min",
+      "servings": 4,
+      "difficulty": "Medium",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "pistachio-cake-53293",
+        "polskie-nalesniki-polish-pancakes-53022",
+        "battenberg-cake-52894"
       ]
     }
   ]

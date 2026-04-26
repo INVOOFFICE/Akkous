@@ -79,6 +79,11 @@
 - [Chicken Couscous](https://akkous.com/recipes/chicken-couscous-52850/) — Moroccan | Chicken
 - [Nanaimo Bars](https://akkous.com/recipes/nanaimo-bars-52924/) — Canadian | Dessert
 - [Bistek](https://akkous.com/recipes/bistek-53069/) — Filipino | Beef
+- [Moussaka](https://akkous.com/recipes/moussaka-53006/) — Greek | Beef
+- [Brown Stew Chicken](https://akkous.com/recipes/brown-stew-chicken-52940/) — Jamaican | Chicken
+- [Pumpkin Pie](https://akkous.com/recipes/pumpkin-pie-52857/) — American | Dessert
+- [Lamb Rogan josh](https://akkous.com/recipes/lamb-rogan-josh-52808/) — Indian | Lamb
+- [Polish doughnuts (Pączki)](https://akkous.com/recipes/polish-doughnuts-paczki-53298/) — Polish | Dessert
 
 ## About
 - All recipes include ingredients, step-by-step instructions, cooking time, difficulty level, and cultural origin.
