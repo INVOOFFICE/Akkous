@@ -1304,8 +1304,12 @@
   }
 
   function metaDescriptionFromRecipe(recipe) {
+    var h = recipe.hook && String(recipe.hook).trim();
+    if (h) {
+      return h.length > 158 ? h.slice(0, 155) + "…" : h;
+    }
     var d = recipe.description && String(recipe.description).trim();
-    if (d) {
+    if (d && !d.includes("recipe with") && !d.includes("ingredients and")) {
       return d.length > 158 ? d.slice(0, 155) + "…" : d;
     }
     var bits = [];
@@ -1577,6 +1581,29 @@
       .join("");
   }
 
+  function renderRecipeTip(recipe) {
+    var tip = recipe.tip && String(recipe.tip).trim();
+    var existing = $("#recipe-tip-box");
+    if (existing) existing.remove();
+
+    if (!tip) return;
+
+    var steps = $("#recipe-steps");
+    if (!steps) return;
+
+    var box = document.createElement("div");
+    box.id = "recipe-tip-box";
+    box.className = "recipe-tip";
+    box.innerHTML =
+      '<div class="recipe-tip__icon" aria-hidden="true">💡</div>' +
+      '<div class="recipe-tip__content">' +
+      "<strong>Chef's Tip:</strong> " +
+      escapeHtml(tip) +
+      "</div>";
+
+    steps.parentNode.insertBefore(box, steps.nextSibling);
+  }
+
   function buildRecipeJsonLdGraph(recipe) {
     var faq = buildRecipeFaqSchema(recipe);
     var graph = [
@@ -1663,8 +1690,12 @@
       " serving" +
       ((recipe.servings || 1) === 1 ? "" : "s");
 
-    $("#recipe-intro").textContent = recipe.description || "";
+    var introEl = $("#recipe-intro");
+    if (introEl) {
+      introEl.textContent = recipe.hook || recipe.description || "";
+    }
 
+    renderRecipeTip(recipe);
     renderRecipeTagsAndVideo(recipe);
     renderRecipeFaq(recipe);
 

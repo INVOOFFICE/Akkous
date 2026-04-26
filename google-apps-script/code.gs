@@ -149,6 +149,8 @@ const CONFIG = {
     'YouTube',
     'Added Date',
     'MetaDescription',
+    'Hook',
+    'Tip',
   ],
   COL: {
     ID: 1,
@@ -165,6 +167,8 @@ const CONFIG = {
     YOUTUBE: 12,
     ADDED_DATE: 13,
     META_DESCRIPTION: 14,
+    HOOK: 15,
+    TIP: 16,
   },
   STATUS_SCHEDULED: 'SCHEDULED',
   STATUS_PUBLISHED: 'PUBLISHED',
@@ -935,6 +939,12 @@ function enrichRecipeSheetRowWithGroq_(sheet, rowNum) {
   sheet.getRange(rowNum, CONFIG.COL.TAGS).setValue(seo.tags);
   if (seo.metaDescription && seo.metaDescription.length >= 140 && seo.metaDescription.length <= 155) {
     sheet.getRange(rowNum, CONFIG.COL.META_DESCRIPTION).setValue(seo.metaDescription);
+  }
+  if (seo.hook) {
+    sheet.getRange(rowNum, CONFIG.COL.HOOK).setValue(seo.hook);
+  }
+  if (seo.tip) {
+    sheet.getRange(rowNum, CONFIG.COL.TIP).setValue(seo.tip);
   }
 }
 
@@ -3152,6 +3162,10 @@ function buildExportPayload_(sheet) {
       metaDescriptionRaw.length >= 140 && metaDescriptionRaw.length <= 155
         ? metaDescriptionRaw
         : heuristicDescription;
+
+    const hook = String(row[CONFIG.COL.HOOK - 1] || '').trim();
+    const tip = String(row[CONFIG.COL.TIP - 1] || '').trim();
+
     const normalizedTags = normalizeTags_(tags, title, category, origin);
     const difficulty = inferDifficultyFromSteps_(steps);
     const seoCheck = evaluateSeoQuality_({
@@ -3187,6 +3201,8 @@ function buildExportPayload_(sheet) {
       instructions,
       steps,
       description,
+      hook,
+      tip,
       tags: normalizedTags,
       datePublished: publishDate ? publishDate.slice(0, 10) : '',
       publishDate,
