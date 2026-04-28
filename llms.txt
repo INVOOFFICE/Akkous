@@ -89,6 +89,11 @@
 - [Tall Skoleboller](https://akkous.com/recipes/tall-skoleboller-53119/) — Norwegian | Dessert
 - [Vietnamese lamb shanks with sweet potatoes](https://akkous.com/recipes/vietnamese-lamb-shanks-with-sweet-potatoes-53231/) — Vietnamese | Lamb
 - [Turkey Meatloaf](https://akkous.com/recipes/turkey-meatloaf-52845/) — British | Miscellaneous
+- [Spanish chicken pie](https://akkous.com/recipes/spanish-chicken-pie-53155/) — Spanish | Chicken
+- [Strawberry Rhubarb Pie](https://akkous.com/recipes/strawberry-rhubarb-pie-53005/) — British | Dessert
+- [Lamb and Lemon Souvlaki](https://akkous.com/recipes/lamb-and-lemon-souvlaki-53009/) — Greek | Lamb
+- [Osso Buco alla Milanese](https://akkous.com/recipes/osso-buco-alla-milanese-52810/) — Italian | Miscellaneous
+- [Chilli prawn linguine](https://akkous.com/recipes/chilli-prawn-linguine-52839/) — Italian | Pasta
 
 ## About
 - All recipes include ingredients, step-by-step instructions, cooking time, difficulty level, and cultural origin.

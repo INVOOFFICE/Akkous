@@ -1304,8 +1304,8 @@
       "trending": true,
       "relatedRecipeIds": [
         "venetian-duck-ragu-52838",
-        "fettucine-alfredo-52835",
-        "cream-cheese-tart-52779"
+        "chilli-prawn-linguine-52839",
+        "fettucine-alfredo-52835"
       ]
     },
     {
@@ -1611,7 +1611,7 @@
       "relatedRecipeIds": [
         "fettucine-alfredo-52835",
         "venetian-duck-ragu-52838",
-        "syrian-rice-with-meat-53095"
+        "chilli-prawn-linguine-52839"
       ]
     },
     {
@@ -2467,8 +2467,8 @@
       "trending": true,
       "relatedRecipeIds": [
         "christmas-cake-52990",
-        "jam-roly-poly-52890",
-        "pistachio-cake-53293"
+        "strawberry-rhubarb-pie-53005",
+        "jam-roly-poly-52890"
       ]
     },
     {
@@ -2861,7 +2861,7 @@
       "relatedRecipeIds": [
         "lamb-rogan-josh-52808",
         "hot-cumin-lamb-wrap-with-crunchy-slaw-spicy-mayo-53258",
-        "lamb-pilaf-plov-53083"
+        "lamb-and-lemon-souvlaki-53009"
       ]
     },
     {
@@ -2929,7 +2929,7 @@
       "relatedRecipeIds": [
         "syrian-rice-with-meat-53095",
         "duck-confit-52907",
-        "syrian-bread-53089"
+        "osso-buco-alla-milanese-52810"
       ]
     },
     {
@@ -3195,7 +3195,7 @@
       "relatedRecipeIds": [
         "hot-cumin-lamb-wrap-with-crunchy-slaw-spicy-mayo-53258",
         "spanish-style-slow-cooked-lamb-shoulder-beans-53175",
-        "lamb-biryani-52805"
+        "lamb-and-lemon-souvlaki-53009"
       ]
     },
     {
@@ -3391,9 +3391,9 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
+        "strawberry-rhubarb-pie-53005",
         "battenberg-cake-52894",
-        "christmas-cake-52990",
-        "churros-53153"
+        "christmas-cake-52990"
       ]
     },
     {
@@ -3458,7 +3458,7 @@
       "relatedRecipeIds": [
         "lamb-pilaf-plov-53083",
         "spanish-style-slow-cooked-lamb-shoulder-beans-53175",
-        "lamb-biryani-52805"
+        "lamb-and-lemon-souvlaki-53009"
       ]
     },
     {
@@ -3518,7 +3518,7 @@
       "relatedRecipeIds": [
         "syrian-rice-with-meat-53095",
         "chakchouka-52969",
-        "syrian-bread-53089"
+        "osso-buco-alla-milanese-52810"
       ]
     },
     {
@@ -3578,8 +3578,8 @@
       "trending": true,
       "relatedRecipeIds": [
         "venetian-duck-ragu-52838",
-        "syrian-spaghetti-53093",
-        "salmon-prawn-risotto-52823"
+        "chilli-prawn-linguine-52839",
+        "syrian-spaghetti-53093"
       ]
     },
     {
@@ -3644,7 +3644,7 @@
       "relatedRecipeIds": [
         "battenberg-cake-52894",
         "christmas-cake-52990",
-        "churros-53153"
+        "strawberry-rhubarb-pie-53005"
       ]
     },
     {
@@ -3715,7 +3715,7 @@
       "relatedRecipeIds": [
         "spanish-style-slow-cooked-lamb-shoulder-beans-53175",
         "hot-cumin-lamb-wrap-with-crunchy-slaw-spicy-mayo-53258",
-        "lamb-biryani-52805"
+        "lamb-and-lemon-souvlaki-53009"
       ]
     },
     {
@@ -3845,8 +3845,8 @@
       "trending": true,
       "relatedRecipeIds": [
         "fettucine-alfredo-52835",
-        "syrian-spaghetti-53093",
-        "salmon-prawn-risotto-52823"
+        "chilli-prawn-linguine-52839",
+        "syrian-spaghetti-53093"
       ]
     },
     {
@@ -4240,7 +4240,7 @@
       "relatedRecipeIds": [
         "battenberg-cake-52894",
         "jam-roly-poly-52890",
-        "pistachio-cake-53293"
+        "strawberry-rhubarb-pie-53005"
       ]
     },
     {
@@ -4499,9 +4499,9 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
+        "spanish-chicken-pie-53155",
         "chicken-mushroom-hotpot-52846",
-        "chicken-enchilada-casserole-52765",
-        "sweet-and-sour-chicken-53376"
+        "chicken-enchilada-casserole-52765"
       ]
     },
     {
@@ -5068,9 +5068,9 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
+        "strawberry-rhubarb-pie-53005",
         "battenberg-cake-52894",
-        "christmas-cake-52990",
-        "churros-53153"
+        "christmas-cake-52990"
       ]
     },
     {
@@ -5134,7 +5134,7 @@
       "relatedRecipeIds": [
         "lamb-biryani-52805",
         "hot-cumin-lamb-wrap-with-crunchy-slaw-spicy-mayo-53258",
-        "lamb-pilaf-plov-53083"
+        "lamb-and-lemon-souvlaki-53009"
       ]
     },
     {
@@ -5472,8 +5472,8 @@
       "trending": true,
       "relatedRecipeIds": [
         "hot-cumin-lamb-wrap-with-crunchy-slaw-spicy-mayo-53258",
-        "lamb-biryani-52805",
-        "lamb-pilaf-plov-53083"
+        "lamb-and-lemon-souvlaki-53009",
+        "lamb-biryani-52805"
       ]
     },
     {
@@ -5534,7 +5534,336 @@
       "relatedRecipeIds": [
         "chakchouka-52969",
         "duck-confit-52907",
+        "osso-buco-alla-milanese-52810"
+      ]
+    },
+    {
+      "mealId": "53155",
+      "id": "spanish-chicken-pie-53155",
+      "title": "Spanish chicken pie",
+      "category": "Chicken",
+      "origin": "Spanish",
+      "image": "https://www.themealdb.com/images/media/meals/8ovxf41763253962.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/8ovxf41763253962.jpg",
+      "ingredients": [
+        "1 kg Potatoes",
+        "3 tsp Paprika",
+        "2 teaspoons Olive Oil",
+        "2 sliced Onion",
+        "2 cloves minced Garlic",
+        "800g Tinned Tomatos",
+        "300g Chicken",
+        "140g Roasted pepper",
+        "Handful Green Olives"
+      ],
+      "instructions": "step 1\nHeat oven to 200C/fan 180C/gas 6. Boil the potatoes for 15-20 mins until tender. Drain, return to the pan, then mash with some seasoning and 2 tsp of the paprika.\n\nstep 2\nMeanwhile, heat the oil in a large pan, then fry the onions and garlic for a few mins until softened. Stir in the remaining paprika for 1 min, add the tomatoes , then, bring to a simmer. Tip into a large ovenproof dish, then stir in the chicken, peppers, olives and some seasoning.\n\nstep 3\nSpoon over the mash, then bake for 15 mins until the mash is golden on top and the sauce is bubbling.",
+      "steps": [
+        "Heat oven to 200C/fan 180C/gas 6. Boil the potatoes for 15-20 mins until tender. Drain, return to the pan, then mash with some seasoning and 2 tsp of the paprika.",
+        "Meanwhile, heat the oil in a large pan, then fry the onions and garlic for a few mins until softened. Stir in the remaining paprika for 1 min, add the tomatoes , then, bring to a simmer. Tip into a large ovenproof dish, then stir in the chicken, peppers, olives and some seasoning.",
+        "Spoon over the mash, then bake for 15 mins until the mash is golden on top and the sauce is bubbling."
+      ],
+      "description": "Spanish chicken pie (Spanish) — easy chicken recipe with 9 ingredients and 3 steps. Ready in 25 min. Includes exact ingredients and clear instructions.",
+      "hook": "step 1\r\nHeat oven to 200C/fan 180C/gas 6. Boil the potatoes for 15-20 mins until tender. Drain, return to the pan, then mash with some seasoning and 2 tsp of the paprika.\r\n\r\nstep 2\r\nMeanwhile, heat the oil in a large pan, then fry the onions and garlic for a few mins until softened. Stir in the remaining paprika for 1 min, add the tomatoes , then, bring to a simmer. Tip into a large ovenproof dish, then stir in the chicken, peppers, olives and some seasoning.\r\n\r\nstep 3\r\nSpoon over the mash, then bake for 15 mins until the mash is golden on top and the sauce is bubbling.",
+      "tip": "",
+      "tags": [
+        "Chicken",
+        "Spanish"
+      ],
+      "datePublished": "2026-04-27",
+      "publishDate": "2026-04-27T09:00:00",
+      "addedDate": "2026-04-25T04:06:58",
+      "status": "PUBLISHED",
+      "slug": "spanish-chicken-pie-53155",
+      "youtube": "",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "25 min",
+      "prepTime": "11 min",
+      "totalTime": "36 min",
+      "servings": 4,
+      "difficulty": "Easy",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "spanish-chicken-53164",
+        "ayam-percik-53050",
+        "brown-stew-chicken-52940"
+      ]
+    },
+    {
+      "mealId": "53005",
+      "id": "strawberry-rhubarb-pie-53005",
+      "title": "Strawberry Rhubarb Pie",
+      "category": "Dessert",
+      "origin": "British",
+      "image": "https://www.themealdb.com/images/media/meals/178z5o1585514569.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/178z5o1585514569.jpg",
+      "ingredients": [
+        "350g Flour",
+        "1 tsp Salt",
+        "2 tbs Sugar",
+        "1 cup Butter",
+        "1/2 cup Water",
+        "450g Rhubarb",
+        "450g Strawberries",
+        "3 tbs Cornstarch",
+        "150g Sugar",
+        "1/4 tsp Cinnamon",
+        "1 tsp Lemon Juice",
+        "2 tbs Unsalted Butter",
+        "2 tbs Milk",
+        "Spinkling Sugar"
+      ],
+      "instructions": "Pie Crust:  In a food processor, place the flour, salt, and sugar and process until combined. Add the butter and process until the mixture resembles coarse\n\nmeal (about 15 seconds). Pour 1/4 cup (60 ml) water in a slow, steady stream, through the feed tube until the dough just holds together when pinched. If necessary, add more water. Do not process more than 30 seconds.\nTurn the dough onto your work surface and gather into a ball. Divide the dough in half, flattening each half into a disk, cover with plastic wrap, and refrigerate for about one hour before using. This will chill the butter and relax the gluten in the flour. \n\nAfter the dough has chilled sufficiently, remove one portion of the dough from the fridge and place it on a lightly floured surface.  Roll the pastry into a 12 inch (30 cm) circle. (To prevent the pastry from sticking to the counter and to ensure uniform thickness, keep lifting up and turning the pastry a quarter turn as you roll (always roll from the center of the pastry outwards).)  Fold the dough in half and gently transfer to a 9 inch (23 cm) pie pan. Brush off any excess flour and trim any overhanging pastry to an edge of 1/2 inch (1.5 cm). Refrigerate the pastry, covered with plastic wrap, while you make the filling. \n\nRemove the second round of pastry and roll it into a 13 inch (30 cm) circle. Using a pastry wheel or pizza cutter, cut the pastry into about 3/4 inch (2 cm) strips. Place the strips of pastry on a parchment paper-lined baking sheet, cover with plastic wrap, and place in the refrigerator for about 10 minutes. \n\nMake the Strawberry Rhubarb Filling: Place the cut strawberries and rhubarb in a large bowl. In a small bowl mix together the cornstarch, sugar, and ground cinnamon. \n\nRemove the chilled pie crust from the fridge. Sprinkle about 2 tablespoons of the sugar mixture over the bottom of the pastry crust. Add the remaining sugar mixture to the strawberries and rhubarb and gently toss to combine. Pour the fruit mixture into the prepared pie shell. Sprinkle the fruit with about 1 teaspoon of lemon juice and dot with 2 tablespoons of butter.\n\nRemove the lattice pastry from the refrigerator and, starting at the center with the longest strips and working outwards, place half the strips, spacing about 1 inch (2.5 cm) apart, on top of the filling. (Use the shortest pastry strips at the outer edges.) Then, gently fold back, about halfway, every other strip of pastry. Take another strip of pastry and place it perpendicular on top of the first strips of pastry. Unfold the bottom strips of pastry and then fold back the strips that weren't folded back the first time. Lay another strip of pastry perpendicular on top of the filling and then continue with the remaining strips. Trim the edges of the pastry strips, leaving a 1 inch (2.5 cm) overhang. Seal the edges of the pastry strips by folding them under the bottom pastry crust and flute the edges of the pastry. Brush the lattice pastry with milk and sprinkle with a little sugar. Cover and place in the refrigerator while you preheat the oven to 400 degrees F (205 degrees C) and place the oven rack in the lower third of the oven. Put a baking sheet, lined with aluminum foil, on the oven rack (to catch any spills.)\n\nPlace the pie plate on the hot baking sheet and bake the pie for about 35 minutes and then, if the edges of the pie are browning too much, cover with a foil ring. Continue to bake the pie for about another 10 minutes or until the crust is a golden brown color and the fruit juices begin to bubble.\n\nRemove the pie from the oven and place on a wire rack to cool for several hours. Serve at room temperature with softly whipped cream or vanilla ice cream. Leftovers can be stored in the refrigerator for about 3 days. Reheat before serving. This pie can be frozen.\n\nMakes one 9 inch (23 cm) pie.",
+      "steps": [
+        "Pie Crust:  In a food processor, place the flour, salt, and sugar and process until combined. Add the butter and process until the mixture resembles coarse",
+        "meal (about 15 seconds). Pour 1/4 cup (60 ml) water in a slow, steady stream, through the feed tube until the dough just holds together when pinched. If necessary, add more water. Do not process more than 30 seconds.",
+        "Turn the dough onto your work surface and gather into a ball. Divide the dough in half, flattening each half into a disk, cover with plastic wrap, and refrigerate for about one hour before using. This will chill the butter and relax the gluten in the flour.",
+        "After the dough has chilled sufficiently, remove one portion of the dough from the fridge and place it on a lightly floured surface.  Roll the pastry into a 12 inch (30 cm) circle. (To prevent the pastry from sticking to the counter and to ensure uniform thickness, keep lifting up and turning the pastry a quarter turn as you roll (always roll from the center of the pastry outwards).)  Fold the dough in half and gently transfer to a 9 inch (23 cm) pie pan. Brush off any excess flour and trim any overhanging pastry to an edge of 1/2 inch (1.5 cm). Refrigerate the pastry, covered with plastic wrap, while you make the filling.",
+        "Remove the second round of pastry and roll it into a 13 inch (30 cm) circle. Using a pastry wheel or pizza cutter, cut the pastry into about 3/4 inch (2 cm) strips. Place the strips of pastry on a parchment paper-lined baking sheet, cover with plastic wrap, and place in the refrigerator for about 10 minutes.",
+        "Make the Strawberry Rhubarb Filling: Place the cut strawberries and rhubarb in a large bowl. In a small bowl mix together the cornstarch, sugar, and ground cinnamon.",
+        "Remove the chilled pie crust from the fridge. Sprinkle about 2 tablespoons of the sugar mixture over the bottom of the pastry crust. Add the remaining sugar mixture to the strawberries and rhubarb and gently toss to combine. Pour the fruit mixture into the prepared pie shell. Sprinkle the fruit with about 1 teaspoon of lemon juice and dot with 2 tablespoons of butter.",
+        "Remove the lattice pastry from the refrigerator and, starting at the center with the longest strips and working outwards, place half the strips, spacing about 1 inch (2.5 cm) apart, on top of the filling. (Use the shortest pastry strips at the outer edges.) Then, gently fold back, about halfway, every other strip of pastry. Take another strip of pastry and place it perpendicular on top of the first strips of pastry. Unfold the bottom strips of pastry and then fold back the strips that weren't folded back the first time. Lay another strip of pastry perpendicular on top of the filling and then continue with the remaining strips. Trim the edges of the pastry strips, leaving a 1 inch (2.5 cm) overhang. Seal the edges of the pastry strips by folding them under the bottom pastry crust and flute the edges of the pastry. Brush the lattice pastry with milk and sprinkle with a little sugar. Cover and place in the refrigerator while you preheat the oven to 400 degrees F (205 degrees C) and place the oven rack in the lower third of the oven. Put a baking sheet, lined with aluminum foil, on the oven rack (to catch any spills.)",
+        "Place the pie plate on the hot baking sheet and bake the pie for about 35 minutes and then, if the edges of the pie are browning too much, cover with a foil ring. Continue to bake the pie for about another 10 minutes or until the crust is a golden brown color and the fruit juices begin to bubble.",
+        "Remove the pie from the oven and place on a wire rack to cool for several hours. Serve at room temperature with softly whipped cream or vanilla ice cream. Leftovers can be stored in the refrigerator for about 3 days. Reheat before serving. This pie can be frozen.",
+        "Makes one 9 inch (23 cm) pie."
+      ],
+      "description": "Strawberry Rhubarb Pie (British) — easy dessert recipe with 14 ingredients and 11 steps. Ready in 38 min. Includes exact ingredients and clear instructions.",
+      "hook": "Pie Crust:  In a food processor, place the flour, salt, and sugar and process until combined. Add the butter and process until the mixture resembles coarse\r\n\r\nmeal (about 15 seconds). Pour 1/4 cup (60 ml) water in a slow, steady stream, through the feed tube until the dough just holds together when pinched. If necessary, add more water. Do not process more than 30 seconds.\r\nTurn the dough onto your work surface and gather into a ball. Divide the dough in half, flattening each half into a disk, cover with plastic wrap, and refrigerate for about one hour before using. This will chill the butter and relax the gluten in the flour. \r\n\r\nAfter the dough has chilled sufficiently, remove one portion of the dough from the fridge and place it on a lightly floured surface.  Roll the pastry into a 12 inch (30 cm) circle. (To prevent the pastry from sticking to the counter and to ensure uniform thickness, keep lifting up and turning the pastry a quarter turn as you roll (always roll from the center of the pastry outwards).)  Fold the dough in half and gently transfer to a 9 inch (23 cm) pie pan. Brush off any excess flour and trim any overhanging pastry to an edge of 1/2 inch (1.5 cm). Refrigerate the pastry, covered with plastic wrap, while you make the filling. \r\n\r\nRemove the second round of pastry and roll it into a 13 inch (30 cm) circle. Using a pastry wheel or pizza cutter, cut the pastry into about 3/4 inch (2 cm) strips. Place the strips of pastry on a parchment paper-lined baking sheet, cover with plastic wrap, and place in the refrigerator for about 10 minutes. \r\n\r\nMake the Strawberry Rhubarb Filling: Place the cut strawberries and rhubarb in a large bowl. In a small bowl mix together the cornstarch, sugar, and ground cinnamon. \r\n\r\nRemove the chilled pie crust from the fridge. Sprinkle about 2 tablespoons of the sugar mixture over the bottom of the pastry crust. Add the remaining sugar mixture to the strawberries and rhubarb and gently toss to combine. Pour the fruit mixture into the prepared pie shell. Sprinkle the fruit with about 1 teaspoon of lemon juice and dot with 2 tablespoons of butter.\r\n\r\nRemove the lattice pastry from the refrigerator and, starting at the center with the longest strips and working outwards, place half the strips, spacing about 1 inch (2.5 cm) apart, on top of the filling. (Use the shortest pastry strips at the outer edges.) Then, gently fold back, about halfway, every other strip of pastry. Take another strip of pastry and place it perpendicular on top of the first strips of pastry. Unfold the bottom strips of pastry and then fold back the strips that weren't folded back the first time. Lay another strip of pastry perpendicular on top of the filling and then continue with the remaining strips. Trim the edges of the pastry strips, leaving a 1 inch (2.5 cm) overhang. Seal the edges of the pastry strips by folding them under the bottom pastry crust and flute the edges of the pastry. Brush the lattice pastry with milk and sprinkle with a little sugar. Cover and place in the refrigerator while you preheat the oven to 400 degrees F (205 degrees C) and place the oven rack in the lower third of the oven. Put a baking sheet, lined with aluminum foil, on the oven rack (to catch any spills.)\r\n\r\nPlace the pie plate on the hot baking sheet and bake the pie for about 35 minutes and then, if the edges of the pie are browning too much, cover with a foil ring. Continue to bake the pie for about another 10 minutes or until the crust is a golden brown color and the fruit juices begin to bubble.\r\n\r\nRemove the pie from the oven and place on a wire rack to cool for several hours. Serve at room temperature with softly whipped cream or vanilla ice cream. Leftovers can be stored in the refrigerator for about 3 days. Reheat before serving. This pie can be frozen.\r\n\r\nMakes one 9 inch (23 cm) pie.",
+      "tip": "",
+      "tags": [
+        "Pudding",
+        "Pie",
+        "Baking",
+        "Fruity",
+        "Glazed",
+        "Dessert",
+        "British",
+        "Strawberry",
+        "Rhubarb"
+      ],
+      "datePublished": "2026-04-27",
+      "publishDate": "2026-04-27T09:00:00",
+      "addedDate": "2026-04-25T04:06:58",
+      "status": "PUBLISHED",
+      "slug": "strawberry-rhubarb-pie-53005",
+      "youtube": "https://www.youtube.com/watch?v=tGw5Pwm4YA0",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "38 min",
+      "prepTime": "17 min",
+      "totalTime": "55 min",
+      "servings": 4,
+      "difficulty": "Hard",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "battenberg-cake-52894",
+        "christmas-cake-52990",
+        "jam-roly-poly-52890"
+      ]
+    },
+    {
+      "mealId": "53009",
+      "id": "lamb-and-lemon-souvlaki-53009",
+      "title": "Lamb and Lemon Souvlaki",
+      "category": "Lamb",
+      "origin": "Greek",
+      "image": "https://www.themealdb.com/images/media/meals/rjhf741585564676.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/rjhf741585564676.jpg",
+      "ingredients": [
+        "2 cloves Garlic",
+        "2 tsp Sea Salt",
+        "4 tbs Olive Oil",
+        "Zest and juice of 1 Lemon",
+        "1 tbs Dill",
+        "750g Lamb Leg",
+        "To serve Pita Bread"
+      ],
+      "instructions": "Pound the garlic with sea salt in a pestle and mortar (or use a small food processor), until the garlic forms a paste. Whisk together the oil, lemon juice, zest, dill and garlic. Mix in the lamb and combine well. Cover and marinate for at least 2 hrs or overnight in the fridge. If you’re going to use bamboo skewers, soak them in cold water.\n\nIf you’ve prepared the lamb the previous day, take it out of the fridge 30 mins before cooking. Thread the meat onto the soaked or metal skewers. Heat the grill to high or have a hot griddle pan or barbecue ready. Cook the skewers for 2-3 mins on each side, basting with the remaining marinade. Heat the pitta or flatbreads briefly, then stuff with the souvlaki. Add Greek salad (see 'Goes well with', right) and Tzatziki (below), if you like.",
+      "steps": [
+        "Pound the garlic with sea salt in a pestle and mortar (or use a small food processor), until the garlic forms a paste.",
+        "Whisk together the oil, lemon juice, zest, dill and garlic.",
+        "Mix in the lamb and combine well.",
+        "Cover and marinate for at least 2 hrs or overnight in the fridge.",
+        "If you’re going to use bamboo skewers, soak them in cold water.",
+        "If you’ve prepared the lamb the previous day, take it out of the fridge 30 mins before cooking.",
+        "Thread the meat onto the soaked or metal skewers.",
+        "Heat the grill to high or have a hot griddle pan or barbecue ready.",
+        "Cook the skewers for 2-3 mins on each side, basting with the remaining marinade.",
+        "Heat the pitta or flatbreads briefly, then stuff with the souvlaki.",
+        "Add Greek salad (see 'Goes well with', right) and Tzatziki (below), if you like."
+      ],
+      "description": "Lamb and Lemon Souvlaki (Greek) — easy lamb recipe with 7 ingredients and 11 steps. Ready in 23 min. Includes exact ingredients and clear instructions.",
+      "hook": "Pound the garlic with sea salt in a pestle and mortar (or use a small food processor), until the garlic forms a paste. Whisk together the oil, lemon juice, zest, dill and garlic. Mix in the lamb and combine well. Cover and marinate for at least 2 hrs or overnight in the fridge. If you’re going to use bamboo skewers, soak them in cold water.\r\n\r\nIf you’ve prepared the lamb the previous day, take it out of the fridge 30 mins before cooking. Thread the meat onto the soaked or metal skewers. Heat the grill to high or have a hot griddle pan or barbecue ready. Cook the skewers for 2-3 mins on each side, basting with the remaining marinade. Heat the pitta or flatbreads briefly, then stuff with the souvlaki. Add Greek salad (see 'Goes well with', right) and Tzatziki (below), if you like.",
+      "tip": "",
+      "tags": [
+        "Lamb",
+        "Greek"
+      ],
+      "datePublished": "2026-04-27",
+      "publishDate": "2026-04-27T09:00:00",
+      "addedDate": "2026-04-25T04:06:58",
+      "status": "PUBLISHED",
+      "slug": "lamb-and-lemon-souvlaki-53009",
+      "youtube": "https://www.youtube.com/watch?v=krR4rhjR75Y",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "23 min",
+      "prepTime": "10 min",
+      "totalTime": "33 min",
+      "servings": 4,
+      "difficulty": "Hard",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "hot-cumin-lamb-wrap-with-crunchy-slaw-spicy-mayo-53258",
+        "lamb-biryani-52805",
+        "lamb-pilaf-plov-53083"
+      ]
+    },
+    {
+      "mealId": "52810",
+      "id": "osso-buco-alla-milanese-52810",
+      "title": "Osso Buco alla Milanese",
+      "category": "Miscellaneous",
+      "origin": "Italian",
+      "image": "https://www.themealdb.com/images/media/meals/wwuqvt1487345467.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/wwuqvt1487345467.jpg",
+      "ingredients": [
+        "4 meaty shanks Veal",
+        "½ cup Flour",
+        "2 tablespoons Olive Oil",
+        "3 tablespoons Butter",
+        "1 medium chopped into ½-inch pieces Onion",
+        "1 chopped into ½-inch pieces Carrots",
+        "1 chopped into ½-inch pieces Celery",
+        "1 bulb chopped into ½-inch pieces Fennel",
+        "3 cloves Garlic",
+        "2 strips Orange Zest",
+        "1 ½ teaspoons Marjoram",
+        "1 Bay Leaf",
+        "1 cup Dry White Wine",
+        "½ cup Chicken Stock",
+        "1 cup chopped with juice Tomatoes",
+        "2 tablespoons chopped Parsley",
+        "1 teaspoon minced Garlic",
+        "1 teaspoon grated Lemon Zest"
+      ],
+      "instructions": "Heat the oven to 300 degrees.\nDredging the shanks: pour the flour into a shallow dish (a pie plate works nicely). Season the veal shanks on all sides with salt and pepper. One at a time, roll the shanks around in the flour coat, and shake and pat the shank to remove any excuses flour. Discard the remaining flour.\nBrowning the shanks: put the oil and 1 tablespoon of the butter in a wide Dutch oven or heavy braising pot (6 to 7 quart) and heat over medium-high heat. When the butter has melted and the oil is shimmering, lower the shanks into the pot, flat side down; if the shanks won’t fit without touching one another, do this in batches. Brown the shanks, turning once with tongs, until both flat sides are well caramelized, about 5 minutes per side. If the butter-oil mixture starts to burn, lower the heat just a bit. Transfer the shanks to a large platter or tray and set aside.\nThe aromatics: pour off and discard the fat from the pot. Wipe out any burnt bits with a damp paper towel, being careful not to remove any delicious little caramelized bits. Ad the remaining 2 tablespoons butter to the pot and melt it over medium heat. When the butter has stopped foaming, add the onion, carrot, celery, and fennel. Season with salt and pepper, stir, and cook the vegetables until they begin to soften but do not brown, about 6 minutes. Stir in the garlic, orange zest, marjoram, and bay leaf, and stew for another minute or two.\nThe braising liquid: add the wine, increase the heat to high, and bring to a boil. Boil, stirring occasionally, to reduce the wine by about half, 5 minutes. Add the stock and tomatoes, with their juice, and boil again to reduce the liquid to about 1 cup total, about 10 minutes.\nThe braise: Place the shanks in the pot so that they are sitting with the exposed bone facing up, and pour over any juices that accumulated as they sat. Cover with parchment paper, pressing down so the parchment nearly touches the veal and the edges hang over the sides of the pot by about an inch. Cover tightly with the lid, and slide into the lower part of the oven to braise at a gentle simmer. Check the pot after the first 15 minutes, and if the liquid is simmering too aggressively, lower the oven heat by 10 or 15 degrees. Continue braising, turning the shanks and spooning some pan juices over the top after the first 40 minutes, until the meat is completely tender and pulling away from the bone, about 2 hours.\nThe gremolata: While the shanks are braising, stir together the garlic, parsley, and lemon zest in a small bowl. Cover with plastic wrap and set aside in a cool place (or the refrigerator, if your kitchen is very warm.)\nThe finish: When the veal is fork-tender and falling away from the bone, remove the lid and sprinkle over half of the gremolata. Return the veal to the oven, uncovered, for another 15 minutes to caramelize it some.\nUsing a slotted spatula or spoon, carefully lift the shanks from the braising liquid, doing your best to keep them intact. The shanks will be very tender and threatening to fall into pieces, and the marrow will be wobbly inside the bones, so this can be a bit tricky. But if they do break apart, don’t worry, the flavor won’t suffer at all. Arrange the shanks on a serving platter or other large plate, without stacking, and cover with foil to keep warm.\nFinishing the sauce: Set the braising pot on top of the stove and evaluate the sauce: if there is a visible layer of fat floating on the surface, use a large spoon to skim it off and discard it. Taste the sauce for concentration of flavor. If it tastes a bit weak or flat, bring it to a boil over high heat, and boil to reduce the volume and intensify the flavor for 5 to 10 minutes. Taste again for salt and pepper. If the sauce wants more zip, stir in a teaspoon or two of the remaining gremolata.\nPortioning the veal shanks: if the shanks are reasonably sized, serve one per person. If the shanks are gargantuan or you’re dealing with modest appetites, pull apart the larger shanks, separating them at their natural seams, and serve smaller amounts. Be sure to give the marrow bones to whomever prizes them most.\nServing: Arrange the veal shanks on warm dinner plates accompanied by the risotto, if serving. Just before carrying the plates to the table, sprinkle on the remaining gremolata and then spoon over a generous amount of sauce – the contact with the hot liquid will aromatize the gremolata and perk up everyone’s appetite with the whiff of garlic and lemon.",
+      "steps": [
+        "Heat the oven to 300 degrees.",
+        "Dredging the shanks: pour the flour into a shallow dish (a pie plate works nicely). Season the veal shanks on all sides with salt and pepper. One at a time, roll the shanks around in the flour coat, and shake and pat the shank to remove any excuses flour. Discard the remaining flour.",
+        "Browning the shanks: put the oil and 1 tablespoon of the butter in a wide Dutch oven or heavy braising pot (6 to 7 quart) and heat over medium-high heat. When the butter has melted and the oil is shimmering, lower the shanks into the pot, flat side down; if the shanks won’t fit without touching one another, do this in batches. Brown the shanks, turning once with tongs, until both flat sides are well caramelized, about 5 minutes per side. If the butter-oil mixture starts to burn, lower the heat just a bit. Transfer the shanks to a large platter or tray and set aside.",
+        "The aromatics: pour off and discard the fat from the pot. Wipe out any burnt bits with a damp paper towel, being careful not to remove any delicious little caramelized bits. Ad the remaining 2 tablespoons butter to the pot and melt it over medium heat. When the butter has stopped foaming, add the onion, carrot, celery, and fennel. Season with salt and pepper, stir, and cook the vegetables until they begin to soften but do not brown, about 6 minutes. Stir in the garlic, orange zest, marjoram, and bay leaf, and stew for another minute or two.",
+        "The braising liquid: add the wine, increase the heat to high, and bring to a boil. Boil, stirring occasionally, to reduce the wine by about half, 5 minutes. Add the stock and tomatoes, with their juice, and boil again to reduce the liquid to about 1 cup total, about 10 minutes.",
+        "The braise: Place the shanks in the pot so that they are sitting with the exposed bone facing up, and pour over any juices that accumulated as they sat. Cover with parchment paper, pressing down so the parchment nearly touches the veal and the edges hang over the sides of the pot by about an inch. Cover tightly with the lid, and slide into the lower part of the oven to braise at a gentle simmer. Check the pot after the first 15 minutes, and if the liquid is simmering too aggressively, lower the oven heat by 10 or 15 degrees. Continue braising, turning the shanks and spooning some pan juices over the top after the first 40 minutes, until the meat is completely tender and pulling away from the bone, about 2 hours.",
+        "The gremolata: While the shanks are braising, stir together the garlic, parsley, and lemon zest in a small bowl. Cover with plastic wrap and set aside in a cool place (or the refrigerator, if your kitchen is very warm.)",
+        "The finish: When the veal is fork-tender and falling away from the bone, remove the lid and sprinkle over half of the gremolata. Return the veal to the oven, uncovered, for another 15 minutes to caramelize it some.",
+        "Using a slotted spatula or spoon, carefully lift the shanks from the braising liquid, doing your best to keep them intact. The shanks will be very tender and threatening to fall into pieces, and the marrow will be wobbly inside the bones, so this can be a bit tricky. But if they do break apart, don’t worry, the flavor won’t suffer at all. Arrange the shanks on a serving platter or other large plate, without stacking, and cover with foil to keep warm.",
+        "Finishing the sauce: Set the braising pot on top of the stove and evaluate the sauce: if there is a visible layer of fat floating on the surface, use a large spoon to skim it off and discard it. Taste the sauce for concentration of flavor. If it tastes a bit weak or flat, bring it to a boil over high heat, and boil to reduce the volume and intensify the flavor for 5 to 10 minutes. Taste again for salt and pepper. If the sauce wants more zip, stir in a teaspoon or two of the remaining gremolata.",
+        "Portioning the veal shanks: if the shanks are reasonably sized, serve one per person. If the shanks are gargantuan or you’re dealing with modest appetites, pull apart the larger shanks, separating them at their natural seams, and serve smaller amounts. Be sure to give the marrow bones to whomever prizes them most.",
+        "Serving: Arrange the veal shanks on warm dinner plates accompanied by the risotto, if serving. Just before carrying the plates to the table, sprinkle on the remaining gremolata and then spoon over a generous amount of sauce – the contact with the hot liquid will aromatize the gremolata and perk up everyone’s appetite with the whiff of garlic and lemon."
+      ],
+      "description": "Osso Buco alla Milanese (Italian) — easy miscellaneous recipe with 18 ingredients and 12 steps. Ready in 74 min. Includes exact ingredients and clear instr…",
+      "hook": "Heat the oven to 300 degrees.\r\nDredging the shanks: pour the flour into a shallow dish (a pie plate works nicely). Season the veal shanks on all sides with salt and pepper. One at a time, roll the shanks around in the flour coat, and shake and pat the shank to remove any excuses flour. Discard the remaining flour.\r\nBrowning the shanks: put the oil and 1 tablespoon of the butter in a wide Dutch oven or heavy braising pot (6 to 7 quart) and heat over medium-high heat. When the butter has melted and the oil is shimmering, lower the shanks into the pot, flat side down; if the shanks won’t fit without touching one another, do this in batches. Brown the shanks, turning once with tongs, until both flat sides are well caramelized, about 5 minutes per side. If the butter-oil mixture starts to burn, lower the heat just a bit. Transfer the shanks to a large platter or tray and set aside.\r\nThe aromatics: pour off and discard the fat from the pot. Wipe out any burnt bits with a damp paper towel, being careful not to remove any delicious little caramelized bits. Ad the remaining 2 tablespoons butter to the pot and melt it over medium heat. When the butter has stopped foaming, add the onion, carrot, celery, and fennel. Season with salt and pepper, stir, and cook the vegetables until they begin to soften but do not brown, about 6 minutes. Stir in the garlic, orange zest, marjoram, and bay leaf, and stew for another minute or two.\r\nThe braising liquid: add the wine, increase the heat to high, and bring to a boil. Boil, stirring occasionally, to reduce the wine by about half, 5 minutes. Add the stock and tomatoes, with their juice, and boil again to reduce the liquid to about 1 cup total, about 10 minutes.\r\nThe braise: Place the shanks in the pot so that they are sitting with the exposed bone facing up, and pour over any juices that accumulated as they sat. Cover with parchment paper, pressing down so the parchment nearly touches the veal and the edges hang over the sides of the pot by about an inch. Cover tightly with the lid, and slide into the lower part of the oven to braise at a gentle simmer. Check the pot after the first 15 minutes, and if the liquid is simmering too aggressively, lower the oven heat by 10 or 15 degrees. Continue braising, turning the shanks and spooning some pan juices over the top after the first 40 minutes, until the meat is completely tender and pulling away from the bone, about 2 hours.\r\nThe gremolata: While the shanks are braising, stir together the garlic, parsley, and lemon zest in a small bowl. Cover with plastic wrap and set aside in a cool place (or the refrigerator, if your kitchen is very warm.)\r\nThe finish: When the veal is fork-tender and falling away from the bone, remove the lid and sprinkle over half of the gremolata. Return the veal to the oven, uncovered, for another 15 minutes to caramelize it some.\r\nUsing a slotted spatula or spoon, carefully lift the shanks from the braising liquid, doing your best to keep them intact. The shanks will be very tender and threatening to fall into pieces, and the marrow will be wobbly inside the bones, so this can be a bit tricky. But if they do break apart, don’t worry, the flavor won’t suffer at all. Arrange the shanks on a serving platter or other large plate, without stacking, and cover with foil to keep warm.\r\nFinishing the sauce: Set the braising pot on top of the stove and evaluate the sauce: if there is a visible layer of fat floating on the surface, use a large spoon to skim it off and discard it. Taste the sauce for concentration of flavor. If it tastes a bit weak or flat, bring it to a boil over high heat, and boil to reduce the volume and intensify the flavor for 5 to 10 minutes. Taste again for salt and pepper. If the sauce wants more zip, stir in a teaspoon or two of the remaining gremolata.\r\nPortioning the veal shanks: if the shanks are reasonably sized, serve one per person. If the shanks are gargantuan or you’re dealing with modest appetites, pull apart the larger shanks, separating them at their natural seams, and serve smaller amounts. Be sure to give the marrow bones to whomever prizes them most.\r\nServing: Arrange the veal shanks on warm dinner plates accompanied by the risotto, if serving. Just before carrying the plates to the table, sprinkle on the remaining gremolata and then spoon over a generous amount of sauce – the contact with the hot liquid will aromatize the gremolata and perk up everyone’s appetite with the whiff of garlic and lemon.",
+      "tip": "",
+      "tags": [
+        "Miscellaneous",
+        "Italian",
+        "Osso",
+        "Buco"
+      ],
+      "datePublished": "2026-04-27",
+      "publishDate": "2026-04-27T09:00:00",
+      "addedDate": "2026-04-25T04:06:58",
+      "status": "PUBLISHED",
+      "slug": "osso-buco-alla-milanese-52810",
+      "youtube": "https://www.youtube.com/watch?v=9GUTC2Qwrf0",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "74 min",
+      "prepTime": "32 min",
+      "totalTime": "106 min",
+      "servings": 4,
+      "difficulty": "Hard",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "chakchouka-52969",
+        "duck-confit-52907",
         "syrian-bread-53089"
+      ]
+    },
+    {
+      "mealId": "52839",
+      "id": "chilli-prawn-linguine-52839",
+      "title": "Chilli prawn linguine",
+      "category": "Pasta",
+      "origin": "Italian",
+      "image": "https://www.themealdb.com/images/media/meals/usywpp1511189717.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/usywpp1511189717.jpg",
+      "ingredients": [
+        "280g Linguine Pasta",
+        "200g Sugar Snap Peas",
+        "2 tblsp Olive Oil",
+        "2 cloves chopped Garlic Clove",
+        "1 large Red Chilli",
+        "24 Skinned King Prawns",
+        "12 Cherry Tomatoes",
+        "Handful Basil Leaves",
+        "Leaves Lettuce",
+        "to serve Bread",
+        "2 tbsp Fromage Frais",
+        "Grated Zest of 2 Lime",
+        "2 tsp Caster Sugar"
+      ],
+      "instructions": "Mix the dressing ingredients in a small bowl and season with salt and pepper. Set aside.\n\nCook the pasta according to the packet instructions. Add the sugar snap peas for the last minute or so of cooking time.\n\nMeanwhile, heat the oil in a wok or large frying pan, toss in the garlic and chilli and cook over a fairly gentle heat for about 30 seconds without letting the garlic brown. Tip in the prawns and cook over a high heat, stirring frequently, for about 3 minutes until they turn pink.\n\nAdd the tomatoes and cook, stirring occasionally, for 3 minutes until they just start to soften. Drain the pasta and sugar snaps well, then toss into the prawn mixture. Tear in the basil leaves, stir, and season with salt and pepper.\n\nServe with salad leaves drizzled with the lime dressing, and warm crusty bread.",
+      "steps": [
+        "Mix the dressing ingredients in a small bowl and season with salt and pepper. Set aside.",
+        "Cook the pasta according to the packet instructions. Add the sugar snap peas for the last minute or so of cooking time.",
+        "Meanwhile, heat the oil in a wok or large frying pan, toss in the garlic and chilli and cook over a fairly gentle heat for about 30 seconds without letting the garlic brown. Tip in the prawns and cook over a high heat, stirring frequently, for about 3 minutes until they turn pink.",
+        "Add the tomatoes and cook, stirring occasionally, for 3 minutes until they just start to soften. Drain the pasta and sugar snaps well, then toss into the prawn mixture. Tear in the basil leaves, stir, and season with salt and pepper.",
+        "Serve with salad leaves drizzled with the lime dressing, and warm crusty bread."
+      ],
+      "description": "Chilli prawn linguine (Italian) — easy pasta recipe with 13 ingredients and 5 steps. Ready in 10 min. Includes exact ingredients and clear instructions.",
+      "hook": "Mix the dressing ingredients in a small bowl and season with salt and pepper. Set aside.\r\n\r\nCook the pasta according to the packet instructions. Add the sugar snap peas for the last minute or so of cooking time.\r\n\r\nMeanwhile, heat the oil in a wok or large frying pan, toss in the garlic and chilli and cook over a fairly gentle heat for about 30 seconds without letting the garlic brown. Tip in the prawns and cook over a high heat, stirring frequently, for about 3 minutes until they turn pink.\r\n\r\nAdd the tomatoes and cook, stirring occasionally, for 3 minutes until they just start to soften. Drain the pasta and sugar snaps well, then toss into the prawn mixture. Tear in the basil leaves, stir, and season with salt and pepper.\r\n\r\nServe with salad leaves drizzled with the lime dressing, and warm crusty bread.",
+      "tip": "",
+      "tags": [
+        "Pasta",
+        "Italian",
+        "Chilli",
+        "Prawn"
+      ],
+      "datePublished": "2026-04-27",
+      "publishDate": "2026-04-27T09:00:00",
+      "addedDate": "2026-04-25T04:06:58",
+      "status": "PUBLISHED",
+      "slug": "chilli-prawn-linguine-52839",
+      "youtube": "https://www.youtube.com/watch?v=SC17Mc70Db0",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "10 min",
+      "prepTime": "10 min",
+      "totalTime": "6 min",
+      "servings": 4,
+      "difficulty": "Easy",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "fettucine-alfredo-52835",
+        "venetian-duck-ragu-52838",
+        "syrian-spaghetti-53093"
       ]
     }
   ]
