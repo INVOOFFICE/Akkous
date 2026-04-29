@@ -1573,7 +1573,7 @@ input:focus-visible {
 .recipe-article__intro {
   font-size: 1.1rem;
   color: var(--muted);
-  margin: 0 0 2rem;
+  margin: 2rem 0;
   line-height: 1.65;
 }
 
@@ -1663,6 +1663,7 @@ input:focus-visible {
 
 .recipe-quick {
   margin-top: 1rem;
+  margin-bottom: 2rem;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 0.85rem;
@@ -1720,7 +1721,7 @@ input:focus-visible {
 }
 
 .share--top {
-  margin-top: 1.25rem;
+  margin-top: 2.5rem;
   padding-top: 0;
   border-top: none;
 }
@@ -1756,6 +1757,7 @@ input:focus-visible {
 }
 
 .recipe-layout {
+  margin-top: 2.5rem;
   display: grid;
   gap: 2.5rem;
 }
