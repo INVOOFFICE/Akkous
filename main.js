@@ -1666,6 +1666,32 @@
     updateRecipeMeta(recipe);
     injectJsonLd(buildRecipeJsonLdGraph(recipe));
 
+    // --- SEO dynamique ---
+    var recipeName = recipe.name || recipe.title || "Recipe";
+    var recipeDesc = recipe.description || recipe.hook || "";
+    document.title = recipeName + " — Akkous";
+
+    var metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc && recipeDesc) {
+      metaDesc.setAttribute("content", recipeDesc);
+    }
+
+    var ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle && recipeName) {
+      ogTitle.setAttribute("content", recipeName + " — Akkous");
+    }
+
+    var ogDesc = document.querySelector('meta[property="og:description"]');
+    if (ogDesc && recipeDesc) {
+      ogDesc.setAttribute("content", recipeDesc);
+    }
+
+    var canonical = document.getElementById("canonical-url");
+    if (canonical) {
+      canonical.setAttribute("href", window.location.href.split("?")[0]);
+    }
+    // --- fin SEO ---
+
     var heroImg = $("#recipe-hero-image");
     if (heroImg) {
       heroImg.src = recipe.image || "";

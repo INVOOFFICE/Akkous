@@ -23,6 +23,7 @@
   --font-serif: "Playfair Display", Georgia, serif;
   --font-sans: "Inter", system-ui, -apple-system, sans-serif;
   --nav-h: 4.25rem;
+  --nav-total-h: var(--nav-h);
   --transition: 0.25s ease;
   color-scheme: light;
 }
@@ -32,7 +33,7 @@
   --bg-elevated: #1C1C1C;
   --text: #F5F5F2;
   --muted: #9A9A9A;
-  --text-muted: #111111;
+  --text-muted: #9ca3af;
   --border: rgba(255, 255, 255, 0.08);
   --overlay: linear-gradient(
     180deg,
@@ -381,6 +382,10 @@ input:focus-visible {
 }
 
 @media (min-width: 960px) {
+  :root {
+    --nav-total-h: calc(var(--nav-h) + 2.5rem);
+  }
+
   .nav__toggle {
     display: none;
   }
@@ -1239,7 +1244,7 @@ input:focus-visible {
 }
 
 .about-brief h2 {
-  font-family: var(--font-display);
+  font-family: var(--font-serif);
   font-size: 2rem;
   margin-bottom: 1.5rem;
   color: var(--accent);
@@ -1252,7 +1257,7 @@ input:focus-visible {
 }
 
 [data-theme="dark"] .about-brief h2 {
-  color: #111111;
+  color: var(--primary);
 }
 
 @media (min-width: 768px) {
@@ -1615,7 +1620,7 @@ input:focus-visible {
 
 .recipe-jump {
   position: sticky;
-  top: calc(var(--nav-h) + 0.75rem);
+  top: calc(var(--nav-total-h) + 0.75rem);
   z-index: 5;
   display: flex;
   flex-wrap: wrap;
@@ -1693,6 +1698,16 @@ input:focus-visible {
 @media (max-width: 860px) {
   .recipe-quick {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 420px) {
+  .recipe-quick {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.6rem;
+  }
+  .recipe-quick__value {
+    font-size: 0.88rem;
   }
 }
 
@@ -1832,8 +1847,8 @@ input:focus-visible {
 .recipe-tip {
   margin: 2.5rem 0;
   padding: 1.5rem;
-  background: #f9f9f9;
-  border-left: 4px solid #E8572A;
+  background: color-mix(in srgb, var(--primary) 6%, var(--bg));
+  border-left: 4px solid var(--primary);
   border-radius: 0 0.5rem 0.5rem 0;
   display: flex;
   gap: 1rem;
@@ -1841,7 +1856,7 @@ input:focus-visible {
 }
 
 [data-theme="dark"] .recipe-tip {
-  background: rgba(232, 87, 42, 0.05);
+  background: color-mix(in srgb, var(--primary) 6%, var(--bg));
 }
 
 .recipe-tip__icon {
@@ -1854,7 +1869,7 @@ input:focus-visible {
 }
 
 .recipe-tip__content strong {
-  color: #E8572A;
+  color: var(--primary);
   display: block;
   margin-bottom: 0.25rem;
 }
