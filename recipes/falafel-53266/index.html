@@ -151,6 +151,33 @@
           </div>
         </header>
 
+        <div class="recipe-jump container" role="navigation" aria-label="Jump to section">
+          <a class="recipe-jump__btn" href="#ingredients-heading">Ingredients</a>
+          <a class="recipe-jump__btn" href="#steps-heading">Instructions</a>
+          <a class="recipe-jump__btn" href="#faq-heading">FAQ</a>
+          <a class="recipe-jump__btn" href="#related-heading">Related</a>
+          <button type="button" class="recipe-jump__btn recipe-jump__btn--ghost" id="print-recipe">Print</button>
+        </div>
+
+        <section class="recipe-quick container" aria-label="Quick stats">
+          <div class="recipe-quick__item">
+            <span class="recipe-quick__label">Read</span>
+            <span class="recipe-quick__value" id="recipe-read-time-quick">—</span>
+          </div>
+          <div class="recipe-quick__item">
+            <span class="recipe-quick__label">Servings</span>
+            <span class="recipe-quick__value" id="recipe-servings-quick">—</span>
+          </div>
+          <div class="recipe-quick__item">
+            <span class="recipe-quick__label">Category</span>
+            <span class="recipe-quick__value" id="recipe-category-quick">—</span>
+          </div>
+          <div class="recipe-quick__item">
+            <span class="recipe-quick__label">Origin</span>
+            <span class="recipe-quick__value" id="recipe-origin-quick">—</span>
+          </div>
+        </section>
+
         <div class="container recipe-article__intro-wrap">
           <p class="recipe-article__intro container--narrow" id="recipe-intro">Turkish Falafel (Turkish) — easy vegetarian recipe with 8 ingredients and 3 steps. Ready in 10 min. Includes exact ingredients and clear instructions.</p>
         </div>
@@ -165,52 +192,49 @@
           <div class="recipe-youtube__inner" id="recipe-youtube-inner"></div>
         </div>
 
+        <section class="container container--narrow share share--top" aria-label="Share this recipe">
+          <h3>Share</h3>
+          <div class="share__buttons">
+            <button type="button" class="share__btn" id="share-x">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path
+                  d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+                />
+              </svg>
+              X / Twitter
+            </button>
+            <button type="button" class="share__btn" id="share-pinterest">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path
+                  d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"
+                />
+              </svg>
+              Pinterest
+            </button>
+            <button type="button" class="share__btn" id="share-whatsapp">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path
+                  d="M12.04 2C6.52 2 2.04 6.48 2.04 12c0 1.76.46 3.48 1.33 5L2 22l5.12-1.34A10 10 0 0012.04 22c5.52 0 10-4.48 10-10s-4.48-10-10-10zm0 18.2c-1.52 0-3-.4-4.3-1.14l-.3-.18-3.04.8.82-2.96-.2-.31A8.14 8.14 0 013.9 12c0-4.49 3.65-8.14 8.14-8.14s8.14 3.65 8.14 8.14-3.65 8.2-8.14 8.2zm4.47-6.12c-.24-.12-1.42-.7-1.64-.77-.22-.08-.38-.12-.54.12-.16.24-.62.77-.76.93-.14.16-.28.18-.52.06-.24-.12-1-.37-1.91-1.18-.7-.62-1.18-1.38-1.31-1.61-.14-.24-.01-.36.1-.48.1-.1.24-.26.36-.38.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.31-.74-1.79-.2-.48-.4-.41-.54-.42h-.46c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.7 2.6 4.13 3.64.58.24 1.02.38 1.37.49.58.18 1.1.16 1.52.1.46-.06 1.42-.58 1.62-1.14.2-.56.2-1.04.14-1.14-.06-.1-.22-.16-.46-.28z"
+                />
+              </svg>
+              WhatsApp
+            </button>
+            <button type="button" class="share__btn" id="share-copy">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <rect x="9" y="9" width="13" height="13" rx="2" />
+                <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
+              </svg>
+              Copy link
+            </button>
+          </div>
+        </section>
+
         <div class="container recipe-layout">
           <aside class="ingredients" aria-labelledby="ingredients-heading">
             <h2 id="ingredients-heading">Ingredients</h2>
             <ul class="ingredient-list" id="ingredient-list"><li><label for="ing-falafel-53266-0"><input type="checkbox" id="ing-falafel-53266-0"><span>2 tablespoons Sunflower Oil</span></label></li><li><label for="ing-falafel-53266-1"><input type="checkbox" id="ing-falafel-53266-1"><span>1 chopped Onion</span></label></li><li><label for="ing-falafel-53266-2"><input type="checkbox" id="ing-falafel-53266-2"><span>1 clove peeled crushed Garlic</span></label></li><li><label for="ing-falafel-53266-3"><input type="checkbox" id="ing-falafel-53266-3"><span>400g Chickpeas</span></label></li><li><label for="ing-falafel-53266-4"><input type="checkbox" id="ing-falafel-53266-4"><span>1 tsp Ground Cumin</span></label></li><li><label for="ing-falafel-53266-5"><input type="checkbox" id="ing-falafel-53266-5"><span>1 tsp Ground Coriander</span></label></li><li><label for="ing-falafel-53266-6"><input type="checkbox" id="ing-falafel-53266-6"><span>Handful Parsley</span></label></li><li><label for="ing-falafel-53266-7"><input type="checkbox" id="ing-falafel-53266-7"><span>1 beaten Egg</span></label></li></ul>
-          </aside>
-          <div class="steps">
-            <h2 id="steps-heading">Instructions</h2>
-            <ol id="recipe-steps" aria-labelledby="steps-heading"><li>Heat 1 tbsp oil in a pan, fry onion and garlic for 5 mins.</li><li>2. Mash chickpeas, spices, and herbs, then mix in egg.</li><li>3. Shape into patties, fry for 3 mins each side.</li></ol>
-            <div class="share">
-              <h3>Share</h3>
-              <div class="share__buttons">
-                <button type="button" class="share__btn" id="share-x">
-                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                    <path
-                      d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
-                    />
-                  </svg>
-                  X / Twitter
-                </button>
-                <button type="button" class="share__btn" id="share-pinterest">
-                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                    <path
-                      d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"
-                    />
-                  </svg>
-                  Pinterest
-                </button>
-                <button type="button" class="share__btn" id="share-whatsapp">
-                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                    <path
-                      d="M12.04 2C6.52 2 2.04 6.48 2.04 12c0 1.76.46 3.48 1.33 5L2 22l5.12-1.34A10 10 0 0012.04 22c5.52 0 10-4.48 10-10s-4.48-10-10-10zm0 18.2c-1.52 0-3-.4-4.3-1.14l-.3-.18-3.04.8.82-2.96-.2-.31A8.14 8.14 0 013.9 12c0-4.49 3.65-8.14 8.14-8.14s8.14 3.65 8.14 8.14-3.65 8.2-8.14 8.2zm4.47-6.12c-.24-.12-1.42-.7-1.64-.77-.22-.08-.38-.12-.54.12-.16.24-.62.77-.76.93-.14.16-.28.18-.52.06-.24-.12-1-.37-1.91-1.18-.7-.62-1.18-1.38-1.31-1.61-.14-.24-.01-.36.1-.48.1-.1.24-.26.36-.38.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.31-.74-1.79-.2-.48-.4-.41-.54-.42h-.46c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.7 2.6 4.13 3.64.58.24 1.02.38 1.37.49.58.18 1.1.16 1.52.1.46-.06 1.42-.58 1.62-1.14.2-.56.2-1.04.14-1.14-.06-.1-.22-.16-.46-.28z"
-                    />
-                  </svg>
-                  WhatsApp
-                </button>
-                <button type="button" class="share__btn" id="share-copy">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                    <rect x="9" y="9" width="13" height="13" rx="2" />
-                    <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
-                  </svg>
-                  Copy link
-                </button>
-              </div>
-            </div>
 
-            <aside class="recipe-affiliate" aria-labelledby="affiliate-heading">
+            <aside class="recipe-affiliate recipe-affiliate--sidebar" aria-labelledby="affiliate-heading">
               <p class="recipe-affiliate__badge">Recommended</p>
               <h3 id="affiliate-heading">Vegan Cheat Meals Cookbook</h3>
               <p class="recipe-affiliate__text">
@@ -232,6 +256,10 @@
               </a>
               <p class="recipe-affiliate__disclosure sr-only">Affiliate link</p>
             </aside>
+          </aside>
+          <div class="steps">
+            <h2 id="steps-heading">Instructions</h2>
+            <ol id="recipe-steps" aria-labelledby="steps-heading"><li>Heat 1 tbsp oil in a pan, fry onion and garlic for 5 mins.</li><li>2. Mash chickpeas, spices, and herbs, then mix in egg.</li><li>3. Shape into patties, fry for 3 mins each side.</li></ol>
           </div>
         </div>
 

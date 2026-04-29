@@ -1690,6 +1690,19 @@
       " serving" +
       ((recipe.servings || 1) === 1 ? "" : "s");
 
+    var qRead = $("#recipe-read-time-quick");
+    if (qRead) qRead.textContent = estimateReadMinutes(recipe) + " min";
+    var qServ = $("#recipe-servings-quick");
+    if (qServ)
+      qServ.textContent =
+        (recipe.servings || 1) + " serving" + ((recipe.servings || 1) === 1 ? "" : "s");
+    var qCat = $("#recipe-category-quick");
+    if (qCat)
+      qCat.textContent =
+        recipe.categoryDisplay || categoryLabel(recipe.category) || "—";
+    var qOrig = $("#recipe-origin-quick");
+    if (qOrig) qOrig.textContent = recipe.origin || "—";
+
     var introEl = $("#recipe-intro");
     if (introEl) {
       introEl.textContent = recipe.hook || recipe.description || "";
@@ -1712,6 +1725,17 @@
       } catch (e) {
         // keep static href
       }
+    }
+
+    var printBtn = $("#print-recipe");
+    if (printBtn) {
+      printBtn.onclick = function () {
+        try {
+          window.print();
+        } catch (e) {
+          // ignore
+        }
+      };
     }
 
     var ingList = $("#ingredient-list");

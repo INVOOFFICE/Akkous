@@ -151,6 +151,33 @@
           </div>
         </header>
 
+        <div class="recipe-jump container" role="navigation" aria-label="Jump to section">
+          <a class="recipe-jump__btn" href="#ingredients-heading">Ingredients</a>
+          <a class="recipe-jump__btn" href="#steps-heading">Instructions</a>
+          <a class="recipe-jump__btn" href="#faq-heading">FAQ</a>
+          <a class="recipe-jump__btn" href="#related-heading">Related</a>
+          <button type="button" class="recipe-jump__btn recipe-jump__btn--ghost" id="print-recipe">Print</button>
+        </div>
+
+        <section class="recipe-quick container" aria-label="Quick stats">
+          <div class="recipe-quick__item">
+            <span class="recipe-quick__label">Read</span>
+            <span class="recipe-quick__value" id="recipe-read-time-quick">—</span>
+          </div>
+          <div class="recipe-quick__item">
+            <span class="recipe-quick__label">Servings</span>
+            <span class="recipe-quick__value" id="recipe-servings-quick">—</span>
+          </div>
+          <div class="recipe-quick__item">
+            <span class="recipe-quick__label">Category</span>
+            <span class="recipe-quick__value" id="recipe-category-quick">—</span>
+          </div>
+          <div class="recipe-quick__item">
+            <span class="recipe-quick__label">Origin</span>
+            <span class="recipe-quick__value" id="recipe-origin-quick">—</span>
+          </div>
+        </section>
+
         <div class="container recipe-article__intro-wrap">
           <p class="recipe-article__intro container--narrow" id="recipe-intro">Strawberry Rhubarb Pie (British) — easy dessert recipe with 14 ingredients and 11 steps. Ready in 38 min. Includes exact ingredients and clear instructions.</p>
         </div>
@@ -165,52 +192,49 @@
           <div class="recipe-youtube__inner" id="recipe-youtube-inner"></div>
         </div>
 
+        <section class="container container--narrow share share--top" aria-label="Share this recipe">
+          <h3>Share</h3>
+          <div class="share__buttons">
+            <button type="button" class="share__btn" id="share-x">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path
+                  d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+                />
+              </svg>
+              X / Twitter
+            </button>
+            <button type="button" class="share__btn" id="share-pinterest">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path
+                  d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"
+                />
+              </svg>
+              Pinterest
+            </button>
+            <button type="button" class="share__btn" id="share-whatsapp">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path
+                  d="M12.04 2C6.52 2 2.04 6.48 2.04 12c0 1.76.46 3.48 1.33 5L2 22l5.12-1.34A10 10 0 0012.04 22c5.52 0 10-4.48 10-10s-4.48-10-10-10zm0 18.2c-1.52 0-3-.4-4.3-1.14l-.3-.18-3.04.8.82-2.96-.2-.31A8.14 8.14 0 013.9 12c0-4.49 3.65-8.14 8.14-8.14s8.14 3.65 8.14 8.14-3.65 8.2-8.14 8.2zm4.47-6.12c-.24-.12-1.42-.7-1.64-.77-.22-.08-.38-.12-.54.12-.16.24-.62.77-.76.93-.14.16-.28.18-.52.06-.24-.12-1-.37-1.91-1.18-.7-.62-1.18-1.38-1.31-1.61-.14-.24-.01-.36.1-.48.1-.1.24-.26.36-.38.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.31-.74-1.79-.2-.48-.4-.41-.54-.42h-.46c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.7 2.6 4.13 3.64.58.24 1.02.38 1.37.49.58.18 1.1.16 1.52.1.46-.06 1.42-.58 1.62-1.14.2-.56.2-1.04.14-1.14-.06-.1-.22-.16-.46-.28z"
+                />
+              </svg>
+              WhatsApp
+            </button>
+            <button type="button" class="share__btn" id="share-copy">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <rect x="9" y="9" width="13" height="13" rx="2" />
+                <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
+              </svg>
+              Copy link
+            </button>
+          </div>
+        </section>
+
         <div class="container recipe-layout">
           <aside class="ingredients" aria-labelledby="ingredients-heading">
             <h2 id="ingredients-heading">Ingredients</h2>
             <ul class="ingredient-list" id="ingredient-list"><li><label for="ing-strawberry-rhubarb-pie-53005-0"><input type="checkbox" id="ing-strawberry-rhubarb-pie-53005-0"><span>350g Flour</span></label></li><li><label for="ing-strawberry-rhubarb-pie-53005-1"><input type="checkbox" id="ing-strawberry-rhubarb-pie-53005-1"><span>1 tsp Salt</span></label></li><li><label for="ing-strawberry-rhubarb-pie-53005-2"><input type="checkbox" id="ing-strawberry-rhubarb-pie-53005-2"><span>2 tbs Sugar</span></label></li><li><label for="ing-strawberry-rhubarb-pie-53005-3"><input type="checkbox" id="ing-strawberry-rhubarb-pie-53005-3"><span>1 cup Butter</span></label></li><li><label for="ing-strawberry-rhubarb-pie-53005-4"><input type="checkbox" id="ing-strawberry-rhubarb-pie-53005-4"><span>1/2 cup Water</span></label></li><li><label for="ing-strawberry-rhubarb-pie-53005-5"><input type="checkbox" id="ing-strawberry-rhubarb-pie-53005-5"><span>450g Rhubarb</span></label></li><li><label for="ing-strawberry-rhubarb-pie-53005-6"><input type="checkbox" id="ing-strawberry-rhubarb-pie-53005-6"><span>450g Strawberries</span></label></li><li><label for="ing-strawberry-rhubarb-pie-53005-7"><input type="checkbox" id="ing-strawberry-rhubarb-pie-53005-7"><span>3 tbs Cornstarch</span></label></li><li><label for="ing-strawberry-rhubarb-pie-53005-8"><input type="checkbox" id="ing-strawberry-rhubarb-pie-53005-8"><span>150g Sugar</span></label></li><li><label for="ing-strawberry-rhubarb-pie-53005-9"><input type="checkbox" id="ing-strawberry-rhubarb-pie-53005-9"><span>1/4 tsp Cinnamon</span></label></li><li><label for="ing-strawberry-rhubarb-pie-53005-10"><input type="checkbox" id="ing-strawberry-rhubarb-pie-53005-10"><span>1 tsp Lemon Juice</span></label></li><li><label for="ing-strawberry-rhubarb-pie-53005-11"><input type="checkbox" id="ing-strawberry-rhubarb-pie-53005-11"><span>2 tbs Unsalted Butter</span></label></li><li><label for="ing-strawberry-rhubarb-pie-53005-12"><input type="checkbox" id="ing-strawberry-rhubarb-pie-53005-12"><span>2 tbs Milk</span></label></li><li><label for="ing-strawberry-rhubarb-pie-53005-13"><input type="checkbox" id="ing-strawberry-rhubarb-pie-53005-13"><span>Spinkling Sugar</span></label></li></ul>
-          </aside>
-          <div class="steps">
-            <h2 id="steps-heading">Instructions</h2>
-            <ol id="recipe-steps" aria-labelledby="steps-heading"><li>Pie Crust:  In a food processor, place the flour, salt, and sugar and process until combined. Add the butter and process until the mixture resembles coarse</li><li>meal (about 15 seconds). Pour 1/4 cup (60 ml) water in a slow, steady stream, through the feed tube until the dough just holds together when pinched. If necessary, add more water. Do not process more than 30 seconds.</li><li>Turn the dough onto your work surface and gather into a ball. Divide the dough in half, flattening each half into a disk, cover with plastic wrap, and refrigerate for about one hour before using. This will chill the butter and relax the gluten in the flour.</li><li>After the dough has chilled sufficiently, remove one portion of the dough from the fridge and place it on a lightly floured surface.  Roll the pastry into a 12 inch (30 cm) circle. (To prevent the pastry from sticking to the counter and to ensure uniform thickness, keep lifting up and turning the pastry a quarter turn as you roll (always roll from the center of the pastry outwards).)  Fold the dough in half and gently transfer to a 9 inch (23 cm) pie pan. Brush off any excess flour and trim any overhanging pastry to an edge of 1/2 inch (1.5 cm). Refrigerate the pastry, covered with plastic wrap, while you make the filling.</li><li>Remove the second round of pastry and roll it into a 13 inch (30 cm) circle. Using a pastry wheel or pizza cutter, cut the pastry into about 3/4 inch (2 cm) strips. Place the strips of pastry on a parchment paper-lined baking sheet, cover with plastic wrap, and place in the refrigerator for about 10 minutes.</li><li>Make the Strawberry Rhubarb Filling: Place the cut strawberries and rhubarb in a large bowl. In a small bowl mix together the cornstarch, sugar, and ground cinnamon.</li><li>Remove the chilled pie crust from the fridge. Sprinkle about 2 tablespoons of the sugar mixture over the bottom of the pastry crust. Add the remaining sugar mixture to the strawberries and rhubarb and gently toss to combine. Pour the fruit mixture into the prepared pie shell. Sprinkle the fruit with about 1 teaspoon of lemon juice and dot with 2 tablespoons of butter.</li><li>Remove the lattice pastry from the refrigerator and, starting at the center with the longest strips and working outwards, place half the strips, spacing about 1 inch (2.5 cm) apart, on top of the filling. (Use the shortest pastry strips at the outer edges.) Then, gently fold back, about halfway, every other strip of pastry. Take another strip of pastry and place it perpendicular on top of the first strips of pastry. Unfold the bottom strips of pastry and then fold back the strips that weren't folded back the first time. Lay another strip of pastry perpendicular on top of the filling and then continue with the remaining strips. Trim the edges of the pastry strips, leaving a 1 inch (2.5 cm) overhang. Seal the edges of the pastry strips by folding them under the bottom pastry crust and flute the edges of the pastry. Brush the lattice pastry with milk and sprinkle with a little sugar. Cover and place in the refrigerator while you preheat the oven to 400 degrees F (205 degrees C) and place the oven rack in the lower third of the oven. Put a baking sheet, lined with aluminum foil, on the oven rack (to catch any spills.)</li><li>Place the pie plate on the hot baking sheet and bake the pie for about 35 minutes and then, if the edges of the pie are browning too much, cover with a foil ring. Continue to bake the pie for about another 10 minutes or until the crust is a golden brown color and the fruit juices begin to bubble.</li><li>Remove the pie from the oven and place on a wire rack to cool for several hours. Serve at room temperature with softly whipped cream or vanilla ice cream. Leftovers can be stored in the refrigerator for about 3 days. Reheat before serving. This pie can be frozen.</li><li>Makes one 9 inch (23 cm) pie.</li></ol>
-            <div class="share">
-              <h3>Share</h3>
-              <div class="share__buttons">
-                <button type="button" class="share__btn" id="share-x">
-                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                    <path
-                      d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
-                    />
-                  </svg>
-                  X / Twitter
-                </button>
-                <button type="button" class="share__btn" id="share-pinterest">
-                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                    <path
-                      d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"
-                    />
-                  </svg>
-                  Pinterest
-                </button>
-                <button type="button" class="share__btn" id="share-whatsapp">
-                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                    <path
-                      d="M12.04 2C6.52 2 2.04 6.48 2.04 12c0 1.76.46 3.48 1.33 5L2 22l5.12-1.34A10 10 0 0012.04 22c5.52 0 10-4.48 10-10s-4.48-10-10-10zm0 18.2c-1.52 0-3-.4-4.3-1.14l-.3-.18-3.04.8.82-2.96-.2-.31A8.14 8.14 0 013.9 12c0-4.49 3.65-8.14 8.14-8.14s8.14 3.65 8.14 8.14-3.65 8.2-8.14 8.2zm4.47-6.12c-.24-.12-1.42-.7-1.64-.77-.22-.08-.38-.12-.54.12-.16.24-.62.77-.76.93-.14.16-.28.18-.52.06-.24-.12-1-.37-1.91-1.18-.7-.62-1.18-1.38-1.31-1.61-.14-.24-.01-.36.1-.48.1-.1.24-.26.36-.38.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.31-.74-1.79-.2-.48-.4-.41-.54-.42h-.46c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.7 2.6 4.13 3.64.58.24 1.02.38 1.37.49.58.18 1.1.16 1.52.1.46-.06 1.42-.58 1.62-1.14.2-.56.2-1.04.14-1.14-.06-.1-.22-.16-.46-.28z"
-                    />
-                  </svg>
-                  WhatsApp
-                </button>
-                <button type="button" class="share__btn" id="share-copy">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                    <rect x="9" y="9" width="13" height="13" rx="2" />
-                    <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
-                  </svg>
-                  Copy link
-                </button>
-              </div>
-            </div>
 
-            <aside class="recipe-affiliate" aria-labelledby="affiliate-heading">
+            <aside class="recipe-affiliate recipe-affiliate--sidebar" aria-labelledby="affiliate-heading">
               <p class="recipe-affiliate__badge">Recommended</p>
               <h3 id="affiliate-heading">Vegan Cheat Meals Cookbook</h3>
               <p class="recipe-affiliate__text">
@@ -232,6 +256,10 @@
               </a>
               <p class="recipe-affiliate__disclosure sr-only">Affiliate link</p>
             </aside>
+          </aside>
+          <div class="steps">
+            <h2 id="steps-heading">Instructions</h2>
+            <ol id="recipe-steps" aria-labelledby="steps-heading"><li>Pie Crust:  In a food processor, place the flour, salt, and sugar and process until combined. Add the butter and process until the mixture resembles coarse</li><li>meal (about 15 seconds). Pour 1/4 cup (60 ml) water in a slow, steady stream, through the feed tube until the dough just holds together when pinched. If necessary, add more water. Do not process more than 30 seconds.</li><li>Turn the dough onto your work surface and gather into a ball. Divide the dough in half, flattening each half into a disk, cover with plastic wrap, and refrigerate for about one hour before using. This will chill the butter and relax the gluten in the flour.</li><li>After the dough has chilled sufficiently, remove one portion of the dough from the fridge and place it on a lightly floured surface.  Roll the pastry into a 12 inch (30 cm) circle. (To prevent the pastry from sticking to the counter and to ensure uniform thickness, keep lifting up and turning the pastry a quarter turn as you roll (always roll from the center of the pastry outwards).)  Fold the dough in half and gently transfer to a 9 inch (23 cm) pie pan. Brush off any excess flour and trim any overhanging pastry to an edge of 1/2 inch (1.5 cm). Refrigerate the pastry, covered with plastic wrap, while you make the filling.</li><li>Remove the second round of pastry and roll it into a 13 inch (30 cm) circle. Using a pastry wheel or pizza cutter, cut the pastry into about 3/4 inch (2 cm) strips. Place the strips of pastry on a parchment paper-lined baking sheet, cover with plastic wrap, and place in the refrigerator for about 10 minutes.</li><li>Make the Strawberry Rhubarb Filling: Place the cut strawberries and rhubarb in a large bowl. In a small bowl mix together the cornstarch, sugar, and ground cinnamon.</li><li>Remove the chilled pie crust from the fridge. Sprinkle about 2 tablespoons of the sugar mixture over the bottom of the pastry crust. Add the remaining sugar mixture to the strawberries and rhubarb and gently toss to combine. Pour the fruit mixture into the prepared pie shell. Sprinkle the fruit with about 1 teaspoon of lemon juice and dot with 2 tablespoons of butter.</li><li>Remove the lattice pastry from the refrigerator and, starting at the center with the longest strips and working outwards, place half the strips, spacing about 1 inch (2.5 cm) apart, on top of the filling. (Use the shortest pastry strips at the outer edges.) Then, gently fold back, about halfway, every other strip of pastry. Take another strip of pastry and place it perpendicular on top of the first strips of pastry. Unfold the bottom strips of pastry and then fold back the strips that weren't folded back the first time. Lay another strip of pastry perpendicular on top of the filling and then continue with the remaining strips. Trim the edges of the pastry strips, leaving a 1 inch (2.5 cm) overhang. Seal the edges of the pastry strips by folding them under the bottom pastry crust and flute the edges of the pastry. Brush the lattice pastry with milk and sprinkle with a little sugar. Cover and place in the refrigerator while you preheat the oven to 400 degrees F (205 degrees C) and place the oven rack in the lower third of the oven. Put a baking sheet, lined with aluminum foil, on the oven rack (to catch any spills.)</li><li>Place the pie plate on the hot baking sheet and bake the pie for about 35 minutes and then, if the edges of the pie are browning too much, cover with a foil ring. Continue to bake the pie for about another 10 minutes or until the crust is a golden brown color and the fruit juices begin to bubble.</li><li>Remove the pie from the oven and place on a wire rack to cool for several hours. Serve at room temperature with softly whipped cream or vanilla ice cream. Leftovers can be stored in the refrigerator for about 3 days. Reheat before serving. This pie can be frozen.</li><li>Makes one 9 inch (23 cm) pie.</li></ol>
           </div>
         </div>
 
