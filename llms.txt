@@ -94,6 +94,11 @@
 - [Lamb and Lemon Souvlaki](https://akkous.com/recipes/lamb-and-lemon-souvlaki-53009/) — Greek | Lamb
 - [Osso Buco alla Milanese](https://akkous.com/recipes/osso-buco-alla-milanese-52810/) — Italian | Miscellaneous
 - [Chilli prawn linguine](https://akkous.com/recipes/chilli-prawn-linguine-52839/) — Italian | Pasta
+- [Gevulde speculaas](https://akkous.com/recipes/gevulde-speculaas-53381/) — Dutch | Dessert
+- [Rigatoni with fennel sausage sauce](https://akkous.com/recipes/rigatoni-with-fennel-sausage-sauce-52783/) — Italian | Lamb
+- [Spanish meatballs with clams, chorizo & squid](https://akkous.com/recipes/spanish-meatballs-with-clams-chorizo-squid-53183/) — Spanish | Miscellaneous
+- [Lasagne](https://akkous.com/recipes/lasagne-52844/) — Italian | Pasta
+- [Tonkatsu pork](https://akkous.com/recipes/tonkatsu-pork-53032/) — Japanese | Pork
 
 ## About
 - All recipes include ingredients, step-by-step instructions, cooking time, difficulty level, and cultural origin.
