@@ -1678,6 +1678,34 @@
     updateRecipeMeta(recipe);
     injectJsonLd(buildRecipeJsonLdGraph(recipe));
 
+    // Dynamic SEO tags for recipe.html runtime rendering.
+    var recipeName = recipe.name || recipe.title || "Recipe";
+    var fallbackDesc = (recipe.ingredients || [])
+      .slice(0, 3)
+      .map(function (x) {
+        return String(x || "").trim();
+      })
+      .filter(Boolean)
+      .join(", ");
+    var recipeSeoDesc = recipe.description || fallbackDesc || "";
+
+    document.title = recipeName + " — Akkous";
+
+    var ogTitleTag = document.querySelector('meta[property="og:title"]');
+    if (ogTitleTag) {
+      ogTitleTag.setAttribute("content", recipeName + " — Akkous");
+    }
+
+    var ogDescTag = document.querySelector('meta[property="og:description"]');
+    if (ogDescTag && recipeSeoDesc) {
+      ogDescTag.setAttribute("content", recipeSeoDesc);
+    }
+
+    var canonicalTag = document.getElementById("canonical-url");
+    if (canonicalTag) {
+      canonicalTag.setAttribute("href", window.location.href.split("?")[0]);
+    }
+
     var heroImg = $("#recipe-hero-image");
     if (heroImg) {
       heroImg.src = recipe.image || "";
