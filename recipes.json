@@ -3910,7 +3910,7 @@
       "relatedRecipeIds": [
         "stamppot-52980",
         "tonkatsu-pork-53032",
-        "vegan-banh-mi-53250"
+        "turkey-banh-mi-53249"
       ]
     },
     {
@@ -5532,9 +5532,9 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
+        "turkey-banh-mi-53249",
         "chakchouka-52969",
-        "duck-confit-52907",
-        "osso-buco-alla-milanese-52810"
+        "duck-confit-52907"
       ]
     },
     {
@@ -6187,6 +6187,72 @@
       "relatedRecipeIds": [
         "barbecue-pork-buns-53242",
         "stamppot-52980"
+      ]
+    },
+    {
+      "mealId": "53249",
+      "id": "turkey-banh-mi-53249",
+      "title": "Vietnamese Turkey Sandwich",
+      "category": "Miscellaneous",
+      "origin": "Vietnamese",
+      "image": "https://www.themealdb.com/images/media/meals/1wj8w31763781990.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/1wj8w31763781990.jpg",
+      "ingredients": [
+        "2 small Baguette",
+        "50g Chicken Liver",
+        "1/4 Cucumber",
+        "140g Turkey",
+        "1 tablespoon Mayonnaise",
+        "1 sliced Red Chilli",
+        "Handful Mint",
+        "2 small Carrots",
+        "75g Red Cabbage",
+        "1/4 tsp Ground Ginger",
+        "½ tablespoon Rice Vinegar",
+        "1/2 teaspoon Golden Caster Sugar"
+      ],
+      "instructions": "1. Combine carrots and cabbage in a bowl, then mix ginger, rice vinegar, sugar, and salt, and pour over the vegetables. 2. Spread pâté over the baguette, top with pickled slaw, cucumber, and turkey. 3. Mix mayonnaise with chopped chilli and dollop over the top.",
+      "steps": [
+        "Combine carrots and cabbage in a bowl, then mix ginger, rice vinegar, sugar, and salt, and pour over the vegetables.",
+        "2. Spread pâté over the baguette, top with pickled slaw, cucumber, and turkey.",
+        "3. Mix mayonnaise with chopped chilli and dollop over the top."
+      ],
+      "description": "Vietnamese Turkey Sandwich (Vietnamese) — easy miscellaneous recipe with 12 ingredients and 3 steps. Includes exact ingredients and clear instructions.",
+      "hook": "Cook this today for a flavorful twist on a classic sandwich. It's perfect for a quick lunch",
+      "tip": "Use fresh mint leaves for the best flavor",
+      "tags": [
+        "vietnamese food",
+        "turkey recipes",
+        "sandwich ideas",
+        "asian cuisine",
+        "baguette recipes",
+        "pickled slaw",
+        "mayonnaise sauce",
+        "Miscellaneous",
+        "Vietnamese",
+        "Turkey"
+      ],
+      "datePublished": "2026-05-01",
+      "publishDate": "2026-05-01T00:00:00",
+      "addedDate": "2026-05-01T15:40:59",
+      "status": "PUBLISHED",
+      "slug": "turkey-banh-mi-53249",
+      "youtube": "https://www.youtube.com/watch?v=L-ItzFfVgos",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "",
+      "prepTime": "",
+      "totalTime": "",
+      "servings": 4,
+      "difficulty": "Easy",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "turkey-meatloaf-52845",
+        "chakchouka-52969",
+        "duck-confit-52907"
       ]
     }
   ]
