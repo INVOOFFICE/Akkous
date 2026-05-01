@@ -252,6 +252,24 @@ const CONFIG = {
    * d’anciennes lignes). false : ⑰ affiche un message — évite d’enrichir tout le sheet par erreur.
    */
   GEMINI_MANUAL_ENRICH_ALL_SCHEDULED: false,
+
+  // ---------------------------------------------------------------------------
+  // FALLBACK IA : Google Gemini (AI Studio) — backup automatique si Groq échoue
+  // ---------------------------------------------------------------------------
+  /**
+   * Modèle Gemini à utiliser (OpenAI-compatible via AI Studio).
+   * Modèles gratuits disponibles : gemini-2.0-flash, gemini-1.5-flash
+   * Clé gratuite (sans CB) sur : https://aistudio.google.com/
+   * Propriété du script : GEMINI_BACKUP_API_KEY
+   */
+  GEMINI_BACKUP_MODEL: 'gemini-2.0-flash',
+  /**
+   * true  : si Groq échoue (quota, panne, 429 épuisé), on tente automatiquement Gemini.
+   * false : désactive le fallback — Groq seulement.
+   */
+  AI_FALLBACK_ENABLED: true,
+  /** Pause (ms) entre lignes quand le fallback Gemini prend le relais. */
+  GEMINI_BACKUP_SLEEP_MS: 1500,
 };
 
 // ---------------------------------------------------------------------------
@@ -413,7 +431,7 @@ function getAutomationLogData() {
   const last = sh.getLastRow();
   const max = CONFIG.AUTOMATION_LOG_MAX_ROWS_RETURN;
   const start = Math.max(2, last - max + 1);
-  const data = sh.getRange(start, 1, last, 4).getValues();
+  const data = sh.getRange(start, 1, last - start + 1, 4).getValues();
   const out = data.map((row) => ({
     timestamp:
       row[0] instanceof Date
@@ -756,20 +774,19 @@ function getGroqApiKey_() {
 }
 
 /**
- * Appelle Groq (chat/completions) pour produire title (SEO), instructions numérotées, tags (5–8).
- * Objectif : visibilité (Google / Bing : titres et structure) + contenu exploitable par les
- * réponses IA (aperçus, assistants) : entités claires, étapes factuelles, tags thématiques.
- * Retourne { title, instructions, tags } (strings). Lève une erreur si HTTP ou JSON invalide.
+ * Clé API Gemini (backup) — uniquement PropertiesService, jamais dans CONFIG.
+ * Créer la clé gratuitement sur https://aistudio.google.com/
+ * Propriété du script : GEMINI_BACKUP_API_KEY
  */
-function callGroqForRecipeSeo_(title, category, origin, ingredients, instructions, tags) {
-  const apiKey = getGroqApiKey_();
-  if (!apiKey) {
-    throw new Error('GROQ_API_KEY manquante (Propriétés du script).');
-  }
-  const model = String(CONFIG.GROQ_MODEL || 'llama-3.3-70b-versatile').trim();
-  const maxTitle = Math.max(20, parseInt(CONFIG.GEMINI_MAX_TITLE_LEN, 10) || 60);
+function getGeminiBackupApiKey_() {
+  return String(PropertiesService.getScriptProperties().getProperty('GEMINI_BACKUP_API_KEY') || '').trim();
+}
 
-  const prompt =
+/**
+ * Construit le prompt SEO partagé entre Groq et Gemini.
+ */
+function buildSeoPrompt_(title, category, origin, ingredients, instructions, tags) {
+  return (
     'You are an English SEO recipe editor for akkous.com.' +
     '\nWrite in strict English only.' +
     '\nReturn valid JSON only. No markdown. No extra text.' +
@@ -790,7 +807,155 @@ function callGroqForRecipeSeo_(title, category, origin, ingredients, instruction
       ingredients: ingredients || '',
       instructions: instructions || '',
       tags: tags || '',
+    })
+  );
+}
+
+/**
+ * Parse et valide la réponse JSON commune aux deux providers (Groq + Gemini).
+ * Retourne { title, instructions, tags, metaDescription, hook, tip }.
+ */
+function parseSeoJsonResponse_(raw, providerName, maxTitle) {
+  let parsed;
+  try {
+    parsed = JSON.parse(raw);
+  } catch (e) {
+    const cleaned = raw.replace(/^```(?:json)?\s*/i, '').replace(/\s*```\s*$/i, '').trim();
+    try {
+      parsed = JSON.parse(cleaned);
+    } catch (e2) {
+      throw new Error('JSON ' + providerName + ' illisible : ' + raw.slice(0, 200));
+    }
+  }
+
+  const outTitle = String(parsed.title || '').trim().replace(/\s+/g, ' ');
+  const outInstr = String(parsed.instructions || '').trim();
+  let outTags = String(parsed.tags || '').trim();
+  let outMetaDescription = String(parsed.metaDescription || '').trim().replace(/\s+/g, ' ');
+  let outHook = String(parsed.hook || '').trim().replace(/\s+/g, ' ');
+  let outTip = String(parsed.tip || '').trim().replace(/\s+/g, ' ');
+
+  if (!outTitle || !outInstr) {
+    throw new Error(providerName + ' a renvoyé title ou instructions vide.');
+  }
+  let titleSeo = outTitle;
+  if (titleSeo.length > maxTitle) {
+    titleSeo = titleSeo.substring(0, maxTitle - 1).trim() + '\u2026';
+  }
+  outTags = outTags.replace(/^[\s#,]+|[\s#,]+$/g, '').replace(/\s*,\s*/g, ', ');
+  const tagList = outTags.split(',').map((s) => s.trim()).filter(Boolean);
+  if (tagList.length > 8) outTags = tagList.slice(0, 8).join(', ');
+  if (outMetaDescription.length < 140 || outMetaDescription.length > 155) {
+    outMetaDescription = '';
+  }
+  if (outHook.length > 180) outHook = outHook.slice(0, 179).trim() + '\u2026';
+  if (outTip.length > 160) outTip = outTip.slice(0, 159).trim() + '\u2026';
+
+  return {
+    title: titleSeo,
+    instructions: outInstr,
+    tags: outTags,
+    metaDescription: outMetaDescription,
+    hook: outHook,
+    tip: outTip,
+  };
+}
+
+/**
+ * Appelle Gemini AI Studio (OpenAI-compatible) comme provider de backup.
+ * URL : https://generativelanguage.googleapis.com/v1beta/openai/chat/completions
+ * Clé gratuite (100 req/jour, sans CB) : https://aistudio.google.com/
+ * Propriété du script : GEMINI_BACKUP_API_KEY
+ */
+function callGeminiBackupForRecipeSeo_(title, category, origin, ingredients, instructions, tags) {
+  const apiKey = getGeminiBackupApiKey_();
+  if (!apiKey) {
+    throw new Error('GEMINI_BACKUP_API_KEY manquante (Propriétés du script). Clé gratuite sur https://aistudio.google.com/');
+  }
+  const model = String(CONFIG.GEMINI_BACKUP_MODEL || 'gemini-2.0-flash').trim();
+  const maxTitle = Math.max(20, parseInt(CONFIG.GEMINI_MAX_TITLE_LEN, 10) || 60);
+  const prompt = buildSeoPrompt_(title, category, origin, ingredients, instructions, tags);
+
+  const url = 'https://generativelanguage.googleapis.com/v1beta/openai/chat/completions';
+  const body = {
+    model: model,
+    messages: [{ role: 'user', content: prompt }],
+    temperature: 0.35,
+    max_tokens: 1024,
+    response_format: { type: 'json_object' },
+  };
+
+  let resp;
+  let code;
+  let raw = '';
+  try {
+    resp = UrlFetchApp.fetch(url, {
+      method: 'post',
+      contentType: 'application/json',
+      headers: {
+        Authorization: 'Bearer ' + apiKey,
+        'Content-Type': 'application/json',
+      },
+      payload: JSON.stringify(body),
+      muteHttpExceptions: true,
     });
+    code = resp.getResponseCode();
+    raw = resp.getContentText() || '';
+  } catch (e) {
+    throw new Error('Gemini backup fetch erreur : ' + String(e));
+  }
+
+  if (code !== 200) {
+    logAutomation_(CONFIG.LOG_LEVEL_ERROR, 'callGeminiBackupForRecipeSeo_', 'HTTP ' + code + ' : ' + raw.slice(0, 500));
+    throw new Error('Gemini backup HTTP ' + code);
+  }
+
+  let outer;
+  try {
+    outer = JSON.parse(raw);
+  } catch (e) {
+    throw new Error('Réponse Gemini backup enveloppe non JSON : ' + String(e));
+  }
+
+  let text = '';
+  try {
+    const ch0 = outer.choices && outer.choices[0];
+    const msg = ch0 && ch0.message;
+    if (msg && msg.content != null) {
+      text = String(msg.content).trim();
+    }
+  } catch (e) {
+    /* ignore */
+  }
+  if (!text) {
+    throw new Error('Réponse Gemini backup vide (choices[0].message.content manquant).');
+  }
+
+  return parseSeoJsonResponse_(text, 'Gemini', maxTitle);
+}
+
+/**
+ * Appelle Groq (chat/completions) pour produire title (SEO), instructions numérotées, tags (5–8).
+ * Objectif : visibilité (Google / Bing : titres et structure) + contenu exploitable par les
+ * réponses IA (aperçus, assistants) : entités claires, étapes factuelles, tags thématiques.
+ * Retourne { title, instructions, tags } (strings). Lève une erreur si HTTP ou JSON invalide.
+ *
+ * Si Groq échoue ET CONFIG.AI_FALLBACK_ENABLED === true ET GEMINI_BACKUP_API_KEY est définie,
+ * le script bascule automatiquement sur Gemini AI Studio (gratuit, 100 req/jour).
+ */
+function callGroqForRecipeSeo_(title, category, origin, ingredients, instructions, tags) {
+  const apiKey = getGroqApiKey_();
+  if (!apiKey) {
+    // Pas de clé Groq → essayer directement Gemini si fallback activé
+    if (CONFIG.AI_FALLBACK_ENABLED && getGeminiBackupApiKey_()) {
+      logAutomation_(CONFIG.LOG_LEVEL_WARN, 'callGroqForRecipeSeo_', 'GROQ_API_KEY absente — bascule directe sur Gemini backup.');
+      return callGeminiBackupForRecipeSeo_(title, category, origin, ingredients, instructions, tags);
+    }
+    throw new Error('GROQ_API_KEY manquante (Propriétés du script). Ajoute aussi GEMINI_BACKUP_API_KEY pour le fallback automatique.');
+  }
+  const model = String(CONFIG.GROQ_MODEL || 'llama-3.3-70b-versatile').trim();
+  const maxTitle = Math.max(20, parseInt(CONFIG.GEMINI_MAX_TITLE_LEN, 10) || 60);
+  const prompt = buildSeoPrompt_(title, category, origin, ingredients, instructions, tags);
 
   const url = 'https://api.groq.com/openai/v1/chat/completions';
   const body = {
@@ -840,9 +1005,19 @@ function callGroqForRecipeSeo_(title, category, origin, ingredients, instruction
       continue;
     }
     logAutomation_(CONFIG.LOG_LEVEL_ERROR, 'callGroqForRecipeSeo_', 'HTTP ' + code + ' : ' + raw.slice(0, 500));
+    // --- FALLBACK GEMINI ---
+    if (CONFIG.AI_FALLBACK_ENABLED && getGeminiBackupApiKey_()) {
+      const reason = code === 429 ? '429 quota épuisé' : 'HTTP ' + code;
+      logAutomation_(
+        CONFIG.LOG_LEVEL_WARN,
+        'callGroqForRecipeSeo_',
+        'Groq échoué (' + reason + ') — bascule sur Gemini backup (GEMINI_BACKUP_API_KEY).'
+      );
+      return callGeminiBackupForRecipeSeo_(title, category, origin, ingredients, instructions, tags);
+    }
     if (code === 429) {
       throw new Error(
-        'Groq HTTP 429 : quota ou limite de débit. Voir https://console.groq.com/ — ou augmente GROQ_429_* / GEMINI_API_SLEEP_MS.'
+        'Groq HTTP 429 : quota ou limite de débit. Voir https://console.groq.com/ — ou augmente GROQ_429_* / GEMINI_API_SLEEP_MS. Astuce : ajoute GEMINI_BACKUP_API_KEY (gratuit) pour le fallback automatique.'
       );
     }
     throw new Error('Groq HTTP ' + code);
@@ -852,6 +1027,11 @@ function callGroqForRecipeSeo_(title, category, origin, ingredients, instruction
   try {
     outer = JSON.parse(raw);
   } catch (e) {
+    // --- FALLBACK GEMINI sur erreur de parsing ---
+    if (CONFIG.AI_FALLBACK_ENABLED && getGeminiBackupApiKey_()) {
+      logAutomation_(CONFIG.LOG_LEVEL_WARN, 'callGroqForRecipeSeo_', 'Réponse Groq non JSON — bascule sur Gemini backup.');
+      return callGeminiBackupForRecipeSeo_(title, category, origin, ingredients, instructions, tags);
+    }
     throw new Error('Réponse Groq enveloppe non JSON : ' + String(e));
   }
 
@@ -866,57 +1046,16 @@ function callGroqForRecipeSeo_(title, category, origin, ingredients, instruction
     /* ignore */
   }
   if (!text) {
+    // --- FALLBACK GEMINI sur réponse vide ---
+    if (CONFIG.AI_FALLBACK_ENABLED && getGeminiBackupApiKey_()) {
+      logAutomation_(CONFIG.LOG_LEVEL_WARN, 'callGroqForRecipeSeo_', 'Réponse Groq vide — bascule sur Gemini backup.');
+      return callGeminiBackupForRecipeSeo_(title, category, origin, ingredients, instructions, tags);
+    }
     throw new Error('Réponse Groq vide (choices[0].message.content manquant).');
   }
 
-  let parsed;
-  try {
-    parsed = JSON.parse(text);
-  } catch (e) {
-    const cleaned = text.replace(/^```(?:json)?\s*/i, '').replace(/\s*```\s*$/i, '').trim();
-    try {
-      parsed = JSON.parse(cleaned);
-    } catch (e2) {
-      throw new Error('JSON Groq illisible : ' + text.slice(0, 200));
-    }
-  }
-
-  const outTitle = String(parsed.title || '').trim().replace(/\s+/g, ' ');
-  const outInstr = String(parsed.instructions || '').trim();
-  let outTags = String(parsed.tags || '').trim();
-  let outMetaDescription = String(parsed.metaDescription || '').trim().replace(/\s+/g, ' ');
-  let outHook = String(parsed.hook || '').trim().replace(/\s+/g, ' ');
-  let outTip = String(parsed.tip || '').trim().replace(/\s+/g, ' ');
-  if (!outTitle || !outInstr) {
-    throw new Error('Groq a renvoyé title ou instructions vide.');
-  }
-  let titleSeo = outTitle;
-  if (titleSeo.length > maxTitle) {
-    titleSeo = titleSeo.substring(0, maxTitle - 1).trim() + '…';
-  }
-  outTags = outTags.replace(/^[\s#,]+|[\s#,]+$/g, '').replace(/\s*,\s*/g, ', ');
-  const tagList = outTags
-    .split(',')
-    .map((s) => s.trim())
-    .filter(Boolean);
-  if (tagList.length > 8) outTags = tagList.slice(0, 8).join(', ');
-
-  if (outMetaDescription.length < 140 || outMetaDescription.length > 155) {
-    outMetaDescription = '';
-  }
-  if (outHook.length > 180) outHook = outHook.slice(0, 179).trim() + '…';
-  if (outTip.length > 160) outTip = outTip.slice(0, 159).trim() + '…';
-
-  return {
-    title: titleSeo,
-    instructions: outInstr,
-    tags: outTags,
-    metaDescription: outMetaDescription,
-    hook: outHook,
-    tip: outTip,
-  };
+  return parseSeoJsonResponse_(text, 'Groq', maxTitle);
 }
-
 /**
  * Lit une ligne Recipes et écrase Title, Instructions, Tags après appel Groq.
  */
@@ -972,11 +1111,11 @@ function enrichRecipeSheetRowsWithGroq_(sheet, startRow, rowCount) {
  */
 function runGroqSeoEnrichSelectedRows() {
   logAutomation_(CONFIG.LOG_LEVEL_INFO, 'runGroqSeoEnrichSelectedRows', 'Démarrage');
-  if (!getGroqApiKey_()) {
+  if (!getGroqApiKey_() && !(CONFIG.AI_FALLBACK_ENABLED && getGeminiBackupApiKey_())) {
     try {
       SpreadsheetApp.getUi().alert(
         'Clé API manquante',
-        'Ajoute la propriété du script GROQ_API_KEY (console.groq.com).',
+        'Ajoute GROQ_API_KEY (console.groq.com) et/ou GEMINI_BACKUP_API_KEY (aistudio.google.com) dans les Propriétés du script.',
         SpreadsheetApp.getUi().ButtonSet.OK
       );
     } catch (e) {
@@ -1078,11 +1217,11 @@ function runGroqSeoEnrichAllScheduled() {
     );
     return;
   }
-  if (!getGroqApiKey_()) {
+  if (!getGroqApiKey_() && !(CONFIG.AI_FALLBACK_ENABLED && getGeminiBackupApiKey_())) {
     try {
       SpreadsheetApp.getUi().alert(
         'Clé API manquante',
-        'Ajoute la propriété du script GROQ_API_KEY (console.groq.com).',
+        'Ajoute GROQ_API_KEY (console.groq.com) et/ou GEMINI_BACKUP_API_KEY (aistudio.google.com) dans les Propriétés du script.',
         SpreadsheetApp.getUi().ButtonSet.OK
       );
     } catch (e) {
@@ -1216,7 +1355,7 @@ function fetchAndScheduleRecipes() {
     if (rows.length) {
       const startRow = sheet.getLastRow() + 1;
       sheet.getRange(startRow, 1, rows.length, CONFIG.HEADERS.length).setValues(rows);
-      if (getGroqApiKey_() && CONFIG.GEMINI_ENRICH_AFTER_FETCH === true) {
+      if ((getGroqApiKey_() || (CONFIG.AI_FALLBACK_ENABLED && getGeminiBackupApiKey_())) && CONFIG.GEMINI_ENRICH_AFTER_FETCH === true) {
         try {
           enrichRecipeSheetRowsWithGroq_(sheet, startRow, rows.length);
           logAutomation_(
@@ -1231,11 +1370,11 @@ function fetchAndScheduleRecipes() {
             'Groq SEO partiel ou échoué : ' + String(groqE)
           );
         }
-      } else if (!getGroqApiKey_()) {
+      } else if (!getGroqApiKey_() && !getGeminiBackupApiKey_()) {
         logAutomation_(
           CONFIG.LOG_LEVEL_INFO,
           'fetchAndScheduleRecipes',
-          'Groq SEO ignoré (propriété GROQ_API_KEY absente)'
+          'SEO IA ignoré (GROQ_API_KEY et GEMINI_BACKUP_API_KEY absentes)'
         );
       } else {
         logAutomation_(
@@ -2682,7 +2821,9 @@ function mealToRow_(meal, publishDate, status, addedDate) {
     slug,
     meal.strYoutube || '',
     addedDate,
-    '',
+    '', // MetaDescription
+    '', // Hook
+    '', // Tip
   ];
 }
 

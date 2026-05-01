@@ -1057,9 +1057,7 @@
     grid.innerHTML = list
       .map(function (r) {
         var imgSrc = r.imageCard || r.image || "";
-        var avatar =
-          (r.author && r.author.avatar) ||
-          "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80";
+        var avatar = siteRootRelativePrefix() + "img.png";
         return (
           '<article class="recipe-card">' +
           '<a class="recipe-card__link" href="' +
