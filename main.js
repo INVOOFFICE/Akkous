@@ -66,6 +66,11 @@
     userPrefersReducedMotion: false,
   };
 
+  function clearHeroLoadingSkeleton() {
+    var root = $("#hero-section");
+    if (root) root.classList.remove("hero--loading");
+  }
+
   /** Pour trier le carrousel : date de publication la plus récente d’abord. */
   function recipePublishTimeMs(recipe) {
     var raw = recipe.publishDate || recipe.datePublished || "";
@@ -525,6 +530,7 @@
   }
 
   function renderHeroEmptyState() {
+    clearHeroLoadingSkeleton();
     var img = $("#hero-image");
     var cta = $("#hero-cta");
     var cta2 = $("#hero-cta-secondary");
@@ -561,6 +567,7 @@
   }
 
   function paintHeroSlide(recipe, animate) {
+    clearHeroLoadingSkeleton();
     var img = $("#hero-image");
     var cta = $("#hero-cta");
     var cta2 = $("#hero-cta-secondary");
@@ -911,6 +918,19 @@
     starter: "Small plates to open the meal",
   };
 
+  var CATEGORY_EMOJI = {
+    chicken: "🍗",
+    beef: "🥩",
+    seafood: "🦐",
+    pasta: "🍝",
+    vegetarian: "🥗",
+    dessert: "🍰",
+    soup: "🍲",
+    breakfast: "🍳",
+    lamb: "🫕",
+    side: "🥙",
+  };
+
   function spotlightBlurb(key, label, count) {
     if (SPOTLIGHT_BLURB[key]) return SPOTLIGHT_BLURB[key];
     var n = count || 0;
@@ -939,11 +959,14 @@
           encodeURIComponent(meta.key) +
           "#recipe-grid";
         var desc = spotlightBlurb(meta.key, meta.label, meta.count);
+        var icon = CATEGORY_EMOJI[meta.key] || "🍽️";
         return (
           '<a class="category-spotlight__card" role="listitem" href="' +
           escapeHtml(href) +
           '">' +
-          "<strong>" +
+          '<strong><span class="category-spotlight__icon" aria-hidden="true">' +
+          icon +
+          "</span>" +
           escapeHtml(meta.label) +
           "</strong><span>" +
           escapeHtml(desc) +
@@ -1133,10 +1156,25 @@
   function initSearch() {
     var input = $("#site-search");
     if (!input) return;
+    var countBadge = $("#site-search-count");
+
+    function updateCountBadge() {
+      if (!countBadge) return;
+      var raw = (input.value || "").trim();
+      if (!raw) {
+        countBadge.hidden = true;
+        countBadge.textContent = "";
+        return;
+      }
+      var n = state.recipes.filter(matchesFilters).length;
+      countBadge.textContent = n + " recipes found";
+      countBadge.hidden = false;
+    }
 
     function apply() {
       state.searchQuery = (input.value || "").trim().toLowerCase();
       renderGrid();
+      updateCountBadge();
       initScrollFadeIn();
       if (isHomePage() && typeof history !== "undefined" && history.replaceState) {
         var u = new URL(window.location.href);
@@ -1148,6 +1186,7 @@
 
     input.addEventListener("input", apply);
     input.addEventListener("search", apply);
+    updateCountBadge();
   }
 
   function initSearchQueryFromUrl() {
@@ -1193,6 +1232,8 @@
     if (!form) return;
     var status = $("#newsletter-status");
     var iframe = $("#newsletter-iframe");
+    var section = form.closest(".newsletter") || $(".newsletter");
+    var successFxTimer = null;
 
     function newsletterEndpoint() {
       var fromAttr = (form.getAttribute("data-newsletter-endpoint") || "").trim();
@@ -1244,6 +1285,21 @@
             ? "Thanks — you're on the list."
             : "Could not subscribe. Try again later.";
           status.setAttribute("role", ok ? "status" : "alert");
+        }
+        if (section) {
+          if (successFxTimer) {
+            clearTimeout(successFxTimer);
+            successFxTimer = null;
+          }
+          section.classList.remove("newsletter--success");
+          if (ok) {
+            // Restart animation even if user subscribes again quickly.
+            void section.offsetWidth;
+            section.classList.add("newsletter--success");
+            successFxTimer = setTimeout(function () {
+              section.classList.remove("newsletter--success");
+            }, 4000);
+          }
         }
         form.reset();
         if (iframe) iframe.onload = null;

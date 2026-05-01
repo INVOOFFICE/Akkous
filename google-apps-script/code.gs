@@ -2433,7 +2433,7 @@ function ensureRecipesSheet_(ss) {
   headerRange.setBackground('#E8572A');
   sheet.setFrozenRows(1);
 
-  const widths = [100, 220, 100, 100, 280, 360, 320, 160, 150, 100, 200, 220, 150, 360];
+  const widths = [100, 220, 100, 100, 280, 360, 320, 160, 150, 100, 200, 220, 150, 360, 260, 260];
   for (let c = 0; c < widths.length; c++) {
     sheet.setColumnWidth(c + 1, widths[c]);
   }

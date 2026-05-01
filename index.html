@@ -135,6 +135,7 @@
               autocomplete="off"
               enterkeyhint="search"
             />
+            <p class="nav__search-count" id="site-search-count" hidden aria-live="polite"></p>
           </div>
 
           <button
@@ -165,7 +166,7 @@
 
     <main id="main-content">
       <section
-        class="hero"
+        class="hero hero--loading"
         id="hero-section"
         aria-labelledby="hero-title"
         aria-roledescription="carousel"
@@ -187,7 +188,6 @@
             </svg>
           </button>
         </div>
-        <div class="hero__dots" id="hero-dots" role="group" aria-label="Slides" hidden></div>
         <div class="hero__content">
           <span class="hero__tag" id="hero-tag">Featured</span>
           <h1 class="hero__title" id="hero-title">Loading…</h1>
@@ -199,6 +199,7 @@
             <a class="hero__cta" id="hero-cta" href="recipe.html">Read Recipe</a>
             <a class="hero__cta hero__cta--ghost" id="hero-cta-secondary" href="#trending">Browse latest</a>
           </div>
+          <div class="hero__dots" id="hero-dots" role="group" aria-label="Slides" hidden></div>
         </div>
       </section>
 

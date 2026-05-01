@@ -1,6 +1,7 @@
 /* Feastably — recipe blog */
 :root {
   --primary: #E8572A;
+  --clr-primary: var(--primary);
   --primary-hover: #d14a22;
   --accent: #2D6A4F;
   --accent-hover: #245a42;
@@ -31,6 +32,7 @@
 [data-theme="dark"] {
   --bg: #121212;
   --bg-elevated: #1C1C1C;
+  --clr-primary: var(--primary);
   --surface-offset: #1e1e1e;
   --text: #F5F5F2;
   --muted: #9A9A9A;
@@ -278,6 +280,18 @@ input:focus-visible {
 
 .nav__search::placeholder {
   color: var(--muted);
+}
+
+.nav__search-count {
+  margin: 0.4rem 0 0;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--primary);
+  background: color-mix(in srgb, var(--primary) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--primary) 28%, transparent);
+  border-radius: 999px;
+  padding: 0.2rem 0.5rem;
+  width: fit-content;
 }
 
 .nav__categories {
@@ -586,6 +600,90 @@ input:focus-visible {
   gap: 0.65rem;
 }
 
+/* Hero skeleton while recipes.json loads */
+.hero--loading .hero__tag,
+.hero--loading .hero__title,
+.hero--loading .hero__dek,
+.hero--loading .hero__meta,
+.hero--loading .hero__cta {
+  color: transparent !important;
+}
+
+.hero--loading .hero__tag,
+.hero--loading .hero__title,
+.hero--loading .hero__dek,
+.hero--loading .hero__meta,
+.hero--loading .hero__cta {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero--loading .hero__tag::after,
+.hero--loading .hero__title::after,
+.hero--loading .hero__dek::after,
+.hero--loading .hero__meta::after,
+.hero--loading .hero__cta::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    100deg,
+    rgba(255, 255, 255, 0.12) 15%,
+    rgba(255, 255, 255, 0.26) 40%,
+    rgba(255, 255, 255, 0.12) 65%
+  );
+  background-size: 220% 100%;
+  animation: hero-skeleton-shimmer 1.25s ease-in-out infinite;
+}
+
+.hero--loading .hero__tag {
+  min-width: 6.8rem;
+  min-height: 1.55rem;
+  border-radius: 999px;
+}
+
+.hero--loading .hero__title {
+  min-height: 3.2rem;
+  max-width: min(16ch, 75%);
+  border-radius: 0.6rem;
+}
+
+.hero--loading .hero__dek {
+  min-height: 2.8rem;
+  border-radius: 0.6rem;
+}
+
+.hero--loading .hero__meta {
+  min-height: 1.2rem;
+  width: 45%;
+  border-radius: 0.5rem;
+}
+
+.hero--loading .hero__cta {
+  min-width: 9.5rem;
+  min-height: 2.9rem;
+  border-color: transparent;
+}
+
+@keyframes hero-skeleton-shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -20% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero--loading .hero__tag::after,
+  .hero--loading .hero__title::after,
+  .hero--loading .hero__dek::after,
+  .hero--loading .hero__meta::after,
+  .hero--loading .hero__cta::after {
+    animation: none;
+  }
+}
+
 .hero__cta {
   display: inline-flex;
   align-items: center;
@@ -666,39 +764,38 @@ input:focus-visible {
 }
 
 .hero__dots {
-  position: absolute;
-  bottom: 1.25rem;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 2;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 0.45rem;
-  max-width: calc(100% - 2rem);
+  gap: 0.5rem;
+  margin-top: 1rem;
+  max-width: 100%;
   pointer-events: auto;
 }
 
 .hero__dot {
-  width: 0.5rem;
-  height: 0.5rem;
+  width: 0.58rem;
+  height: 0.58rem;
   padding: 0;
-  border: none;
+  border: 1px solid color-mix(in srgb, var(--clr-primary) 35%, transparent);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.4);
+  background: color-mix(in srgb, var(--clr-primary) 24%, rgba(255, 255, 255, 0.2));
   cursor: pointer;
   transition:
     background 0.2s ease,
-    transform 0.15s ease;
+    transform 0.15s ease,
+    border-color 0.2s ease;
 }
 
 .hero__dot:hover {
-  background: rgba(255, 255, 255, 0.65);
+  background: color-mix(in srgb, var(--clr-primary) 40%, rgba(255, 255, 255, 0.35));
+  border-color: color-mix(in srgb, var(--clr-primary) 60%, transparent);
 }
 
 .hero__dot[aria-current="true"] {
-  background: #fff; /* intentional */
-  transform: scale(1.25);
+  background: var(--clr-primary);
+  border-color: var(--clr-primary);
+  transform: scale(1.2);
 }
 
 .section-head--compact {
@@ -729,6 +826,10 @@ input:focus-visible {
 
 .category-spotlight__card strong {
   font-size: 0.98rem;
+}
+
+.category-spotlight__icon {
+  margin-right: 0.4rem;
 }
 
 .category-spotlight__card span {
@@ -1153,6 +1254,44 @@ input:focus-visible {
   border-radius: var(--radius-lg);
   text-align: center;
   position: relative;
+}
+
+.newsletter--success::after {
+  content: "✓";
+  position: absolute;
+  top: 0.9rem;
+  right: 0.9rem;
+  width: 2rem;
+  height: 2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: var(--bg-elevated);
+  background: var(--accent);
+  box-shadow: var(--shadow-sm);
+  animation: newsletter-check-pop 0.45s ease;
+}
+
+@keyframes newsletter-check-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .newsletter--success::after {
+    animation: none;
+  }
 }
 
 .newsletter h2 {
