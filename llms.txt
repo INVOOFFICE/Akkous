@@ -103,6 +103,11 @@
 - [Creamy Mac and Cheese Grilled Sandwich](https://akkous.com/recipes/grilled-mac-and-cheese-sandwich-52829/) — United States | Pasta
 - [Savory Chickpea Stew](https://akkous.com/recipes/chickpea-chorizo-spinach-stew-53166/) — Spanish | Pork
 - [Spanish Garlic Prawns](https://akkous.com/recipes/garlicky-prawns-with-sherry-53180/) — Spanish | Seafood
+- [Cheesy Souffle Delight](https://akkous.com/recipes/three-cheese-souffles-52912/) — France | Miscellaneous
+- [Spaghetti Pilchard Puttanesca](https://akkous.com/recipes/pilchard-puttanesca-52837/) — Italian | Pasta
+- [Skillet Pork Chops with Apple and Vegetables](https://akkous.com/recipes/skillet-apple-pork-chops-with-roasted-sweet-potatoes-zucchini-52994/) — United States | Pork
+- [Vietnamese Prawn Noodle Salad](https://akkous.com/recipes/prawn-noodle-salad-with-crispy-shallots-53244/) — Vietnamese | Seafood
+- [Turkish Flatbreads](https://akkous.com/recipes/griddled-flatbreads-53272/) — Turkish | Side
 
 ## About
 - All recipes include ingredients, step-by-step instructions, cooking time, difficulty level, and cultural origin.

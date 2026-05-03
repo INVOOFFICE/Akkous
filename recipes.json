@@ -1304,8 +1304,8 @@
       "trending": true,
       "relatedRecipeIds": [
         "garlicky-prawns-with-sherry-53180",
-        "venetian-duck-ragu-52838",
-        "chilli-prawn-linguine-52839"
+        "pilchard-puttanesca-52837",
+        "prawn-noodle-salad-with-crispy-shallots-53244"
       ]
     },
     {
@@ -1611,7 +1611,7 @@
       "relatedRecipeIds": [
         "fettucine-alfredo-52835",
         "grilled-mac-and-cheese-sandwich-52829",
-        "venetian-duck-ragu-52838"
+        "pilchard-puttanesca-52837"
       ]
     },
     {
@@ -1932,7 +1932,7 @@
       "relatedRecipeIds": [
         "chickpea-chorizo-spinach-stew-53166",
         "barbecue-pork-buns-53242",
-        "tonkatsu-pork-53032"
+        "skillet-apple-pork-chops-with-roasted-sweet-potatoes-zucchini-52994"
       ]
     },
     {
@@ -2597,6 +2597,7 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
+        "griddled-flatbreads-53272",
         "sichuan-eggplant-53374",
         "sweet-and-sour-chicken-53376"
       ]
@@ -3517,8 +3518,8 @@
       "trending": true,
       "relatedRecipeIds": [
         "syrian-rice-with-meat-53095",
-        "chakchouka-52969",
-        "osso-buco-alla-milanese-52810"
+        "three-cheese-souffles-52912",
+        "chakchouka-52969"
       ]
     },
     {
@@ -3845,8 +3846,8 @@
       "trending": true,
       "relatedRecipeIds": [
         "fettucine-alfredo-52835",
-        "chilli-prawn-linguine-52839",
-        "lasagne-52844"
+        "pilchard-puttanesca-52837",
+        "chilli-prawn-linguine-52839"
       ]
     },
     {
@@ -3909,8 +3910,8 @@
       "trending": true,
       "relatedRecipeIds": [
         "chickpea-chorizo-spinach-stew-53166",
-        "stamppot-52980",
-        "tonkatsu-pork-53032"
+        "skillet-apple-pork-chops-with-roasted-sweet-potatoes-zucchini-52994",
+        "stamppot-52980"
       ]
     },
     {
@@ -5532,9 +5533,9 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
+        "three-cheese-souffles-52912",
         "turkey-banh-mi-53249",
-        "chakchouka-52969",
-        "duck-confit-52907"
+        "chakchouka-52969"
       ]
     },
     {
@@ -5863,7 +5864,7 @@
       "relatedRecipeIds": [
         "fettucine-alfredo-52835",
         "lasagne-52844",
-        "venetian-duck-ragu-52838"
+        "pilchard-puttanesca-52837"
       ]
     },
     {
@@ -6130,7 +6131,7 @@
       "relatedRecipeIds": [
         "chilli-prawn-linguine-52839",
         "fettucine-alfredo-52835",
-        "venetian-duck-ragu-52838"
+        "pilchard-puttanesca-52837"
       ]
     },
     {
@@ -6187,7 +6188,7 @@
       "relatedRecipeIds": [
         "barbecue-pork-buns-53242",
         "chickpea-chorizo-spinach-stew-53166",
-        "stamppot-52980"
+        "skillet-apple-pork-chops-with-roasted-sweet-potatoes-zucchini-52994"
       ]
     },
     {
@@ -6455,8 +6456,333 @@
       "trending": true,
       "relatedRecipeIds": [
         "salmon-prawn-risotto-52823",
-        "torrijas-with-sherry-53165",
-        "chickpea-chorizo-spinach-stew-53166"
+        "prawn-noodle-salad-with-crispy-shallots-53244",
+        "torrijas-with-sherry-53165"
+      ]
+    },
+    {
+      "mealId": "52912",
+      "id": "three-cheese-souffles-52912",
+      "title": "Cheesy Souffle Delight",
+      "category": "Miscellaneous",
+      "origin": "France",
+      "image": "https://www.themealdb.com/images/media/meals/sxwquu1511793428.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/sxwquu1511793428.jpg",
+      "ingredients": [
+        "50g Butter",
+        "25g Parmesan",
+        "300ml Milk",
+        "2 Bay Leaves",
+        "5 tbs Plain Flour",
+        "½ tsp English Mustard",
+        "Pod of Cayenne Pepper",
+        "140g Gruyère",
+        "3 Eggs",
+        "8 slices Goats Cheese",
+        "150ml Double Cream",
+        "to serve Spinach"
+      ],
+      "instructions": "1. Preheat oven to 200C. 2. Butter ramekins and sprinkle with Parmesan. 3. Infuse milk with bay leaves for 15 minutes.",
+      "steps": [
+        "Preheat oven to 200C.",
+        "2. Butter ramekins and sprinkle with Parmesan.",
+        "3. Infuse milk with bay leaves for 15 minutes."
+      ],
+      "description": "Cheesy Souffle Delight (France) — easy miscellaneous recipe with 12 ingredients and 3 steps. Ready in 10 min. Includes exact ingredients and clear instruct…",
+      "hook": "Treat yourself to a decadent French classic today, perfect for special occasions",
+      "tip": "Use room temperature eggs for a lighter, fluffier souffle",
+      "tags": [
+        "French cuisine",
+        "Cheese recipes",
+        "Baking",
+        "Souffle",
+        "Gruyère",
+        "Goats Cheese",
+        "Miscellaneous",
+        "France",
+        "Cheesy"
+      ],
+      "datePublished": "2026-05-03",
+      "publishDate": "2026-05-03T09:00:00",
+      "addedDate": "2026-05-01T15:55:01",
+      "status": "PUBLISHED",
+      "slug": "three-cheese-souffles-52912",
+      "youtube": "https://www.youtube.com/watch?v=mS_gbQpBvZo",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "10 min",
+      "prepTime": "10 min",
+      "totalTime": "15 min",
+      "servings": 4,
+      "difficulty": "Easy",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "duck-confit-52907",
+        "turkey-meatloaf-52845",
+        "chakchouka-52969"
+      ]
+    },
+    {
+      "mealId": "52837",
+      "id": "pilchard-puttanesca-52837",
+      "title": "Spaghetti Pilchard Puttanesca",
+      "category": "Pasta",
+      "origin": "Italian",
+      "image": "https://www.themealdb.com/images/media/meals/vvtvtr1511180578.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/vvtvtr1511180578.jpg",
+      "ingredients": [
+        "300g Spaghetti",
+        "1 tbls Olive Oil",
+        "1 finely chopped Onion",
+        "2 cloves minced Garlic",
+        "1 Red Chilli",
+        "1 tbls Tomato Puree",
+        "425g Pilchards",
+        "70g Black Olives",
+        "Shaved Parmesan"
+      ],
+      "instructions": "1. Cook spaghetti according to package instructions.,2. Heat olive oil in a non-stick pan and cook onion, garlic, and chilli for 3-4 minutes.,3. Stir in tomato puree and cook for 1 minute, then add pilchards with their sauce.,4. Add olives and cook for a few more minutes, breaking up the fish.,5. Drain pasta, add to the pan with some cooking water, and toss everything together.",
+      "steps": [
+        "Cook spaghetti according to package instructions.,2.",
+        "Heat olive oil in a non-stick pan and cook onion, garlic, and chilli for 3-4 minutes.,3.",
+        "Stir in tomato puree and cook for 1 minute, then add pilchards with their sauce.,4.",
+        "Add olives and cook for a few more minutes, breaking up the fish.,5.",
+        "Drain pasta, add to the pan with some cooking water, and toss everything together."
+      ],
+      "description": "Spaghetti Pilchard Puttanesca (Italian) — easy pasta recipe with 9 ingredients and 5 steps. Ready in 10 min. Includes exact ingredients and clear instructi…",
+      "hook": "Cook this today for a flavorful and easy Italian-inspired meal.",
+      "tip": "Use high-quality ingredients for the best flavor.",
+      "tags": [
+        "pasta",
+        "seafood",
+        "italian cuisine",
+        "olives",
+        "parmesan",
+        "quick meals",
+        "spaghetti",
+        "puttanesca",
+        "Italian",
+        "Pilchard"
+      ],
+      "datePublished": "2026-05-03",
+      "publishDate": "2026-05-03T09:00:00",
+      "addedDate": "2026-05-01T15:55:01",
+      "status": "PUBLISHED",
+      "slug": "pilchard-puttanesca-52837",
+      "youtube": "https://www.youtube.com/watch?v=wqZzLAPmr9k",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "10 min",
+      "prepTime": "10 min",
+      "totalTime": "5 min",
+      "servings": 4,
+      "difficulty": "Easy",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "venetian-duck-ragu-52838",
+        "chilli-prawn-linguine-52839",
+        "fettucine-alfredo-52835"
+      ]
+    },
+    {
+      "mealId": "52994",
+      "id": "skillet-apple-pork-chops-with-roasted-sweet-potatoes-zucchini-52994",
+      "title": "Skillet Pork Chops with Apple and Vegetables",
+      "category": "Pork",
+      "origin": "United States",
+      "image": "https://www.themealdb.com/images/media/meals/h3ijwo1581013377.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/h3ijwo1581013377.jpg",
+      "ingredients": [
+        "2 Potatoes",
+        "1 Apples",
+        "2 cloves Garlic",
+        "1 Lemon",
+        "2 Pork",
+        "1 Zucchini",
+        "1 Chicken Stock",
+        "1 tbsp Vegetable Oil",
+        "1 1/2 tsp Sugar",
+        "2 tbsp Butter"
+      ],
+      "instructions": "1. Preheat oven to 450 degrees and roast sweet potatoes for 12 minutes.,2. Prepare apple, garlic, lemon, and zucchini for roasting and cooking.,3. Cook pork chops in a skillet until browned and cooked through.,4. Roast zucchini until browned and softened.,5. Cook apple and garlic in the skillet, then add stock and sugar to create a sauce.,6. Serve pork chops with the glazed apple sauce and roasted vegetables.",
+      "steps": [
+        "Preheat oven to 450 degrees and roast sweet potatoes for 12 minutes.,2.",
+        "Prepare apple, garlic, lemon, and zucchini for roasting and cooking.,3.",
+        "Cook pork chops in a skillet until browned and cooked through.,4.",
+        "Roast zucchini until browned and softened.,5.",
+        "Cook apple and garlic in the skillet, then add stock and sugar to create a sauce.,6.",
+        "Serve pork chops with the glazed apple sauce and roasted vegetables."
+      ],
+      "description": "Skillet Pork Chops with Apple and Vegetables (United States) — easy pork recipe with 10 ingredients and 6 steps. Ready in 10 min. Includes exact ingredient…",
+      "hook": "Cook this today for a hearty and flavorful meal that's perfect for any occasion.",
+      "tip": "Use a cast-iron skillet for even heat distribution and a crispy crust on the pork chops.",
+      "tags": [
+        "pork chops",
+        "skillet recipes",
+        "roasted sweet potatoes",
+        "zucchini",
+        "apple sauce",
+        "garlic",
+        "lemon",
+        "chicken stock",
+        "Pork",
+        "United States"
+      ],
+      "datePublished": "2026-05-03",
+      "publishDate": "2026-05-03T09:00:00",
+      "addedDate": "2026-05-01T15:55:01",
+      "status": "PUBLISHED",
+      "slug": "skillet-apple-pork-chops-with-roasted-sweet-potatoes-zucchini-52994",
+      "youtube": "",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "10 min",
+      "prepTime": "10 min",
+      "totalTime": "12 min",
+      "servings": 4,
+      "difficulty": "Medium",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "barbecue-pork-buns-53242",
+        "chickpea-chorizo-spinach-stew-53166",
+        "stamppot-52980"
+      ]
+    },
+    {
+      "mealId": "53244",
+      "id": "prawn-noodle-salad-with-crispy-shallots-53244",
+      "title": "Vietnamese Prawn Noodle Salad",
+      "category": "Seafood",
+      "origin": "Vietnamese",
+      "image": "https://www.themealdb.com/images/media/meals/0iryz91763778419.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/0iryz91763778419.jpg",
+      "ingredients": [
+        "200g Rice Noodles",
+        "200g Prawns",
+        "1 sliced Red Onions",
+        "1 sliced Red Chilli",
+        "1 sliced Cucumber",
+        "Handful Coriander",
+        "Handful Mint",
+        "2 tablespoons Roasted Peanut",
+        "Juice of 3 Lime",
+        "1 tablespoon Brown Sugar",
+        "2 tsp Fish Sauce",
+        "1 clove peeled crushed Garlic",
+        "5 Slices Shallots",
+        "For frying Vegetable Oil",
+        "Sprinkling Flour"
+      ],
+      "instructions": "1. Fry shallots in hot oil until golden, then set aside. 2. Mix dressing with lime juice, sugar, fish sauce, and garlic. 3. Cook noodles, then combine with prawns, onion, chilli, cucumber, and herbs, and pour the dressing over.",
+      "steps": [
+        "Fry shallots in hot oil until golden, then set aside.",
+        "2. Mix dressing with lime juice, sugar, fish sauce, and garlic.",
+        "3. Cook noodles, then combine with prawns, onion, chilli, cucumber, and herbs, and pour the dressing over."
+      ],
+      "description": "Vietnamese Prawn Noodle Salad (Vietnamese) — easy seafood recipe with 15 ingredients and 3 steps. Includes exact ingredients and clear instructions.",
+      "hook": "Cook this today for a flavorful and healthy meal. It's perfect for a quick lunch or dinner.",
+      "tip": "Use fresh and high-quality ingredients for the best flavor.",
+      "tags": [
+        "Vietnamese food",
+        "seafood salad",
+        "noodle recipes",
+        "prawn dishes",
+        "Asian cuisine",
+        "healthy meals",
+        "lunch ideas",
+        "summer salads",
+        "Seafood",
+        "Vietnamese"
+      ],
+      "datePublished": "2026-05-03",
+      "publishDate": "2026-05-03T09:00:00",
+      "addedDate": "2026-05-01T15:55:01",
+      "status": "PUBLISHED",
+      "slug": "prawn-noodle-salad-with-crispy-shallots-53244",
+      "youtube": "",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "",
+      "prepTime": "",
+      "totalTime": "",
+      "servings": 4,
+      "difficulty": "Easy",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "garlicky-prawns-with-sherry-53180",
+        "salmon-prawn-risotto-52823",
+        "turkey-banh-mi-53249"
+      ]
+    },
+    {
+      "mealId": "53272",
+      "id": "griddled-flatbreads-53272",
+      "title": "Turkish Flatbreads",
+      "category": "Side",
+      "origin": "Turkish",
+      "image": "https://www.themealdb.com/images/media/meals/8825lo1763815264.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/8825lo1763815264.jpg",
+      "ingredients": [
+        "250g Strong Wholemeal Flour",
+        "250g Strong white bread flour",
+        "15g Yeast",
+        "1 tsp Sugar",
+        "2 tablespoons Olive Oil"
+      ],
+      "instructions": "1. Mix flours, yeast, sugar, and salt, then add water and oil, processing to a soft dough. 2. Roll out dough, cut into squares, and arrange on a tray. 3. Cook on BBQ racks for a couple of minutes on each side.",
+      "steps": [
+        "Mix flours, yeast, sugar, and salt, then add water and oil, processing to a soft dough.",
+        "2. Roll out dough, cut into squares, and arrange on a tray.",
+        "3. Cook on BBQ racks for a couple of minutes on each side."
+      ],
+      "description": "Turkish Flatbreads (Turkish) — easy side recipe with 5 ingredients and 3 steps. Includes exact ingredients and clear instructions.",
+      "hook": "Cook these today for a delicious BBQ side dish",
+      "tip": "Use a pizza stone on the BBQ for crispy flatbreads",
+      "tags": [
+        "flatbreads",
+        "Turkish food",
+        "BBQ recipes",
+        "side dishes",
+        "homemade bread",
+        "dips",
+        "Mediterranean food",
+        "easy recipes",
+        "Side",
+        "Turkish"
+      ],
+      "datePublished": "2026-05-03",
+      "publishDate": "2026-05-03T09:00:00",
+      "addedDate": "2026-05-01T15:55:01",
+      "status": "PUBLISHED",
+      "slug": "griddled-flatbreads-53272",
+      "youtube": "https://www.youtube.com/watch?v=s_ilia2LZ4U",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "",
+      "prepTime": "",
+      "totalTime": "",
+      "servings": 4,
+      "difficulty": "Easy",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "sesame-cucumber-salad-53378",
+        "hot-cumin-lamb-wrap-with-crunchy-slaw-spicy-mayo-53258",
+        "roast-aubergine-with-goat-s-cheese-toasted-flatbread-53273"
       ]
     }
   ]
