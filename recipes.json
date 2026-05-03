@@ -1303,9 +1303,9 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
+        "garlicky-prawns-with-sherry-53180",
         "venetian-duck-ragu-52838",
-        "chilli-prawn-linguine-52839",
-        "fettucine-alfredo-52835"
+        "chilli-prawn-linguine-52839"
       ]
     },
     {
@@ -1610,8 +1610,8 @@
       "trending": true,
       "relatedRecipeIds": [
         "fettucine-alfredo-52835",
-        "venetian-duck-ragu-52838",
-        "chilli-prawn-linguine-52839"
+        "grilled-mac-and-cheese-sandwich-52829",
+        "venetian-duck-ragu-52838"
       ]
     },
     {
@@ -1930,9 +1930,9 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
+        "chickpea-chorizo-spinach-stew-53166",
         "barbecue-pork-buns-53242",
-        "tonkatsu-pork-53032",
-        "dutch-poffertjes-mini-pancakes-53379"
+        "tonkatsu-pork-53032"
       ]
     },
     {
@@ -2535,8 +2535,8 @@
       "trending": true,
       "relatedRecipeIds": [
         "lamb-tagine-52843",
-        "hot-cumin-lamb-wrap-with-crunchy-slaw-spicy-mayo-53258",
-        "lamb-pilaf-plov-53083"
+        "chickpea-chorizo-spinach-stew-53166",
+        "hot-cumin-lamb-wrap-with-crunchy-slaw-spicy-mayo-53258"
       ]
     },
     {
@@ -3908,9 +3908,9 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
+        "chickpea-chorizo-spinach-stew-53166",
         "stamppot-52980",
-        "tonkatsu-pork-53032",
-        "turkey-banh-mi-53249"
+        "tonkatsu-pork-53032"
       ]
     },
     {
@@ -6186,6 +6186,7 @@
       "trending": true,
       "relatedRecipeIds": [
         "barbecue-pork-buns-53242",
+        "chickpea-chorizo-spinach-stew-53166",
         "stamppot-52980"
       ]
     },
@@ -6253,6 +6254,209 @@
         "turkey-meatloaf-52845",
         "chakchouka-52969",
         "duck-confit-52907"
+      ]
+    },
+    {
+      "mealId": "52829",
+      "id": "grilled-mac-and-cheese-sandwich-52829",
+      "title": "Creamy Mac and Cheese Grilled Sandwich",
+      "category": "Pasta",
+      "origin": "United States",
+      "image": "https://www.themealdb.com/images/media/meals/xutquv1505330523.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/xutquv1505330523.jpg",
+      "ingredients": [
+        "8 ounces (230 grams) Macaroni",
+        "1/3 cup Plain Flour",
+        "3/4 teaspoon Mustard Powder",
+        "1/2 teaspoon Garlic powder",
+        "1/2 teaspoon Kosher salt",
+        "1/2 teaspoon Black pepper",
+        "1/8 teaspoon Cayenne pepper",
+        "6 tablespoons (85 grams) Butter",
+        "1 1/2 cups (360 milliliters) Whole Milk",
+        "1 cup (240 milliliters) Heavy Cream",
+        "1 pound (455 grams) Monterey Jack Cheese",
+        "4 tablespoons (55 grams) Butter",
+        "1 teaspoon garlic powder",
+        "16 slices square Bread",
+        "8 slices mild Cheddar Cheese",
+        "8 slices Colby Jack Cheese",
+        "4 tablespoons (55 grams) Butter"
+      ],
+      "instructions": "1. Cook pasta al dente. 2. Whisk flour mixture. 3. Make cheese sauce. 4. Combine pasta and sauce. 5. Prepare mac and cheese. 6. Heat skillet. 7. Prepare garlic butter. 8. Cut mac and cheese. 9. Assemble sandwich. 10. Grill sandwich",
+      "steps": [
+        "Cook pasta al dente.",
+        "2. Whisk flour mixture.",
+        "3. Make cheese sauce.",
+        "4. Combine pasta and sauce.",
+        "5. Prepare mac and cheese.",
+        "6. Heat skillet.",
+        "7. Prepare garlic butter.",
+        "8. Cut mac and cheese.",
+        "9. Assemble sandwich.",
+        "10. Grill sandwich"
+      ],
+      "description": "Creamy Mac and Cheese Grilled Sandwich (United States) — easy pasta recipe with 17 ingredients and 10 steps. Includes exact ingredients and clear instructi…",
+      "hook": "Cook this today for a satisfying, comforting meal that combines two favorites: mac and cheese and grilled cheese",
+      "tip": "Use a cast-iron skillet for an evenly cooked, crispy crust on your grilled mac and cheese sandwich",
+      "tags": [
+        "Comfort Food",
+        "Grilled Cheese",
+        "Mac and Cheese",
+        "Cheesy",
+        "Sandwich",
+        "Pasta",
+        "American",
+        "Lunch",
+        "United States",
+        "Creamy"
+      ],
+      "datePublished": "2026-05-02",
+      "publishDate": "2026-05-02T09:00:00",
+      "addedDate": "2026-05-01T15:40:59",
+      "status": "PUBLISHED",
+      "slug": "grilled-mac-and-cheese-sandwich-52829",
+      "youtube": "https://www.youtube.com/watch?v=PYq31xLj-DY",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "",
+      "prepTime": "",
+      "totalTime": "",
+      "servings": 4,
+      "difficulty": "Hard",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "fettucine-alfredo-52835",
+        "syrian-spaghetti-53093",
+        "venetian-duck-ragu-52838"
+      ]
+    },
+    {
+      "mealId": "53166",
+      "id": "chickpea-chorizo-spinach-stew-53166",
+      "title": "Savory Chickpea Stew",
+      "category": "Pork",
+      "origin": "Spanish",
+      "image": "https://www.themealdb.com/images/media/meals/xvnx8j1763287209.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/xvnx8j1763287209.jpg",
+      "ingredients": [
+        "4 tablespoons Extra Virgin Olive Oil",
+        "1 chopped Onion",
+        "1 Diced Carrots",
+        "1 Diced Celery",
+        "3 Thyme",
+        "2 Bay Leaves",
+        "2 cloves chopped Garlic",
+        "200g Chorizo",
+        "1/4 tsp Cinnamon",
+        "1 teaspoon Paprika",
+        "800g Chickpeas",
+        "2 tblsp Sherry vinegar",
+        "400g Spinach"
+      ],
+      "instructions": "1. Heat oil in a large pan, then fry onion for 3-4 mins. 2. Stir in chickpeas, vinegar, and water, bring to a simmer. 3. Add spinach, stir, and serve warm",
+      "steps": [
+        "Heat oil in a large pan, then fry onion for 3-4 mins.",
+        "2. Stir in chickpeas, vinegar, and water, bring to a simmer.",
+        "3. Add spinach, stir, and serve warm"
+      ],
+      "description": "Savory Chickpea Stew (Spanish) — easy pork recipe with 13 ingredients and 3 steps. Ready in 10 min. Includes exact ingredients and clear instructions.",
+      "hook": "Cook this today for a flavorful and satisfying meal",
+      "tip": "Use high-quality chorizo for the best flavor",
+      "tags": [
+        "Spanish cuisine",
+        "chickpea recipes",
+        "chorizo dishes",
+        "spinach stew",
+        "hearty meals",
+        "comfort food",
+        "one pot wonders",
+        "savory stews",
+        "Pork",
+        "Spanish"
+      ],
+      "datePublished": "2026-05-02",
+      "publishDate": "2026-05-02T09:00:00",
+      "addedDate": "2026-05-01T15:40:59",
+      "status": "PUBLISHED",
+      "slug": "chickpea-chorizo-spinach-stew-53166",
+      "youtube": "https://www.youtube.com/watch?v=nI2Sm4B3gWU",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "10 min",
+      "prepTime": "10 min",
+      "totalTime": "4 min",
+      "servings": 4,
+      "difficulty": "Easy",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "spanish-style-slow-cooked-lamb-shoulder-beans-53175",
+        "stamppot-52980",
+        "barbecue-pork-buns-53242"
+      ]
+    },
+    {
+      "mealId": "53180",
+      "id": "garlicky-prawns-with-sherry-53180",
+      "title": "Spanish Garlic Prawns",
+      "category": "Seafood",
+      "origin": "Spanish",
+      "image": "https://www.themealdb.com/images/media/meals/u2lhqb1763331899.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/u2lhqb1763331899.jpg",
+      "ingredients": [
+        "3  tablespoons Olive Oil",
+        "3 cloves Chopped Garlic",
+        "400g Prawns",
+        "2 tbsp Dry sherry",
+        "Handful Parsley"
+      ],
+      "instructions": "1. Heat olive oil in a pan, add garlic and cook for a few seconds. 2. Add prawns, cook until pink, then pour in sherry and cook until done. 3. Sprinkle parsley before serving.",
+      "steps": [
+        "Heat olive oil in a pan, add garlic and cook for a few seconds.",
+        "2. Add prawns, cook until pink, then pour in sherry and cook until done.",
+        "3. Sprinkle parsley before serving."
+      ],
+      "description": "Spanish Garlic Prawns (Spanish) — easy seafood recipe with 5 ingredients and 3 steps. Includes exact ingredients and clear instructions.",
+      "hook": "Cook this today for a flavorful Spanish-inspired meal",
+      "tip": "Use fresh parsley for the best flavor",
+      "tags": [
+        "seafood",
+        "prawns",
+        "garlic",
+        "sherry",
+        "spanish food",
+        "parsley",
+        "olive oil",
+        "easy recipes",
+        "Spanish"
+      ],
+      "datePublished": "2026-05-02",
+      "publishDate": "2026-05-02T09:00:00",
+      "addedDate": "2026-05-01T15:40:59",
+      "status": "PUBLISHED",
+      "slug": "garlicky-prawns-with-sherry-53180",
+      "youtube": "https://www.youtube.com/watch?v=2hf2xltFbxQ",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "",
+      "prepTime": "",
+      "totalTime": "",
+      "servings": 4,
+      "difficulty": "Easy",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "salmon-prawn-risotto-52823",
+        "torrijas-with-sherry-53165",
+        "chickpea-chorizo-spinach-stew-53166"
       ]
     }
   ]
