@@ -55,7 +55,7 @@
   }
 
   var TRENDING_SLIDER_MAX = 20;
-  var HERO_CAROUSEL_MAX = 8;
+  var HERO_CAROUSEL_MAX = 7;
   var HERO_AUTO_MS = 7000;
 
   var heroCarousel = {
