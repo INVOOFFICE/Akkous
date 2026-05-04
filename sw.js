@@ -1,6 +1,15 @@
-const CACHE_NAME = "akkous-shell-v2";
-const RUNTIME_CACHE = "akkous-runtime-v2";
+// ─── VERSION ────────────────────────────────────────────────────────────────
+// akkous-shell-v3 : bump de version pour forcer l'invalidation du cache
+// existant chez tous les visiteurs (ancienne v2 contenait recipes.json en
+// cache shell → les nouvelles recettes n'apparaissaient pas).
+// ─────────────────────────────────────────────────────────────────────────────
+const CACHE_NAME = "akkous-shell-v3";
+const RUNTIME_CACHE = "akkous-runtime-v3";
 
+// FIX : recipes.json retiré des SHELL_ASSETS.
+// Raison : s'il est mis en cache au moment de l'install, le SW sert
+// indéfiniment l'ancienne version même après un push GitHub.
+// Il est désormais géré séparément en networkFirst (voir fetch handler).
 const SHELL_ASSETS = [
   "./",
   "./index.html",
@@ -9,7 +18,6 @@ const SHELL_ASSETS = [
   "./style.css",
   "./main.js",
   "./manifest.webmanifest",
-  "./recipes.json",
   "./assets/favicon.svg"
 ];
 
@@ -45,8 +53,13 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
+  // FIX : recipes.json en networkFirst au lieu de staleWhileRevalidate.
+  // staleWhileRevalidate servait l'ancienne version en cache immédiatement,
+  // ce qui masquait les nouvelles recettes jusqu'à la visite suivante.
+  // networkFirst essaie toujours le réseau en premier ; le cache n'est utilisé
+  // qu'en cas d'échec réseau (mode hors-ligne).
   if (url.pathname.endsWith("/recipes.json")) {
-    event.respondWith(staleWhileRevalidate(req));
+    event.respondWith(networkFirst(req, "./offline.html"));
     return;
   }
 
