@@ -7066,6 +7066,70 @@
         "creamy-tomato-soup-52841",
         "cream-cheese-tart-52779"
       ]
+    },
+    {
+      "mealId": "52949",
+      "id": "sweet-and-sour-pork-52949",
+      "title": "Chinese Sweet Pork",
+      "category": "Pork",
+      "origin": "Chinese",
+      "image": "https://www.themealdb.com/images/media/meals/1529442316.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/1529442316.jpg",
+      "ingredients": [
+        "200g Pork",
+        "1 Egg",
+        "Dash Water",
+        "1/2 tsp Salt",
+        "1 tsp Sugar",
+        "10g Soy Sauce",
+        "10g Starch",
+        "30g Tomato Puree",
+        "10g Vinegar",
+        "Dash Coriander"
+      ],
+      "instructions": "1. Crack the egg into a bowl. 2. Slice the pork tenderloin into strips. 3. Prepare the marinade. 4. Marinade the pork strips. 5. Cook the pork and sweet and sour sauce.",
+      "steps": [
+        "Crack the egg into a bowl.",
+        "2. Slice the pork tenderloin into strips.",
+        "3. Prepare the marinade.",
+        "4. Marinade the pork strips.",
+        "5. Cook the pork and sweet and sour sauce."
+      ],
+      "description": "Chinese Sweet Pork (Chinese) — easy pork recipe with 10 ingredients and 5 steps. Includes exact ingredients and clear instructions.",
+      "hook": "Cook this today for a delicious Chinese meal. Easy to make and fun to eat.",
+      "tip": "Use fresh ingredients for the best flavor.",
+      "tags": [
+        "Chinese",
+        "Sweet",
+        "Sour",
+        "Pork",
+        "Asian",
+        "Food",
+        "Recipe",
+        "Cooking"
+      ],
+      "datePublished": "2026-05-04",
+      "publishDate": "2026-05-04T00:00:00",
+      "addedDate": "2026-05-03T04:06:59",
+      "status": "PUBLISHED",
+      "slug": "sweet-and-sour-pork-52949",
+      "youtube": "https://www.youtube.com/watch?v=mdaBIhgEAMo",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "",
+      "prepTime": "",
+      "totalTime": "",
+      "servings": 4,
+      "difficulty": "Easy",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "barbecue-pork-buns-53242",
+        "chickpea-chorizo-spinach-stew-53166",
+        "fasirky-53188"
+      ]
     }
   ]
 }
