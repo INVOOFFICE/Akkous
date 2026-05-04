@@ -78,7 +78,7 @@
 - [Beef Caldereta](https://akkous.com/recipes/beef-caldereta-53070/) — Filipino | Beef
 - [Chicken Couscous](https://akkous.com/recipes/chicken-couscous-52850/) — Moroccan | Chicken
 - [Nanaimo Bars](https://akkous.com/recipes/nanaimo-bars-52924/) — Canadian | Dessert
-- [Bistek](https://akkous.com/recipes/bistek-53069/) — Filipino | Beef
+- [Beef Bistek Recipe](https://akkous.com/recipes/bistek-53069/) — Filipino | Beef
 - [Moussaka](https://akkous.com/recipes/moussaka-53006/) — Greek | Beef
 - [Brown Stew Chicken](https://akkous.com/recipes/brown-stew-chicken-52940/) — Jamaican | Chicken
 - [Pumpkin Pie](https://akkous.com/recipes/pumpkin-pie-52857/) — American | Dessert
@@ -97,7 +97,7 @@
 - [Gevulde speculaas](https://akkous.com/recipes/gevulde-speculaas-53381/) — Dutch | Dessert
 - [Rigatoni with fennel sausage sauce](https://akkous.com/recipes/rigatoni-with-fennel-sausage-sauce-52783/) — Italian | Lamb
 - [Spanish meatballs with clams, chorizo & squid](https://akkous.com/recipes/spanish-meatballs-with-clams-chorizo-squid-53183/) — Spanish | Miscellaneous
-- [Lasagne](https://akkous.com/recipes/lasagne-52844/) — Italian | Pasta
+- [Homemade Lasagne Bolognese](https://akkous.com/recipes/lasagne-52844/) — Italian | Pasta
 - [Vietnamese Turkey Sandwich](https://akkous.com/recipes/turkey-banh-mi-53249/) — Vietnamese | Miscellaneous
 - [Creamy Mac and Cheese Grilled Sandwich](https://akkous.com/recipes/grilled-mac-and-cheese-sandwich-52829/) — United States | Pasta
 - [Savory Chickpea Stew](https://akkous.com/recipes/chickpea-chorizo-spinach-stew-53166/) — Spanish | Pork

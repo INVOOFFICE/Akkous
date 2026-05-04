@@ -1609,9 +1609,9 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
+        "lasagne-52844",
         "fettucine-alfredo-52835",
-        "grilled-mac-and-cheese-sandwich-52829",
-        "pilchard-puttanesca-52837"
+        "grilled-mac-and-cheese-sandwich-52829"
       ]
     },
     {
@@ -1798,9 +1798,9 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
+        "bistek-53069",
         "egyptian-fatteh-53031",
-        "jiggs-dinner-53335",
-        "traditional-croatian-goulash-53057"
+        "jiggs-dinner-53335"
       ]
     },
     {
@@ -2663,7 +2663,7 @@
       "relatedRecipeIds": [
         "egyptian-fatteh-53031",
         "beef-rendang-53053",
-        "karbonader-lean-beef-patties-with-caramelized-onions-53125"
+        "bistek-53069"
       ]
     },
     {
@@ -3578,9 +3578,9 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
+        "lasagne-52844",
         "venetian-duck-ragu-52838",
-        "chilli-prawn-linguine-52839",
-        "lasagne-52844"
+        "chilli-prawn-linguine-52839"
       ]
     },
     {
@@ -3846,8 +3846,8 @@
       "trending": true,
       "relatedRecipeIds": [
         "fettucine-alfredo-52835",
-        "pilchard-puttanesca-52837",
-        "chilli-prawn-linguine-52839"
+        "lasagne-52844",
+        "pilchard-puttanesca-52837"
       ]
     },
     {
@@ -4832,7 +4832,7 @@
     {
       "mealId": "53069",
       "id": "bistek-53069",
-      "title": "Bistek",
+      "title": "Beef Bistek Recipe",
       "category": "Beef",
       "origin": "Filipino",
       "image": "https://www.themealdb.com/images/media/meals/4pqimk1683207418.jpg",
@@ -4847,24 +4847,30 @@
         "1 cup Water",
         "1 pinch Salt"
       ],
-      "instructions": "0.        Marinate beef in soy sauce, lemon (or calamansi), and ground black pepper for at least 1 hour. Note: marinate overnight for best result\n1.        Heat the cooking oil in a pan then pan-fry half of the onions until the texture becomes soft. Set aside\n2.        Drain the marinade from the beef. Set it aside. Pan-fry the beef on the same pan where the onions were fried for 1 minute per side. Remove from the pan. Set aside\n3.        Add more oil if needed. Saute garlic and remaining raw onions until onion softens.\n4.        Pour the remaining marinade and water. Bring to a boil.\n5.        Add beef. Cover the pan and simmer until the meat is tender. Note: Add water as needed.\n6.        Season with ground black pepper and salt as needed. Top with pan-fried onions.\n7.        Transfer to a serving plate. Serve hot. Share and Enjoy!",
+      "instructions": "1. Marinate beef in soy sauce, lemon, and garlic for 1 hour. 2. Pan-fry onions until soft. 3. Pan-fry beef for 1 minute per side. 4. Saute garlic and onions. 5. Pour marinade and water, then add beef. 6. Simmer until tender. 7. Season with pepper and salt.",
       "steps": [
-        "0.        Marinate beef in soy sauce, lemon (or calamansi), and ground black pepper for at least 1 hour. Note: marinate overnight for best result",
-        "1.        Heat the cooking oil in a pan then pan-fry half of the onions until the texture becomes soft. Set aside",
-        "2.        Drain the marinade from the beef. Set it aside. Pan-fry the beef on the same pan where the onions were fried for 1 minute per side. Remove from the pan. Set aside",
-        "3.        Add more oil if needed. Saute garlic and remaining raw onions until onion softens.",
-        "4.        Pour the remaining marinade and water. Bring to a boil.",
-        "5.        Add beef. Cover the pan and simmer until the meat is tender. Note: Add water as needed.",
-        "6.        Season with ground black pepper and salt as needed. Top with pan-fried onions.",
-        "7.        Transfer to a serving plate. Serve hot. Share and Enjoy!"
+        "Marinate beef in soy sauce, lemon, and garlic for 1 hour.",
+        "2. Pan-fry onions until soft.",
+        "3. Pan-fry beef for 1 minute per side.",
+        "4. Saute garlic and onions.",
+        "5. Pour marinade and water, then add beef.",
+        "6. Simmer until tender.",
+        "7. Season with pepper and salt."
       ],
-      "description": "Bistek (Filipino) — easy beef recipe with 8 ingredients and 8 steps. Ready in 10 min. Includes exact ingredients and clear instructions.",
-      "hook": "0.\tMarinate beef in soy sauce, lemon (or calamansi), and ground black pepper for at least 1 hour. Note: marinate overnight for best result\r\n1.\tHeat the cooking oil in a pan then pan-fry half of the onions until the texture becomes soft. Set aside\r\n2.\tDrain the marinade from the beef. Set it aside. Pan-fry the beef on the same pan where the onions were fried for 1 minute per side. Remove from the pan. Set aside\r\n3.\tAdd more oil if needed. Saute garlic and remaining raw onions until onion softens.\r\n4.\tPour the remaining marinade and water. Bring to a boil.\r\n5.\tAdd beef. Cover the pan and simmer until the meat is tender. Note: Add water as needed.\r\n6.\tSeason with ground black pepper and salt as needed. Top with pan-fried onions.\r\n7.\tTransfer to a serving plate. Serve hot. Share and Enjoy!",
-      "tip": "",
+      "description": "Beef Bistek Recipe (Filipino) — easy beef recipe with 8 ingredients and 7 steps. Ready in 10 min. Includes exact ingredients and clear instructions.",
+      "hook": "Cook bistek today for a flavorful twist on traditional beef dishes",
+      "tip": "Marinate beef overnight for the best flavor",
       "tags": [
+        "beef recipes",
+        "filipino dishes",
+        "soy sauce",
+        "garlic",
+        "onion",
+        "olive oil",
+        "lemon",
+        "water",
         "Beef",
-        "Filipino",
-        "Bistek"
+        "Filipino"
       ],
       "datePublished": "2026-04-24",
       "publishDate": "2026-04-24T09:00:00",
@@ -4885,8 +4891,8 @@
       "trending": true,
       "relatedRecipeIds": [
         "beef-caldereta-53070",
-        "beef-and-mustard-pie-52874",
-        "beef-rendang-53053"
+        "beef-rendang-53053",
+        "egyptian-fatteh-53031"
       ]
     },
     {
@@ -6073,7 +6079,7 @@
     {
       "mealId": "52844",
       "id": "lasagne-52844",
-      "title": "Lasagne",
+      "title": "Homemade Lasagne Bolognese",
       "category": "Pasta",
       "origin": "Italian",
       "image": "https://www.themealdb.com/images/media/meals/wtsvxx1511296896.jpg",
@@ -6095,21 +6101,29 @@
         "50g Parmesan Cheese",
         "Topping Basil Leaves"
       ],
-      "instructions": "Heat the oil in a large saucepan. Use kitchen scissors to snip the bacon into small pieces, or use a sharp knife to chop it on a chopping board. Add the bacon to the pan and cook for just a few mins until starting to turn golden. Add the onion, celery and carrot, and cook over a medium heat for 5 mins, stirring occasionally, until softened.\nAdd the garlic and cook for 1 min, then tip in the mince and cook, stirring and breaking it up with a wooden spoon, for about 6 mins until browned all over.\nStir in the tomato purée and cook for 1 min, mixing in well with the beef and vegetables. Tip in the chopped tomatoes. Fill each can half full with water to rinse out any tomatoes left in the can, and add to the pan. Add the honey and season to taste. Simmer for 20 mins.\nHeat oven to 200C/180C fan/gas 6. To assemble the lasagne, ladle a little of the ragu sauce into the bottom of the roasting tin or casserole dish, spreading the sauce all over the base. Place 2 sheets of lasagne on top of the sauce overlapping to make it fit, then repeat with more sauce and another layer of pasta. Repeat with a further 2 layers of sauce and pasta, finishing with a layer of pasta.\nPut the crème fraîche in a bowl and mix with 2 tbsp water to loosen it and make a smooth pourable sauce. Pour this over the top of the pasta, then top with the mozzarella. Sprinkle Parmesan over the top and bake for 25–30 mins until golden and bubbling. Serve scattered with basil, if you like.",
+      "instructions": "1. Heat oil in a large saucepan over medium heat.,2. Add chopped bacon and cook until golden.,3. Add onion, celery, and carrot, cooking until softened.,4. Add garlic, mince, and cook until browned.,5. Stir in tomato puree, chopped tomatoes, and honey, then simmer.,6. Assemble lasagne with ragu sauce, lasagne sheets, and creamy sauce.,7. Top with mozzarella and parmesan, then bake until golden.",
       "steps": [
-        "Heat the oil in a large saucepan. Use kitchen scissors to snip the bacon into small pieces, or use a sharp knife to chop it on a chopping board. Add the bacon to the pan and cook for just a few mins until starting to turn golden. Add the onion, celery and carrot, and cook over a medium heat for 5 mins, stirring occasionally, until softened.",
-        "Add the garlic and cook for 1 min, then tip in the mince and cook, stirring and breaking it up with a wooden spoon, for about 6 mins until browned all over.",
-        "Stir in the tomato purée and cook for 1 min, mixing in well with the beef and vegetables. Tip in the chopped tomatoes. Fill each can half full with water to rinse out any tomatoes left in the can, and add to the pan. Add the honey and season to taste. Simmer for 20 mins.",
-        "Heat oven to 200C/180C fan/gas 6. To assemble the lasagne, ladle a little of the ragu sauce into the bottom of the roasting tin or casserole dish, spreading the sauce all over the base. Place 2 sheets of lasagne on top of the sauce overlapping to make it fit, then repeat with more sauce and another layer of pasta. Repeat with a further 2 layers of sauce and pasta, finishing with a layer of pasta.",
-        "Put the crème fraîche in a bowl and mix with 2 tbsp water to loosen it and make a smooth pourable sauce. Pour this over the top of the pasta, then top with the mozzarella. Sprinkle Parmesan over the top and bake for 25–30 mins until golden and bubbling. Serve scattered with basil, if you like."
+        "Heat oil in a large saucepan over medium heat.,2.",
+        "Add chopped bacon and cook until golden.,3.",
+        "Add onion, celery, and carrot, cooking until softened.,4.",
+        "Add garlic, mince, and cook until browned.,5.",
+        "Stir in tomato puree, chopped tomatoes, and honey, then simmer.,6.",
+        "Assemble lasagne with ragu sauce, lasagne sheets, and creamy sauce.,7.",
+        "Top with mozzarella and parmesan, then bake until golden."
       ],
-      "description": "Lasagne (Italian) — easy pasta recipe with 15 ingredients and 5 steps. Ready in 44 min. Includes exact ingredients and clear instructions.",
-      "hook": "Heat the oil in a large saucepan. Use kitchen scissors to snip the bacon into small pieces, or use a sharp knife to chop it on a chopping board. Add the bacon to the pan and cook for just a few mins until starting to turn golden. Add the onion, celery and carrot, and cook over a medium heat for 5 mins, stirring occasionally, until softened.\r\nAdd the garlic and cook for 1 min, then tip in the mince and cook, stirring and breaking it up with a wooden spoon, for about 6 mins until browned all over.\r\nStir in the tomato purée and cook for 1 min, mixing in well with the beef and vegetables. Tip in the chopped tomatoes. Fill each can half full with water to rinse out any tomatoes left in the can, and add to the pan. Add the honey and season to taste. Simmer for 20 mins.\r\nHeat oven to 200C/180C fan/gas 6. To assemble the lasagne, ladle a little of the ragu sauce into the bottom of the roasting tin or casserole dish, spreading the sauce all over the base. Place 2 sheets of lasagne on top of the sauce overlapping to make it fit, then repeat with more sauce and another layer of pasta. Repeat with a further 2 layers of sauce and pasta, finishing with a layer of pasta.\r\nPut the crème fraîche in a bowl and mix with 2 tbsp water to loosen it and make a smooth pourable sauce. Pour this over the top of the pasta, then top with the mozzarella. Sprinkle Parmesan over the top and bake for 25–30 mins until golden and bubbling. Serve scattered with basil, if you like.",
-      "tip": "",
+      "description": "Homemade Lasagne Bolognese (Italian) — easy pasta recipe with 15 ingredients and 7 steps. Includes exact ingredients and clear instructions.",
+      "hook": "Cook this today for a hearty, satisfying meal that's sure to please.",
+      "tip": "Use high-quality ingredients for the best flavor, especially the tomatoes.",
       "tags": [
-        "Pasta",
-        "Italian",
-        "Lasagne"
+        "lasagne",
+        "bolognese",
+        "pasta",
+        "italian food",
+        "homemade",
+        "comfort food",
+        "cheese",
+        "tomato sauce",
+        "Italian"
       ],
       "datePublished": "2026-04-28",
       "publishDate": "2026-04-28T09:00:00",
@@ -6121,17 +6135,17 @@
         "name": "Akkous",
         "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
       },
-      "cookTime": "44 min",
-      "prepTime": "19 min",
-      "totalTime": "63 min",
+      "cookTime": "",
+      "prepTime": "",
+      "totalTime": "",
       "servings": 4,
-      "difficulty": "Easy",
+      "difficulty": "Medium",
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
-        "chilli-prawn-linguine-52839",
         "fettucine-alfredo-52835",
-        "pilchard-puttanesca-52837"
+        "venetian-duck-ragu-52838",
+        "chilli-prawn-linguine-52839"
       ]
     },
     {
@@ -6274,8 +6288,8 @@
       "trending": true,
       "relatedRecipeIds": [
         "fettucine-alfredo-52835",
-        "syrian-spaghetti-53093",
-        "venetian-duck-ragu-52838"
+        "lasagne-52844",
+        "syrian-spaghetti-53093"
       ]
     },
     {
