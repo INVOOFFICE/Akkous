@@ -84,8 +84,8 @@
       "trending": true,
       "relatedRecipeIds": [
         "creamy-tomato-soup-52841",
-        "quick-gazpacho-53173",
-        "cream-cheese-tart-52779"
+        "clam-chowder-52840",
+        "quick-gazpacho-53173"
       ]
     },
     {
@@ -407,8 +407,8 @@
       "trending": true,
       "relatedRecipeIds": [
         "broccoli-stilton-soup-52842",
-        "cream-cheese-tart-52779",
-        "quick-gazpacho-53173"
+        "clam-chowder-52840",
+        "cream-cheese-tart-52779"
       ]
     },
     {
@@ -728,8 +728,8 @@
       "trending": true,
       "relatedRecipeIds": [
         "broccoli-stilton-soup-52842",
-        "creamy-tomato-soup-52841",
-        "fruit-and-cream-cheese-breakfast-pastries-52957"
+        "clam-chowder-52840",
+        "creamy-tomato-soup-52841"
       ]
     },
     {
@@ -1048,8 +1048,8 @@
       "trending": true,
       "relatedRecipeIds": [
         "broccoli-stilton-soup-52842",
-        "cream-cheese-tart-52779",
-        "creamy-tomato-soup-52841"
+        "clam-chowder-52840",
+        "cream-cheese-tart-52779"
       ]
     },
     {
@@ -1304,8 +1304,8 @@
       "trending": true,
       "relatedRecipeIds": [
         "garlicky-prawns-with-sherry-53180",
-        "pilchard-puttanesca-52837",
-        "prawn-noodle-salad-with-crispy-shallots-53244"
+        "grilled-portuguese-sardines-53041",
+        "pilchard-puttanesca-52837"
       ]
     },
     {
@@ -1931,8 +1931,8 @@
       "trending": true,
       "relatedRecipeIds": [
         "chickpea-chorizo-spinach-stew-53166",
-        "barbecue-pork-buns-53242",
-        "skillet-apple-pork-chops-with-roasted-sweet-potatoes-zucchini-52994"
+        "fasirky-53188",
+        "barbecue-pork-buns-53242"
       ]
     },
     {
@@ -2598,8 +2598,8 @@
       "trending": true,
       "relatedRecipeIds": [
         "griddled-flatbreads-53272",
-        "sichuan-eggplant-53374",
-        "sweet-and-sour-chicken-53376"
+        "split-pea-soup-52925",
+        "sichuan-eggplant-53374"
       ]
     },
     {
@@ -3910,8 +3910,8 @@
       "trending": true,
       "relatedRecipeIds": [
         "chickpea-chorizo-spinach-stew-53166",
-        "skillet-apple-pork-chops-with-roasted-sweet-potatoes-zucchini-52994",
-        "stamppot-52980"
+        "fasirky-53188",
+        "skillet-apple-pork-chops-with-roasted-sweet-potatoes-zucchini-52994"
       ]
     },
     {
@@ -6287,9 +6287,9 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
+        "lasagna-sandwiches-52987",
         "fettucine-alfredo-52835",
-        "lasagne-52844",
-        "syrian-spaghetti-53093"
+        "lasagne-52844"
       ]
     },
     {
@@ -6354,9 +6354,9 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
+        "fasirky-53188",
         "spanish-style-slow-cooked-lamb-shoulder-beans-53175",
-        "stamppot-52980",
-        "barbecue-pork-buns-53242"
+        "stamppot-52980"
       ]
     },
     {
@@ -6413,8 +6413,8 @@
       "trending": true,
       "relatedRecipeIds": [
         "salmon-prawn-risotto-52823",
-        "prawn-noodle-salad-with-crispy-shallots-53244",
-        "torrijas-with-sherry-53165"
+        "grilled-portuguese-sardines-53041",
+        "prawn-noodle-salad-with-crispy-shallots-53244"
       ]
     },
     {
@@ -6611,7 +6611,7 @@
       "relatedRecipeIds": [
         "barbecue-pork-buns-53242",
         "chickpea-chorizo-spinach-stew-53166",
-        "stamppot-52980"
+        "fasirky-53188"
       ]
     },
     {
@@ -6679,8 +6679,8 @@
       "trending": true,
       "relatedRecipeIds": [
         "garlicky-prawns-with-sherry-53180",
-        "salmon-prawn-risotto-52823",
-        "turkey-banh-mi-53249"
+        "grilled-portuguese-sardines-53041",
+        "salmon-prawn-risotto-52823"
       ]
     },
     {
@@ -6738,8 +6738,333 @@
       "trending": true,
       "relatedRecipeIds": [
         "sesame-cucumber-salad-53378",
-        "hot-cumin-lamb-wrap-with-crunchy-slaw-spicy-mayo-53258",
-        "roast-aubergine-with-goat-s-cheese-toasted-flatbread-53273"
+        "split-pea-soup-52925",
+        "hot-cumin-lamb-wrap-with-crunchy-slaw-spicy-mayo-53258"
+      ]
+    },
+    {
+      "mealId": "52987",
+      "id": "lasagna-sandwiches-52987",
+      "title": "Cheesy Lasagna Sandwich",
+      "category": "Pasta",
+      "origin": "United States",
+      "image": "https://www.themealdb.com/images/media/meals/xr0n4r1576788363.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/xr0n4r1576788363.jpg",
+      "ingredients": [
+        "1/4 cup Sour Cream",
+        "2 tbs Chopped Onion",
+        "1/2 tbs Dried Oregano",
+        "1/4 tsp Salt",
+        "8 slices Bread",
+        "8 slices Bacon",
+        "8 slices Tomato",
+        "4 slices Mozzarella",
+        "2 1/2 Tbs Butter"
+      ],
+      "instructions": "1. Combine sour cream, onion, oregano, and salt; spread on bread. 2. Layer with bacon, tomato, and mozzarella. 3. Top with remaining bread and toast in a skillet with butter until golden and cheese is melted.",
+      "steps": [
+        "Combine sour cream, onion, oregano, and salt; spread on bread.",
+        "2. Layer with bacon, tomato, and mozzarella.",
+        "3. Top with remaining bread and toast in a skillet with butter until golden and cheese is melted."
+      ],
+      "description": "Cheesy Lasagna Sandwich (United States) — easy pasta recipe with 9 ingredients and 3 steps. Includes exact ingredients and clear instructions.",
+      "hook": "Cook this today for a satisfying twist on a classic dish. Perfect for a quick lunch or dinner",
+      "tip": "Use fresh mozzarella for the best flavor and texture",
+      "tags": [
+        "lasagna",
+        "sandwich",
+        "mozzarella",
+        "bacon",
+        "tomato",
+        "cheese",
+        "pasta",
+        "italian",
+        "United States",
+        "Cheesy"
+      ],
+      "datePublished": "2026-05-04",
+      "publishDate": "2026-05-04T09:00:00",
+      "addedDate": "2026-05-02T04:06:56",
+      "status": "PUBLISHED",
+      "slug": "lasagna-sandwiches-52987",
+      "youtube": "",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "",
+      "prepTime": "",
+      "totalTime": "",
+      "servings": 4,
+      "difficulty": "Easy",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "grilled-mac-and-cheese-sandwich-52829",
+        "lasagne-52844",
+        "chilli-prawn-linguine-52839"
+      ]
+    },
+    {
+      "mealId": "53188",
+      "id": "fasirky-53188",
+      "title": "Slovakian Pork Fašírky",
+      "category": "Pork",
+      "origin": "Slovakia",
+      "image": "https://www.themealdb.com/images/media/meals/gtpvwp1763363947.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/gtpvwp1763363947.jpg",
+      "ingredients": [
+        "500g Ground Pork",
+        "1 medium chopped Onion",
+        "2 cloves minced Garlic",
+        "2 sliced Bread",
+        "1 shot Milk",
+        "1 Egg",
+        "1 teaspoon Salt",
+        "1/2 teaspoon Black Pepper",
+        "1 teaspoon Marjoram",
+        "1 tsp Mustard",
+        "1 tablespoon chopped Parsley",
+        "1/2 cup Flour",
+        "1 beaten Egg",
+        "1 cup Breadcrumbs",
+        "For frying Vegetable Oil"
+      ],
+      "instructions": "1. Soak bread in milk, then mash into crumbs,2. Mix ground pork, onions, garlic, bread, egg, and seasonings,3. Shape into palm-sized patties and flatten slightly,4. Coat patties with flour, egg, and breadcrumbs,5. Fry in vegetable oil until golden brown and cooked,6. Serve hot with mashed potatoes or cabbage salad",
+      "steps": [
+        "Soak bread in milk, then mash into crumbs,2.",
+        "Mix ground pork, onions, garlic, bread, egg, and seasonings,3.",
+        "Shape into palm-sized patties and flatten slightly,4.",
+        "Coat patties with flour, egg, and breadcrumbs,5.",
+        "Fry in vegetable oil until golden brown and cooked,6.",
+        "Serve hot with mashed potatoes or cabbage salad"
+      ],
+      "description": "Slovakian Pork Fašírky (Slovakia) — easy pork recipe with 15 ingredients and 6 steps. Includes exact ingredients and clear instructions.",
+      "hook": "Cook Fašírky today for a taste of Slovakia's hearty cuisine",
+      "tip": "Use panko breadcrumbs for an extra crispy coating",
+      "tags": [
+        "pork recipes",
+        "slovakian cuisine",
+        "meat patties",
+        "european food",
+        "comfort food",
+        "crispy pork",
+        "traditional dishes",
+        "savory meals",
+        "Pork",
+        "Slovakia"
+      ],
+      "datePublished": "2026-05-04",
+      "publishDate": "2026-05-04T09:00:00",
+      "addedDate": "2026-05-02T04:06:56",
+      "status": "PUBLISHED",
+      "slug": "fasirky-53188",
+      "youtube": "https://www.youtube.com/watch?v=ecBMVy3p6Ns",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "",
+      "prepTime": "",
+      "totalTime": "",
+      "servings": 4,
+      "difficulty": "Medium",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "chickpea-chorizo-spinach-stew-53166",
+        "stamppot-52980",
+        "barbecue-pork-buns-53242"
+      ]
+    },
+    {
+      "mealId": "53041",
+      "id": "grilled-portuguese-sardines-53041",
+      "title": "Sardine Grill Portuguese Style",
+      "category": "Seafood",
+      "origin": "Portuguese",
+      "image": "https://www.themealdb.com/images/media/meals/lpd4wy1614347943.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/lpd4wy1614347943.jpg",
+      "ingredients": [
+        "8 Sardines",
+        "2 tbs Olive Oil",
+        "3 cloves Garlic",
+        "1 tbs Paprika",
+        "1/2 Lemon",
+        "4 sprigs Rosemary",
+        "1 Red Chilli"
+      ],
+      "instructions": "1. Mix olive oil, garlic, paprika, lemon, rosemary, and chilli. 2. Add sardines, toss, and chill. 3. Grill sardines for 4-5 minutes per side.",
+      "steps": [
+        "Mix olive oil, garlic, paprika, lemon, rosemary, and chilli.",
+        "2. Add sardines, toss, and chill.",
+        "3. Grill sardines for 4-5 minutes per side."
+      ],
+      "description": "Sardine Grill Portuguese Style (Portuguese) — easy seafood recipe with 7 ingredients and 3 steps. Ready in 10 min. Includes exact ingredients and clear ins…",
+      "hook": "Cook this today for a taste of Portugal's seafood tradition.",
+      "tip": "Use fresh sardines for the best flavor.",
+      "tags": [
+        "grilled fish",
+        "seafood recipes",
+        "Portuguese cuisine",
+        "sardine dishes",
+        "BBQ ideas",
+        "Mediterranean diet",
+        "fish grill",
+        "summer recipes",
+        "Seafood",
+        "Portuguese"
+      ],
+      "datePublished": "2026-05-04",
+      "publishDate": "2026-05-04T09:00:00",
+      "addedDate": "2026-05-02T04:06:56",
+      "status": "PUBLISHED",
+      "slug": "grilled-portuguese-sardines-53041",
+      "youtube": "https://www.youtube.com/watch?v=JYtMjKa6cdY",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "10 min",
+      "prepTime": "10 min",
+      "totalTime": "5 min",
+      "servings": 4,
+      "difficulty": "Easy",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "garlicky-prawns-with-sherry-53180",
+        "prawn-noodle-salad-with-crispy-shallots-53244",
+        "salmon-prawn-risotto-52823"
+      ]
+    },
+    {
+      "mealId": "52925",
+      "id": "split-pea-soup-52925",
+      "title": "Hearty Pea Soup",
+      "category": "Side",
+      "origin": "Canadian",
+      "image": "https://www.themealdb.com/images/media/meals/xxtsvx1511814083.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/xxtsvx1511814083.jpg",
+      "ingredients": [
+        "1kg Ham",
+        "200g (soaked overnight) Peas",
+        "2 chopped Onions",
+        "2 chopped Carrots",
+        "2 Bay Leaves",
+        "1 chopped Celery",
+        "300g Frozen Peas",
+        "to serve Bread"
+      ],
+      "instructions": "1. Put the ham in a large pan with 2 litres water and bring to the boil.,2. Remove from the heat, drain off the water, and recover with 2 litres cold water.,3. Add all ingredients except frozen peas to the pan and simmer for 1½-2½ hrs.",
+      "steps": [
+        "Put the ham in a large pan with 2 litres water and bring to the boil.,2.",
+        "Remove from the heat, drain off the water, and recover with 2 litres cold water.,3.",
+        "Add all ingredients except frozen peas to the pan and simmer for 1½-2½ hrs."
+      ],
+      "description": "Hearty Pea Soup (Canadian) — easy side recipe with 8 ingredients and 3 steps. Includes exact ingredients and clear instructions.",
+      "hook": "Cook this today for a nourishing meal that's easy to make and delicious to eat.",
+      "tip": "Use soaked peas for a creamier texture and better digestion.",
+      "tags": [
+        "Soup",
+        "Warm",
+        "Pea",
+        "Ham",
+        "Comfort Food",
+        "Canadian",
+        "Side Dish",
+        "Vegetables",
+        "Side",
+        "Hearty"
+      ],
+      "datePublished": "2026-05-04",
+      "publishDate": "2026-05-04T09:00:00",
+      "addedDate": "2026-05-02T04:06:56",
+      "status": "PUBLISHED",
+      "slug": "split-pea-soup-52925",
+      "youtube": "https://www.youtube.com/watch?v=qdhWz7qAaCU",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "",
+      "prepTime": "",
+      "totalTime": "",
+      "servings": 4,
+      "difficulty": "Easy",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "griddled-flatbreads-53272",
+        "sesame-cucumber-salad-53378",
+        "jiggs-dinner-53335"
+      ]
+    },
+    {
+      "mealId": "52840",
+      "id": "clam-chowder-52840",
+      "title": "Creamy Clam Chowder",
+      "category": "Starter",
+      "origin": "United States",
+      "image": "https://www.themealdb.com/images/media/meals/rvtvuw1511190488.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/rvtvuw1511190488.jpg",
+      "ingredients": [
+        "1½ kg Clams",
+        "50g Butter",
+        "150g Bacon",
+        "1 finely chopped Onion",
+        "sprigs of fresh Thyme",
+        "1 Bay Leaf",
+        "1 tbls Plain Flour",
+        "150ml Milk",
+        "150ml Double Cream",
+        "2 medium Potatoes",
+        "Chopped Parsley"
+      ],
+      "instructions": "1. Rinse clams in cold water, then steam them in a large pan with 500ml of water.,2. Remove clams from shells, strain the stock, and set aside.,3. Cook bacon, onion, thyme, and bay leaf in butter until the onion is soft.,4. Add flour, clam stock, milk, and cream, stirring constantly.,5. Add potatoes and simmer until they're cooked, then crush some against the pan to thicken.",
+      "steps": [
+        "Rinse clams in cold water, then steam them in a large pan with 500ml of water.,2.",
+        "Remove clams from shells, strain the stock, and set aside.,3.",
+        "Cook bacon, onion, thyme, and bay leaf in butter until the onion is soft.,4.",
+        "Add flour, clam stock, milk, and cream, stirring constantly.,5.",
+        "Add potatoes and simmer until they're cooked, then crush some against the pan to thicken."
+      ],
+      "description": "Creamy Clam Chowder (United States) — easy starter recipe with 11 ingredients and 5 steps. Includes exact ingredients and clear instructions.",
+      "hook": "Cook this today for a comforting and flavorful meal that's perfect for the whole family.",
+      "tip": "Use fresh clams for the best flavor and texture.",
+      "tags": [
+        "clam chowder",
+        "seafood soup",
+        "creamy soup",
+        "american cuisine",
+        "comfort food",
+        "soup recipes",
+        "fish dishes",
+        "winter meals",
+        "Starter",
+        "United States"
+      ],
+      "datePublished": "2026-05-04",
+      "publishDate": "2026-05-04T09:00:00",
+      "addedDate": "2026-05-02T04:06:56",
+      "status": "PUBLISHED",
+      "slug": "clam-chowder-52840",
+      "youtube": "https://www.youtube.com/watch?v=fEN_fm6kX6k",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "",
+      "prepTime": "",
+      "totalTime": "",
+      "servings": 4,
+      "difficulty": "Easy",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "broccoli-stilton-soup-52842",
+        "creamy-tomato-soup-52841",
+        "cream-cheese-tart-52779"
       ]
     }
   ]

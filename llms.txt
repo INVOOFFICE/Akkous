@@ -107,6 +107,11 @@
 - [Skillet Pork Chops with Apple and Vegetables](https://akkous.com/recipes/skillet-apple-pork-chops-with-roasted-sweet-potatoes-zucchini-52994/) — United States | Pork
 - [Vietnamese Prawn Noodle Salad](https://akkous.com/recipes/prawn-noodle-salad-with-crispy-shallots-53244/) — Vietnamese | Seafood
 - [Turkish Flatbreads](https://akkous.com/recipes/griddled-flatbreads-53272/) — Turkish | Side
+- [Cheesy Lasagna Sandwich](https://akkous.com/recipes/lasagna-sandwiches-52987/) — United States | Pasta
+- [Slovakian Pork Fašírky](https://akkous.com/recipes/fasirky-53188/) — Slovakia | Pork
+- [Sardine Grill Portuguese Style](https://akkous.com/recipes/grilled-portuguese-sardines-53041/) — Portuguese | Seafood
+- [Hearty Pea Soup](https://akkous.com/recipes/split-pea-soup-52925/) — Canadian | Side
+- [Creamy Clam Chowder](https://akkous.com/recipes/clam-chowder-52840/) — United States | Starter
 
 ## About
 - All recipes include ingredients, step-by-step instructions, cooking time, difficulty level, and cultural origin.
