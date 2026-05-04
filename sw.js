@@ -3,8 +3,8 @@
 // existant chez tous les visiteurs (ancienne v2 contenait recipes.json en
 // cache shell → les nouvelles recettes n'apparaissaient pas).
 // ─────────────────────────────────────────────────────────────────────────────
-const CACHE_NAME = "akkous-shell-v3";
-const RUNTIME_CACHE = "akkous-runtime-v3";
+const CACHE_NAME = "akkous-shell-v4";
+const RUNTIME_CACHE = "akkous-runtime-v4";
 
 // FIX : recipes.json retiré des SHELL_ASSETS.
 // Raison : s'il est mis en cache au moment de l'install, le SW sert
