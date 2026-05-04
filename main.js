@@ -405,6 +405,8 @@
   }
 
   function initPwaInstall() {
+    // PWA install banner désactivé (service worker supprimé).
+    return;
     var deferredPrompt = null;
     var banner = null;
     var installBtn = null;
@@ -475,13 +477,17 @@
   }
 
   function registerServiceWorker() {
+    // Service worker désactivé — désinscrire tout SW existant pour éviter
+    // que recipes.json soit servi depuis le cache navigateur après un push GitHub.
     if (!("serviceWorker" in navigator)) return;
-    var p = siteRootRelativePrefix();
-    var swUrl = new URL((p || "./") + "sw.js", window.location.href).href;
-    var scopeUrl = new URL(p || "./", window.location.href);
-    navigator.serviceWorker.register(swUrl, { scope: scopeUrl.pathname }).catch(function (err) {
-      console.warn("Service worker registration failed:", err);
+    navigator.serviceWorker.getRegistrations().then(function (regs) {
+      regs.forEach(function (reg) { reg.unregister(); });
     });
+    if (window.caches) {
+      caches.keys().then(function (keys) {
+        keys.forEach(function (k) { caches.delete(k); });
+      });
+    }
   }
 
   function applyBranding() {
