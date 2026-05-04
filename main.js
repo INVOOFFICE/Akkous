@@ -54,8 +54,8 @@
     return div.innerHTML;
   }
 
-  var TRENDING_SLIDER_MAX = 12;
-  var HERO_CAROUSEL_MAX = 5;
+  var TRENDING_SLIDER_MAX = 20;
+  var HERO_CAROUSEL_MAX = 8;
   var HERO_AUTO_MS = 7000;
 
   var heroCarousel = {
@@ -514,7 +514,11 @@
     var max = HERO_CAROUSEL_MAX;
     if (!state.recipes.length) return [];
     var sorted = sortRecipesByPublishDateDesc(state.recipes);
-    return sorted.slice(0, max);
+    // Prioriser les recettes featured: true en premier
+    var featured = sorted.filter(function (r) { return r.featured === true; });
+    var nonFeatured = sorted.filter(function (r) { return r.featured !== true; });
+    var combined = featured.concat(nonFeatured);
+    return combined.slice(0, max);
   }
 
   function heroRecipeMetaLine(recipe) {
