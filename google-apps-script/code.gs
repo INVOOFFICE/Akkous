@@ -310,6 +310,7 @@ function onOpen() {
       .addItem('⑰ Enrichir SEO (Groq) — toutes les SCHEDULED (option avancée)', 'runGroqSeoEnrichAllScheduled')
       .addItem('⑱ Imageexport', 'buildImageExportSheet')
       .addItem('⑲ Videoexport', 'buildVideoExportSheet')
+      .addItem('⑳ Vérifier synchro Sheet ↔ GitHub', 'verifySheetVsGitHub')
       .addToUi();
   } catch (e) {
     Logger.log('onOpen: %s', e);
@@ -1429,7 +1430,13 @@ function markPublishedRecipes() {
         updates.push([st]);
         continue;
       }
-      if (pub.getTime() <= now.getTime()) {
+      // FIX : compare par jour calendaire uniquement (ignorer l'heure).
+      // Le pipeline tourne à TRIGGER_PIPELINE_HOUR (4h) mais les recettes sont
+      // planifiées à PUBLISH_HOUR (9h) → sans ce fix, pub.getTime() > now.getTime()
+      // → la recette reste SCHEDULED et n'est jamais exportée dans recipes.json.
+      const pubDay = new Date(pub.getFullYear(), pub.getMonth(), pub.getDate());
+      const today  = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+      if (pubDay.getTime() <= today.getTime()) {
         updates.push([CONFIG.STATUS_PUBLISHED]);
         publishedCount++;
       } else {
@@ -3258,9 +3265,20 @@ function buildExportPayload_(sheet) {
     const pub = row[CONFIG.COL.PUBLISH_DATE - 1];
     let publishDate = '';
     if (pub instanceof Date) {
+      // Fix : si l'heure est minuit (T00:00:00), on force 09:00:00 pour éviter
+      // le bug de timezone — les navigateurs interprètent T00:00:00 sans Z
+      // en heure locale, ce qui décale la date d'un jour pour les visiteurs
+      // hors UTC (Maroc +1, Europe +2, etc.) et fait disparaître la recette
+      // du tri de la homepage.
+      const pubFixed = new Date(pub.getTime());
+      const tz = getTimezone_();
+      const hh = parseInt(Utilities.formatDate(pubFixed, tz, 'HH'), 10);
+      if (hh === 0) {
+        pubFixed.setHours(pubFixed.getHours() + CONFIG.PUBLISH_HOUR);
+      }
       publishDate = Utilities.formatDate(
-        pub,
-        getTimezone_(),
+        pubFixed,
+        tz,
         "yyyy-MM-dd'T'HH:mm:ss"
       );
     }
@@ -3701,4 +3719,287 @@ function doGetNewsletterHealth() {
   return ContentService.createTextOutput(
     'Akkous newsletter — POST avec champ email= (formulaire).'
   ).setMimeType(ContentService.MimeType.TEXT);
+}
+// ---------------------------------------------------------------------------
+// ⑳ Vérification : PUBLISHED (Sheet) ↔ GitHub recipes.json
+// ---------------------------------------------------------------------------
+// Colle ce bloc à la fin de code.gs, juste avant la dernière accolade ou
+// à la suite du reste du fichier.
+// Puis ajoute dans onOpen() :
+//   .addItem('⑳ Vérifier synchro Sheet ↔ GitHub', 'verifySheetVsGitHub')
+// ---------------------------------------------------------------------------
+
+/**
+ * Compare les recettes PUBLISHED dans le Sheet avec celles présentes dans
+ * recipes.json sur GitHub, puis crée (ou met à jour) un onglet "SyncReport"
+ * avec le résultat ligne par ligne.
+ *
+ * Colonnes du rapport :
+ *  ID | Title | Status Sheet | Dans GitHub | Slug Sheet | Slug GitHub | Résultat
+ *
+ * Résultat possible :
+ *  ✅ OK          → PUBLISHED dans Sheet ET présent dans GitHub
+ *  ❌ MANQUANT    → PUBLISHED dans Sheet MAIS absent de GitHub
+ *  ⚠️ GITHUB ONLY → Présent dans GitHub MAIS pas PUBLISHED dans Sheet (ou absent)
+ */
+function verifySheetVsGitHub() {
+  try {
+    const sheet = getRecipesSheetOrThrow_();
+    const last = sheet.getLastRow();
+    const sheetPublished = {};
+
+    if (last >= 2) {
+      const nCol = CONFIG.HEADERS.length;
+      const rows = sheet.getRange(2, 1, last - 1, nCol).getValues();
+      rows.forEach(function (row) {
+        const id     = String(row[CONFIG.COL.ID - 1]     || '').trim();
+        const status = String(row[CONFIG.COL.STATUS - 1] || '').trim();
+        const title  = String(row[CONFIG.COL.TITLE - 1]  || '').trim();
+        const slug   = String(row[CONFIG.COL.SLUG - 1]   || '').trim();
+        if (!id) return;
+        sheetPublished[id] = { title, slug, status };
+      });
+    }
+
+    const gh = getGitHubCredentials_();
+    if (!gh.token || !gh.repo) {
+      SpreadsheetApp.getUi().alert(
+        'GITHUB_TOKEN ou GITHUB_REPO manquant.\n' +
+          'Remplis CONFIG ou Propriétés du script avant de relancer ⑳.'
+      );
+      return;
+    }
+
+    const [owner, repo] = parseRepo_(gh.repo);
+    const branch  = String(CONFIG.GITHUB_BRANCH || 'main').trim() || 'main';
+    const filePath = String(CONFIG.GITHUB_FILE || 'recipes.json').replace(/^\//, '');
+
+    const apiRoot = 'https://api.github.com/repos/' +
+      encodeURIComponent(owner) + '/' + encodeURIComponent(repo);
+
+    const ghHeaders = {
+      Authorization: 'Bearer ' + gh.token,
+      Accept: 'application/vnd.github+json',
+      'X-GitHub-Api-Version': '2022-11-28',
+    };
+
+    // ─── 1. Télécharger recipes.json ────────────────────────────────────────
+    const apiUrl = apiRoot + '/contents/' + filePath +
+      '?ref=' + encodeURIComponent(branch);
+
+    const ghRecipes = {};   // indexé par slug ET mealId
+    let ghCount = 0;
+
+    try {
+      const resp = UrlFetchApp.fetch(apiUrl, {
+        method: 'get', muteHttpExceptions: true, headers: ghHeaders,
+      });
+      const code = resp.getResponseCode();
+
+      let jsonText = '';
+      if (code === 200) {
+        const meta = JSON.parse(resp.getContentText());
+        if (meta.content) {
+          const b64 = String(meta.content).replace(/\s/g, '');
+          jsonText = Utilities.newBlob(Utilities.base64Decode(b64)).getDataAsString();
+        } else if (meta.download_url) {
+          jsonText = UrlFetchApp.fetch(meta.download_url, { muteHttpExceptions: true }).getContentText();
+        }
+      } else {
+        // Gros fichier : download_url dans la réponse 4xx/vide
+        let dlUrl = '';
+        try { dlUrl = JSON.parse(resp.getContentText()).download_url || ''; } catch (e) { /* ignore */ }
+        if (dlUrl) {
+          jsonText = UrlFetchApp.fetch(dlUrl, { muteHttpExceptions: true }).getContentText();
+        } else {
+          SpreadsheetApp.getUi().alert('Impossible de télécharger recipes.json. HTTP ' + code);
+          return;
+        }
+      }
+
+      const payload     = JSON.parse(jsonText);
+      const recipesList = Array.isArray(payload.recipes) ? payload.recipes : [];
+      ghCount = recipesList.length;
+
+      recipesList.forEach(function (r) {
+        const slug   = String((r && r.id)     || '').trim();
+        const mealId = String((r && r.mealId) || '').trim();
+        const entry  = {
+          title: String(r.title || '').trim(),
+          slug:  String(r.slug  || r.id || '').trim(),
+        };
+        if (slug)                      ghRecipes[slug]   = entry;
+        if (mealId && mealId !== slug) ghRecipes[mealId] = entry;
+      });
+    } catch (fetchErr) {
+      SpreadsheetApp.getUi().alert('Erreur fetch recipes.json : ' + String(fetchErr));
+      return;
+    }
+
+    // ─── 2. Lister les pages statiques présentes dans recipes/ sur GitHub ───
+    // L'API Git Trees avec recursive=1 renvoie tous les chemins du repo.
+    // On filtre recipes/<slug>/index.html pour savoir quelles pages existent.
+    const existingPages = new Set(); // slugs qui ont un index.html
+
+    try {
+      // Récupère le SHA du commit HEAD de la branche
+      const refResp = UrlFetchApp.fetch(
+        apiRoot + '/git/ref/heads/' + encodeURIComponent(branch),
+        { method: 'get', muteHttpExceptions: true, headers: ghHeaders }
+      );
+      if (refResp.getResponseCode() === 200) {
+        const commitSha = JSON.parse(refResp.getContentText()).object.sha;
+
+        // Récupère le tree complet (recursive)
+        const treeResp = UrlFetchApp.fetch(
+          apiRoot + '/git/trees/' + commitSha + '?recursive=1',
+          { method: 'get', muteHttpExceptions: true, headers: ghHeaders }
+        );
+        if (treeResp.getResponseCode() === 200) {
+          const treeData = JSON.parse(treeResp.getContentText());
+          const truncated = treeData.truncated; // true si > 100 000 fichiers (peu probable)
+          (treeData.tree || []).forEach(function (item) {
+            // Cherche recipes/<slug>/index.html
+            const m = String(item.path || '').match(/^recipes\/([^/]+)\/index\.html$/);
+            if (m) existingPages.add(m[1]);
+          });
+          if (truncated) {
+            logAutomation_(CONFIG.LOG_LEVEL_WARN, 'verifySheetVsGitHub',
+              'Git tree tronqué (> 100 000 entrées) — liste des pages peut être incomplète.');
+          }
+        }
+      }
+    } catch (treeErr) {
+      logAutomation_(CONFIG.LOG_LEVEL_WARN, 'verifySheetVsGitHub',
+        'Impossible de lire le Git tree : ' + String(treeErr));
+      // On continue sans info sur les pages (colonne Page sera "?")
+    }
+
+    // ─── 3. Construire le rapport ────────────────────────────────────────────
+    // Colonnes : ID | Titre | Statut | Dans JSON | Slug Sheet | Slug JSON | Page recipes/ | Résultat
+    const reportRows = [];
+
+    if (last >= 2) {
+      const nCol = CONFIG.HEADERS.length;
+      const rows = sheet.getRange(2, 1, last - 1, nCol).getValues();
+      rows.forEach(function (row) {
+        const id     = String(row[CONFIG.COL.ID - 1]     || '').trim();
+        const status = String(row[CONFIG.COL.STATUS - 1] || '').trim();
+        const title  = String(row[CONFIG.COL.TITLE - 1]  || '').trim();
+        const slug   = String(row[CONFIG.COL.SLUG - 1]   || '').trim();
+        if (!id) return;
+
+        const ghEntry = ghRecipes[id] || ghRecipes[slug] || null;
+        const inGh    = !!ghEntry;
+        const ghSlug  = inGh ? ghEntry.slug : '';
+
+        // Vérifie la page statique (on utilise le slug du JSON si dispo, sinon slug Sheet)
+        const effectiveSlug = ghSlug || slug;
+        const hasPage = effectiveSlug ? existingPages.has(effectiveSlug) : false;
+        const pageCell = status !== CONFIG.STATUS_PUBLISHED ? '—'
+                       : hasPage                            ? '✅'
+                       : existingPages.size === 0           ? '?'  // tree non chargé
+                       : '❌ MANQUANTE';
+
+        let result;
+        if (status === CONFIG.STATUS_PUBLISHED && inGh && hasPage) {
+          result = '✅ OK complet';
+        } else if (status === CONFIG.STATUS_PUBLISHED && inGh && !hasPage && existingPages.size > 0) {
+          result = '⚠️ JSON OK / page manquante';
+        } else if (status === CONFIG.STATUS_PUBLISHED && inGh && existingPages.size === 0) {
+          result = '✅ JSON OK (pages non vérifiées)';
+        } else if (status === CONFIG.STATUS_PUBLISHED && !inGh) {
+          result = '❌ MANQUANT JSON + page';
+        } else if (status === CONFIG.STATUS_SCHEDULED && inGh) {
+          result = '⚠️ JSON mais encore SCHEDULED';
+        } else {
+          result = '—';
+        }
+
+        reportRows.push([id, title, status, inGh ? 'OUI' : 'NON', slug, ghSlug, pageCell, result]);
+      });
+    }
+
+    // Recettes dans GitHub absentes du Sheet
+    const coveredSlugs = new Set(reportRows.map(function (r) { return r[4]; }));
+    Object.keys(ghRecipes).forEach(function (key) {
+      const entry = ghRecipes[key];
+      if (key !== entry.slug) return; // dédoublonnage mealId
+      if (coveredSlugs.has(entry.slug)) return;
+      const hasPage  = existingPages.has(entry.slug);
+      const pageCell = hasPage ? '✅' : existingPages.size === 0 ? '?' : '❌ MANQUANTE';
+      reportRows.push([
+        key, entry.title, '(absent Sheet)', 'OUI', '', entry.slug,
+        pageCell, '⚠️ GITHUB ONLY (archivé ?)',
+      ]);
+      coveredSlugs.add(entry.slug);
+    });
+
+    // ─── 4. Écrire l'onglet SyncReport ──────────────────────────────────────
+    const ss = SpreadsheetApp.getActiveSpreadsheet();
+    const reportSheetName = 'SyncReport';
+    let dst = ss.getSheetByName(reportSheetName);
+    if (!dst) {
+      dst = ss.insertSheet(reportSheetName);
+    } else {
+      dst.clearContents();
+      dst.clearFormats();
+    }
+
+    const headers = [
+      'ID', 'Titre (Sheet)', 'Statut Sheet', 'Dans JSON',
+      'Slug Sheet', 'Slug JSON', 'Page recipes/', 'Résultat',
+    ];
+    const headerRange = dst.getRange(1, 1, 1, headers.length);
+    headerRange.setValues([headers]);
+    headerRange.setFontWeight('bold');
+    headerRange.setFontColor('#FFFFFF');
+    headerRange.setBackground('#1a73e8');
+    dst.setFrozenRows(1);
+
+    if (reportRows.length) {
+      dst.getRange(2, 1, reportRows.length, headers.length).setValues(reportRows);
+      reportRows.forEach(function (row, i) {
+        const result = String(row[7] || '');
+        let bg = '#ffffff';
+        if      (result.indexOf('✅ OK complet') !== -1)         bg = '#e6f4ea';
+        else if (result.indexOf('✅ JSON OK') !== -1)            bg = '#e8f5e9';
+        else if (result.indexOf('⚠️ JSON OK / page') !== -1)    bg = '#fff8e1';
+        else if (result.indexOf('❌ MANQUANT JSON') !== -1)      bg = '#fce8e6';
+        else if (result.indexOf('⚠️') !== -1)                   bg = '#fff8e1';
+        dst.getRange(i + 2, 1, 1, headers.length).setBackground(bg);
+      });
+      dst.autoResizeColumns(1, headers.length);
+    }
+
+    // ─── 5. Résumé ───────────────────────────────────────────────────────────
+    const published       = reportRows.filter(function (r) { return r[2] === CONFIG.STATUS_PUBLISHED; });
+    const okComplet       = reportRows.filter(function (r) { return String(r[7]).indexOf('✅ OK complet') !== -1; }).length;
+    const okJsonOnly      = reportRows.filter(function (r) { return String(r[7]).indexOf('JSON OK (pages non') !== -1; }).length;
+    const pageMissing     = reportRows.filter(function (r) { return String(r[7]).indexOf('page manquante') !== -1; }).length;
+    const jsonMissing     = reportRows.filter(function (r) { return String(r[7]).indexOf('❌ MANQUANT JSON') !== -1; }).length;
+    const ghOnly          = reportRows.filter(function (r) { return String(r[7]).indexOf('GITHUB ONLY') !== -1; }).length;
+    const ghScheduled     = reportRows.filter(function (r) { return String(r[7]).indexOf('GITHUB mais encore SCHEDULED') !== -1; }).length;
+    const pagesLoaded     = existingPages.size > 0;
+
+    const summary =
+      '📊 Rapport SyncReport créé.\n\n' +
+      '• PUBLISHED dans Sheet      : ' + published.length + '\n' +
+      '• Présents dans JSON GitHub : ' + ghCount + '\n' +
+      '• Pages statiques détectées : ' + existingPages.size + (pagesLoaded ? '' : ' (non chargées)') + '\n\n' +
+      '• ✅ OK complet (JSON + page) : ' + okComplet + '\n' +
+      (okJsonOnly  > 0 ? '• ✅ JSON OK, pages non vérifiées : ' + okJsonOnly + '\n' : '') +
+      (pageMissing > 0 ? '• ⚠️ JSON OK mais page manquante : ' + pageMissing + '  ← workflow GitHub Actions à relancer !\n' : '') +
+      (jsonMissing > 0 ? '• ❌ Absent du JSON : ' + jsonMissing + '  ← relance ④ !\n' : '') +
+      (ghOnly      > 0 ? '• ⚠️ GitHub ONLY (archivés) : ' + ghOnly + '\n' : '') +
+      (ghScheduled > 0 ? '• ⚠️ JSON mais SCHEDULED : ' + ghScheduled + '\n' : '') +
+      '\nVoir onglet « SyncReport » pour le détail.';
+
+    logAutomation_(CONFIG.LOG_LEVEL_INFO, 'verifySheetVsGitHub', summary.replace(/\n/g, ' | '));
+    SpreadsheetApp.getUi().alert(summary);
+
+  } catch (e) {
+    logAutomation_(CONFIG.LOG_LEVEL_ERROR, 'verifySheetVsGitHub', String(e));
+    SpreadsheetApp.getUi().alert('Erreur verifySheetVsGitHub : ' + String(e));
+  }
 }
