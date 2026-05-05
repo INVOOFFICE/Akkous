@@ -113,6 +113,10 @@
 - [Hearty Pea Soup](https://akkous.com/recipes/split-pea-soup-52925/) — Canadian | Side
 - [Creamy Clam Chowder](https://akkous.com/recipes/clam-chowder-52840/) — United States | Starter
 - [Chinese Sweet Pork](https://akkous.com/recipes/sweet-and-sour-pork-52949/) — Chinese | Pork
+- [Hake with White Beans and Chorizo](https://akkous.com/recipes/pan-fried-hake-white-bean-chorizo-broth-53152/) — Spanish | Seafood
+- [Egyptian Feteer Meshaltet](https://akkous.com/recipes/feteer-meshaltet-53030/) — Egyptian | Side
+- [Chilled Ajo Blanco Soup](https://akkous.com/recipes/ajo-blanco-53169/) — Spanish | Starter
+- [Vegan Italian Lasagna](https://akkous.com/recipes/vegan-lasagna-52775/) — Italian | Vegan
 
 ## About
 - All recipes include ingredients, step-by-step instructions, cooking time, difficulty level, and cultural origin.

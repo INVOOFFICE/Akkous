@@ -408,7 +408,7 @@
       "relatedRecipeIds": [
         "broccoli-stilton-soup-52842",
         "clam-chowder-52840",
-        "cream-cheese-tart-52779"
+        "ajo-blanco-53169"
       ]
     },
     {
@@ -727,9 +727,9 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
+        "ajo-blanco-53169",
         "broccoli-stilton-soup-52842",
-        "clam-chowder-52840",
-        "creamy-tomato-soup-52841"
+        "clam-chowder-52840"
       ]
     },
     {
@@ -1047,9 +1047,9 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
+        "ajo-blanco-53169",
         "broccoli-stilton-soup-52842",
-        "clam-chowder-52840",
-        "cream-cheese-tart-52779"
+        "clam-chowder-52840"
       ]
     },
     {
@@ -1305,7 +1305,7 @@
       "relatedRecipeIds": [
         "garlicky-prawns-with-sherry-53180",
         "grilled-portuguese-sardines-53041",
-        "pilchard-puttanesca-52837"
+        "pan-fried-hake-white-bean-chorizo-broth-53152"
       ]
     },
     {
@@ -2597,9 +2597,9 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
+        "feteer-meshaltet-53030",
         "griddled-flatbreads-53272",
-        "split-pea-soup-52925",
-        "sichuan-eggplant-53374"
+        "split-pea-soup-52925"
       ]
     },
     {
@@ -6412,9 +6412,9 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
+        "pan-fried-hake-white-bean-chorizo-broth-53152",
         "salmon-prawn-risotto-52823",
-        "grilled-portuguese-sardines-53041",
-        "prawn-noodle-salad-with-crispy-shallots-53244"
+        "grilled-portuguese-sardines-53041"
       ]
     },
     {
@@ -6680,7 +6680,7 @@
       "relatedRecipeIds": [
         "garlicky-prawns-with-sherry-53180",
         "grilled-portuguese-sardines-53041",
-        "salmon-prawn-risotto-52823"
+        "pan-fried-hake-white-bean-chorizo-broth-53152"
       ]
     },
     {
@@ -6737,9 +6737,9 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
+        "feteer-meshaltet-53030",
         "sesame-cucumber-salad-53378",
-        "split-pea-soup-52925",
-        "hot-cumin-lamb-wrap-with-crunchy-slaw-spicy-mayo-53258"
+        "split-pea-soup-52925"
       ]
     },
     {
@@ -6933,9 +6933,9 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
+        "pan-fried-hake-white-bean-chorizo-broth-53152",
         "garlicky-prawns-with-sherry-53180",
-        "prawn-noodle-salad-with-crispy-shallots-53244",
-        "salmon-prawn-risotto-52823"
+        "prawn-noodle-salad-with-crispy-shallots-53244"
       ]
     },
     {
@@ -6995,9 +6995,9 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
+        "feteer-meshaltet-53030",
         "griddled-flatbreads-53272",
-        "sesame-cucumber-salad-53378",
-        "jiggs-dinner-53335"
+        "sesame-cucumber-salad-53378"
       ]
     },
     {
@@ -7064,7 +7064,7 @@
       "relatedRecipeIds": [
         "broccoli-stilton-soup-52842",
         "creamy-tomato-soup-52841",
-        "cream-cheese-tart-52779"
+        "ajo-blanco-53169"
       ]
     },
     {
@@ -7129,6 +7129,260 @@
         "barbecue-pork-buns-53242",
         "chickpea-chorizo-spinach-stew-53166",
         "fasirky-53188"
+      ]
+    },
+    {
+      "mealId": "53152",
+      "id": "pan-fried-hake-white-bean-chorizo-broth-53152",
+      "title": "Hake with White Beans and Chorizo",
+      "category": "Seafood",
+      "origin": "Spanish",
+      "image": "https://www.themealdb.com/images/media/meals/4yjart1763248459.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/4yjart1763248459.jpg",
+      "ingredients": [
+        "450g Dried white beans",
+        "4 cloves Garlic",
+        "2 Bay Leaves",
+        "1 teaspoon Thyme",
+        "6 tablespoons Olive Oil",
+        "100g Bread",
+        "100g Chorizo",
+        "1 Onion",
+        "3 tsp Paprika",
+        "1 L Chicken Stock",
+        "Handful Parsley",
+        "6 Hake"
+      ],
+      "instructions": "1. Simmer white beans with garlic, bay leaves, and thyme for 30 minutes.,2. Fry bread and chorizo in olive oil until crispy.,3. Cook onion and paprika, then add beans and chicken stock.,4. Pan-fry hake and serve with white bean mix, bread, and chorizo.",
+      "steps": [
+        "Simmer white beans with garlic, bay leaves, and thyme for 30 minutes.,2.",
+        "Fry bread and chorizo in olive oil until crispy.,3.",
+        "Cook onion and paprika, then add beans and chicken stock.,4.",
+        "Pan-fry hake and serve with white bean mix, bread, and chorizo."
+      ],
+      "description": "Hake with White Beans and Chorizo (Spanish) — easy seafood recipe with 12 ingredients and 4 steps. Ready in 20 min. Includes exact ingredients and clear in…",
+      "hook": "Cook this today for a hearty, flavorful meal that's full of Spanish flair.",
+      "tip": "Use high-quality chorizo for the best flavor.",
+      "tags": [
+        "seafood",
+        "spanish cuisine",
+        "hake",
+        "white beans",
+        "chorizo",
+        "broth",
+        "fish recipes",
+        "mediterranean diet",
+        "Spanish",
+        "With"
+      ],
+      "datePublished": "2026-05-05",
+      "publishDate": "2026-05-05T09:00:00",
+      "addedDate": "2026-05-03T04:06:59",
+      "status": "PUBLISHED",
+      "slug": "pan-fried-hake-white-bean-chorizo-broth-53152",
+      "youtube": "https://www.youtube.com/watch?v=6hcNBBob_xI",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "20 min",
+      "prepTime": "10 min",
+      "totalTime": "30 min",
+      "servings": 4,
+      "difficulty": "Easy",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "garlicky-prawns-with-sherry-53180",
+        "grilled-portuguese-sardines-53041",
+        "prawn-noodle-salad-with-crispy-shallots-53244"
+      ]
+    },
+    {
+      "mealId": "53030",
+      "id": "feteer-meshaltet-53030",
+      "title": "Egyptian Feteer Meshaltet",
+      "category": "Side",
+      "origin": "Egyptian",
+      "image": "https://www.themealdb.com/images/media/meals/9f4z6v1598734293.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/9f4z6v1598734293.jpg",
+      "ingredients": [
+        "4 cups Flour",
+        "1 1/2 cups Water",
+        "1/4 tsp Salt",
+        "1 cup Unsalted Butter",
+        "1/4 cup Olive Oil"
+      ],
+      "instructions": "1. Mix flour and salt, then add water and knead until elastic.,2. Rest the dough for 10 minutes, then divide into 6-8 balls.,3. Warm butter and immerse dough balls, letting them rest for 15-20 minutes.,4. Preheat oven to 550F, stretch each ball thin, and fold into squares.,5. Layer the folded dough, brushing with butter mixture, and bake for 10 minutes.,6. Broil to brown the top, then add butter and cover to keep moist.",
+      "steps": [
+        "Mix flour and salt, then add water and knead until elastic.,2.",
+        "Rest the dough for 10 minutes, then divide into 6-8 balls.,3.",
+        "Warm butter and immerse dough balls, letting them rest for 15-20 minutes.,4.",
+        "Preheat oven to 550F, stretch each ball thin, and fold into squares.,5.",
+        "Layer the folded dough, brushing with butter mixture, and bake for 10 minutes.,6.",
+        "Broil to brown the top, then add butter and cover to keep moist."
+      ],
+      "description": "Egyptian Feteer Meshaltet (Egyptian) — easy side recipe with 5 ingredients and 6 steps. Ready in 28 min. Includes exact ingredients and clear instructions.",
+      "hook": "Cook Feteer Meshaltet today for a taste of Egypt's rich culinary heritage.",
+      "tip": "Use high-quality butter for the best flavor and texture.",
+      "tags": [
+        "Egyptian cuisine",
+        "feteer meshaltet",
+        "side dish",
+        "traditional recipe",
+        "flaky pastry",
+        "buttery taste",
+        "Side",
+        "Egyptian",
+        "Feteer"
+      ],
+      "datePublished": "2026-05-05",
+      "publishDate": "2026-05-05T09:00:00",
+      "addedDate": "2026-05-03T04:06:59",
+      "status": "PUBLISHED",
+      "slug": "feteer-meshaltet-53030",
+      "youtube": "https://www.youtube.com/watch?v=-mW1unsVhFU",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "28 min",
+      "prepTime": "12 min",
+      "totalTime": "40 min",
+      "servings": 4,
+      "difficulty": "Medium",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "split-pea-soup-52925",
+        "griddled-flatbreads-53272",
+        "sesame-cucumber-salad-53378"
+      ]
+    },
+    {
+      "mealId": "53169",
+      "id": "ajo-blanco-53169",
+      "title": "Chilled Ajo Blanco Soup",
+      "category": "Starter",
+      "origin": "Spanish",
+      "image": "https://www.themealdb.com/images/media/meals/5jdtie1763289302.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/5jdtie1763289302.jpg",
+      "ingredients": [
+        "150g White bread",
+        "200g Almonds",
+        "50 ml Extra Virgin Olive Oil",
+        "1 Garlic Clove",
+        "1 ½ tbsp Red Wine Vinegar"
+      ],
+      "instructions": "1. Soak bread in 350ml water for 10 mins. 2. Blend ingredients with 350ml water and 1 tsp salt. 3. Chill in fridge for 1 hr, serve with oil and pepper.",
+      "steps": [
+        "Soak bread in 350ml water for 10 mins.",
+        "2. Blend ingredients with 350ml water and 1 tsp salt.",
+        "3. Chill in fridge for 1 hr, serve with oil and pepper."
+      ],
+      "description": "Chilled Ajo Blanco Soup (Spanish) — easy starter recipe with 5 ingredients and 3 steps. Ready in 10 min. Includes exact ingredients and clear instructions.",
+      "hook": "Cook this today for a light and refreshing Spanish-inspired meal.",
+      "tip": "Use high-quality extra virgin olive oil for the best flavor.",
+      "tags": [
+        "Spanish recipes",
+        "chilled soups",
+        "almond soup",
+        "garlic soup",
+        "summer dishes",
+        "easy soups",
+        "bread soup",
+        "vegan options",
+        "Starter",
+        "Spanish"
+      ],
+      "datePublished": "2026-05-05",
+      "publishDate": "2026-05-05T09:00:00",
+      "addedDate": "2026-05-03T04:06:59",
+      "status": "PUBLISHED",
+      "slug": "ajo-blanco-53169",
+      "youtube": "https://www.youtube.com/watch?v=AS2mSRtWyW0",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "10 min",
+      "prepTime": "10 min",
+      "totalTime": "10 min",
+      "servings": 4,
+      "difficulty": "Easy",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "quick-gazpacho-53173",
+        "broccoli-stilton-soup-52842",
+        "clam-chowder-52840"
+      ]
+    },
+    {
+      "mealId": "52775",
+      "id": "vegan-lasagna-52775",
+      "title": "Vegan Italian Lasagna",
+      "category": "Vegan",
+      "origin": "Italian",
+      "image": "https://www.themealdb.com/images/media/meals/rvxxuy1468312893.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/rvxxuy1468312893.jpg",
+      "ingredients": [
+        "1 cups green red lentils",
+        "1 Carrots",
+        "1 onion",
+        "1 small zucchini",
+        "sprinking coriander",
+        "150g spinach",
+        "10 lasagne sheets",
+        "35g vegan butter",
+        "4 tablespoons flour",
+        "300ml soya milk",
+        "1.5 teaspoons mustard",
+        "1 teaspoon vinegar"
+      ],
+      "instructions": "1. Preheat oven to 180 degrees. 2. Boil vegetables and lentils until soft. 3. Blanch spinach leaves. 4. Cook lasagne sheets. 5. Make the sauce with butter, flour, and soya milk. 6. Assemble and bake the lasagne.",
+      "steps": [
+        "Preheat oven to 180 degrees.",
+        "2. Boil vegetables and lentils until soft.",
+        "3. Blanch spinach leaves.",
+        "4. Cook lasagne sheets.",
+        "5. Make the sauce with butter, flour, and soya milk.",
+        "6. Assemble and bake the lasagne."
+      ],
+      "description": "Vegan Italian Lasagna (Italian) — easy vegan recipe with 12 ingredients and 6 steps. Includes exact ingredients and clear instructions.",
+      "hook": "Cook this today for a satisfying and comforting vegan meal.",
+      "tip": "Use fresh spinach for the best flavor and texture.",
+      "tags": [
+        "Vegan",
+        "Pasta",
+        "Italian",
+        "Lasagna",
+        "Lentils",
+        "Spinach",
+        "Comfort Food",
+        "Healthy"
+      ],
+      "datePublished": "2026-05-05",
+      "publishDate": "2026-05-05T09:00:00",
+      "addedDate": "2026-05-03T04:06:59",
+      "status": "PUBLISHED",
+      "slug": "vegan-lasagna-52775",
+      "youtube": "https://www.youtube.com/watch?v=VU8cXvlGbvc",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "",
+      "prepTime": "",
+      "totalTime": "",
+      "servings": 4,
+      "difficulty": "Medium",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "fasoliyyeh-bi-z-zayt-syrian-green-beans-with-olive-oil-53092",
+        "fettucine-alfredo-52835",
+        "lasagne-52844"
       ]
     }
   ]
