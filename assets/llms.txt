@@ -1,0 +1,35 @@
+# PDF Converter — llms.txt
+# https://llmstxt.org
+
+## About
+PDF Converter is a free, professional online PDF toolkit available at https://pdfconverter.app.
+It allows users to convert, merge, split, compress, and extract data from PDF files — 
+directly in the browser with no signup required.
+
+## Features
+- Convert PDF to Word (.docx)
+- Convert PDF to Excel (.xlsx)
+- Convert PDF to CSV
+- Convert PDF to plain text (.txt)
+- Merge multiple PDFs into one
+- Split PDFs by page range
+- Compress PDFs to reduce file size
+- Extract tables from PDFs
+- OCR scanned PDFs (powered by Tesseract)
+- Batch process multiple PDFs at once
+
+## Technology
+Built with Python, Streamlit, pdfplumber, PyMuPDF, pytesseract, OpenCV, and Pillow.
+
+## Languages
+English and French (multilingual support)
+
+## Privacy
+Files are processed in-memory and never stored on the server.
+
+## Target Keywords
+PDF Converter, PDF to Word, PDF to Excel, free PDF converter, PDF OCR tool,
+extract tables from PDF, scanned PDF to text, convert PDF online, merge PDF, split PDF
+
+## Contact
+Website: https://pdfconverter.app
