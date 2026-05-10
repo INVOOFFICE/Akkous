@@ -6,6 +6,7 @@
 
 let _editFournId = null;
 let _importFournData = [];
+const FOURN_PAGE_SIZE = 13;
 
 // ════════════════════════════════════════
 //  RENDU PRINCIPAL
@@ -61,19 +62,29 @@ function renderFournisseurs() {
 
   const grid = document.getElementById('fourn-grid');
   const empty = document.getElementById('fourn-empty');
+  const pagEl = document.getElementById('fournisseurs-list-pagination');
   if (!list.length) {
     if (grid) clearChildren(grid);
     if (empty) empty.style.display = '';
+    if (pagEl) {
+      clearChildren(pagEl);
+      pagEl.style.display = 'none';
+    }
     return;
   }
   if (empty) empty.style.display = 'none';
   if (!grid) return;
 
+  const filterKey = [search, catFilter, scoreFilter].join('\t');
+  const pageSize = FOURN_PAGE_SIZE;
+  const pg = getListPageSlice('fournisseurs', filterKey, list, pageSize);
+  const pageRows = pg.rows;
+
   const scoreLabel = { A: 'Fiable', B: 'Correct', C: 'À surveiller' };
   const scoreIcon = { A: '🟢', B: '🔵', C: '🟠' };
 
   clearChildren(grid);
-  list.forEach(f => {
+  pageRows.forEach(f => {
     const score = f.score === 'A' || f.score === 'B' || f.score === 'C' ? f.score : 'B';
     const initials = (f.name || '?')
       .split(' ')
@@ -180,6 +191,15 @@ function renderFournisseurs() {
     );
     grid.appendChild(card);
   });
+
+  updateListPaginationUI(
+    'fournisseurs-list-pagination',
+    'fournisseurs',
+    pg.total,
+    pg.page,
+    pageSize,
+    renderFournisseurs,
+  );
 }
 
 // ════════════════════════════════════════

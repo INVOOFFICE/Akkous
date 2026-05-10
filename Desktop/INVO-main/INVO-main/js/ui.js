@@ -70,6 +70,7 @@ var LIST_PAGE_SIZE = 50;
 var _listPaging = {
   clients: { page: 1, key: '' },
   stock: { page: 1, key: '' },
+  fournisseurs: { page: 1, key: '' },
 };
 
 /**
@@ -157,7 +158,7 @@ function invoFooterTaglineHtml(variant) {
   const y = new Date().getFullYear();
   const linkClass = variant === 'print' ? 'invo-link-print' : 'invo-link-auth';
   const core =
-    'INVOO OFFICE · Système de facturation intelligent ·<br>Données 100 % locales · Conforme DGI Maroc © ' +
+    'Données 100 % locales · Conforme DGI Maroc © ' +
     y +
     ' INVOO OFFICE · <a href="paiement.html" class="' +
     linkClass +

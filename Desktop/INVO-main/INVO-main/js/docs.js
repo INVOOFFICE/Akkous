@@ -1,3 +1,81 @@
+import { calcTotals, getTotals, nombreEnLettres, refreshAutoEntrepreneurDocUI, renderTVABreakdown } from './docs/totals.js';
+import {
+  applyUniqueSequentialRef,
+  bumpSeq,
+  docRefExistsGlobally,
+  getNextRef,
+  hideDocRefHint,
+  showDocRefHint,
+  updateDocRef,
+} from './docs/refs.js';
+import { updateDocStatus } from './docs/status.js';
+import { refreshDocSourceHint } from './docs/source-links.js';
+import {
+  accumulateDocTvaByRateForReport,
+  renderReports,
+  setRepPeriod,
+  showSalesReport,
+} from './docs/reports.js';
+import { getHistFiltered, populateHistClientFilter, resetHistFilters } from './docs/history-filters.js';
+import { runDGICheck, validateICEInput } from './docs/dgi-checker.js';
+import { sendDocWhatsApp } from './docs/whatsapp.js';
+import { exportHistXLSX } from './docs/history-export.js';
+import {
+  closePostSaveBar,
+  showConvertSuccessBar,
+  showPostSaveActions,
+} from './docs/post-save-bar.js';
+import {
+  onClientChange,
+  populateDocClient,
+  syncGenerateFromSettings,
+} from './docs/client-form.js';
+import { saveAndDownloadPDF } from './docs/pdf-actions.js';
+
+const docsPublicApi = {
+  updateDocRef,
+  updateDocStatus,
+  refreshDocSourceHint,
+  initDocLines,
+  addLine,
+  onDocPriceModeChange,
+  renderDocLines,
+  nombreEnLettres,
+  calcTotals,
+  getTotals,
+  saveDoc,
+  saveAndDownloadPDF,
+  showPostSaveActions,
+  closePostSaveBar,
+  populateDocClient,
+  onClientChange,
+  syncGenerateFromSettings,
+  validateICEInput,
+  runDGICheck,
+  editDocFromHistory,
+  createAvoirFromCancelledFacture,
+  populateHistClientFilter,
+  getHistFiltered,
+  openConvertModal,
+  updateConvDateField,
+  confirmConvert,
+  showConvertSuccessBar,
+  renderHistory,
+  quickChangeStatus,
+  cancelDoc,
+  resetHistFilters,
+  deleteDoc,
+  sendDocWhatsApp,
+  duplicateDoc,
+  exportHistXLSX,
+  showSalesReport,
+  accumulateDocTvaByRateForReport,
+  setRepPeriod,
+  renderReports,
+};
+
+Object.assign(window, docsPublicApi);
+
 // ═══════════════════════════════════════════
 //  docs.js  —  Documents, lignes, DGI, historique
 // ═══════════════════════════════════════════
@@ -32,213 +110,8 @@
 // ═══════════════════════════════════════════
 
 // ── Référence document (séquence stricte ; comptabilise tous les documents, y compris Annulé) ──
-// ═══════════════════════════════════════════════════════════════════════════════════════════
-function maxSeqFromExistingRefs(type, year) {
-  const re = new RegExp('^' + type + '-' + year + '-(\\d+)$');
-  let max = 0;
-  for (const d of DB.docs || []) {
-    if (d.type !== type) continue;
-    const m = String(d.ref || '').match(re);
-    if (m) max = Math.max(max, parseInt(m[1], 10) || 0);
-  }
-  return max;
-}
+// Source-link and status logic moved to js/docs/source-links.js and js/docs/status.js.
 
-function parseDocRefNum(type, ref) {
-  const yr = yyyy();
-  const re = new RegExp('^' + type + '-' + yr + '-(\\d+)$');
-  const m = String(ref || '')
-    .trim()
-    .match(re);
-  return m ? parseInt(m[1], 10) : null;
-}
-
-function docRefExistsGlobally(ref) {
-  const r = String(ref || '').trim();
-  if (!r) return false;
-  return DB.docs.some(d => d.ref === r);
-}
-
-function getNextRef(type) {
-  const s = DB.settings;
-  const yr = yyyy();
-  const seqKey = { F: 'seqF', D: 'seqD', BL: 'seqBL', AV: 'seqAV' }[type];
-  const seqNext = (seqKey && (s[seqKey] || 1)) || 1;
-  const maxE = maxSeqFromExistingRefs(type, yr);
-  const n = Math.max(maxE + 1, seqNext);
-  return `${type}-${yr}-${pad(n)}`;
-}
-
-function syncSeqCounterFromDocs(type) {
-  const s = DB.settings;
-  const yr = yyyy();
-  const seqKey = { F: 'seqF', D: 'seqD', BL: 'seqBL', AV: 'seqAV' }[type];
-  if (!seqKey) return;
-  const maxE = maxSeqFromExistingRefs(type, yr);
-  const cur = s[seqKey] || 1;
-  s[seqKey] = Math.max(maxE + 1, cur);
-  save('settings');
-}
-
-// Nouveau document : numéro ≥ max existant + 1 (tous statuts) et pas de doublon de ref.
-function applyUniqueSequentialRef(type) {
-  const refEl = document.getElementById('doc-ref');
-  const ref = (refEl?.value || '').trim();
-  const yr = yyyy();
-  const maxE = maxSeqFromExistingRefs(type, yr);
-  const exists = docRefExistsGlobally(ref);
-  const parsed = parseDocRefNum(type, ref);
-  const seqKey = { F: 'seqF', D: 'seqD', BL: 'seqBL', AV: 'seqAV' }[type];
-  const seqNext = (seqKey && DB.settings[seqKey]) || 1;
-  const minRequired = Math.max(maxE + 1, seqNext);
-
-  // Ref vide → générer automatiquement
-  if (!ref) {
-    const nextRef = getNextRef(type);
-    if (refEl) refEl.value = nextRef;
-    hideDocRefHint();
-    return;
-  }
-
-  // Ref déjà utilisée dans les docs → refuser, générer une nouvelle
-  if (exists) {
-    const nextRef = getNextRef(type);
-    if (refEl) refEl.value = nextRef;
-    showDocRefHint(`Référence déjà utilisée → ajustée en ${nextRef}`, true);
-    toast(`Référence ajustée : ${nextRef} (doublon détecté)`, '');
-    return;
-  }
-
-  // Ref au format standard mais numéro trop petit → avertir, conserver la saisie
-  if (parsed !== null && parsed < minRequired) {
-    showDocRefHint(`⚠️ Numéro inférieur au minimum conseillé (${minRequired}). Référence conservée.`, true);
-    return;
-  }
-
-  // Ref personnalisée valide (format libre ou numéro correct) → accepter
-  if (parsed === null && ref) {
-    showDocRefHint('Référence personnalisée acceptée ✓', false);
-  } else {
-    hideDocRefHint();
-  }
-}
-
-function updateDocRef() {
-  const type = document.getElementById('doc-type')?.value;
-  if (type) {
-    document.getElementById('doc-ref').value = getNextRef(type);
-    hideDocRefHint();
-  }
-}
-function hideDocRefHint() {
-  const h = document.getElementById('doc-ref-hint');
-  if (!h) return;
-  h.textContent = '';
-  h.style.display = 'none';
-}
-function showDocRefHint(msg, isError) {
-  const h = document.getElementById('doc-ref-hint');
-  if (!h) return;
-  h.textContent = msg;
-  h.style.color = isError ? 'var(--danger,#e53935)' : 'var(--success,#2e7d32)';
-  h.style.display = 'block';
-}
-
-function syncAvoirSourceMetaFromContext() {
-  const type = document.getElementById('doc-type')?.value || 'F';
-  if (type !== 'AV') return;
-  const sourceRefEl = document.getElementById('doc-source-ref');
-  const sourceIdEl = document.getElementById('doc-source-id');
-  const sourceTypeEl = document.getElementById('doc-source-type');
-  if (!sourceRefEl || !sourceIdEl || !sourceTypeEl) return;
-  if (sourceRefEl.value) return;
-
-  const originType = (document.getElementById('doc-origin-type')?.value || '').trim();
-  const originStatus = (document.getElementById('doc-origin-status')?.value || '').trim();
-  const originRef = (document.getElementById('doc-origin-ref')?.value || '').trim();
-  const docId = (document.getElementById('doc-id')?.value || '').trim();
-
-  // Règle métier : si facture annulée -> transformée en avoir, on conserve le lien.
-  if (originType === 'F' && originStatus === 'Annulé' && originRef) {
-    sourceRefEl.value = originRef;
-    sourceIdEl.value = docId;
-    sourceTypeEl.value = 'F';
-  }
-}
-
-function refreshDocSourceHint() {
-  const wrap = document.getElementById('doc-source-hint-wrap');
-  const txt = document.getElementById('doc-source-hint-text');
-  if (!wrap || !txt) return;
-
-  syncAvoirSourceMetaFromContext();
-
-  const type = document.getElementById('doc-type')?.value || '';
-  const srcRef = (document.getElementById('doc-source-ref')?.value || '').trim();
-  const srcType = (document.getElementById('doc-source-type')?.value || '').trim();
-  if (type !== 'AV' || !srcRef) {
-    wrap.style.display = 'none';
-    return;
-  }
-  const label =
-    srcType === 'F' ? 'Facture d’origine' : srcType === 'D' ? 'Devis source' : 'Document source';
-  txt.textContent = `${label} : ${srcRef}`;
-  wrap.style.display = 'block';
-}
-
-// ── Statuts autorisés par type de document ──
-const DOC_STATUS_MAP = {
-  F: [
-    { value: 'Brouillon', label: 'Brouillon' },
-    { value: 'Envoyé', label: 'Envoyé' },
-    { value: 'Payé', label: 'Payé' },
-    { value: 'Annulé', label: 'Annulé' },
-  ],
-  D: [
-    { value: 'Brouillon', label: 'Brouillon' },
-    { value: 'Envoyé', label: 'Envoyé' },
-    { value: 'Accepté', label: 'Accepté' },
-    { value: 'Refusé', label: 'Refusé' },
-    { value: 'Expiré', label: 'Expiré' },
-  ],
-  BL: [
-    { value: 'Brouillon', label: 'Brouillon' },
-    { value: 'Envoyé', label: 'Envoyé' },
-    { value: 'Livré', label: 'Livré' },
-    { value: 'Annulé', label: 'Annulé' },
-  ],
-  AV: [
-    { value: 'Brouillon', label: 'Brouillon' },
-    { value: 'Envoyé', label: 'Envoyé' },
-    { value: 'Validé', label: 'Validé' },
-    { value: 'Annulé', label: 'Annulé' },
-  ],
-};
-
-function updateDocStatus(preserveValue) {
-  const typeEl = document.getElementById('doc-type');
-  const statusEl = document.getElementById('doc-status');
-  if (!typeEl || !statusEl) return;
-  const type = typeEl.value;
-  const statuses = DOC_STATUS_MAP[type] || DOC_STATUS_MAP['F'];
-  const current = preserveValue || statusEl.value;
-  clearChildren(statusEl);
-  statuses.forEach(s => {
-    const o = document.createElement('option');
-    o.value = s.value;
-    o.textContent = s.label;
-    statusEl.appendChild(o);
-  });
-  // Restore previously selected value if it's still valid for the new type
-  const still = statuses.find(s => s.value === current);
-  statusEl.value = still ? current : statuses[0].value;
-  if (typeof refreshThemedSelect === 'function') refreshThemedSelect('doc-status');
-}
-function bumpSeq(type) {
-  syncSeqCounterFromDocs(type);
-}
-
-// ── Init lignes ──
 // ═══════════════════════════════════════════
 function initDocLines() {
   APP.docLines = [];
@@ -756,295 +629,7 @@ function updLine(id, field, val) {
 }
 
 // ── Nombre en lettres (DGI Maroc) ──
-// ═══════════════════════════════════════════
-function nombreEnLettres(montant, devise) {
-  const u = [
-    '',
-    'un',
-    'deux',
-    'trois',
-    'quatre',
-    'cinq',
-    'six',
-    'sept',
-    'huit',
-    'neuf',
-    'dix',
-    'onze',
-    'douze',
-    'treize',
-    'quatorze',
-    'quinze',
-    'seize',
-    'dix-sept',
-    'dix-huit',
-    'dix-neuf',
-  ];
-  const d = [
-    '',
-    '',
-    'vingt',
-    'trente',
-    'quarante',
-    'cinquante',
-    'soixante',
-    'soixante',
-    'quatre-vingt',
-    'quatre-vingt',
-  ];
-  function dizaine(n) {
-    if (n < 20) return u[n];
-    const di = Math.floor(n / 10),
-      un = n % 10;
-    if (di === 7) {
-      if (un === 0) return 'soixante-dix';
-      if (un === 1) return 'soixante et onze';
-      return 'soixante-' + u[10 + un];
-    }
-    if (di === 8) {
-      return un === 0 ? 'quatre-vingts' : 'quatre-vingt-' + u[un];
-    }
-    if (di === 9) {
-      return 'quatre-vingt-' + u[10 + un];
-    }
-    if (un === 0) return d[di];
-    if (un === 1 && di !== 8) return d[di] + ' et un';
-    return d[di] + '-' + u[un];
-  }
-  function centaine(n) {
-    if (n < 100) return dizaine(n);
-    const c = Math.floor(n / 100),
-      r = n % 100;
-    if (c === 1) return r === 0 ? 'cent' : 'cent ' + dizaine(r);
-    return dizaine(c) + ' cent' + (r === 0 && c > 1 ? 's' : r > 0 ? ' ' + dizaine(r) : '');
-  }
-  function millier(n) {
-    if (n === 0) return '';
-    if (n < 1000) return centaine(n);
-    if (n < 1000000) {
-      const m = Math.floor(n / 1000),
-        r = n % 1000;
-      const ms = m === 1 ? 'mille' : centaine(m) + ' mille';
-      return r === 0 ? ms : ms + ' ' + centaine(r);
-    }
-    const m = Math.floor(n / 1000000),
-      r = n % 1000000;
-    const ms = m === 1 ? 'un million' : centaine(m) + ' millions';
-    return r === 0 ? ms : ms + ' ' + millier(r);
-  }
-  const total = Math.round(montant * 100);
-  const entier = Math.floor(total / 100);
-  const cents = total % 100;
-  const devs = devise || 'DH';
-  // Unité monétaire
-  const unitePrincipale = devs === 'EUR' ? 'euro' : 'dirham';
-  const uniteSecondaire = devs === 'EUR' ? 'centime' : 'centime';
-  let res = entier === 0 ? 'zéro' : millier(entier) || 'zéro';
-  res = res.charAt(0).toUpperCase() + res.slice(1);
-  res += ' ' + unitePrincipale + (entier > 1 ? 's' : '');
-  if (cents > 0)
-    res += ' et ' + (millier(cents) || 'zéro') + ' ' + uniteSecondaire + (cents > 1 ? 's' : '');
-  return res;
-}
-
-// ── Calcul totaux + TVA breakdown ──
-// ═══════════════════════════════════════════
-function calcTotals() {
-  const remise = parseFloat(document.getElementById('doc-remise')?.value) || 0;
-  const ae = typeof isAutoEntrepreneurVAT === 'function' && isAutoEntrepreneurVAT();
-  let globalHT = 0,
-    globalTVA = 0;
-  const byRate = {};
-
-  APP.docLines.forEach(l => {
-    const lineHT = l.qty * l.price;
-    const ratePct = ae ? 0 : l.tva || 0;
-    const lineTVA = lineHT * (ratePct / 100);
-    globalHT += lineHT;
-    globalTVA += lineTVA;
-    const r = ratePct;
-    if (!byRate[r]) byRate[r] = { ht: 0, tva: 0, ttc: 0 };
-    byRate[r].ht += lineHT;
-    byRate[r].tva += lineTVA;
-    byRate[r].ttc += lineHT + lineTVA;
-  });
-
-  // Apply global discount proportionally
-  if (remise > 0) {
-    const factor = 1 - remise / 100;
-    globalHT *= factor;
-    globalTVA *= factor;
-    Object.keys(byRate).forEach(r => {
-      byRate[r].ht *= factor;
-      byRate[r].tva *= factor;
-      byRate[r].ttc *= factor;
-    });
-  }
-
-  const ttc = globalHT + globalTVA;
-  const acompte = parseFloat(document.getElementById('doc-acompte')?.value) || 0;
-  const reste = ttc - acompte;
-
-  document.getElementById('sum-ht').textContent = fmt(globalHT);
-  document.getElementById('sum-tva').textContent = fmt(globalTVA);
-  document.getElementById('sum-ttc').textContent = fmt(ttc);
-
-  // ── Adapter le bloc "Reste à payer" selon le type de document ──
-  const type = document.getElementById('doc-type')?.value || 'F';
-  const resteBlock = document.getElementById('sum-reste-block');
-  const resteLabel = document.getElementById('sum-reste-label');
-  const resteVal = document.getElementById('sum-reste');
-  if (type === 'F') {
-    // Facture : afficher "Reste à payer" avec l'acompte déduit
-    if (resteBlock) resteBlock.style.display = '';
-    if (resteLabel) resteLabel.textContent = 'Reste à payer';
-    if (resteVal) resteVal.textContent = fmt(Math.max(reste, 0));
-  } else if (type === 'AV') {
-    // Avoir : afficher "Montant à rembourser"
-    if (resteBlock) resteBlock.style.display = '';
-    if (resteLabel) resteLabel.textContent = 'Montant à rembourser';
-    if (resteVal) resteVal.textContent = fmt(ttc);
-  } else {
-    // Devis, BL : masquer le bloc, sans sens métier
-    if (resteBlock) resteBlock.style.display = 'none';
-  }
-  // ── Arrêté en toutes lettres ──
-  const arrEl = document.getElementById('sum-arrete');
-  const arrTxt = document.getElementById('sum-arrete-text');
-  if (arrEl && arrTxt) {
-    if (ttc > 0) {
-      arrTxt.textContent = nombreEnLettres(ttc, CUR());
-      arrEl.style.display = '';
-    } else {
-      arrEl.style.display = 'none';
-    }
-  }
-  // ── TVA breakdown ──
-  renderTVABreakdown(byRate, globalHT, globalTVA, ttc);
-}
-
-function renderTVABreakdown(byRate, globalHT, globalTVA, ttc) {
-  const w = document.getElementById('tva-by-rate-wrap');
-  if (!w) return;
-
-  // Masquer si aucune ligne ou TVA = 0
-  const rates = Object.keys(byRate || {})
-    .map(Number)
-    .sort((a, b) => a - b);
-  if (!rates.length || globalTVA === 0) {
-    w.style.display = 'none';
-    return;
-  }
-
-  // N'afficher que s'il y a plusieurs taux OU au moins un taux > 0
-  const hasTVA = rates.some(r => r > 0);
-  if (!hasTVA) {
-    w.style.display = 'none';
-    return;
-  }
-
-  const tbody = document.getElementById('tva-by-rate-body');
-  const tfoot = document.getElementById('tva-by-rate-foot');
-  if (!tbody || !tfoot) return;
-
-  // Couleurs par taux
-  const tvaColors = { 0: '#64748b', 7: '#3b82f6', 10: '#8b5cf6', 14: '#f59e0b', 20: '#09BC8A' };
-
-  clearChildren(tbody);
-  rates.forEach(r => {
-    const v = byRate[r];
-    const color = tvaColors[r] || '#94a3b8';
-    const tr = document.createElement('tr');
-    const tdBadge = document.createElement('td');
-    const badge = document.createElement('span');
-    badge.className = 'tva-rate-badge';
-    badge.style.background = `${color}22`;
-    badge.style.color = color;
-    badge.style.border = `1px solid ${color}44`;
-    badge.textContent = `${r}%`;
-    tdBadge.appendChild(badge);
-    const tdHt = document.createElement('td');
-    tdHt.textContent = fmt(v.ht);
-    const tdTva = document.createElement('td');
-    tdTva.style.color = color;
-    tdTva.style.fontWeight = '600';
-    tdTva.textContent = fmt(v.tva);
-    const tdTtc = document.createElement('td');
-    tdTtc.style.fontWeight = '700';
-    tdTtc.textContent = fmt(v.ttc);
-    tr.appendChild(tdBadge);
-    tr.appendChild(tdHt);
-    tr.appendChild(tdTva);
-    tr.appendChild(tdTtc);
-    tbody.appendChild(tr);
-  });
-
-  clearChildren(tfoot);
-  const sumRow = document.createElement('tr');
-  sumRow.className = 'tva-sum-row';
-  const s1 = document.createElement('td');
-  s1.textContent = 'Total';
-  const s2 = document.createElement('td');
-  s2.textContent = fmt(globalHT);
-  const s3 = document.createElement('td');
-  s3.style.color = 'var(--accent)';
-  s3.style.fontWeight = '700';
-  s3.textContent = fmt(globalTVA);
-  const s4 = document.createElement('td');
-  s4.style.color = 'var(--brand)';
-  s4.style.fontWeight = '800';
-  s4.textContent = fmt(ttc);
-  sumRow.appendChild(s1);
-  sumRow.appendChild(s2);
-  sumRow.appendChild(s3);
-  sumRow.appendChild(s4);
-  tfoot.appendChild(sumRow);
-
-  w.style.display = 'block';
-}
-
-/** UI document : mode auto-entrepreneur (TVA entreprise 0 %) — colonnes, libellés, selects */
-function refreshAutoEntrepreneurDocUI() {
-  const ae = typeof isAutoEntrepreneurVAT === 'function' && isAutoEntrepreneurVAT();
-  const ban = document.getElementById('doc-ae-vat-banner');
-  if (ban) ban.style.display = ae ? 'block' : 'none';
-  const artCard = document.getElementById('doc-articles-card');
-  if (artCard) artCard.classList.toggle('ae-vat-mode', ae);
-  const sumRow = document.getElementById('sum-financial-totals-row');
-  if (sumRow) sumRow.classList.toggle('ae-vat-mode', ae);
-  ['sum-ht-wrap', 'sum-tva-wrap'].forEach(id => {
-    const el = document.getElementById(id);
-    if (el) el.style.display = ae ? 'none' : '';
-  });
-  const ttcl = document.getElementById('sum-ttc-label');
-  if (ttcl) ttcl.textContent = ae ? 'Total à payer' : 'Total TTC';
-  document.querySelectorAll('#doc-lines .inv-line select[data-line-tva-select]').forEach(sel => {
-    const row = sel.closest('.inv-line');
-    const lid = row && row.dataset ? row.dataset.lid : '';
-    const line = lid ? APP.docLines.find(x => x.id === lid) : null;
-    sel.disabled = !!ae;
-    if (ae) sel.value = '0';
-    else if (line && ['0', '7', '10', '14', '20'].includes(String(line.tva)))
-      sel.value = String(line.tva);
-  });
-}
-
-function getTotals() {
-  const remise = parseFloat(document.getElementById('doc-remise')?.value) || 0;
-  const ae = typeof isAutoEntrepreneurVAT === 'function' && isAutoEntrepreneurVAT();
-  let ht = 0,
-    tva = 0;
-  APP.docLines.forEach(l => {
-    const lht = l.qty * l.price;
-    ht += lht;
-    if (!ae) tva += lht * ((l.tva || 0) / 100);
-  });
-  const remiseAmt = ht * (remise / 100);
-  ht -= remiseAmt;
-  if (!ae) tva *= 1 - remise / 100;
-  const ttc = ae ? ht : ht + tva;
-  return { ht, tva, ttc, remise };
-}
+// Totals/fiscal calculations moved to js/docs/totals.js.
 
 // ── Sauvegarder document ──
 // ═══════════════════════════════════════════
@@ -1325,304 +910,19 @@ async function saveDoc(opts = {}) {
   }
 }
 
-async function saveAndDownloadPDF() {
-  const savedDoc = await saveDoc({ silent: true, keepEditor: true });
-  if (!savedDoc || !savedDoc.id) return;
-  const previewOpen = document.getElementById('modal-preview-pdf')?.classList.contains('open');
-  let pdfOpts = {};
-  if (previewOpen && typeof APP !== 'undefined' && APP.pdfPreview) {
-    const bc = document.getElementById('preview-band-color');
-    if (bc) APP.pdfPreview.color = bc.value;
-    pdfOpts = {
-      tpl: APP.pdfPreview.tpl || DB.settings.pdfTemplate || 'classic',
-      color: APP.pdfPreview.color || DB.settings.bandColor || '#1a6b3c',
-    };
-  }
-  await downloadDocPDFById(savedDoc.id, pdfOpts);
-  toast(`Document ${savedDoc.ref} sauvegardé + PDF téléchargé ✓`, 'suc');
-}
+// PDF save/download helper moved to js/docs/pdf-actions.js.
 
-// ── Post-save bar ──
-// ═══════════════════════════════════════════
-function showPostSaveActions(doc, stockDeductedCount = 0) {
-  const old = document.getElementById('post-save-bar');
-  if (old) {
-    clearTimeout(old._timer);
-    old.remove();
-  }
-  const typeLabel =
-    { F: 'Facture', D: 'Devis', BL: 'Bon de Livraison', AV: 'Avoir' }[doc.type] || doc.type;
-  const statusColor =
-    { Payé: 'var(--brand)', Envoyé: '#2563eb', Brouillon: 'var(--text2)', Annulé: 'var(--danger)' }[
-      doc.status
-    ] || 'var(--text2)';
-  const bar = document.createElement('div');
-  bar.id = 'post-save-bar';
-  const _isMob = window.innerWidth <= 768;
-  bar.style.cssText = `position:fixed;bottom:${_isMob ? '60px' : '0'};left:${_isMob ? '0' : 'var(--sidebar-w)'};right:0;z-index:800;background:var(--surface);border-top:2px solid var(--brand);padding:${_isMob ? '10px 12px' : '12px 24px'};display:flex;align-items:center;gap:14px;flex-wrap:wrap;box-shadow:0 -4px 20px rgba(0,0,0,.1)`;
-  const left = document.createElement('div');
-  left.style.cssText = 'display:flex;align-items:center;gap:10px;flex:1;min-width:200px';
-  const ic = document.createElement('span');
-  ic.style.fontSize = '22px';
-  ic.textContent = { F: '📄', D: '📝', BL: '📦', AV: '↩️' }[doc.type] || '📄';
-  const col = document.createElement('div');
-  const t1 = document.createElement('div');
-  t1.style.cssText = 'font-weight:700;font-size:14px';
-  t1.textContent = `${doc.ref || ''} — ${typeLabel}`;
-  const t2 = document.createElement('div');
-  t2.style.cssText = 'display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:2px';
-  const sub = document.createElement('span');
-  sub.style.cssText = 'font-size:12px;color:var(--text2)';
-  sub.appendChild(document.createTextNode(`${doc.clientName || ''} · `));
-  const st = document.createElement('span');
-  st.style.color = statusColor;
-  st.style.fontWeight = '600';
-  st.textContent = doc.status || '';
-  sub.appendChild(st);
-  sub.appendChild(document.createTextNode(` · ${fmt(doc.ttc)}`));
-  t2.appendChild(sub);
-  if (stockDeductedCount > 0) {
-    const bd = document.createElement('span');
-    bd.style.cssText =
-      'display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:rgba(9,188,138,0.12);color:var(--brand);border:1px solid rgba(9,188,138,0.25)';
-    bd.textContent = `📦 Stock mis à jour — ${stockDeductedCount} article${stockDeductedCount > 1 ? 's' : ''} déduit${stockDeductedCount > 1 ? 's' : ''}`;
-    t2.appendChild(bd);
-  }
-  col.appendChild(t1);
-  col.appendChild(t2);
-  left.appendChild(ic);
-  left.appendChild(col);
-  const actions = document.createElement('div');
-  actions.style.cssText = 'display:flex;gap:8px;flex-wrap:wrap;align-items:center';
-  const bHist = document.createElement('button');
-  bHist.className = 'btn btn-secondary btn-sm';
-  bHist.setAttribute('data-action', 'ps-open-history');
-  bHist.textContent = '📋 Historique';
-  const bEd = document.createElement('button');
-  bEd.className = 'btn btn-secondary btn-sm';
-  bEd.setAttribute('data-action', 'ps-edit-doc');
-  bEd.setAttribute('data-id', encodeURIComponent(String(doc.id || '')));
-  bEd.textContent = '✏️ Modifier';
-  const bCl = document.createElement('button');
-  bCl.setAttribute('data-action', 'ps-close');
-  bCl.style.cssText =
-    'background:none;border:none;cursor:pointer;font-size:18px;color:var(--text2);padding:4px 8px';
-  bCl.textContent = '✕';
-  actions.appendChild(bHist);
-  actions.appendChild(bEd);
-  actions.appendChild(bCl);
-  bar.appendChild(left);
-  bar.appendChild(actions);
-  bar
-    .querySelector('[data-action="ps-open-history"]')
-    ?.addEventListener('click', () => nav('history', sbItem('history')));
-  bar.querySelector('[data-action="ps-edit-doc"]')?.addEventListener('click', e => {
-    const id = decodeURIComponent(e.currentTarget.getAttribute('data-id') || '');
-    editDocFromHistory(id);
-  });
-  bar.querySelector('[data-action="ps-close"]')?.addEventListener('click', closePostSaveBar);
-  document.getElementById('main').appendChild(bar);
-  bar._timer = setTimeout(closePostSaveBar, 12000);
-}
-function closePostSaveBar() {
-  const bar = document.getElementById('post-save-bar');
-  if (!bar) return;
-  clearTimeout(bar._timer);
-  bar.style.transform = 'translateY(100%)';
-  setTimeout(() => bar.remove(), 300);
-}
+// Post-save bar logic moved to js/docs/post-save-bar.js.
 
-// ═══════════════════════════════════════════
-//  POPULATE CLIENT SELECTOR
-
-// ── Populate client selector ──
-// ═══════════════════════════════════════════
-function populateDocClient() {
-  const sel = document.getElementById('doc-client');
-  if (!sel) return;
-  const cur = sel.value;
-  clearChildren(sel);
-  const placeholder = document.createElement('option');
-  placeholder.value = '';
-  placeholder.textContent = DB.clients.length
-    ? 'Sélectionner un client...'
-    : 'Aucun client enregistré';
-  sel.appendChild(placeholder);
-  const addOpt = document.createElement('option');
-  addOpt.value = '__new__';
-  addOpt.textContent = '➕ Ajouter un nouveau client';
-  sel.appendChild(addOpt);
-  if (DB.clients.length) {
-    const sep = document.createElement('option');
-    sep.disabled = true;
-    sep.textContent = '──────────────────';
-    sel.appendChild(sep);
-    DB.clients.forEach(c => {
-      const o = document.createElement('option');
-      const iceOk = (c.ice || '').replace(/\D/g, '').length === 15;
-      o.value = c.id;
-      o.textContent = c.name + (c.ice ? ` — ICE ${c.ice}` : '  ⚠ sans ICE');
-      if (c.id === cur) o.selected = true;
-      sel.appendChild(o);
-    });
-  }
-  syncGenerateFromSettings();
-  if (typeof refreshThemedSelect === 'function') refreshThemedSelect('doc-client');
-}
-
-function onClientChange() {
-  const sel = document.getElementById('doc-client');
-  const val = sel.value;
-  if (val === '__new__') {
-    sel.value = '';
-    openNewClientModal();
-    return;
-  }
-  const pill = document.getElementById('client-ice-pill');
-  if (!val) {
-    pill.style.display = 'none';
-    runDGICheck();
-    return;
-  }
-  const client = DB.clients.find(c => c.id === val);
-  if (!client) {
-    pill.style.display = 'none';
-    runDGICheck();
-    return;
-  }
-  const hasICE = (client.ice || '').replace(/\D/g, '').length === 15;
-  pill.style.display = 'inline-flex';
-  pill.className = 'client-ice-pill ' + (hasICE ? 'ok' : 'miss');
-  pill.textContent = hasICE ? '✓ ICE OK' : '⚠ ICE manquant';
-  runDGICheck();
-}
-
-function syncGenerateFromSettings() {
-  const s = DB.settings;
-  const notesEl = document.getElementById('doc-notes');
-  if (notesEl && !notesEl.value && s.footer) notesEl.placeholder = `Footer par défaut: ${s.footer}`;
-  updateDocRef();
-  runDGICheck();
-}
+// Client/form helper logic moved to js/docs/client-form.js.
 
 // ── Validation ICE ──
 // ═══════════════════════════════════════════
-function validateICEInput(input) {
-  const v = (input.value || '').replace(/\D/g, '');
-  input.value = v;
-  input.classList.remove('ice-valid', 'ice-warn', 'ice-invalid');
-  if (!v) return;
-  if (v.length === 15) input.classList.add('ice-valid');
-  else input.classList.add('ice-warn');
-  if (document.getElementById('dgi-checker')) runDGICheck();
-}
+// Validation ICE and DGI checker logic moved to js/docs/dgi-checker.js.
 
 // ── DGI Checker ──
 // ═══════════════════════════════════════════
-const DGI_CHECKS = [
-  {
-    id: 'ice-v',
-    label: 'ICE vendeur',
-    tip: '15 chiffres, art. 145 CGI',
-    check: () => {
-      const v = (DB.settings.ice || '').replace(/\D/g, '');
-      return v.length === 15 ? 'ok' : v.length > 0 ? 'warn' : 'err';
-    },
-  },
-  {
-    id: 'if-v',
-    label: 'IF vendeur',
-    tip: 'Identifiant Fiscal obligatoire',
-    check: () => (DB.settings.if ? 'ok' : 'err'),
-  },
-  {
-    id: 'rc-v',
-    label: 'RC vendeur',
-    tip: 'Registre du Commerce obligatoire',
-    check: () => (DB.settings.rc ? 'ok' : 'err'),
-  },
-  {
-    id: 'nom-v',
-    label: 'Raison sociale',
-    tip: 'Nom du vendeur obligatoire',
-    check: () => (DB.settings.name ? 'ok' : 'err'),
-  },
-  {
-    id: 'ice-c',
-    label: 'ICE client',
-    tip: 'Obligatoire pour déduction TVA B2B',
-    check: () => {
-      const cid = (document.getElementById('doc-client') || {}).value;
-      if (!cid || cid === '__new__') return 'warn';
-      const type = (document.getElementById('doc-type') || {}).value;
-      if (type === 'D' || type === 'BL') return 'ok';
-      const c = DB.clients.find(x => x.id === cid);
-      if (!c) return 'warn';
-      const v = (c.ice || '').replace(/\D/g, '');
-      return v.length === 15 ? 'ok' : v.length > 0 ? 'warn' : 'err';
-    },
-  },
-  {
-    id: 'cli',
-    label: 'Client renseigné',
-    tip: 'Client obligatoire sur facture',
-    check: () => {
-      const cid = (document.getElementById('doc-client') || {}).value;
-      const type = (document.getElementById('doc-type') || {}).value;
-      if (type === 'D') return 'ok';
-      return cid && cid !== '__new__' ? 'ok' : 'err';
-    },
-  },
-  {
-    id: 'date',
-    label: "Date d'émission",
-    tip: 'Date obligatoire sur tout document',
-    check: () => ((document.getElementById('doc-date') || {}).value ? 'ok' : 'err'),
-  },
-  {
-    id: 'lignes',
-    label: 'Au moins 1 article',
-    tip: 'Document vide non valide',
-    check: () => (APP.docLines.length > 0 ? 'ok' : 'err'),
-  },
-];
-const DGI_LBL = { ok: '✓', warn: '⚠', err: '✗' };
-function runDGICheck() {
-  const list = document.getElementById('dgi-items-list');
-  const badge = document.getElementById('dgi-score-badge');
-  if (!list || !badge) return;
-  let ok = 0,
-    err = 0,
-    warn = 0;
-  clearChildren(list);
-  DGI_CHECKS.forEach(c => {
-    const s = c.check();
-    if (s === 'ok') ok++;
-    else if (s === 'err') err++;
-    else warn++;
-    const div = document.createElement('div');
-    div.className = 'dgi-item ' + s;
-    div.title = c.tip || '';
-    const dot = document.createElement('span');
-    dot.className = 'dgi-dot';
-    const sp = document.createElement('span');
-    sp.textContent = `${DGI_LBL[s]} ${c.label}`;
-    div.appendChild(dot);
-    div.appendChild(sp);
-    list.appendChild(div);
-  });
-  badge.textContent = `${ok}/${DGI_CHECKS.length} mentions conformes`;
-  badge.className = 'dgi-score ' + (err > 0 ? 'err' : warn > 0 ? 'warn' : 'ok');
-}
-
-// ═══════════════════════════════════════════
-//  PREVIEW & PRINT
-// ═══════════════════════════════════════════
-
-// ── Aperçu & impression ──
-// ═══════════════════════════════════════════
-//  EDIT DOC FROM HISTORY
-// ═══════════════════════════════════════════
+// Validation ICE and DGI checker logic moved to js/docs/dgi-checker.js.
 function editDocFromHistory(id) {
   const d = DB.docs.find(x => x.id === id);
   if (!d) return;
@@ -1714,50 +1014,7 @@ function createAvoirFromCancelledFacture(id) {
 }
 
 // ── Historique ──
-// ═══════════════════════════════════════════
-function populateHistClientFilter() {
-  const sel = document.getElementById('hist-client');
-  if (!sel) return;
-  const cur = sel.value;
-  clearChildren(sel);
-  const ph = document.createElement('option');
-  ph.value = '';
-  ph.textContent = 'Tous les clients';
-  sel.appendChild(ph);
-  const names = [...new Set(DB.docs.map(d => d.clientName).filter(Boolean))];
-  names.forEach(n => {
-    const o = document.createElement('option');
-    o.value = n;
-    o.textContent = n;
-    if (n === cur) o.selected = true;
-    sel.appendChild(o);
-  });
-}
-function getHistFiltered() {
-  const search = (document.getElementById('hist-search') || {}).value || '';
-  const type = (document.getElementById('hist-type') || {}).value || '';
-  const status = (document.getElementById('hist-status') || {}).value || '';
-  const client = (document.getElementById('hist-client') || {}).value || '';
-  const fromEl = document.getElementById('hist-date-from');
-  const toEl = document.getElementById('hist-date-to');
-  const from = (fromEl?._filterValue ?? fromEl?.value) || '';
-  const to = (toEl?._filterValue ?? toEl?.value) || '';
-  return DB.docs.filter(d => {
-    const refLc = (d.ref || '').toLowerCase();
-    const cliLc = (d.clientName || '').toLowerCase();
-    const q = search.toLowerCase();
-    if (search && !refLc.includes(q) && !cliLc.includes(q)) return false;
-    if (type && d.type !== type) return false;
-    if (status && d.status !== status) return false;
-    if (client && d.clientName !== client) return false;
-    if (from && d.date < from) return false;
-    if (to && d.date > to) return false;
-    return true;
-  });
-}
-
-// ── Conversion Devis → Facture ──
-// ═══════════════════════════════════════════
+// History filtering logic moved to js/docs/history-filters.js.
 let _convSourceId = null;
 
 // ── Maintenabilité : encapsulation de la conversion Devis → Facture ──
@@ -1869,67 +1126,7 @@ function confirmConvert() {
   setTimeout(() => showConvertSuccessBar(invoice, d), 300);
 }
 
-function showConvertSuccessBar(invoice, sourceDevis) {
-  const old = document.getElementById('post-save-bar');
-  if (old) {
-    clearTimeout(old._timer);
-    old.remove();
-  }
-  const bar = document.createElement('div');
-  bar.id = 'post-save-bar';
-  const _isMob2 = window.innerWidth <= 768;
-  const invoiceIdJson = JSON.stringify(String(invoice.id || ''));
-  bar.style.cssText = `position:fixed;bottom:${_isMob2 ? '60px' : '0'};left:${_isMob2 ? '0' : 'var(--sidebar-w)'};right:0;z-index:800;background:var(--surface);border-top:2px solid var(--brand);padding:${_isMob2 ? '10px 12px' : '12px 24px'};display:flex;align-items:center;gap:14px;flex-wrap:wrap;box-shadow:0 -4px 20px rgba(0,0,0,.1)`;
-  const cLeft = document.createElement('div');
-  cLeft.style.cssText = 'display:flex;align-items:center;gap:10px;flex:1;min-width:200px';
-  const cIc = document.createElement('span');
-  cIc.style.fontSize = '22px';
-  cIc.textContent = '⚡';
-  const cCol = document.createElement('div');
-  const cT1 = document.createElement('div');
-  cT1.style.cssText = 'font-weight:700;font-size:14px';
-  cT1.textContent = `Conversion réussie — ${invoice.ref || ''}`;
-  const cT2 = document.createElement('div');
-  cT2.style.cssText = 'font-size:12px;color:var(--text2)';
-  cT2.textContent = `Créée depuis ${sourceDevis.ref || ''} · ${invoice.clientName || ''} · ${fmt(invoice.ttc)}`;
-  cCol.appendChild(cT1);
-  cCol.appendChild(cT2);
-  cLeft.appendChild(cIc);
-  cLeft.appendChild(cCol);
-  const cAct = document.createElement('div');
-  cAct.style.cssText = 'display:flex;gap:8px;flex-wrap:wrap;align-items:center';
-  const bInv = document.createElement('button');
-  bInv.className = 'btn btn-primary btn-sm';
-  bInv.setAttribute('data-action', 'ps-open-invoice');
-  bInv.setAttribute('data-id', encodeURIComponent(String(invoice.id || '')));
-  bInv.textContent = '✏️ Ouvrir la facture';
-  const bH2 = document.createElement('button');
-  bH2.className = 'btn btn-secondary btn-sm';
-  bH2.setAttribute('data-action', 'ps-open-history');
-  bH2.textContent = '📋 Historique';
-  const bX = document.createElement('button');
-  bX.setAttribute('data-action', 'ps-close');
-  bX.style.cssText =
-    'background:none;border:none;cursor:pointer;font-size:18px;color:var(--text2);padding:4px 8px';
-  bX.textContent = '✕';
-  cAct.appendChild(bInv);
-  cAct.appendChild(bH2);
-  cAct.appendChild(bX);
-  bar.appendChild(cLeft);
-  bar.appendChild(cAct);
-  bar.querySelector('[data-action="ps-open-invoice"]')?.addEventListener('click', e => {
-    const id = decodeURIComponent(e.currentTarget.getAttribute('data-id') || '');
-    editDocFromHistory(id);
-    closePostSaveBar();
-  });
-  bar.querySelector('[data-action="ps-open-history"]')?.addEventListener('click', () => {
-    nav('history', sbItem('history'));
-    closePostSaveBar();
-  });
-  bar.querySelector('[data-action="ps-close"]')?.addEventListener('click', closePostSaveBar);
-  document.getElementById('main').appendChild(bar);
-  bar._timer = setTimeout(closePostSaveBar, 15000);
-}
+// Convert success bar logic moved to js/docs/post-save-bar.js.
 
 function renderHistory() {
   const feedback = document.getElementById('hist-feedback');
@@ -2110,11 +1307,9 @@ function renderHistory() {
       return b;
     };
 
-    // Primary actions (always visible): edit, print, quick status
+    // Primary actions (always visible): edit, quick status
     const bEdit = addAct('btn btn-icon btn-secondary btn-sm', 'Modifier', '✏️', null, 'hist-edit-doc');
-    const bPrint = addAct('btn btn-icon btn-secondary btn-sm', 'Imprimer PDF', '🖨', null, 'hist-print-doc');
     act.appendChild(bEdit);
-    act.appendChild(bPrint);
     if (nextStatusLabel[d.status]) {
       const bQuick = addAct(
         'btn btn-icon btn-secondary btn-sm',
@@ -2126,101 +1321,31 @@ function renderHistory() {
       act.appendChild(bQuick);
     }
 
-    // Secondary actions grouped in More menu
-    const moreWrap = document.createElement('div');
-    moreWrap.className = 'hist-more-wrap';
-    const moreBtn = document.createElement('button');
-    moreBtn.type = 'button';
-    moreBtn.className = 'btn btn-icon btn-secondary btn-sm';
-    moreBtn.title = 'Plus d’actions';
-    moreBtn.setAttribute('aria-label', 'Plus d’actions');
-    moreBtn.setAttribute('aria-haspopup', 'menu');
-    moreBtn.setAttribute('aria-expanded', 'false');
-    moreBtn.setAttribute('aria-label', 'Ouvrir le menu Plus d actions');
-    moreBtn.textContent = '⋯';
-    const moreMenu = document.createElement('div');
-    const menuId = `hist-more-${String(d.id || '').replace(/[^a-zA-Z0-9_-]/g, '')}`;
-    moreMenu.id = menuId;
-    moreBtn.setAttribute('aria-controls', menuId);
-    moreMenu.className = 'hist-more-menu';
-    moreMenu.setAttribute('role', 'menu');
-    const addMoreItem = (label, action, danger = false) => {
-      const item = document.createElement('button');
-      item.type = 'button';
-      item.className = 'hist-more-item' + (danger ? ' danger' : '');
-      item.setAttribute('role', 'menuitem');
-      item.tabIndex = -1;
-      item.setAttribute('data-action', action);
-      item.setAttribute('data-id', enc);
-      item.textContent = label;
-      moreMenu.appendChild(item);
-    };
-
-    addMoreItem('⬇ Télécharger PDF', 'hist-download-doc');
-    addMoreItem('🟢 Envoyer via WhatsApp', 'hist-wa-doc');
-    addMoreItem('⎘ Dupliquer', 'hist-duplicate-doc');
+    // Secondary actions (visible directement)
+    const bDownload = addAct('btn btn-icon btn-secondary btn-sm', 'Télécharger le PDF', '⬇', null, 'hist-download-doc');
+    const bWhatsApp = addAct('btn btn-icon btn-secondary btn-sm', 'Envoyer via WhatsApp', '🟢', null, 'hist-wa-doc');
+    const bDuplicate = addAct('btn btn-icon btn-secondary btn-sm', 'Dupliquer', '⎘', null, 'hist-duplicate-doc');
+    act.appendChild(bDownload);
+    act.appendChild(bWhatsApp);
+    act.appendChild(bDuplicate);
 
     if (d.type === 'D' && d.status !== 'Converti') {
-      addMoreItem('⚡ Convertir en Facture', 'hist-convert');
+      const bConvert = addAct('btn btn-icon btn-secondary btn-sm', 'Convertir en facture', '⚡', null, 'hist-convert');
+      act.appendChild(bConvert);
     }
     if (d.type === 'F' && d.status === 'Annulé') {
-      addMoreItem('↩ Créer un avoir', 'hist-create-avoir');
+      const bAvoir = addAct('btn btn-icon btn-secondary btn-sm', 'Créer un avoir', '↩', null, 'hist-create-avoir');
+      act.appendChild(bAvoir);
     }
     if ((d.type === 'F' || d.type === 'BL') && d.status !== 'Annulé' && d.status !== 'Brouillon') {
-      addMoreItem('✕ Annuler (retour stock)', 'hist-cancel-doc');
+      const bCancel = addAct('btn btn-icon btn-secondary btn-sm', 'Annuler (retour stock)', '✕', null, 'hist-cancel-doc');
+      act.appendChild(bCancel);
     }
 
-    const delX = d.type === 'F' || d.type === 'BL' || d.type === 'AV' ? '✕ Annuler document' : '🗑 Supprimer';
-    addMoreItem(delX, 'hist-delete-doc', true);
-
-    moreBtn.addEventListener('click', e => {
-      e.preventDefault();
-      e.stopPropagation();
-      const willOpen = !moreMenu.classList.contains('open');
-      closeHistMoreMenus();
-      if (willOpen) {
-        moreMenu.classList.add('open');
-        moreBtn.setAttribute('aria-expanded', 'true');
-        moreMenu.querySelector('.hist-more-item')?.focus();
-      }
-    });
-    moreBtn.addEventListener('keydown', e => {
-      if (e.key === 'ArrowDown') {
-        e.preventDefault();
-        const willOpen = !moreMenu.classList.contains('open');
-        closeHistMoreMenus();
-        if (willOpen) {
-          moreMenu.classList.add('open');
-          moreBtn.setAttribute('aria-expanded', 'true');
-        }
-        moreMenu.querySelector('.hist-more-item')?.focus();
-      }
-    });
-    moreMenu.addEventListener('keydown', e => {
-      const items = Array.from(moreMenu.querySelectorAll('.hist-more-item'));
-      const idx = items.indexOf(document.activeElement);
-      if (e.key === 'Escape') {
-        e.preventDefault();
-        moreMenu.classList.remove('open');
-        moreBtn.setAttribute('aria-expanded', 'false');
-        moreBtn.focus();
-        return;
-      }
-      if (e.key === 'ArrowDown' && idx >= 0) {
-        e.preventDefault();
-        items[(idx + 1) % items.length]?.focus();
-      } else if (e.key === 'ArrowUp' && idx >= 0) {
-        e.preventDefault();
-        items[(idx - 1 + items.length) % items.length]?.focus();
-      }
-    });
-    moreMenu.addEventListener('click', () => {
-      moreMenu.classList.remove('open');
-      moreBtn.setAttribute('aria-expanded', 'false');
-    });
-    moreWrap.appendChild(moreBtn);
-    moreWrap.appendChild(moreMenu);
-    act.appendChild(moreWrap);
+    const delX = d.type === 'F' || d.type === 'BL' || d.type === 'AV' ? 'Annuler document' : 'Supprimer';
+    const bDelete = addAct('btn btn-icon btn-secondary btn-sm', delX, '🗑', null, 'hist-delete-doc');
+    bDelete.classList.add('danger');
+    act.appendChild(bDelete);
     tdAct.appendChild(act);
     tr.appendChild(tdAct);
     tbody.appendChild(tr);
@@ -2285,7 +1410,6 @@ function renderHistory() {
       return b;
     };
     mAct.appendChild(mb('✏️ Modifier', 'hist-edit-doc'));
-    mAct.appendChild(mb('🖨 PDF', 'hist-print-doc'));
     if (nextStatusLabel[d.status]) mAct.appendChild(mb(nextStatusLabel[d.status], 'hist-quick-status'));
 
     const mMore = document.createElement('details');
@@ -2430,26 +1554,6 @@ async function cancelDoc(id) {
     toast("❌ Erreur lors de l'annulation — réessayez", 'err');
   }
 }
-function resetHistFilters() {
-  [
-    'hist-search',
-    'hist-type',
-    'hist-status',
-    'hist-client',
-    'hist-date-from',
-    'hist-date-to',
-  ].forEach(id => {
-    const el = document.getElementById(id);
-    if (!el) return;
-    if (el._fp && typeof el._fp.clear === 'function') {
-      el._fp.clear();
-      return;
-    }
-    el.value = '';
-  });
-  APP.histPage = 1;
-  renderHistory();
-}
 async function deleteDoc(id) {
   const d = DB.docs.find(x => x.id === id);
   if (!d) return;
@@ -2557,112 +1661,7 @@ async function deleteDoc(id) {
   }
 }
 
-// ════════════════════════════════════════
-//  WHATSAPP : envoyer un document depuis l'Historique
-// ════════════════════════════════════════
-function _normalizePhoneForWhatsApp(phone) {
-  const p = String(phone || '').replace(/\D/g, '');
-  if (!p) return '';
-  if (p.startsWith('212')) return p;
-  if (p.startsWith('0')) return '212' + p.slice(1);
-  return '212' + p;
-}
-
-function sendDocWhatsApp(docId) {
-  const d = DB.docs.find(x => x.id === docId);
-  if (!d) return;
-
-  const c = DB.clients.find(x => x.id === d.clientId);
-  const phone = _normalizePhoneForWhatsApp(c?.phone);
-  if (!phone) {
-    toast("Client sans téléphone — impossible d'envoyer via WhatsApp", 'err');
-    return;
-  }
-
-  const typeLabel =
-    { F: 'Facture', D: 'Devis', BL: 'Bon de Livraison', AV: 'Avoir' }[d.type] || d.type;
-  const name = c?.name || d.clientName || 'client';
-  const sender = DB.settings?.name || 'INVO';
-
-  const ht = Number(d.ht || 0);
-  const tvaAmount = Number(d.tva || 0);
-  const ttc = Number(d.ttc || 0);
-  const acompte = Number(d.acompte || 0);
-  const reste = Math.max(0, ttc - acompte);
-
-  // Résumé lignes (WhatsApp = court ; on limite pour éviter un message trop long)
-  const allLines = Array.isArray(d.lines) ? d.lines : [];
-  const linesPreview = allLines.slice(0, 6).map(l => {
-    const q = Number(l.qty || 0);
-    const pu = Number(l.price || 0);
-    const th = q * pu;
-    const label = l.name || l.designation || 'Article';
-    const tvaPct = l.tva == null ? null : Number(l.tva);
-    return `• ${label} — ${q} x ${fmt(pu)} = ${fmt(th)}${tvaPct != null && !Number.isNaN(tvaPct) ? ` (TVA ${tvaPct}%)` : ''}`;
-  });
-  if (allLines.length > 6) {
-    linesPreview.push(`• ... (${allLines.length - 6} autre(s) ligne(s))`);
-  }
-
-  // Templates "intelligents" : par type de document
-  const headerByType = (() => {
-    if (d.type === 'F')
-      return `Bonjour ${name},\n\nVoici votre ${typeLabel} ${d.ref} (statut : ${d.status}).`;
-    if (d.type === 'D')
-      return `Bonjour ${name},\n\nVoici votre ${typeLabel} ${d.ref} (statut : ${d.status}).`;
-    if (d.type === 'BL')
-      return `Bonjour ${name},\n\nVoici votre ${typeLabel} ${d.ref} (statut : ${d.status}).`;
-    if (d.type === 'AV')
-      return `Bonjour ${name},\n\nVoici votre ${typeLabel} ${d.ref} (statut : ${d.status}).`;
-    return `Bonjour ${name},\n\nDocument ${typeLabel} ${d.ref} (statut : ${d.status}).`;
-  })();
-
-  const montantBlock = [
-    `Date : ${d.date}`,
-    `Total HT : ${fmt(ht)}`,
-    `TVA : ${fmt(tvaAmount)}`,
-    `Total TTC : ${fmt(ttc)}`,
-  ];
-
-  const paiementBlock = (() => {
-    const out = [];
-    if (d.type === 'F' || d.type === 'BL') {
-      if (acompte > 0) out.push(`Acompte : ${fmt(acompte)} · Reste à payer : ${fmt(reste)}`);
-      else out.push(`Montant à payer : ${fmt(ttc)}`);
-    } else if (d.type === 'D') {
-      out.push(`Montant TTC : ${fmt(ttc)}`);
-      if (acompte > 0) out.push(`Acompte (si prévu) : ${fmt(acompte)}`);
-    } else if (d.type === 'AV') {
-      out.push(`Montant TTC de l'avoir : ${fmt(ttc)}`);
-      if (acompte > 0) out.push(`Acompte associé : ${fmt(acompte)}`);
-    }
-    if (d.payment) out.push(`Paiement : ${d.payment}`);
-    return out;
-  })();
-
-  const notesBlock = d.notes ? [`Notes : ${d.notes}`] : [];
-  const iceBlock = c?.ice ? [`ICE client : ${c.ice}`] : [];
-
-  const text = [
-    headerByType,
-    ...(iceBlock.length ? [''] : []),
-    ...iceBlock,
-    ...(iceBlock.length ? [''] : []),
-    ...montantBlock,
-    ...(paiementBlock.length ? [''] : []),
-    ...paiementBlock,
-    ...(linesPreview.length ? ['', 'Articles :', ...linesPreview] : []),
-    ...(notesBlock.length ? ['', ''] : []),
-    ...notesBlock,
-    `\nCordialement, ${sender}`,
-  ]
-    .filter(Boolean)
-    .join('\n');
-
-  const url = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
-  window.open(url, '_blank');
-}
-
+// WhatsApp sharing logic moved to js/docs/whatsapp.js.
 function duplicateDoc(id) {
   const d = DB.docs.find(x => x.id === id);
   if (!d) return;
@@ -2686,451 +1685,48 @@ function duplicateDoc(id) {
   renderHistory();
   toast('Document dupliqué ✓', 'suc');
 }
-function exportHistXLSX() {
-  const docs = getHistFiltered();
-  if (!docs.length) {
-    toast('Aucun document à exporter', 'err');
-    return;
-  }
-  if (typeof XLSX === 'undefined') {
-    toast('❌ Librairie Excel non chargée — vérifiez votre connexion', 'err');
-    return;
-  }
+// History XLSX export logic moved to js/docs/history-export.js.
 
-  try {
-    // Neutralise les cellules texte pouvant être interprétées comme formules Excel.
-    const safeXlsxText = v => {
-      const s = String(v == null ? '' : v);
-      return /^\s*[=+\-@]/.test(s) ? "'" + s : s;
-    };
+// Reporting logic moved to js/docs/reports.js.
 
-  // ── En-têtes ──
-    const headers = [
-      'Référence',
-      'Date',
-      'Type',
-      'Statut',
-      'Client',
-      'ICE Client',
-      'Total HT',
-      'TVA',
-      'Total TTC',
-      'Reste à payer',
-    ];
-
-  // ── Données ──
-  const rows = docs.map(d => {
-    const acompte = d.acompte || 0;
-      const reste = Math.max(0, (d.ttc || 0) - acompte);
-    return [
-        safeXlsxText(d.ref || ''),
-        safeXlsxText(d.date || ''),
-        safeXlsxText({ F: 'Facture', D: 'Devis', BL: 'Bon de livraison', AV: 'Avoir' }[d.type] || d.type),
-        safeXlsxText(d.status || ''),
-      safeXlsxText(d.clientName || ''),
-        safeXlsxText(DB.clients.find(c => c.id === d.clientId)?.ice || ''),
-        d.ht || 0,
-      d.tva || 0,
-      d.ttc || 0,
-      reste,
-    ];
-  });
-
-  // ── Créer le workbook SheetJS ──
-  const wb = XLSX.utils.book_new();
-  const wsData = [headers, ...rows];
-  const ws = XLSX.utils.aoa_to_sheet(wsData);
-
-  // ── Largeurs des colonnes ──
-  ws['!cols'] = [
-      { wch: 18 }, // Référence
-      { wch: 12 }, // Date
-      { wch: 18 }, // Type
-      { wch: 12 }, // Statut
-      { wch: 28 }, // Client
-      { wch: 18 }, // ICE
-      { wch: 14 }, // HT
-      { wch: 12 }, // TVA
-      { wch: 14 }, // TTC
-      { wch: 14 }, // Reste
-  ];
-
-  // ── Figer la première ligne (en-têtes) ──
-    ws['!freeze'] = { xSplit: 0, ySplit: 1 };
-
-  // ── Styles en-têtes (fond foncé + texte blanc + gras) ──
-  const headerStyle = {
-      font: { bold: true, color: { rgb: 'FFFFFF' }, sz: 11 },
-      fill: { fgColor: { rgb: '1A3C5E' }, patternType: 'solid' },
-    alignment: { horizontal: 'center', vertical: 'center', wrapText: false },
-    border: {
-      bottom: { style: 'medium', color: { rgb: '09BC8A' } },
-      },
-  };
-
-  // ── Styles colonnes montants (droite + format nombre) ──
-  const amountStyle = {
-      font: { sz: 10 },
-    alignment: { horizontal: 'right' },
-      numFmt: '#,##0.00',
-  };
-
-  // ── Styles lignes alternées ──
-  const rowStyleEven = { fill: { fgColor: { rgb: 'F8F9FA' }, patternType: 'solid' } };
-  const rowStyleBadge = {
-      Payé: { font: { color: { rgb: '27AE60' }, bold: true } },
-      Envoyé: { font: { color: { rgb: '2980B9' }, bold: true } },
-      Brouillon: { font: { color: { rgb: '888888' } } },
-      Annulé: { font: { color: { rgb: 'C0392B' } } },
-      Accepté: { font: { color: { rgb: '27AE60' }, bold: true } },
-      Livré: { font: { color: { rgb: '09BC8A' }, bold: true } },
-  };
-
-  const range = XLSX.utils.decode_range(ws['!ref']);
-
-  // Appliquer styles en-têtes (ligne 0)
-    for (let c = range.s.c; c <= range.e.c; c++) {
-      const addr = XLSX.utils.encode_cell({ r: 0, c });
-      if (!ws[addr]) continue;
-    ws[addr].s = headerStyle;
-  }
-
-  // Appliquer styles sur les données
-    const amountCols = new Set([6, 7, 8, 9]); // HT, TVA, TTC, Reste
-    for (let r = 1; r <= range.e.r; r++) {
-    const isEven = r % 2 === 0;
-      for (let c = range.s.c; c <= range.e.c; c++) {
-        const addr = XLSX.utils.encode_cell({ r, c });
-        if (!ws[addr]) ws[addr] = { v: '', t: 's' };
-
-        if (amountCols.has(c)) {
-        ws[addr].s = { ...amountStyle, ...(isEven ? rowStyleEven : {}) };
-        ws[addr].t = 'n'; // forcer type numérique
-        } else if (c === 3) {
-          // colonne Statut
-        const statusVal = ws[addr].v || '';
-        ws[addr].s = { ...(rowStyleBadge[statusVal] || {}), ...(isEven ? rowStyleEven : {}) };
-      } else {
-        ws[addr].s = isEven ? rowStyleEven : {};
-      }
-    }
-  }
-
-  // ── Onglet récap TVA (factures payées - avoirs validés) ──
-    const fiscals = docs.filter(
-      d =>
-        (d.type === 'F' && d.status === 'Payé') ||
-        (d.type === 'AV' && (d.status === 'Validé' || d.status === 'Payé')),
-    );
-    if (fiscals.length) {
-    const tvaMap = {};
-    fiscals.forEach(d => {
-        const sign = d.type === 'AV' ? -1 : 1;
-        Object.entries(d.tvaByRate || {}).forEach(([rate, vals]) => {
-          if (!tvaMap[rate]) tvaMap[rate] = { base: 0, tva: 0, ttc: 0 };
-          tvaMap[rate].base += sign * (vals.ht || 0);
-          tvaMap[rate].tva += sign * (vals.tva || 0);
-          tvaMap[rate].ttc += sign * (vals.ttc || 0);
-        });
-        if (!Object.keys(d.tvaByRate || {}).length) {
-        const r = Number(d.tva ?? 20);
-          if (!tvaMap[r]) tvaMap[r] = { base: 0, tva: 0, ttc: 0 };
-          tvaMap[r].base += sign * (d.ht || 0);
-          tvaMap[r].tva += sign * (d.tva || 0);
-          tvaMap[r].ttc += sign * (d.ttc || 0);
-        }
-      });
-
-      const tvaHeaders = ['Taux TVA', 'Base HT', 'Montant TVA', 'Total TTC'];
-    const tvaRows = Object.entries(tvaMap)
-        .sort((a, b) => Number(a[0]) - Number(b[0]))
-        .map(([rate, v]) => [rate + '%', v.base, v.tva, v.ttc]);
-      const totalRow = [
-        'TOTAL',
-        tvaRows.reduce((s, r) => s + r[1], 0),
-        tvaRows.reduce((s, r) => s + r[2], 0),
-        tvaRows.reduce((s, r) => s + r[3], 0),
-    ];
-
-    const wsTVA = XLSX.utils.aoa_to_sheet([tvaHeaders, ...tvaRows, totalRow]);
-      wsTVA['!cols'] = [{ wch: 12 }, { wch: 16 }, { wch: 16 }, { wch: 16 }];
-
-    // Style en-tête TVA
-      for (let c = 0; c < 4; c++) {
-        const addr = XLSX.utils.encode_cell({ r: 0, c });
-        if (wsTVA[addr]) wsTVA[addr].s = headerStyle;
-    }
-    // Style ligne total
-    const totalR = tvaRows.length + 1;
-      for (let c = 0; c < 4; c++) {
-        const addr = XLSX.utils.encode_cell({ r: totalR, c });
-        if (wsTVA[addr])
-          wsTVA[addr].s = {
-            font: { bold: true, color: { rgb: 'FFFFFF' } },
-            fill: { fgColor: { rgb: '09BC8A' }, patternType: 'solid' },
-        numFmt: '#,##0.00',
-      };
-    }
-
-    XLSX.utils.book_append_sheet(wb, wsTVA, 'TVA DGI');
-  }
-
-  XLSX.utils.book_append_sheet(wb, ws, 'Historique');
-
-  // ── Métadonnées ──
-  wb.Props = {
-      Title: 'Historique INVO',
-    Subject: 'Export documents',
-      Author: DB.settings.name || 'INVO',
-    CreatedDate: new Date(),
-  };
-
-  // ── Télécharger ──
-    const period = new Date().toISOString().slice(0, 10);
-  XLSX.writeFile(wb, `historique_${period}.xlsx`);
-  toast(`✅ Export Excel — ${docs.length} document(s)`, 'suc');
-  } catch (e) {
-    dbgErr('[exportHistXLSX] Erreur:', e);
-    toast('❌ Erreur export Excel — ' + (e.message || 'réessayez'), 'err');
-  }
-}
-
-// Kept for backward compat (modale), but now the Reports page is the primary entry
-function showSalesReport() {
-  nav('reports', sbItem('reports'));
-}
-
-/**
- * Ventilation TVA par taux pour un document (cohérente avec remise et tvaByRate persisté).
- * Anciens docs sans tvaByRate : reconstitution depuis les lignes × facteur remise.
- */
-function accumulateDocTvaByRateForReport(d, sign, byTva) {
-  const remise = parseFloat(d.remise) || 0;
-  const factor = remise > 0 ? 1 - remise / 100 : 1;
-  const useByRate = d.tvaByRate && Object.keys(d.tvaByRate).length > 0;
-  const aeDoc = typeof docIsAutoEntrepreneurExempt === 'function' && docIsAutoEntrepreneurExempt(d);
-  if (useByRate) {
-    Object.entries(d.tvaByRate).forEach(([rateStr, vals]) => {
-      const r = Number(rateStr);
-      if (!byTva[r]) byTva[r] = { base: 0, tva: 0 };
-      byTva[r].base += sign * (vals.ht || 0);
-      byTva[r].tva += sign * (vals.tva || 0);
-    });
-    return;
-  }
-  (d.lines || []).forEach(l => {
-    const r = Number(l.tva ?? 20);
-    const base = (l.qty || 0) * (l.price || 0) * sign * factor;
-    if (!byTva[r]) byTva[r] = { base: 0, tva: 0 };
-    byTva[r].base += base;
-    if (!aeDoc) byTva[r].tva += base * (r / 100);
-  });
-}
-window.accumulateDocTvaByRateForReport = accumulateDocTvaByRateForReport;
-
-// ── Rapports / Fiscal ──
-// ═══════════════════════════════════════════
-let _repPeriodMonths = 1;
-function _setReportsSkeletonLoading(loading) {
-  ['rep-by-type', 'rep-top-clients', 'rep-tva-breakdown'].forEach(id => {
-    const el = document.getElementById(id);
-    if (!el) return;
-    el.classList.toggle('skeleton-block', !!loading);
-    el.setAttribute('aria-busy', loading ? 'true' : 'false');
-  });
-}
-function _repDocYmd(d) {
-  const s = d && d.date;
-  if (!s || typeof s !== 'string') return '';
-  const m = String(s)
-    .trim()
-    .match(/^(\d{4}-\d{2}-\d{2})/);
-  return m ? m[1] : '';
-}
-function _repCutoffYmd(months) {
-  const now = new Date();
-  const cut = new Date(now.getFullYear(), now.getMonth() - (months - 1), 1);
-  return `${cut.getFullYear()}-${String(cut.getMonth() + 1).padStart(2, '0')}-${String(cut.getDate()).padStart(2, '0')}`;
-}
-function setRepPeriod(months, btn) {
-  const n = parseInt(months, 10);
-  _repPeriodMonths = Number.isFinite(n) && n > 0 ? n : 1;
-  document.querySelectorAll('[id^="rep-btn-"]').forEach(b => b.classList.remove('active'));
-  if (btn) btn.classList.add('active');
-  renderReports();
-}
-function renderReports(_deferred) {
-  if (!document.getElementById('rep-ca')) return;
-  if (!_deferred) {
-    _setReportsSkeletonLoading(true);
-    if (APP._repRenderRAF) cancelAnimationFrame(APP._repRenderRAF);
-    APP._repRenderRAF = requestAnimationFrame(() => renderReports(true));
-    return;
-  }
-  document.querySelectorAll('[id^="rep-btn-"]').forEach(b => {
-    b.classList.toggle('active', String(b.dataset.repPeriod || '') === String(_repPeriodMonths));
-  });
-  const cutoffStr = _repCutoffYmd(_repPeriodMonths);
-  const docs = DB.docs.filter(d => {
-    const ymd = _repDocYmd(d);
-    if (!ymd || ymd < cutoffStr) return false;
-    if (d.type === 'F') return d.status === 'Payé';
-    if (d.type === 'AV') return d.status === 'Validé' || d.status === 'Payé'; // compat anciens états
-    return false;
-  });
-  const sign = d => (d.type === 'AV' ? -1 : 1);
-  const ca = docs.reduce((a, d) => a + sign(d) * (d.ttc || 0), 0);
-  const ht = docs.reduce((a, d) => a + sign(d) * (d.ht || 0), 0);
-  const tva = docs.reduce((a, d) => a + sign(d) * (d.tva || 0), 0);
-  const setEl = (id, v) => {
-    const el = document.getElementById(id);
-    if (el) el.textContent = v;
-  };
-  setEl('rep-ca', fmt(ca));
-  setEl('rep-ht', fmt(ht));
-  setEl('rep-tva', fmt(tva));
-
-  // Par type
-  const byType = {};
-  docs.forEach(d => {
-    byType[d.type] = (byType[d.type] || 0) + sign(d) * (d.ttc || 0);
-  });
-  const typeLabels = { F: 'Facture', D: 'Devis', BL: 'Bon de Livraison', AV: 'Avoir' };
-  const byTypeEl = document.getElementById('rep-by-type');
-  if (byTypeEl) {
-    clearChildren(byTypeEl);
-    if (!Object.keys(byType).length) {
-      const em = document.createElement('div');
-      em.style.cssText = 'color:var(--text2);font-size:13px';
-      em.textContent = 'Aucune facture payée ni avoir validé sur cette période.';
-      byTypeEl.appendChild(em);
-    } else {
-      Object.entries(byType).forEach(([t, v]) => {
-        const row = document.createElement('div');
-        row.style.cssText =
-          'display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--border);font-size:13px';
-        const a = document.createElement('span');
-        a.style.fontWeight = '600';
-        a.textContent = typeLabels[t] || t;
-        const b = document.createElement('span');
-        b.style.cssText = 'font-family:Arial, sans-serif;font-weight:700;color:var(--brand)';
-        b.textContent = fmt(v);
-        row.appendChild(a);
-        row.appendChild(b);
-        byTypeEl.appendChild(row);
-      });
-    }
-  }
-
-  // Top clients
-  const byClient = {};
-  docs.forEach(d => {
-    if (d.clientName)
-      byClient[d.clientName] = (byClient[d.clientName] || 0) + sign(d) * (d.ttc || 0);
-  });
-  const top = Object.entries(byClient)
-    .sort((a, b) => b[1] - a[1])
-    .slice(0, 5);
-  const topEl = document.getElementById('rep-top-clients');
-  if (topEl) {
-    clearChildren(topEl);
-    if (!top.length) {
-      const em = document.createElement('div');
-      em.style.cssText = 'color:var(--text2);font-size:13px';
-      em.textContent = 'Aucun client.';
-      topEl.appendChild(em);
-    } else {
-      top.forEach(([n, v], i) => {
-        const row = document.createElement('div');
-        row.style.cssText =
-          'display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--border);font-size:13px';
-        const rk = document.createElement('span');
-        rk.style.cssText =
-          'width:20px;height:20px;border-radius:50%;background:var(--brand-light);color:var(--brand);font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0';
-        rk.textContent = String(i + 1);
-        const nm = document.createElement('span');
-        nm.style.cssText = 'flex:1;font-weight:600';
-        nm.textContent = n;
-        const amt = document.createElement('span');
-        amt.style.cssText = 'font-family:Arial, sans-serif;font-weight:700';
-        amt.textContent = fmt(v);
-        row.appendChild(rk);
-        row.appendChild(nm);
-        row.appendChild(amt);
-        topEl.appendChild(row);
-      });
-    }
-  }
-
-  // TVA par taux (tvaByRate après remise, ou lignes × remise pour anciens exports)
-  const byTva = {};
-  docs.forEach(d => {
-    accumulateDocTvaByRateForReport(d, sign(d), byTva);
-  });
-  const tvaEl = document.getElementById('rep-tva-breakdown');
-  if (tvaEl) {
-    clearChildren(tvaEl);
-    if (!Object.keys(byTva).length) {
-      const em = document.createElement('div');
-      em.style.cssText = 'color:var(--text2);font-size:13px';
-      em.textContent = 'Aucune donnée.';
-      tvaEl.appendChild(em);
-    } else {
-      const tbl = document.createElement('table');
-      tbl.style.cssText = 'width:100%;border-collapse:collapse;font-size:13px';
-      const thead = document.createElement('thead');
-      const hr = document.createElement('tr');
-      const thR =
-        'text-align:right;padding:8px 10px;background:var(--surface2);font-size:11px;font-weight:700;color:var(--text2);text-transform:uppercase';
-      const h1 = document.createElement('th');
-      h1.style.cssText =
-        'text-align:left;padding:8px 10px;background:var(--surface2);border-radius:6px 0 0 0;font-size:11px;font-weight:700;color:var(--text2);text-transform:uppercase';
-      h1.textContent = 'Taux';
-      const h2 = document.createElement('th');
-      h2.style.cssText = thR;
-      h2.textContent = 'Base HT';
-      const h3 = document.createElement('th');
-      h3.style.cssText = thR;
-      h3.textContent = 'TVA';
-      const h4 = document.createElement('th');
-      h4.style.cssText = thR + ';border-radius:0 6px 0 0';
-      h4.textContent = 'Total TTC';
-      hr.appendChild(h1);
-      hr.appendChild(h2);
-      hr.appendChild(h3);
-      hr.appendChild(h4);
-      thead.appendChild(hr);
-      tbl.appendChild(thead);
-      const tb = document.createElement('tbody');
-      Object.entries(byTva)
-        .sort((a, b) => Number(b[0]) - Number(a[0]))
-        .forEach(([r, v]) => {
-          const tr = document.createElement('tr');
-          const c0 = document.createElement('td');
-          c0.style.cssText =
-            'padding:9px 10px;border-bottom:1px solid var(--border);font-weight:600';
-          c0.textContent = `${r}%`;
-          const c1 = document.createElement('td');
-          c1.style.cssText =
-            'padding:9px 10px;border-bottom:1px solid var(--border);text-align:right;font-family:Arial, sans-serif';
-          c1.textContent = fmt(v.base);
-          const c2 = document.createElement('td');
-          c2.style.cssText =
-            'padding:9px 10px;border-bottom:1px solid var(--border);text-align:right;font-family:Arial, sans-serif;color:var(--accent);font-weight:600';
-          c2.textContent = fmt(v.tva);
-          const c3 = document.createElement('td');
-          c3.style.cssText =
-            'padding:9px 10px;border-bottom:1px solid var(--border);text-align:right;font-family:Arial, sans-serif;font-weight:700;color:var(--brand)';
-          c3.textContent = fmt(v.base + v.tva);
-          tr.appendChild(c0);
-          tr.appendChild(c1);
-          tr.appendChild(c2);
-          tr.appendChild(c3);
-          tb.appendChild(tr);
-        });
-      tbl.appendChild(tb);
-      tvaEl.appendChild(tbl);
-    }
-  }
-  _setReportsSkeletonLoading(false);
-}
+export {
+  addLine,
+  calcTotals,
+  cancelDoc,
+  closePostSaveBar,
+  confirmConvert,
+  createAvoirFromCancelledFacture,
+  deleteDoc,
+  duplicateDoc,
+  editDocFromHistory,
+  exportHistXLSX,
+  getHistFiltered,
+  getTotals,
+  initDocLines,
+  nombreEnLettres,
+  onClientChange,
+  onDocPriceModeChange,
+  openConvertModal,
+  populateDocClient,
+  populateHistClientFilter,
+  quickChangeStatus,
+  refreshDocSourceHint,
+  renderDocLines,
+  renderHistory,
+  renderReports,
+  resetHistFilters,
+  runDGICheck,
+  saveAndDownloadPDF,
+  saveDoc,
+  sendDocWhatsApp,
+  setRepPeriod,
+  showConvertSuccessBar,
+  showPostSaveActions,
+  showSalesReport,
+  syncGenerateFromSettings,
+  updateConvDateField,
+  updateDocRef,
+  updateDocStatus,
+  validateICEInput,
+  accumulateDocTvaByRateForReport,
+};

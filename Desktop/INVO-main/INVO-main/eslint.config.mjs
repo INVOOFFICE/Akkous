@@ -39,6 +39,12 @@ export default [
     },
   },
   {
+    files: ['js/docs.js', 'js/docs/**/*.js'],
+    languageOptions: {
+      sourceType: 'module',
+    },
+  },
+  {
     files: ['sw.js'],
     languageOptions: {
       ecmaVersion: 2022,

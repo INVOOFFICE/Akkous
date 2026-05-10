@@ -8,10 +8,23 @@ const LOGO_DOC_HEIGHT_MIN = 24;
 const LOGO_DOC_HEIGHT_MAX = 120;
 const LOGO_DOC_HEIGHT_DEFAULT = 48;
 
+/** Hauteur max. (px) du cachet enregistré pour éviter qu'il ne dépasse du document. */
+const SEAL_MAX_STORED_HEIGHT_PX = 300;
+/** Plage de hauteur d'affichage du cachet dans les documents (px) ; largeur = ratio conservé. */
+const SEAL_DOC_HEIGHT_MIN = 30;
+const SEAL_DOC_HEIGHT_MAX = 150;
+const SEAL_DOC_HEIGHT_DEFAULT = 60;
+
 function clampLogoDocHeight(v) {
   const n = Number(v);
   const base = Number.isFinite(n) ? Math.round(n) : LOGO_DOC_HEIGHT_DEFAULT;
   return Math.min(LOGO_DOC_HEIGHT_MAX, Math.max(LOGO_DOC_HEIGHT_MIN, base));
+}
+
+function clampSealDocHeight(v) {
+  const n = Number(v);
+  const base = Number.isFinite(n) ? Math.round(n) : SEAL_DOC_HEIGHT_DEFAULT;
+  return Math.min(SEAL_DOC_HEIGHT_MAX, Math.max(SEAL_DOC_HEIGHT_MIN, base));
 }
 
 /**
@@ -57,6 +70,49 @@ function normalizeLogoDataURL(dataURL, maxHeight = LOGO_MAX_STORED_HEIGHT_PX) {
   });
 }
 
+/**
+ * Redimensionne l'image du cachet si elle dépasse SEAL_MAX_STORED_HEIGHT_PX en hauteur (largeur proportionnelle).
+ * Retourne une data URL PNG (transparence préservée pour cachet).
+ */
+function normalizeSealDataURL(dataURL, maxHeight = SEAL_MAX_STORED_HEIGHT_PX) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = () => {
+      try {
+        let w = img.naturalWidth,
+          h = img.naturalHeight;
+        if (!w || !h) {
+          resolve(dataURL);
+          return;
+        }
+        if (h <= maxHeight) {
+          resolve(dataURL);
+          return;
+        }
+        const scale = maxHeight / h;
+        const newH = Math.round(h * scale);
+        const newW = Math.round(w * scale);
+        const canvas = document.createElement('canvas');
+        canvas.width = newW;
+        canvas.height = newH;
+        const ctx = canvas.getContext('2d');
+        if (!ctx) {
+          resolve(dataURL);
+          return;
+        }
+        ctx.imageSmoothingEnabled = true;
+        ctx.imageSmoothingQuality = 'high';
+        ctx.drawImage(img, 0, 0, newW, newH);
+        resolve(canvas.toDataURL('image/png'));
+      } catch (e) {
+        reject(e);
+      }
+    };
+    img.onerror = () => reject(new Error('Image cachet invalide'));
+    img.src = dataURL;
+  });
+}
+
 function syncLogoSettingsUI() {
   const s = DB.settings;
   const img = document.getElementById('logo-preview');
@@ -72,6 +128,29 @@ function syncLogoSettingsUI() {
   if (img && ph) {
     if (s.logoData) {
       img.src = s.logoData;
+      img.style.display = 'block';
+      ph.style.display = 'none';
+    } else {
+      img.src = '';
+      img.style.display = 'none';
+      ph.style.display = '';
+    }
+  }
+}
+
+function syncSealSettingsUI() {
+  const s = DB.settings;
+  const img = document.getElementById('seal-preview');
+  const ph = document.getElementById('seal-placeholder');
+  const range = document.getElementById('s-seal-height');
+  const label = document.getElementById('s-seal-height-val');
+  if (range) {
+    range.value = String(Math.min(SEAL_DOC_HEIGHT_MAX, Math.max(SEAL_DOC_HEIGHT_MIN, s.sealMaxHeightPx || SEAL_DOC_HEIGHT_DEFAULT)));
+    if (label) label.textContent = range.value;
+  }
+  if (img && ph) {
+    if (s.sealData) {
+      img.src = s.sealData;
       img.style.display = 'block';
       ph.style.display = 'none';
     } else {
@@ -129,6 +208,7 @@ function loadSettings() {
   if (ribEl) validateRIBInput(ribEl);
   loadTemplateSettings();
   syncLogoSettingsUI();
+  syncSealSettingsUI();
   if (typeof renderSettingsActivationStatus === 'function') void renderSettingsActivationStatus();
   if (typeof syncSupabaseSettingsUI === 'function') syncSupabaseSettingsUI();
 }
@@ -157,6 +237,8 @@ function saveSettings() {
   if (lh) s.logoHeightPx = clampLogoDocHeight(lh.value);
   const sci = document.getElementById('s-pdf-show-company-with-logo');
   if (sci) s.pdfShowCompanyInfoWithLogo = !!sci.checked;
+  const sh = document.getElementById('s-seal-height');
+  if (sh) s.sealMaxHeightPx = Math.min(100, Math.max(30, parseInt(sh.value, 10) || 60));
   const scEl = document.getElementById('s-currency');
   const stvaEl = document.getElementById('s-tva');
   if (scEl && scEl.value) s.currency = scEl.value;

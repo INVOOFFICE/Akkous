@@ -1,4 +1,11 @@
 /* split chunk: app-chrome.css */
+
+:root {
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 /* Toast */
 #toast {
   position: fixed;
@@ -60,7 +67,7 @@
   border-radius: 11px;
   position: relative;
   cursor: pointer;
-  transition: 0.2s;
+  transition: var(--transition-base);
   flex-shrink: 0;
 }
 .toggle.on {
@@ -75,7 +82,7 @@
   height: 16px;
   background: #fff;
   border-radius: 50%;
-  transition: 0.2s;
+  transition: var(--transition-base);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 .toggle.on::after {
@@ -120,7 +127,7 @@
   font-weight: 500;
   cursor: pointer;
   color: var(--text2);
-  transition: 0.15s;
+  transition: var(--transition-base);
   font-family: inherit;
 }
 .ov-period-btn:hover {
@@ -227,7 +234,7 @@
   font-weight: 700;
   padding: 3px 10px;
   border-radius: 20px;
-  transition: 0.3s;
+  transition: var(--transition-base);
 }
 .dgi-score.ok {
   background: #dcfce7;
@@ -266,7 +273,7 @@
   border-radius: 8px;
   font-size: 12px;
   border: 1px solid transparent;
-  transition: 0.2s;
+  transition: var(--transition-base);
 }
 .dgi-item.ok {
   background: #f0fdf4;
@@ -469,7 +476,7 @@ input:required:not(:placeholder-shown):valid {
   font-weight: 700;
   border-top: 1.5px solid rgba(9, 188, 138, 0.25);
   background: rgba(9, 188, 138, 0.06);
-  transition: background 0.12s;
+  transition: background var(--transition-fast);
 }
 .ac-add:hover {
   background: rgba(9, 188, 138, 0.14);
@@ -560,7 +567,7 @@ input:required:not(:placeholder-shown):valid {
   border: 1.5px solid var(--border);
   margin-bottom: 8px;
   cursor: pointer;
-  transition: 0.15s;
+  transition: var(--transition-base);
 }
 .conv-option:hover {
   border-color: var(--brand);

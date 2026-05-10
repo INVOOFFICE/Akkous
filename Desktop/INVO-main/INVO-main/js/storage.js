@@ -286,6 +286,8 @@ const DB_DEFAULTS = {
     logoData: '',
     logoHeightPx: 48,
     pdfShowCompanyInfoWithLogo: true,
+    sealData: '',
+    sealMaxHeightPx: 60,
     backupMonthlyDay: 0,
     lastMonthlyBackupPromptDate: '',
     supabaseSyncEnabled: false,
@@ -823,7 +825,7 @@ let editArticleId = null,
   editClientId = null,
   docLines = [],
   histPage = 1,
-  histPerPage = 15;
+  histPerPage = 13;
 let _ovCaChart = null,
   _ovStatusChart = null,
   _ovPeriodMonths = 1;

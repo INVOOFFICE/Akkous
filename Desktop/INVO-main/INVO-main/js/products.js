@@ -21,6 +21,8 @@ function getCurrentArticleTvaForModal() {
   return parseInt(DB.settings?.tva, 10) || 20;
 }
 
+const STOCK_PAGE_SIZE = 13;
+
 function formatArticlePriceForInput(n) {
   const x = Number(n);
   if (!Number.isFinite(x) || x === 0) return '';
@@ -211,7 +213,7 @@ function renderStock() {
   }
   if (empty) empty.style.display = 'none';
   const filterKey = [search, catFilter, qtyFilter].join('\t');
-  const pageSize = typeof LIST_PAGE_SIZE === 'number' ? LIST_PAGE_SIZE : 50;
+  const pageSize = STOCK_PAGE_SIZE;
   const pg = getListPageSlice('stock', filterKey, items, pageSize);
   const pageRows = pg.rows;
   clearChildren(tbody);
@@ -515,6 +517,10 @@ function populateFournisseurSelect(selectedId) {
   ph.value = '';
   ph.textContent = '— Aucun fournisseur —';
   sel.appendChild(ph);
+  const addOption = document.createElement('option');
+  addOption.value = '__new_supplier__';
+  addOption.textContent = '➕ Ajouter un fournisseur';
+  sel.appendChild(addOption);
   list
     .filter(f => f && f.id != null)
     .slice()

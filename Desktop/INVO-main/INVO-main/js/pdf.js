@@ -140,6 +140,20 @@ function syncPreviewLogoHeightControls() {
   if (plhv) plhv.textContent = String(h);
 }
 
+function syncPreviewSealHeightControls() {
+  const psh = document.getElementById('preview-seal-height');
+  const pshv = document.getElementById('preview-seal-height-val');
+  const h =
+    typeof clampSealDocHeight === 'function'
+      ? clampSealDocHeight(DB.settings.sealMaxHeightPx)
+      : (() => {
+          const n = Number(DB.settings.sealMaxHeightPx);
+          return Math.min(150, Math.max(30, Number.isFinite(n) ? Math.round(n) : 60));
+        })();
+  if (psh) psh.value = String(h);
+  if (pshv) pshv.textContent = String(h);
+}
+
 /** Case « infos entreprise + logo » (aperçu) ← valeur enregistrée */
 function syncPreviewCompanyInfoControl() {
   const cb = document.getElementById('preview-show-company-with-logo');
@@ -168,6 +182,23 @@ function applyPreviewLogoHeightFromControl() {
   if (plhv) plhv.textContent = String(h);
   const s = document.getElementById('s-logo-height');
   const sv = document.getElementById('s-logo-height-val');
+  if (s) s.value = String(h);
+  if (sv) sv.textContent = String(h);
+  renderPreviewIframe();
+}
+
+function applyPreviewSealHeightFromControl() {
+  const psh = document.getElementById('preview-seal-height');
+  if (!psh) return;
+  const h =
+    typeof clampSealDocHeight === 'function'
+      ? clampSealDocHeight(psh.value)
+      : Math.min(150, Math.max(30, parseInt(psh.value, 10) || 60));
+  DB.settings.sealMaxHeightPx = h;
+  const pshv = document.getElementById('preview-seal-height-val');
+  if (pshv) pshv.textContent = String(h);
+  const s = document.getElementById('s-seal-height');
+  const sv = document.getElementById('s-seal-height-val');
   if (s) s.value = String(h);
   if (sv) sv.textContent = String(h);
   renderPreviewIframe();
@@ -210,6 +241,8 @@ function renderPreviewIframe() {
 
 function switchPreviewTemplate(tpl) {
   APP.pdfPreview.tpl = tpl;
+  DB.settings.pdfTemplate = tpl;
+  save('settings');
   syncPreviewTplTabs(tpl);
   renderPreviewIframe();
 }
@@ -221,7 +254,11 @@ function syncPreviewTplTabs(tpl) {
 }
 
 function refreshPreview() {
-  APP.pdfPreview.color = document.getElementById('preview-band-color').value;
+  const color = document.getElementById('preview-band-color').value;
+  APP.pdfPreview.color = color;
+  DB.settings.bandColor = color;
+  DB.settings._userBandColor = true;
+  save('settings');
   renderPreviewIframe();
 }
 
@@ -987,6 +1024,13 @@ function buildInvoiceHTML(doc, tpl, bandColor) {
       <div style="font-size:10px;font-weight:700;color:#888;text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px">Règlement</div>
       ${doc.terms ? `<div style="margin-bottom:${doc.payment ? '6px' : '0'}"><strong>Conditions :</strong> ${doc.terms}</div>` : ''}
       ${doc.payment ? `<div><strong>Mode de paiement :</strong> ${doc.payment}</div>` : ''}
+    </div>`
+        : ''
+    }
+    ${
+      s.sealData
+        ? `<div style="margin-top:20px;text-align:right;padding-top:10px;border-top:1px solid #e5e7eb">
+      <img src="${s.sealData}" alt="Cachet" style="max-height:${s.sealMaxHeightPx || 60}px;display:inline-block;opacity:0.95">
     </div>`
         : ''
     }

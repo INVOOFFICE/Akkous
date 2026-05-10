@@ -1,5 +1,12 @@
 /* split chunk: responsive.css */
-@media (max-width: 768px) {
+
+:root {
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (max-width: 767.98px) {
   /* ─ Layout ─ */
   html,
   body {
@@ -20,7 +27,8 @@
     flex-direction: column;
     overflow: visible !important;
     width: 100%;
-    padding-bottom: 60px;
+    /* ✅ 60px (tabbar) + env(safe-area-inset-bottom) pour ne pas être caché sur iPhone avec encoche */
+    padding-bottom: calc(60px + env(safe-area-inset-bottom, 0px));
   }
   #content {
     flex: 1;
@@ -35,7 +43,7 @@
     bottom: 0;
     z-index: 100;
     transform: translateX(-100%);
-    transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform var(--transition-slow) cubic-bezier(0.4, 0, 0.2, 1);
     width: 260px !important;
     overflow-y: auto;
   }
@@ -461,6 +469,12 @@
   }
 
   /* ─ Search panel (mobile responsive) ─ */
+  #search-footer {
+    display: none; /* ✅ Raccourcis clavier inutiles sur mobile/tactile */
+  }
+  .search-shortcut {
+    display: none;
+  }
   #search-panel {
     top: max(8px, env(safe-area-inset-top));
     left: 8px;
@@ -663,7 +677,7 @@
   }
 }
 
-@media (min-width: 481px) and (max-width: 768px) {
+@media (min-width: 481px) and (max-width: 767.98px) {
   /* Grids vue d'ensemble */
   .grid-chart-main {
     grid-template-columns: 1fr !important;
@@ -709,7 +723,7 @@
   }
 }
 
-@media (min-width: 769px) {
+@media (min-width: 768px) {
   #sidebar-overlay {
     display: none !important;
   }

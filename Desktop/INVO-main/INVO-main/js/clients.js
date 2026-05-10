@@ -19,6 +19,8 @@ function validateRIBInput(input) {
   else input.classList.add('ice-warn');
 }
 
+const CLIENTS_PAGE_SIZE = 13;
+
 function renderClients() {
   const search = (document.getElementById('client-search') || {}).value || '';
   const cityFilter = (document.getElementById('client-city-filter') || {}).value || '';
@@ -85,7 +87,7 @@ function renderClients() {
   }
   if (empty) empty.style.display = 'none';
   const filterKey = [search, cityFilter, iceFilter].join('\t');
-  const pageSize = typeof LIST_PAGE_SIZE === 'number' ? LIST_PAGE_SIZE : 50;
+  const pageSize = CLIENTS_PAGE_SIZE;
   const pg = getListPageSlice('clients', filterKey, clients, pageSize);
   const pageRows = pg.rows;
   clearChildren(tbody);

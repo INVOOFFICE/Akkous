@@ -40,17 +40,8 @@ function templatePageOverview() {
     <div class="card ov-panel card-panel"><div class="card-header card-header-spaced"><div class="card-title">Top clients</div></div><div id="ov-top-clients"></div></div>
     <div class="card ov-panel card-panel"><div class="card-header card-header-spaced"><div class="card-title">TVA à déclarer</div><div class="card-subtitle">Ce mois — par taux</div></div><div id="ov-tva-breakdown"></div></div>
     <div class="card ov-panel ov-panel-compact"><div class="card-title card-title-compact"><span aria-hidden="true">⚡</span> Alertes</div><div id="ov-alerts" class="ov-alerts"></div></div>
-    <div class="card ov-panel ov-panel-compact">
-      <div class="card-title card-title-compact">Accès rapide</div>
-      <div class="quick-actions-col" role="group" aria-label="Accès rapide depuis le tableau de bord">
-        <button type="button" class="btn btn-primary btn-sm btn-start" id="btn-qa-facture"><span aria-hidden="true">📄</span> Nouvelle Facture</button>
-        <button type="button" class="btn btn-secondary btn-sm btn-start" id="btn-qa-reports"><span aria-hidden="true">📈</span> Voir Rapports</button>
-        <button type="button" class="btn btn-secondary btn-sm btn-start" id="btn-new-devis"><span aria-hidden="true">📝</span> Nouveau Devis</button>
-        <button type="button" class="btn btn-secondary btn-sm btn-start" id="btn-export-all-overview"><span aria-hidden="true">💾</span> Exporter Backup JSON</button>
-      </div>
-    </div>
   </div>
-</div>`;
+</div>`
 }
 
 function templatePageGenerate() {
@@ -68,18 +59,6 @@ function templatePageGenerate() {
       </button>
       <button type="button" class="btn btn-primary" id="btn-save-doc" aria-label="Sauvegarder le document"><span aria-hidden="true">💾</span> Sauvegarder</button>
     </div>
-  </div>
-
-  <!-- DGI Checker -->
-  <div id="dgi-checker">
-    <div class="dgi-checker-header">
-      <div class="dgi-checker-title">
-        <svg aria-hidden="true" focusable="false" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        Conformité DGI — vérification en temps réel
-      </div>
-      <span class="dgi-score err" id="dgi-score-badge" aria-live="polite" role="status">0/8 mentions conformes</span>
-    </div>
-    <div class="dgi-items" id="dgi-items-list" aria-live="polite"></div>
   </div>
 
   <!-- Champ caché : id interne du document en cours d'édition (vide = nouveau document) -->
@@ -247,6 +226,18 @@ function templatePageGenerate() {
         </table>
       </div>
     </div>
+  </div>
+
+  <!-- DGI Checker -->
+  <div id="dgi-checker">
+    <div class="dgi-checker-header">
+      <div class="dgi-checker-title">
+        <svg aria-hidden="true" focusable="false" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Conformité DGI — vérification en temps réel
+      </div>
+      <span class="dgi-score err" id="dgi-score-badge" aria-live="polite" role="status">0/8 mentions conformes</span>
+    </div>
+    <div class="dgi-items" id="dgi-items-list" aria-live="polite"></div>
   </div>
 </div>`;
 }
@@ -435,6 +426,7 @@ function templatePageFournisseurs() {
 
   <!-- Grille cartes -->
   <div id="fourn-grid" class="fourn-grid"></div>
+  <div id="fournisseurs-list-pagination" class="list-pagination-wrap" aria-label="Pagination fournisseurs"></div>
   <div id="fourn-empty" class="empty-state">
     <div class="empty-icon" aria-hidden="true">🏭</div>
     <h3>Aucun fournisseur enregistré</h3>
@@ -486,7 +478,7 @@ function templatePageBonsCommande() {
 function templatePageSettings() {
   return `<div class="page" id="page-settings">
   <div class="page-header flex settings-header">
-    <div><h1>Paramètres de l'Entreprise</h1><p>Informations légales et personnalisation documents.</p></div>
+    <div><h1>Paramètres de l'Entreprise</h1></div>
     <div class="settings-header-actions" role="group" aria-label="Enregistrer ou annuler les paramètres">
       <button type="button" class="btn btn-secondary" id="btn-cancel-settings">Annuler</button>
       <button type="button" class="btn btn-primary" id="btn-save-settings" aria-label="Enregistrer les paramètres"><span aria-hidden="true">💾</span> Sauvegarder</button>
@@ -528,7 +520,7 @@ function templatePageSettings() {
           <option value="TTC">Prix en TTC</option>
           <option value="HT">Prix en HT</option>
         </select>
-        <p class="settings-help-inline">Enregistré automatiquement. Défaut des nouveaux documents.</p>
+
       </div>
     </div>
   </div>
@@ -541,7 +533,7 @@ function templatePageSettings() {
         <div class="form-group"><label for="s-seq-bl">Prochain BL</label><input id="s-seq-bl" name="settings-seq-bl" type="number" inputmode="numeric" placeholder="1"></div>
         <div class="form-group"><label for="s-seq-av">Prochain Avoir</label><input id="s-seq-av" name="settings-seq-av" type="number" inputmode="numeric" placeholder="1"></div>
       </div>
-      <div class="alert info">Exemple : <strong>F-2026-0010</strong></div>
+
     </div>
   </div>
   <div class="settings-section">
@@ -553,7 +545,7 @@ function templatePageSettings() {
   </div>
 
   <div class="settings-section">
-    <div class="settings-section-header"><div class="settings-section-icon ssi-logo" aria-hidden="true">🖼️</div><div><div class="settings-section-title">Logo de l'Entreprise</div><div class="settings-subtitle">Apparaît sur vos factures et devis</div></div></div>
+    <div class="settings-section-header"><div class="settings-section-icon ssi-logo" aria-hidden="true">🖼️</div><div><div class="settings-section-title">Logo de l'Entreprise</div></div></div>
     <div class="settings-section-body">
       <div class="settings-logo-row">
         <div class="settings-logo-preview-wrap">
@@ -592,9 +584,39 @@ function templatePageSettings() {
     </div>
   </div>
 
-  <!-- ══ TEMPLATES PDF ══ -->
   <div class="settings-section">
-    <div class="settings-section-header"><div class="settings-section-icon ssi-template" aria-hidden="true">🎨</div><div><div class="settings-section-title">Templates de Document PDF</div><div class="settings-subtitle">Choisissez le style visuel de vos factures, devis et bons de livraison</div></div></div>
+    <div class="settings-section-header"><div class="settings-section-icon ssi-seal" aria-hidden="true">🔏</div><div><div class="settings-section-title">Cachet ou Tampon</div></div></div>
+    <div class="settings-section-body">
+      <div class="settings-seal-row">
+        <div class="settings-seal-preview-wrap">
+          <img id="seal-preview" src="" alt="Cachet" class="settings-seal-preview">
+          <span id="seal-placeholder" class="settings-seal-placeholder" aria-hidden="true">🔏</span>
+        </div>
+        <div class="settings-seal-actions">
+          <label class="btn btn-secondary settings-seal-picker-btn">
+            <svg aria-hidden="true" focusable="false" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            Choisir un cachet
+            <input type="file" id="s-seal" accept="image/*" class="settings-file-hidden">
+          </label>
+          <button type="button" class="btn btn-secondary settings-seal-remove-btn" id="btn-remove-seal">
+            <svg aria-hidden="true" focusable="false" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/></svg>
+            Supprimer le cachet
+          </button>
+        </div>
+      </div>
+      <div class="form-group settings-seal-height-group">
+        <label for="s-seal-height">Hauteur du cachet dans les documents (PDF / impression)</label>
+        <div class="settings-seal-height-row">
+          <input type="range" id="s-seal-height" min="30" max="150" step="1" value="60" class="settings-seal-height-range" oninput="var el=document.getElementById('s-seal-height-val');if(el)el.textContent=this.value">
+          <span id="s-seal-height-val" class="settings-seal-height-val">60</span>
+          <span class="settings-seal-height-unit">px</span>
+        </div>
+        <p class="settings-seal-height-help">La largeur s'ajuste automatiquement pour conserver les proportions. À l'enregistrement, l'image est limitée à <strong>300 px</strong> de hauteur maximum pour éviter qu'elle ne dépasse sur le document généré. Cliquez sur <strong>Enregistrer les paramètres</strong> pour appliquer la hauteur du cachet aux PDF.</p>
+      </div>
+    </div>
+  </div>
+  <div class="settings-section">
+    <div class="settings-section-header"><div class="settings-section-icon ssi-template" aria-hidden="true">🎨</div><div><div class="settings-section-title">Templates de Document PDF</div></div></div>
     <div class="settings-section-body">
 
       <!-- Template selector -->
@@ -722,34 +744,10 @@ function templatePageSettings() {
       <div class="settings-section-icon settings-icon-activation" aria-hidden="true">🔑</div>
       <div>
         <div class="settings-section-title">Licence &amp; appareil</div>
-        <div class="settings-subtitle">Activation locale (hors ligne)</div>
       </div>
     </div>
     <div class="settings-section-body">
       <div id="settings-activation-status" class="settings-activation-status"></div>
-    </div>
-  </div>
-
-  <!-- ══ CONFIDENTIALITÉ (RGPD / transparence) ══ -->
-  <div class="settings-section">
-    <div class="settings-section-header">
-      <div class="settings-section-icon settings-icon-privacy" aria-hidden="true">🔒</div>
-      <div>
-        <div class="settings-section-title">Données personnelles</div>
-        <div class="settings-subtitle">Transparence — stockage local</div>
-      </div>
-    </div>
-    <div class="settings-section-body">
-      <p class="settings-paragraph settings-paragraph-gap-12">
-        INVOO OFFICE enregistre vos données <strong>dans ce navigateur</strong> (stockage local / OPFS). Aucun serveur central INVOO OFFICE ne reçoit vos factures ni votre liste de clients.
-      </p>
-      <p class="settings-paragraph settings-paragraph-gap-12">
-        L’<strong>activation</strong> s’effectue en local : vous pouvez ouvrir WhatsApp depuis l’écran d’activation pour envoyer votre e-mail et votre identifiant appareil au support ; aucun envoi automatique n’est effectué par l’application.
-      </p>
-      <p class="settings-paragraph settings-paragraph-gap-14">
-        Vous pouvez <strong>exporter</strong> vos données (JSON / Excel / CSV) ou les <strong>effacer</strong> via les données du site dans les paramètres du navigateur, ou la fonction d’effacement prévue dans l’app.
-      </p>
-      <a class="btn btn-secondary btn-sm" href="privacy.html" target="_blank" rel="noopener noreferrer">Politique de confidentialité (détail)</a>
     </div>
   </div>
 
@@ -759,40 +757,16 @@ function templatePageSettings() {
       <div class="settings-section-icon settings-icon-supabase" aria-hidden="true">☁️</div>
       <div>
         <div class="settings-section-title">Sync multi-appareils — Supabase</div>
-        <div class="settings-subtitle">Optionnel — votre propre projet Supabase (jamais activé sans votre accord)</div>
       </div>
     </div>
     <div class="settings-section-body">
       <label class="ui-toggle settings-supabase-toggle" for="s-supabase-sync-enabled">
-        <input type="checkbox" class="ui-toggle-input" id="s-supabase-sync-enabled" name="supabase-sync-enabled" aria-describedby="supabase-sync-help">
+        <input type="checkbox" class="ui-toggle-input" id="s-supabase-sync-enabled" name="supabase-sync-enabled">
         <span class="ui-toggle-track" aria-hidden="true"></span>
         <span class="settings-pdf-toggle-text">Activer la synchronisation cloud (Supabase)</span>
       </label>
-      <p id="supabase-sync-help" class="settings-paragraph settings-supabase-help">
-        Lorsque cette option est activée, vous pouvez connecter l’app à <strong>votre</strong> base Supabase pour fusionner <strong>toutes les préférences enregistrées dans Paramètres</strong> (entreprise, banque, légal DGI, modèle PDF, logo, compteurs, rappels backup, mode TTC/HT, etc.), ainsi que clients, documents, stock, fournisseurs, bons de commande et mouvements de stock entre appareils. Seuls l’URL projet, la clé <strong>anon</strong> et l’interrupteur « activer la sync » restent <strong>locaux à l’appareil</strong> (jamais envoyés dans le JSON synchronisé). Rien n’est envoyé tant que vous n’avez pas saisi l’URL et la clé <strong>anon</strong> et cliqué sur « Connecter ».
-      </p>
 
-      <div class="settings-supabase-steps">
-        <div class="settings-mini-title">Comment configurer ?</div>
-        <ol class="settings-supabase-ol">
-          <li>Créez un compte gratuit sur <a href="https://supabase.com" target="_blank" rel="noopener noreferrer">supabase.com</a></li>
-          <li>Créez un projet → <strong>SQL Editor</strong> → exécutez le script ci-dessous (une fois)</li>
-          <li><strong>Database → Publications</strong> : ajoutez chaque table <code>invoo_rt_*</code> à <code>supabase_realtime</code> (mises à jour instantanées entre appareils)</li>
-          <li><strong>Settings → API</strong> : copiez <strong>Project URL</strong> et <strong>anon public</strong> key</li>
-          <li>Collez-les ci-dessous puis <strong>Connecter &amp; synchroniser</strong></li>
-        </ol>
-      </div>
-
-      <div class="settings-supabase-privacy">
-        <div class="settings-mini-title">Confidentialité des données</div>
-        <p class="settings-paragraph">
-          La synchronisation envoie les enregistrements en JSON dans la colonne <code>data</code> (jsonb), y compris l’ensemble des <strong>paramètres métier</strong> (coordonnées, RIB, ICE/IF/RC, logo, rappels backup, etc.). Pour un usage personnel sur un <strong>projet privé</strong>, c’est généralement acceptable. Un administrateur du projet Supabase peut lire ces données. N’utilisez <strong>jamais</strong> la clé <code>service_role</code> dans l’application.
-        </p>
-      </div>
-
-      <div class="settings-mini-title">Script SQL — à exécuter une seule fois dans Supabase → SQL Editor</div>
-      <div class="settings-supabase-sql-wrap">
-        <pre id="supabase-sql-template" class="settings-supabase-sql" readonly>-- INVOO OFFICE — tables de sync (id + jsonb + soft delete)
+      <pre id="supabase-sql-template" class="settings-supabase-sql" hidden>-- INVOO OFFICE — tables de sync (id + jsonb + soft delete)
 create table if not exists public.invoo_rt_clients (
   id text primary key,
   data jsonb not null default '{}'::jsonb,
@@ -857,8 +831,7 @@ alter publication supabase_realtime add table public.invoo_rt_fournisseurs;
 alter publication supabase_realtime add table public.invoo_rt_bons_commande;
 alter publication supabase_realtime add table public.invoo_rt_stock_moves;
 alter publication supabase_realtime add table public.invoo_rt_settings;</pre>
-        <button type="button" class="btn btn-secondary btn-sm" id="btn-supabase-copy-sql">Copier le script</button>
-      </div>
+      <button type="button" class="btn btn-secondary btn-sm" id="btn-supabase-copy-sql">Copier la configuration Supabase</button>
 
       <div class="field-row c1 settings-supabase-fields">
         <div class="form-group">
@@ -868,7 +841,7 @@ alter publication supabase_realtime add table public.invoo_rt_settings;</pre>
         <div class="form-group">
           <label for="s-supabase-anon-key">Clé API (anon public)</label>
           <input type="password" id="s-supabase-anon-key" name="supabase-anon-key" placeholder="eyJhbGciOiJIUzI1NiIs…" autocomplete="off" spellcheck="false">
-          <p class="settings-logo-height-help">Utilisez la clé <strong>anon</strong> — jamais la clé <code>service_role</code>.</p>
+
         </div>
       </div>
 
@@ -887,7 +860,6 @@ alter publication supabase_realtime add table public.invoo_rt_settings;</pre>
       <div class="settings-section-icon settings-icon-backup" aria-hidden="true">💾</div>
       <div>
         <div class="settings-section-title settings-backup-title">Sauvegarde & Restauration</div>
-        <div class="settings-subtitle">Stockage OPFS actif — données illimitées</div>
       </div>
       <div class="settings-backup-header-right">
         <span id="opfs-status-badge" class="opfs-status-badge">
@@ -898,22 +870,11 @@ alter publication supabase_realtime add table public.invoo_rt_settings;</pre>
     </div>
     <div class="settings-section-body">
       <!-- Info banner -->
-      <div class="settings-backup-info-banner">
-        <div class="settings-backup-info-icon" aria-hidden="true">🗄️</div>
-        <div>
-          <div class="settings-backup-info-title">Stockage automatique dans ce navigateur, sans limite d'espace.</div>
-          <div class="settings-backup-info-text">Pensez à exporter une sauvegarde pour transférer vos données sur un autre appareil.</div>
-          <div id="opfs-storage-info" class="settings-backup-storage-info">Calcul en cours...</div>
-        </div>
-      </div>
+      <div id="opfs-storage-info" class="settings-backup-storage-info">Calcul en cours...</div>
 
       <!-- Sauvegarde Portable -->
       <div class="settings-backup-portable">
         <div class="settings-backup-block-title"><span aria-hidden="true">📦</span> Sauvegarde Portable</div>
-        <div class="settings-backup-portable-card">
-          <div class="settings-backup-portable-card-title">Exportez vos données en fichier JSON</div>
-          <div class="settings-backup-portable-card-text">Pour les sauvegarder sur une clé USB, les transférer sur un autre appareil, ou les archiver. <strong class="settings-backup-strong">Importer sauvegarde</strong> lit exactement le fichier produit par <strong class="settings-backup-strong">Exporter Backup JSON</strong> (même format JSON).</div>
-        </div>
         <div class="settings-backup-actions">
           <button type="button" class="btn btn-primary settings-icon-btn" id="btn-export-all">
             <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
@@ -926,24 +887,16 @@ alter publication supabase_realtime add table public.invoo_rt_settings;</pre>
           <input type="file" id="import-file" accept=".json" class="settings-file-hidden" aria-label="Choisir un fichier de sauvegarde JSON à importer (même format qu’Exporter Backup JSON)">
         </div>
         <div class="settings-backup-reminder-card">
-          <div class="settings-backup-reminder-title"><span aria-hidden="true">📅</span> Rappel mensuel (popup backup)</div>
-          <div class="settings-backup-reminder-text">Indiquez le <strong>jour du mois</strong> où une fenêtre propose automatiquement de télécharger le backup JSON (ex. <strong>15</strong> = chaque mois le 15, à l’ouverture de l’app). Mettez <strong>0</strong> pour désactiver.</div>
+          <div class="settings-backup-reminder-title"><span aria-hidden="true">📅</span> Rappel mensuel</div>
           <div class="settings-backup-reminder-row">
             <label for="s-backup-monthly-day" class="settings-backup-reminder-label">Jour du mois (0–31)</label>
             <input type="number" id="s-backup-monthly-day" min="0" max="31" placeholder="0" class="settings-backup-reminder-input">
-            <span class="settings-backup-reminder-note">0 = désactivé · les mois plus courts utilisent le dernier jour (ex. 31 → 28 ou 29 en février)</span>
           </div>
         </div>
         <div id="backup-reminder-status" class="settings-backup-reminder-status"></div>
       </div>
 
-      <!-- Warning -->
-      <div class="settings-backup-warning">
-        <div class="settings-backup-warning-icon" aria-hidden="true">⚠️</div>
-        <div class="settings-backup-warning-text">
-          <strong class="settings-backup-gold">Données liées à ce navigateur.</strong> Si vous changez d'ordinateur, de navigateur, ou réinstallez Chrome, vos données seront perdues. <strong>Exportez régulièrement une sauvegarde</strong> et gardez-la en lieu sûr.
-        </div>
-      </div>
+
 
       <!-- Cache + Danger zone -->
       <div class="settings-backup-cache-zone">
@@ -956,7 +909,6 @@ alter publication supabase_realtime add table public.invoo_rt_settings;</pre>
                 <svg aria-hidden="true" focusable="false" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M3 21v-5h5"/></svg>
                 Vider le cache
               </div>
-              <div class="settings-backup-cache-text">Recharge les données depuis le stockage sans rien supprimer.<br>Utile si des modifications ne s'affichent pas correctement.</div>
             </div>
             <button type="button" class="btn settings-backup-cache-btn" id="btn-clear-cache">
               <svg aria-hidden="true" focusable="false" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M3 21v-5h5"/></svg>
@@ -965,15 +917,6 @@ alter publication supabase_realtime add table public.invoo_rt_settings;</pre>
           </div>
         </div>
 
-        <div class="settings-backup-danger-title">Zone Dangereuse</div>
-        <button type="button" class="btn btn-secondary settings-icon-btn" id="btn-reload-data">
-            <svg aria-hidden="true" focusable="false" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
-            Recharger les données
-          </button>
-        <button type="button" class="btn btn-danger settings-icon-btn" id="btn-clear-data">
-          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>
-          Effacer toutes les données
-        </button>
       </div>
     </div>
   </div>

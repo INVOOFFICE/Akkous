@@ -88,6 +88,10 @@ function populateBCFournSelect(selectedId) {
   o0.value = '';
   o0.textContent = list.length ? '— Choisir un fournisseur —' : '— Aucun fournisseur enregistré —';
   sel.appendChild(o0);
+  const addOption = document.createElement('option');
+  addOption.value = '__new_supplier__';
+  addOption.textContent = '➕ Ajouter un fournisseur';
+  sel.appendChild(addOption);
   list.forEach(f => {
     const o = document.createElement('option');
     o.value = String(f.id);

@@ -1,11 +1,18 @@
 /* split chunk: templates-mobile-static.css */
+
+:root {
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 /* ══ TEMPLATE PDF CARDS ══ */
 .tpl-card {
   border: 2px solid var(--border2);
   border-radius: 12px;
   padding: 12px;
   cursor: pointer;
-  transition: 0.2s;
+  transition: var(--transition-base);
   background: var(--surface);
   position: relative;
 }
@@ -189,7 +196,7 @@
   border-radius: 10px;
   padding: 10px 8px;
   text-align: center;
-  transition: 0.15s;
+  transition: var(--transition-base);
 }
 .fourn-score-card-active {
   border: 2px solid var(--brand);
@@ -253,6 +260,17 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 12px;
+}
+/* ✅ Responsive pour settings-seq-grid */
+@media (max-width: 768px) {
+  .settings-seq-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 480px) {
+  .settings-seq-grid {
+    grid-template-columns: 1fr;
+  }
 }
 .settings-subtitle {
   font-size: 11px;
@@ -352,11 +370,101 @@
   line-height: 1.4;
   padding-top: 1px;
 }
+
+/* ═══ Cachet/Tampon ═══ */
+.settings-seal-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.settings-seal-preview-wrap {
+  width: 80px;
+  height: 80px;
+  border: 2px dashed var(--border2);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--surface2);
+  flex-shrink: 0;
+}
+.settings-seal-preview {
+  display: none;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+.settings-seal-placeholder {
+  font-size: 24px;
+}
+.settings-seal-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.settings-seal-picker-btn {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+.settings-seal-remove-btn {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--danger);
+  border-color: rgba(239, 68, 68, 0.3);
+}
+.settings-seal-height-group {
+  margin-top: 14px;
+  max-width: 520px;
+}
+.settings-seal-height-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 6px;
+}
+.settings-seal-height-range {
+  flex: 1;
+  min-width: 180px;
+  accent-color: var(--brand, #09bc8a);
+}
+.settings-seal-height-val {
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  min-width: 2.5rem;
+}
+.settings-seal-height-unit {
+  font-size: 12px;
+  color: var(--text3);
+}
+.settings-seal-height-help {
+  font-size: 11px;
+  color: var(--text3);
+  margin-top: 10px;
+  line-height: 1.5;
+}
+
 .settings-template-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 12px;
   margin-bottom: 20px;
+}
+/* ✅ Responsive pour settings-template-grid */
+@media (max-width: 768px) {
+  .settings-template-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 380px) {
+  .settings-template-grid {
+    grid-template-columns: 1fr;
+  }
 }
 .settings-band-box {
   background: var(--surface2);
@@ -763,7 +871,7 @@
   padding: 14px 12px;
   cursor: pointer;
   text-align: center;
-  transition: 0.15s;
+  transition: var(--transition-base);
 }
 .client-type-card-part {
   border: 2px solid var(--brand);
@@ -922,7 +1030,7 @@
   padding: 16px 14px;
   cursor: pointer;
   text-align: center;
-  transition: 0.15s;
+  transition: var(--transition-base);
 }
 .ncq-type-card-part {
   border: 2px solid var(--brand);
@@ -968,7 +1076,7 @@
   border-radius: 6px;
   cursor: pointer;
   border: 2px solid transparent;
-  transition: 0.15s;
+  transition: var(--transition-base);
   flex-shrink: 0;
 }
 .band-color-swatch:hover {
@@ -984,7 +1092,7 @@
 /* ── Grids nommés pour les pages overview / rapports / génération ── */
 .grid-chart-main {
   display: grid;
-  grid-template-columns: 1fr 340px;
+  grid-template-columns: 1fr minmax(260px, 340px); /* ✅ minmax évite débordement tablette étroite */
   gap: 16px;
   margin-bottom: 16px;
 }
@@ -1011,6 +1119,22 @@
   margin-bottom: 14px;
 }
 
+/* ✅ Breakpoint tablette intermédiaire (769px - 1023px) */
+@media (min-width: 769px) and (max-width: 1023px) {
+  .grid-chart-main {
+    grid-template-columns: 1fr; /* Empile sur tablette */
+  }
+  .grid-ov-bottom {
+    grid-template-columns: 1fr 1fr; /* 2 colonnes sur tablette */
+  }
+  .grid-doc-config {
+    grid-template-columns: 1fr 1fr 1fr; /* 3 colonnes sur tablette */
+  }
+  .grid-doc-config > .form-group:nth-child(1) { grid-column: 1 / -1; }
+  .grid-doc-config > .form-group:nth-child(4) { grid-column: 1 / -1; }
+  .grid-doc-config > .form-group:nth-child(5) { grid-column: 1 / -1; }
+}
+
 /* ── Sidebar overlay (mobile drawer) ── */
 #sidebar-overlay {
   display: none;
@@ -1019,7 +1143,7 @@
   background: rgba(0, 0, 0, 0.55);
   z-index: 99;
   opacity: 0;
-  transition: opacity 0.25s;
+  transition: opacity var(--transition-base);
   pointer-events: none;
 }
 #sidebar-overlay.open {
@@ -1058,7 +1182,7 @@
   font-family: inherit;
   cursor: pointer;
   border-radius: 10px;
-  transition: 0.15s;
+  transition: var(--transition-base);
   min-width: 0;
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
@@ -1095,7 +1219,7 @@
   background: rgba(0, 0, 0, 0.52);
   z-index: 109;
   opacity: 0;
-  transition: opacity 0.2s ease;
+  transition: opacity var(--transition-base);
 }
 #mob-actions-sheet {
   position: fixed;
@@ -1109,7 +1233,7 @@
   border-top-right-radius: 16px;
   padding: 12px 12px calc(12px + env(safe-area-inset-bottom));
   transform: translateY(110%);
-  transition: transform 0.2s ease;
+  transition: transform var(--transition-base);
 }
 #mob-actions-overlay.open {
   display: block;
@@ -1271,7 +1395,7 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
 }
 .hist-doc-ref {
   font-family: Arial, sans-serif;
@@ -1397,7 +1521,8 @@
 #mob-fab {
   display: none;
   position: fixed;
-  bottom: 74px;
+  /* ✅ bottom dynamique : 60px (tabbar) + safe-area iOS + 14px d'espace */
+  bottom: calc(60px + env(safe-area-inset-bottom, 0px) + 14px);
   right: 16px;
   width: 52px;
   height: 52px;
@@ -1411,7 +1536,7 @@
   box-shadow: 0 4px 16px rgba(9, 188, 138, 0.4);
   align-items: center;
   justify-content: center;
-  transition: 0.2s;
+  transition: var(--transition-base);
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
   user-select: none;

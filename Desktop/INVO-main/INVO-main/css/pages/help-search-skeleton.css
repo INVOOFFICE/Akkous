@@ -1,4 +1,11 @@
 /* split chunk: help-search-skeleton.css */
+
+:root {
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 /* Help */
 .help-card {
   background: linear-gradient(135deg, var(--brand), var(--brand-dark));
@@ -110,7 +117,7 @@
   gap: 12px;
   padding: 12px 16px;
   cursor: pointer;
-  transition: 0.12s;
+  transition: var(--transition-fast);
   font-size: 14px;
   font-weight: 600;
   color: var(--text);
@@ -181,7 +188,7 @@
   cursor: pointer;
   font-size: 13px;
   color: var(--text2);
-  transition: 0.15s;
+  transition: var(--transition-base);
   font-family: inherit;
 }
 .search-trigger:hover {

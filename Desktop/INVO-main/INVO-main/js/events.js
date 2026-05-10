@@ -234,6 +234,14 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('stock-cat-filter')?.addEventListener('change', renderStock);
   document.getElementById('stock-qty-filter')?.addEventListener('change', renderStock);
   document.getElementById('btn-add-article')?.addEventListener('click', openAddArticle);
+  document.getElementById('a-fournisseur')?.addEventListener('change', e => {
+    const sel = e.target;
+    if (sel.value === '__new_supplier__') {
+      openAddFourn();
+      sel.value = '';
+      if (typeof refreshThemedSelect === 'function') refreshThemedSelect('a-fournisseur');
+    }
+  });
   document.getElementById('btn-import-masse')?.addEventListener('click', openImportMasse);
   document.getElementById('btn-export-stock')?.addEventListener('click', exportStockCSV);
   document.getElementById('btn-stock-moves')?.addEventListener('click', openStockMoves);
@@ -344,8 +352,19 @@ document.addEventListener('DOMContentLoaded', () => {
   _pvLogo?.addEventListener('input', () => {
     if (typeof applyPreviewLogoHeightFromControl === 'function')
       applyPreviewLogoHeightFromControl();
+    save('settings');
   });
   _pvLogo?.addEventListener('change', () => {
+    save('settings');
+  });
+
+  const _pvSeal = document.getElementById('preview-seal-height');
+  _pvSeal?.addEventListener('input', () => {
+    if (typeof applyPreviewSealHeightFromControl === 'function')
+      applyPreviewSealHeightFromControl();
+    save('settings');
+  });
+  _pvSeal?.addEventListener('change', () => {
     save('settings');
   });
 
@@ -472,7 +491,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (typeof toast === 'function') toast(msg, kind || 'suc');
     };
     if (navigator.clipboard?.writeText) {
-      navigator.clipboard.writeText(t).then(() => ok('Script SQL copié ✓'), () => ok('Copie impossible', 'err'));
+      navigator.clipboard.writeText(t).then(() => ok('Configuration Supabase copiée ✓'), () => ok('Copie impossible', 'err'));
     } else {
       try {
         const ta = document.createElement('textarea');
@@ -569,6 +588,63 @@ document.addEventListener('DOMContentLoaded', () => {
     toast('Logo supprimé', 'suc');
   });
 
+  document.getElementById('s-seal')?.addEventListener('change', e => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = async ev => {
+      try {
+        let data = ev.target.result;
+        if (typeof normalizeSealDataURL === 'function') {
+          data = await normalizeSealDataURL(data);
+        }
+        DB.settings.sealData = data;
+        const img = document.getElementById('seal-preview');
+        const ph = document.getElementById('seal-placeholder');
+        if (img) {
+          img.src = data;
+          img.style.display = 'block';
+        }
+        if (ph) ph.style.display = 'none';
+        save('settings');
+        toast('Cachet enregistré (réduit si dépassant 300 px de hauteur)', 'suc');
+      } catch (err) {
+        console.error(err);
+        toast('Impossible de traiter ce fichier image', 'err');
+      }
+    };
+    reader.readAsDataURL(file);
+  });
+
+  function syncSealHeightLabelFromInput(el) {
+    const lab = document.getElementById('s-seal-height-val');
+    if (lab && el) lab.textContent = el.value;
+  }
+  document
+    .getElementById('s-seal-height')
+    ?.addEventListener('input', e => syncSealHeightLabelFromInput(e.target));
+  document
+    .getElementById('s-seal-height')
+    ?.addEventListener('change', e => syncSealHeightLabelFromInput(e.target));
+  document.getElementById('page-settings')?.addEventListener('input', e => {
+    if (e.target?.id === 's-seal-height') syncSealHeightLabelFromInput(e.target);
+  });
+
+  document.getElementById('btn-remove-seal')?.addEventListener('click', () => {
+    DB.settings.sealData = '';
+    const fileIn = document.getElementById('s-seal');
+    if (fileIn) fileIn.value = '';
+    const img = document.getElementById('seal-preview');
+    const ph = document.getElementById('seal-placeholder');
+    if (img) {
+      img.src = '';
+      img.style.display = 'none';
+    }
+    if (ph) ph.style.display = '';
+    save('settings');
+    toast('Cachet supprimé', 'suc');
+  });
+
   document.getElementById('btn-export-all')?.addEventListener('click', exportBackup);
   document.getElementById('btn-export-all-overview')?.addEventListener('click', exportBackup);
   document
@@ -653,7 +729,16 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('bc-search')?.addEventListener('input', renderBonsCommande);
   document.getElementById('bc-filter-status')?.addEventListener('change', renderBonsCommande);
   document.getElementById('btn-save-bc')?.addEventListener('click', saveBC);
-  document.getElementById('bc-fournisseur')?.addEventListener('change', syncBCSaveState);
+  document.getElementById('bc-fournisseur')?.addEventListener('change', e => {
+    const sel = e.target;
+    if (sel.value === '__new_supplier__') {
+      openAddFourn();
+      sel.value = '';
+      if (typeof refreshThemedSelect === 'function') refreshThemedSelect('bc-fournisseur');
+    } else {
+      syncBCSaveState();
+    }
+  });
   document
     .getElementById('btn-cancel-bc')
     ?.addEventListener('click', () => closeModal('modal-bon-commande'));
@@ -671,16 +756,6 @@ document.addEventListener('DOMContentLoaded', () => {
   document
     .getElementById('btn-close-bc-view-footer')
     ?.addEventListener('click', () => closeModal('modal-bc-view'));
-
-  // ════════════════════════════════════════
-  //  VUE D'ENSEMBLE — accès rapide
-  // ════════════════════════════════════════
-  document
-    .getElementById('btn-qa-facture')
-    ?.addEventListener('click', () => nav('generate', sbItem('generate')));
-  document
-    .getElementById('btn-qa-reports')
-    ?.addEventListener('click', () => nav('reports', sbItem('reports')));
 
   // ════════════════════════════════════════
   //  MODAL: SALES — fermeture
