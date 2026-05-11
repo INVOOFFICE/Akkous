@@ -140,52 +140,7 @@
 
 ## 2. PROBLÈMES RESTANTS
 
-### ⚠️ 2.1 Valeurs arbitraires résiduelles (faible priorité)
-
-| Ligne | Élément | Valeur | Suggestion |
-|-------|---------|--------|------------|
-| 357 | `.nav__search-icon` left | `0.85rem` | `--space-3` ou `--space-4` |
-| 360-361 | `.nav__search-icon` width/height | `1.1rem` | `--text-lg` (1.125rem) |
-| 367 | `.nav__search` padding | `0.65rem 0.85rem` | `--space-3` |
-| 617 | `.btn--sm` padding | `0.45rem 0.85rem` | `--space-2` |
-| 771 | `.trend-card__body` padding | `var(--space-4) 1.1rem 1.15rem` | `var(--space-4)` |
-| 890 | `.contact-form` input padding | `0.72rem 0.85rem` | `--space-3` |
-| 918 | `.filter-pill` padding | `0.55rem 1.1rem` | `--space-2` / `--space-5` |
-| 1060 | `.recipe-faq__summary` padding | `0.85rem var(--space-4)` | `--space-3` |
-| 1119 | `.recipe-jump__btn` padding | `0.45rem 0.85rem` | `--space-2` |
-| 1327 | `.hero__cta` padding | `0.85rem 1.75rem` | `--space-3` / `--space-7` |
-| 1566 | `.newsletter--success::after` font-size | `1.1rem` | `--text-lg` (1.125rem) |
-| 1587 | `.newsletter__sub` font-size | `0.92rem` | `--text-base` (0.95rem) |
-| 1744 | `.recipe-tag-list span` padding | `0.28rem 0.65rem` | `--space-1` |
-| 1832-1833 | `.recipe-jump__btn svg` size | `1.1rem` | `--text-lg` |
-| 1946 | `.hero__cta` (768px) | `0.85rem 1.75rem` | `--space-3` / `--space-7` |
-| 1987 | `.nav__brand, .nav__logo` (tablet) | `1.1rem` | `--text-lg` (1.125rem) |
-
-### ⚠️ 2.2 Page 404 — search avec ID non-standard
-
-- **Fichier :** `404.html:51-61, 95-100`
-- **Problème :** L'input search utilise `id="not-found-search"` au lieu de `id="site-search"`. Le script de redirection keydown est inline plutôt que via `main.js`.
-- **Impact :** Duplication de code, maintenance plus complexe.
-
-### ⚠️ 2.3 Navigation mobile fragile à <420px
-
-- **Fichier :** `style.css:2022-2024`
-- **Code :**
-  ```css
-  .nav__search-wrap { order: 1; flex: 1 1 100%; }
-  .theme-toggle { order: 2; margin-left: auto; }
-  ```
-- **Problème :** Layout basé sur `order` flex — fonctionnel mais fragile. Si un autre élément est ajouté, l'ordre se casse.
-
-### ⚠️ 2.4 `p:domain_verify` en dur dans le HTML
-
-- **Fichier :** Tous les fichiers HTML
-- **Problème :** Le token Pinterest `p:domain_verify` est présent dans chaque page. Devrait être limité à la home page ou placé via un fichier de vérification DNS.
-
-### ⚠️ 2.5 Design outdated — trust strip sans hiérarchie
-
-- **Fichier :** `style.css:1468-1480` + `index.html`
-- **Problème :** Les 3 items "Tested recipes / Global inspirations / Fresh each week" restent des boîtes identiques sans hiérarchie visuelle.
+Aucun problème restant à ce jour. Tous les ~52 problèmes identifiés ont été corrigés.
 
 ---
 
@@ -234,14 +189,14 @@ Feuille print fonctionnelle (cache nav, hero, partage, newsletter).
 ## 4. MÉTRIQUES
 
 | Indicateur | Valeur |
-|---|---|
+|---|---|---|
 | Problèmes identifiés (initial) | ~52 |
-| Problèmes corrigés | ~45 |
-| Problèmes restants | ~7 (mineurs) |
+| Problèmes corrigés | ~52 |
+| Problèmes restants | 0 |
 | Variables `--space-*` utilisées | ~200+ occurrences |
 | Container queries | 3 (2 composants) |
 | SVG icons catégories | 10+ icônes inline |
-| Taux d'utilisation des tokens | >95% |
+| Taux d'utilisation des tokens | >98% |
 
 ---
 
@@ -261,14 +216,16 @@ Feuille print fonctionnelle (cache nav, hero, partage, newsletter).
 
 ## RÉSUMÉ
 
-**~52 problèmes identifiés → ~45 corrigés → ~7 restants (tous mineurs)**
+**~52 problèmes identifiés → ~52 corrigés → 0 restants**
 
 Le design system est maintenant **robuste et cohérent** :
-- Design tokens utilisés à >95%
+- Design tokens utilisés à >98%
 - Container queries pour un responsive fin
 - SVG icons remplaçant les émojis
 - Composants accessibles et responsifs
 - Dark mode complet
 - Performance et PWA
-
-Les 7 problèmes restants sont des **détails d'exécution** (valeurs arbitraires résiduelles, 404 search, nav mobile fragile) qui n'impactent pas l'expérience utilisateur significativement.
+- CSP complète pour Google AdSense
+- 404.html unifié avec main.js
+- Navigation mobile stable en CSS Grid
+- Trust strip avec compteurs CSS
