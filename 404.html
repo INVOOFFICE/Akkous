@@ -42,18 +42,18 @@
     />
     <link rel="preload" as="style" href="style.css" onload="this.rel='stylesheet'" />
     <noscript><link rel="stylesheet" href="style.css" /></noscript>
-    <script defer src="/_vercel/insights/script.js"></script>
+    <script src="main.js" defer></script>
   </head>
   <body>
     <main class="container error-page" id="main-content">
       <h1>Page not found</h1>
       <p>The page you are looking for does not exist or may have moved.</p>
       <div class="container--narrow nav__search-wrap">
-        <label for="not-found-search" class="sr-only">Search recipes</label>
+        <label for="site-search" class="sr-only">Search recipes</label>
         <input
           class="nav__search"
           type="search"
-          id="not-found-search"
+          id="site-search"
           name="q"
           placeholder="Search recipes..."
           autocomplete="off"
@@ -92,12 +92,6 @@
 
     <script>
       document.getElementById("footer-year").textContent = new Date().getFullYear();
-      document.getElementById("not-found-search").addEventListener("keydown", function (event) {
-        if (event.key !== "Enter") return;
-        event.preventDefault();
-        var value = event.currentTarget.value.trim();
-        window.location.href = "index.html" + (value ? "?q=" + encodeURIComponent(value) : "");
-      });
     </script>
   </body>
 </html>

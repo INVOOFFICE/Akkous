@@ -15,7 +15,7 @@
     <meta charset="UTF-8" />
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://pagead2.googlesyndication.com https://www.googlesyndication.com https://adservice.google.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' https: data:; connect-src 'self' https://script.google.com https://www.google-analytics.com https://pagead2.googlesyndication.com https://vitals.vercel-insights.com; frame-src https://www.youtube.com https://script.google.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com; form-action 'self' https://script.google.com; object-src 'none'; base-uri 'self';"
+      content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://pagead2.googlesyndication.com https://www.googlesyndication.com https://adservice.google.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' https: data:; connect-src 'self' https://script.google.com https://www.google-analytics.com https://pagead2.googlesyndication.com; frame-src https://www.youtube.com https://script.google.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com; form-action 'self' https://script.google.com; object-src 'none'; base-uri 'self';"
     />
     <meta http-equiv="content-language" content="en" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -141,7 +141,6 @@
         ]
       }
     </script>
-    <script defer src="/_vercel/insights/script.js"></script>
 </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -320,9 +319,9 @@
         <div class="masonry" id="recipe-grid" aria-live="polite"></div>
       </section>
 
-      <section class="newsletter container io-fade" aria-labelledby="newsletter-heading">
+      <section class="newsletter newsletter-container container io-fade" aria-labelledby="newsletter-heading">
         <h2 id="newsletter-heading">Get recipes in your inbox</h2>
-        <p id="newsletter-subtext">Weekly seasonal ideas—no spam, unsubscribe anytime.</p>
+        <p class="newsletter__sub" id="newsletter-subtext">Des recettes testées, zéro spam. Désinscription en un clic.</p>
         <form
           class="newsletter__form"
           id="newsletter-form"

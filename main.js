@@ -198,6 +198,18 @@
     return !!document.getElementById("recipe-main");
   }
 
+  function recipeIdFromLocation() {
+    var segs = window.location.pathname.split("/").filter(Boolean);
+    if (segs.length && /index\.html?/i.test(segs[segs.length - 1])) {
+      segs.pop();
+    }
+    var ri = segs.indexOf("recipes");
+    if (ri >= 0 && ri < segs.length - 1) {
+      return segs[ri + 1];
+    }
+    return null;
+  }
+
   function isHomePage() {
     return !!document.getElementById("recipe-grid");
   }
@@ -327,7 +339,7 @@
     if (!toggle || !panel || !header) return;
 
     function isDesktop() {
-      return window.matchMedia("(min-width: 960px)").matches;
+      return window.matchMedia("(min-width: 768px)").matches;
     }
 
     function syncPanelAria() {
@@ -524,11 +536,7 @@
     var max = HERO_CAROUSEL_MAX;
     if (!state.recipes.length) return [];
     var sorted = sortRecipesByPublishDateDesc(state.recipes);
-    // Prioriser les recettes featured: true en premier
-    var featured = sorted.filter(function (r) { return r.featured === true; });
-    var nonFeatured = sorted.filter(function (r) { return r.featured !== true; });
-    var combined = featured.concat(nonFeatured);
-    return combined.slice(0, max);
+    return sorted.slice(0, max);
   }
 
   function heroRecipeMetaLine(recipe) {
@@ -828,6 +836,7 @@
         );
       })
       .join("");
+    initImagePlaceholders(track);
   }
 
   function initTrendingSlider() {
@@ -932,17 +941,141 @@
     starter: "Small plates to open the meal",
   };
 
-  var CATEGORY_EMOJI = {
-    chicken: "🍗",
-    beef: "🥩",
-    seafood: "🦐",
-    pasta: "🍝",
-    vegetarian: "🥗",
-    dessert: "🍰",
-    soup: "🍲",
-    breakfast: "🍳",
-    lamb: "🫕",
-    side: "🥙",
+  var CATEGORY_ICONS = {
+    chicken: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a4 4 0 0 0-4 4c0 2 1 3 2 4l-2 5h8l-2-5c1-1 2-2 2-4a4 4 0 0 0-4-4z"/><path d="M8 15v2a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-2"/></svg>',
+    beef: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a5 5 0 0 0-5 5c0 2 1 3 2 4l-1 4h8l-1-4c1-1 2-2 2-4a5 5 0 0 0-5-5z"/><path d="M8 15v3a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-3"/></svg>',
+    seafood: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2c-3 0-5 2-5 5 0 2 1 3 2 4l-2 5h10l-2-5c1-1 2-2 2-4 0-3-2-5-5-5z"/><path d="M8 15v2a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-2"/></svg>',
+    pasta: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h18l-3 8H6l-3-8z"/><path d="M3 12V8a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v4"/></svg>',
+    vegetarian: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22c4-4 8-8 8-14a8 8 0 0 0-16 0c0 6 4 10 8 14z"/><path d="M12 8v8"/></svg>',
+    dessert: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>',
+    soup: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h18l-3 8H6l-3-8z"/><path d="M3 12V8a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v4"/><path d="M7 8V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2"/></svg>',
+    breakfast: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 1v6"/><path d="M12 17v6"/><path d="M4.22 4.22l4.24 4.24"/><path d="M15.54 15.54l4.24 4.24"/><path d="M1 12h6"/><path d="M17 12h6"/><path d="M4.22 19.78l4.24-4.24"/><path d="M15.54 8.46l4.24-4.24"/></svg>',
+    lamb: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a5 5 0 0 0-5 5c0 2 1 3 2 4l-1 4h8l-1-4c1-1 2-2 2-4a5 5 0 0 0-5-5z"/><path d="M8 15v3a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-3"/><path d="M12 8v4"/></svg>',
+    side: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h18l-3 8H6l-3-8z"/><path d="M3 12V8a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v4"/><circle cx="9" cy="10" r="1"/><circle cx="15" cy="10" r="1"/></svg>',
+  };
+
+  var CATEGORY_CTA = {
+    chicken: {
+      title: "The Chicken Bible",
+      text: "500+ chicken recipes from around the world — roasts, curries, stir-fries, and more.",
+      bullets: [
+        "500+ chicken recipes for every occasion",
+        "Quick weeknight dinners to Sunday roasts",
+        "Global flavors made simple",
+      ],
+      cta: "Get the Chicken Cookbook",
+      url: "#",
+    },
+    beef: {
+      title: "The Steakhouse at Home",
+      text: "Master beef with 200+ recipes from burgers to braises and everything in between.",
+      bullets: [
+        "200+ beef recipes from around the world",
+        "Steaks, stews, burgers, and more",
+        "Tips for perfect doneness every time",
+      ],
+      cta: "Get the Beef Cookbook",
+      url: "#",
+    },
+    seafood: {
+      title: "Ocean to Table",
+      text: "Fresh seafood recipes that bring coastal cooking to your kitchen.",
+      bullets: [
+        "150+ fish and shellfish recipes",
+        "Easy weeknight dinners to entertaining",
+        "Sustainable seafood tips included",
+      ],
+      cta: "Get the Seafood Cookbook",
+      url: "#",
+    },
+    pork: {
+      title: "The Pork Companion",
+      text: "Discover succulent pork recipes from quick chops to slow-roasted shoulders.",
+      bullets: [
+        "150+ pork recipes for home cooks",
+        "Roasts, chops, ribs, and more",
+        "Simple marinades and rubs included",
+      ],
+      cta: "Get the Pork Cookbook",
+      url: "#",
+    },
+    lamb: {
+      title: "The Lamb Lover's Cookbook",
+      text: "Tender lamb recipes from aromatic curries to classic roasts.",
+      bullets: [
+        "120+ lamb recipes from around the world",
+        "Slow-cooked stews to quick chops",
+        "Perfect pairings and side ideas",
+      ],
+      cta: "Get the Lamb Cookbook",
+      url: "#",
+    },
+    pasta: {
+      title: "Pasta Perfection",
+      text: "From classic Italian to creative noodle dishes — master pasta at home.",
+      bullets: [
+        "200+ pasta and noodle recipes",
+        "Fresh pasta from scratch to shortcuts",
+        "Sauces, bakes, and one-pot meals",
+      ],
+      cta: "Get the Pasta Cookbook",
+      url: "#",
+    },
+    vegetarian: {
+      title: "Plant-Powered Kitchen",
+      text: "Flavorful vegetarian recipes that satisfy everyone at the table.",
+      bullets: [
+        "300+ meat-free recipes",
+        "Hearty mains to light sides",
+        "Protein-packed and family-friendly",
+      ],
+      cta: "Get the Vegetarian Cookbook",
+      url: "#",
+    },
+    vegan: {
+      title: "Vegan Cheat Meals Cookbook",
+      text: "Discover 200+ tasty vegan recipes that actually feel like cheat meals (but healthy).",
+      bullets: [
+        "200+ vegan recipes with indulgent flavors",
+        "Simple ingredients and beginner-friendly steps",
+        "Fresh ideas for lunches, dinners, and snacks",
+      ],
+      cta: "Download the Cookbook Now",
+      url: "https://0f32e8wh-e0m7t1bzvreoy2m9r.hop.clickbank.net",
+    },
+    dessert: {
+      title: "Sweet Treats Bible",
+      text: "Indulge in 300+ dessert recipes from quick sweets to show-stopping cakes.",
+      bullets: [
+        "300+ dessert recipes for every craving",
+        "Cakes, cookies, pies, and no-bake treats",
+        "Make-ahead and party favorites",
+      ],
+      cta: "Get the Dessert Cookbook",
+      url: "#",
+    },
+    breakfast: {
+      title: "The Breakfast Book",
+      text: "Start your day right with 200+ breakfast and brunch recipes.",
+      bullets: [
+        "200+ breakfast recipes from around the world",
+        "Quick weekday ideas to weekend feasts",
+        "Healthy and indulgent options",
+      ],
+      cta: "Get the Breakfast Cookbook",
+      url: "#",
+    },
+    default: {
+      title: "Akkous Favorites",
+      text: "A curated collection of the best recipes from Akkous — tested, trusted, and delicious.",
+      bullets: [
+        "Hand-picked recipes from every category",
+        "Beginner-friendly instructions",
+        "New favorites for your weekly rotation",
+      ],
+      cta: "Explore the Collection",
+      url: "#",
+    },
   };
 
   function spotlightBlurb(key, label, count) {
@@ -973,7 +1106,7 @@
           encodeURIComponent(meta.key) +
           "#recipe-grid";
         var desc = spotlightBlurb(meta.key, meta.label, meta.count);
-        var icon = CATEGORY_EMOJI[meta.key] || "🍽️";
+        var icon = CATEGORY_ICONS[meta.key] || '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h18l-3 8H6l-3-8z"/><path d="M3 12V8a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v4"/></svg>';
         return (
           '<a class="category-spotlight__card" role="listitem" href="' +
           escapeHtml(href) +
@@ -1096,7 +1229,7 @@
         var imgSrc = r.imageCard || r.image || "";
         var avatar = siteRootRelativePrefix() + "img.png";
         return (
-          '<article class="recipe-card">' +
+          '<article class="recipe-card recipe-card-container">' +
           '<a class="recipe-card__link" href="' +
           escapeHtml(recipeUrl(r.id)) +
           '">' +
@@ -1146,6 +1279,37 @@
         );
       })
       .join("");
+
+    initImagePlaceholders(grid);
+  }
+
+  function initImagePlaceholders(root) {
+    var imgs = root ? root.querySelectorAll(".recipe-card__img img, .trend-card__img img, .related-card__img img") : [];
+    imgs.forEach(function (img) {
+      var parent = img.closest(".recipe-card__img, .trend-card__img, .related-card__img");
+      if (!parent) return;
+
+      function markLoaded() {
+        parent.classList.add(parent.className.split(" ")[0] + "--loaded");
+      }
+
+      function markError() {
+        parent.classList.add(parent.className.split(" ")[0] + "--error");
+      }
+
+      if (img.complete && img.naturalWidth) {
+        markLoaded();
+        return;
+      }
+
+      if (img.complete && !img.naturalWidth) {
+        markError();
+        return;
+      }
+
+      img.addEventListener("load", markLoaded, { once: true });
+      img.addEventListener("error", markError, { once: true });
+    });
   }
 
   function setFilter(category) {
@@ -1212,8 +1376,8 @@
     state.searchQuery = q.trim().toLowerCase();
   }
 
-  function initRecipePageSearchRedirect() {
-    if (!isRecipePage()) return;
+  function initPageSearchRedirect() {
+    if (isHomePage()) return;
     var input = $("#site-search");
     if (!input) return;
     input.addEventListener("keydown", function (e) {
@@ -1340,13 +1504,6 @@
     );
   }
 
-  function minutesFromTimeLabel(label) {
-    if (!label || typeof label !== "string") return undefined;
-    var m = label.match(/(\d+)\s*min/i);
-    if (m) return parseInt(m[1], 10);
-    return undefined;
-  }
-
   function injectJsonLd(json) {
     var existing = $("#recipe-jsonld");
     if (existing) existing.remove();
@@ -1413,143 +1570,31 @@
     if (canonical) canonical.setAttribute("href", url);
   }
 
-  function buildRecipeInstructionsSchema(recipe) {
-    var steps = recipe.steps;
-    if (!steps || !steps.length) {
-      var instr = recipe.instructions;
-      if (typeof instr === "string" && instr.trim()) {
-        steps = instr
-          .split(/\n+/)
-          .map(function (s) {
-            return s.trim();
-          })
-          .filter(Boolean);
-      }
-    }
-    return (steps || []).map(function (text, i) {
-      return {
-        "@type": "HowToStep",
-        position: i + 1,
-        text: text,
-      };
-    });
-  }
-
-  /** JSON-LD : ne pas confondre cuisine (origin) et auteur (aligné build-recipe-pages.mjs + export Sheet). */
-  function schemaAuthorName(recipe) {
-    var site = state.site.name || "Akkous";
-    var raw = recipe.author && recipe.author.name;
-    if (!raw || !String(raw).trim()) return site;
-    var name = String(raw).trim();
-    var origin = recipe.origin && String(recipe.origin).trim();
-    if (origin && origin.toLowerCase() === name.toLowerCase()) return site;
-    return name;
-  }
-
-  function buildRecipeSchemaNode(recipe) {
-    var base = getBaseUrl().replace(/\/+$/, "");
-    var url = absoluteRecipePageUrl(recipe);
-    var cookMin = minutesFromTimeLabel(recipe.cookTime);
-    var prepMin = minutesFromTimeLabel(recipe.prepTime);
-    var desc =
-      (recipe.description && String(recipe.description).trim()) ||
-      metaDescriptionFromRecipe(recipe);
-
-    var canon =
-      state.site &&
-      state.site.canonicalOrigin &&
-      String(state.site.canonicalOrigin).trim();
-    var orgGraphId = canon
-      ? String(canon).replace(/\/+$/, "") + "/#organization"
-      : "";
-    var publisher = orgGraphId
-      ? { "@id": orgGraphId }
-      : {
-          "@type": "Organization",
-          name: state.site.name || "Akkous",
-          url: base || undefined,
-        };
-
-    var obj = {
-      "@type": "Recipe",
-      "@id": url + "#recipe",
-      name: recipe.title,
-      description: desc,
-      inLanguage: "en",
-      image: recipe.image ? [recipe.image] : undefined,
-      author: {
-        "@type": "Person",
-        name: schemaAuthorName(recipe),
-      },
-      publisher: publisher,
-      datePublished:
-        (recipe.datePublished && String(recipe.datePublished).slice(0, 10)) ||
-        (recipe.publishDate && String(recipe.publishDate).slice(0, 10)) ||
-        "2026-01-01",
-      recipeCategory:
-        recipe.categoryDisplay || categoryLabel(recipe.category),
-      keywords: (recipe.tags || []).length
-        ? (recipe.tags || []).join(", ")
-        : undefined,
-      recipeIngredient: recipe.ingredients || [],
-      recipeInstructions: buildRecipeInstructionsSchema(recipe),
-      mainEntityOfPage: {
-        "@type": "WebPage",
-        "@id": url,
-      },
-    };
-
-    if (recipe.servings != null && String(recipe.servings).trim() !== "") {
-      obj.recipeYield = String(recipe.servings) + " servings";
-    }
-    if (recipe.origin && String(recipe.origin).trim()) {
-      obj.recipeCuisine = String(recipe.origin).trim();
-    }
-    if (cookMin) obj.cookTime = "PT" + cookMin + "M";
-    if (prepMin) obj.prepTime = "PT" + prepMin + "M";
-    if (cookMin && prepMin) {
-      obj.totalTime = "PT" + (cookMin + prepMin) + "M";
-    }
-
-    var yid = youtubeVideoId(recipe.youtube || "");
-    if (yid) {
-      obj.video = {
-        "@type": "VideoObject",
-        name: recipe.title || "Recipe video",
-        description: desc,
-        thumbnailUrl: recipe.image || undefined,
-        embedUrl: "https://www.youtube.com/embed/" + yid,
-        contentUrl: String(recipe.youtube || "").trim() || undefined,
-      };
-    }
-
-    return obj;
-  }
-
-  function buildRecipeBreadcrumbSchema(recipe) {
-    var canon =
-      state.site &&
-      state.site.canonicalOrigin &&
-      String(state.site.canonicalOrigin).trim().replace(/\/+$/, "");
-    var base = getBaseUrl();
-    var home = canon ? canon + "/" : String(base || "").replace(/\/+$/, "") + "/";
-    var itemUrl = absoluteRecipePageUrl(recipe);
+  function buildRecipeJsonLdGraph(recipe) {
     return {
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        {
-          "@type": "ListItem",
-          position: 1,
-          name: "Home",
-          item: home,
-        },
-        {
-          "@type": "ListItem",
-          position: 2,
-          name: recipe.title || "Recipe",
-          item: itemUrl,
-        },
-      ],
+      "@context": "https://schema.org",
+      "@type": "Recipe",
+      "name": recipe.title,
+      "image": recipe.image,
+      "description": recipe.description,
+      "author": {
+        "@type": "Organization",
+        "name": "Akkous"
+      },
+      "prepTime": recipe.prepTime || "PT15M",
+      "cookTime": recipe.cookTime || "PT30M",
+      "totalTime": recipe.totalTime || "PT45M",
+      "recipeYield": recipe.servings ? `${recipe.servings} servings` : "4 servings",
+      "recipeIngredient": recipe.ingredients || [],
+      "recipeInstructions": (recipe.steps || []).map((step, i) => ({
+        "@type": "HowToStep",
+        "position": i + 1,
+        "text": step
+      })),
+      "nutrition": recipe.nutrition ? {
+        "@type": "NutritionInformation",
+        "calories": recipe.nutrition.calories
+      } : undefined
     };
   }
 
@@ -1608,24 +1653,6 @@
     ];
   }
 
-  function buildRecipeFaqSchema(recipe) {
-    var items = buildRecipeFaqItems(recipe);
-    if (!items.length) return null;
-    return {
-      "@type": "FAQPage",
-      mainEntity: items.map(function (it) {
-        return {
-          "@type": "Question",
-          name: it.q,
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: it.a,
-          },
-        };
-      }),
-    };
-  }
-
   function renderRecipeFaq(recipe) {
     var root = $("#recipe-faq-list");
     if (!root) return;
@@ -1671,42 +1698,35 @@
     steps.parentNode.insertBefore(box, steps.nextSibling);
   }
 
-  function buildRecipeJsonLdGraph(recipe) {
-    var faq = buildRecipeFaqSchema(recipe);
-    var graph = [
-      buildRecipeSchemaNode(recipe),
-      buildRecipeBreadcrumbSchema(recipe),
-    ];
-    if (faq) graph.push(faq);
-    return {
-      "@context": "https://schema.org",
-      "@graph": graph,
-    };
-  }
+  function renderAffiliate(recipe) {
+    var affCta = $("#affiliate-cta");
+    var affHeading = document.getElementById("affiliate-heading");
+    var affText = document.querySelector(".recipe-affiliate__text");
+    var affBullets = document.querySelector(".recipe-affiliate__bullets");
+    if (!affCta || !affHeading || !affText || !affBullets) return;
 
-  function recipeIdFromLocation() {
-    var params = new URLSearchParams(window.location.search);
-    var id = params.get("id");
-    if (id) {
-      try {
-        id = decodeURIComponent(id);
-      } catch (e) {}
-      id = id.trim();
-      if (id) return id;
-    }
-    var segs = window.location.pathname.split("/").filter(Boolean);
-    if (segs.length && /index\.html?/i.test(segs[segs.length - 1])) {
-      segs.pop();
-    }
-    var ri = segs.indexOf("recipes");
-    if (ri >= 0 && segs[ri + 1]) {
-      try {
-        return decodeURIComponent(segs[ri + 1]);
-      } catch (e) {
-        return segs[ri + 1];
+    var catKey = recipe.category || "default";
+    var cta = CATEGORY_CTA[catKey] || CATEGORY_CTA.default;
+
+    affHeading.textContent = cta.title;
+    affText.textContent = cta.text;
+    affBullets.innerHTML = cta.bullets.map(function (b) { return "<li>" + escapeHtml(b) + "</li>"; }).join("");
+    affCta.textContent = cta.cta;
+
+    try {
+      if (cta.url && cta.url !== "#") {
+        var u = new URL(cta.url);
+        u.searchParams.set("utm_source", "akkous");
+        u.searchParams.set("utm_medium", "affiliate");
+        u.searchParams.set("utm_campaign", catKey + "-cookbook");
+        u.searchParams.set("utm_content", String(recipe.slug || recipe.id || ""));
+        affCta.href = u.toString();
+      } else {
+        affCta.href = "#";
       }
+    } catch (e) {
+      affCta.href = cta.url || "#";
     }
-    return "";
   }
 
   function renderRecipePage() {
@@ -1832,20 +1852,7 @@
     renderRecipeTagsAndVideo(recipe);
     renderRecipeFaq(recipe);
 
-    var aff = $("#affiliate-cta");
-    if (aff) {
-      try {
-        var base = "https://0f32e8wh-e0m7t1bzvreoy2m9r.hop.clickbank.net";
-        var u = new URL(base);
-        u.searchParams.set("utm_source", "akkous");
-        u.searchParams.set("utm_medium", "affiliate");
-        u.searchParams.set("utm_campaign", "vegan-cookbook");
-        u.searchParams.set("utm_content", String(recipe.slug || recipe.id || ""));
-        aff.href = u.toString();
-      } catch (e) {
-        // keep static href
-      }
-    }
+    renderAffiliate(recipe);
 
     var printBtn = $("#print-recipe");
     if (printBtn) {
@@ -1950,6 +1957,7 @@
           );
         })
         .join("");
+      initImagePlaceholders(relRoot);
     }
 
     initShare(recipe);
@@ -2124,12 +2132,12 @@
     loadData()
       .then(function () {
         refreshDerivedCategories_();
-        initRecipePageSearchRedirect();
+        initPageSearchRedirect();
         initGlobalCategoryNav_();
         if (isRecipePage()) {
           applyBranding();
           renderRecipePage();
-        } else {
+        } else if (isHomePage()) {
           initHomePage();
         }
         initScrollFadeIn();

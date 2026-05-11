@@ -22,18 +22,33 @@
     <meta name="description" content="Contact Akkous via WhatsApp for any request." />
     <meta name="robots" content="index,follow" />
     <meta name="google-adsense-account" content="ca-pub-2269008589730162" />
-    <meta name="p:domain_verify" content="1e49b9312c23dd1bba6b615c270a0e3c" />
     <title>Contact — Akkous</title>
     <link rel="canonical" href="https://akkous.com/contact.html" />
     <link rel="icon" href="/assets/favicon.ico" sizes="any" />
     <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="style.css" />
-    <script defer src="/_vercel/insights/script.js"></script>
   </head>
   <body>
     <header class="site-header" role="banner">
       <nav class="nav container" aria-label="Primary">
         <a class="nav__brand" href="index.html">Akkous</a>
+        <div class="nav__inner">
+          <button
+            type="button"
+            class="theme-toggle"
+            id="theme-toggle"
+            aria-label="Toggle dark mode"
+            title="Toggle theme"
+          >
+            <svg data-icon="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <svg data-icon="sun" hidden viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="12" cy="12" r="4" />
+              <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke-linecap="round" />
+            </svg>
+          </button>
+        </div>
       </nav>
     </header>
 
@@ -91,6 +106,7 @@
       </div>
     </footer>
 
+    <script src="main.js" defer></script>
     <script>
       document.getElementById("footer-year").textContent = new Date().getFullYear();
       document.getElementById("contact-form").addEventListener("submit", function (e) {
