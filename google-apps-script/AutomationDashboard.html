@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <base target="_top" />
+    <title>Akkous — Rapport d’automatisation</title>
+    <style>
+      :root {
+        --primary: #e8572a;
+        --accent: #2d6a4f;
+        --bg: #fafaf8;
+        --card: #ffffff;
+        --text: #1a1a1a;
+        --muted: #6b6b6b;
+        --border: rgba(26, 26, 26, 0.1);
+        --err-bg: #fdecea;
+        --warn-bg: #fff8e6;
+        --info-bg: #e8f4ef;
+        font-family: system-ui, "Segoe UI", Roboto, sans-serif;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        padding: 12px;
+        background: var(--bg);
+        color: var(--text);
+        font-size: 13px;
+        line-height: 1.45;
+      }
+      body.standalone {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 24px 16px 48px;
+      }
+      h1 {
+        font-size: 1.15rem;
+        margin: 0 0 4px;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+      }
+      .sub {
+        color: var(--muted);
+        font-size: 0.85rem;
+        margin-bottom: 16px;
+      }
+      .kpis {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+        margin-bottom: 12px;
+      }
+      body.standalone .kpis {
+        grid-template-columns: repeat(4, 1fr);
+      }
+      .kpi {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 10px;
+        text-align: center;
+      }
+      .kpi span {
+        display: block;
+        font-size: 1.35rem;
+        font-weight: 700;
+        color: var(--primary);
+      }
+      .kpi small {
+        color: var(--muted);
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+      }
+      .toolbar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+      button,
+      .btn {
+        background: var(--primary);
+        color: #fff;
+        border: none;
+        padding: 8px 14px;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        font-size: 0.85rem;
+      }
+      button.secondary {
+        background: var(--accent);
+      }
+      button:active {
+        opacity: 0.92;
+      }
+      label.filter {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        color: var(--muted);
+        font-size: 0.8rem;
+      }
+      select {
+        padding: 6px 8px;
+        border-radius: 6px;
+        border: 1px solid var(--border);
+      }
+      .table-wrap {
+        overflow: auto;
+        max-height: min(60vh, 520px);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        background: var(--card);
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.8rem;
+      }
+      th {
+        text-align: left;
+        padding: 8px 10px;
+        background: var(--bg);
+        position: sticky;
+        top: 0;
+        z-index: 1;
+        border-bottom: 1px solid var(--border);
+        font-weight: 600;
+      }
+      td {
+        padding: 8px 10px;
+        border-bottom: 1px solid var(--border);
+        vertical-align: top;
+      }
+      tr:last-child td {
+        border-bottom: none;
+      }
+      .lvl {
+        font-weight: 700;
+        font-size: 0.7rem;
+        padding: 2px 6px;
+        border-radius: 4px;
+        display: inline-block;
+      }
+      .lvl-INFO {
+        background: var(--info-bg);
+        color: var(--accent);
+      }
+      .lvl-WARN {
+        background: var(--warn-bg);
+        color: #8a6d00;
+      }
+      .lvl-ERROR {
+        background: var(--err-bg);
+        color: #c62828;
+      }
+      .detail {
+        word-break: break-word;
+        max-width: 280px;
+      }
+      body.standalone .detail {
+        max-width: none;
+      }
+      .standalone-only {
+        display: none;
+      }
+      body.standalone .standalone-only {
+        display: block;
+      }
+      .gas-hint {
+        font-size: 0.75rem;
+        color: var(--muted);
+        margin-top: 12px;
+        padding: 10px;
+        background: var(--card);
+        border-radius: 8px;
+        border: 1px dashed var(--border);
+      }
+      textarea.import {
+        width: 100%;
+        min-height: 100px;
+        margin-top: 8px;
+        padding: 10px;
+        border-radius: 8px;
+        border: 1px solid var(--border);
+        font-family: ui-monospace, monospace;
+        font-size: 0.75rem;
+      }
+      .err-banner {
+        background: var(--err-bg);
+        color: #b71c1c;
+        padding: 10px;
+        border-radius: 8px;
+        margin-bottom: 10px;
+        font-size: 0.85rem;
+        display: none;
+      }
+      .err-banner.visible {
+        display: block;
+      }
+      .seo-wrap {
+        margin: 12px 0;
+        display: grid;
+        gap: 10px;
+      }
+      .seo-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+      }
+      body.standalone .seo-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+      .seo-card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 10px;
+      }
+      .seo-card h3 {
+        margin: 0 0 4px;
+        font-size: 0.78rem;
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      .seo-card strong {
+        font-size: 1.2rem;
+        color: var(--accent);
+      }
+      .seo-list {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 10px;
+      }
+      .seo-list h3 {
+        margin: 0 0 8px;
+        font-size: 0.86rem;
+      }
+      .seo-list ul {
+        margin: 0;
+        padding-left: 18px;
+      }
+      .seo-list li {
+        margin: 0 0 6px;
+        font-size: 0.79rem;
+      }
+      .score-badge {
+        display: inline-block;
+        margin-left: 6px;
+        padding: 1px 6px;
+        border-radius: 999px;
+        font-weight: 700;
+        font-size: 0.7rem;
+        background: var(--warn-bg);
+        color: #8a6d00;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Akkous</h1>
+      <p class="sub">Rapport d’automatisation (TheMealDB → Sheet → GitHub)</p>
+    </header>
+
+    <div id="err-banner" class="err-banner" role="alert"></div>
+
+    <div class="kpis">
+      <div class="kpi"><small>Total (affiché)</small><span id="kpi-total">0</span></div>
+      <div class="kpi"><small>INFO</small><span id="kpi-info">0</span></div>
+      <div class="kpi"><small>WARN</small><span id="kpi-warn">0</span></div>
+      <div class="kpi"><small>ERROR</small><span id="kpi-err">0</span></div>
+    </div>
+
+    <div class="toolbar">
+      <button type="button" id="btn-refresh">Actualiser</button>
+      <label class="filter">
+        Filtrer
+        <select id="filter-level">
+          <option value="">Tous</option>
+          <option value="INFO">INFO</option>
+          <option value="WARN">WARN</option>
+          <option value="ERROR">ERROR</option>
+        </select>
+      </label>
+    </div>
+
+    <section class="seo-wrap" aria-label="SEO monitoring">
+      <div class="seo-grid">
+        <div class="seo-card">
+          <h3>SEO errors (7d)</h3>
+          <strong id="seo-errors-7d">0</strong>
+        </div>
+        <div class="seo-card">
+          <h3>SEO warnings (7d)</h3>
+          <strong id="seo-warns-7d">0</strong>
+        </div>
+        <div class="seo-card">
+          <h3>Index submissions (7d)</h3>
+          <strong id="seo-index-ok-7d">0</strong>
+        </div>
+        <div class="seo-card">
+          <h3>Index success rate</h3>
+          <strong id="seo-index-rate">—</strong>
+        </div>
+      </div>
+      <div class="seo-list">
+        <h3>Top SEO errors (7d)</h3>
+        <ul id="seo-errors-list"></ul>
+      </div>
+      <div class="seo-list">
+        <h3>Pages to improve first</h3>
+        <ul id="seo-pages-list"></ul>
+      </div>
+    </section>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Horodatage</th>
+            <th>Niveau</th>
+            <th>Action</th>
+            <th>Détail</th>
+          </tr>
+        </thead>
+        <tbody id="log-body"></tbody>
+      </table>
+    </div>
+
+    <section class="standalone-only" aria-label="Import hors Apps Script">
+      <h2 style="font-size: 1rem; margin: 20px 0 8px">Mode hors Google Sheets</h2>
+      <p class="sub" style="margin-bottom: 8px">
+        Télécharge l’onglet <strong>AutomationLog</strong> (Fichier → Télécharger → valeurs séparées par des tabulations), puis colle le contenu ci-dessous.
+      </p>
+      <textarea
+        id="paste-tsv"
+        class="import"
+        placeholder="Horodatage	Niveau	Action	Détail&#10;..."
+        aria-label="Coller export TSV du journal"
+      ></textarea>
+      <div style="margin-top: 8px">
+        <button type="button" class="secondary" id="btn-import">Importer le collage</button>
+      </div>
+    </section>
+
+    <p class="gas-hint">
+      <strong>Apps Script :</strong> ajoute ce fichier au projet sous le nom exact
+      <code>AutomationDashboard.html</code> (même contenu que ce fichier), puis menu
+      <strong>⑦ Rapport automatisation (panneau)</strong>. Les données viennent de l’onglet
+      <strong>AutomationLog</strong>.
+    </p>
+
+    <script>
+      (function () {
+        let allRows = [];
+
+        function inGas() {
+          try {
+            return (
+              typeof google !== "undefined" &&
+              google.script &&
+              typeof google.script.run !== "undefined"
+            );
+          } catch (e) {
+            return false;
+          }
+        }
+
+        function showErr(msg) {
+          var el = document.getElementById("err-banner");
+          el.textContent = msg || "Erreur";
+          el.classList.add("visible");
+        }
+
+        function clearErr() {
+          var el = document.getElementById("err-banner");
+          el.classList.remove("visible");
+          el.textContent = "";
+        }
+
+        function formatTs(isoOrStr) {
+          if (!isoOrStr) return "—";
+          try {
+            var d = new Date(isoOrStr);
+            if (isNaN(d.getTime())) return String(isoOrStr);
+            return d.toLocaleString("fr-FR", {
+              dateStyle: "short",
+              timeStyle: "medium",
+            });
+          } catch (e) {
+            return String(isoOrStr);
+          }
+        }
+
+        function computeKpis(rows) {
+          var inf = 0,
+            w = 0,
+            er = 0;
+          rows.forEach(function (r) {
+            var lv = (r.level || "").toUpperCase();
+            if (lv === "INFO") inf++;
+            else if (lv === "WARN") w++;
+            else if (lv === "ERROR") er++;
+          });
+          document.getElementById("kpi-total").textContent = rows.length;
+          document.getElementById("kpi-info").textContent = inf;
+          document.getElementById("kpi-warn").textContent = w;
+          document.getElementById("kpi-err").textContent = er;
+        }
+
+        function renderTable(rows) {
+          var tbody = document.getElementById("log-body");
+          tbody.innerHTML = "";
+          var f = document.getElementById("filter-level").value;
+          rows.forEach(function (r) {
+            if (f && (r.level || "").toUpperCase() !== f) return;
+            var tr = document.createElement("tr");
+            var lvl = (r.level || "").toUpperCase();
+            tr.innerHTML =
+              "<td>" +
+              escapeHtml(formatTs(r.timestamp)) +
+              '</td><td><span class="lvl lvl-' +
+              escapeHtml(lvl) +
+              '">' +
+              escapeHtml(lvl || "—") +
+              "</span></td><td>" +
+              escapeHtml(r.action || "") +
+              '</td><td class="detail">' +
+              escapeHtml(r.detail || "") +
+              "</td>";
+            tbody.appendChild(tr);
+          });
+        }
+
+        function escapeHtml(s) {
+          var d = document.createElement("div");
+          d.textContent = s;
+          return d.innerHTML;
+        }
+
+        function loadData(rows) {
+          clearErr();
+          allRows = Array.isArray(rows) ? rows : [];
+          computeKpis(allRows);
+          renderTable(allRows);
+        }
+
+        function renderSeoReport(rep) {
+          if (!rep || !rep.kpis) return;
+          var k = rep.kpis;
+          document.getElementById("seo-errors-7d").textContent = String(k.errors7d || 0);
+          document.getElementById("seo-warns-7d").textContent = String(k.warns7d || 0);
+          document.getElementById("seo-index-ok-7d").textContent = String(k.indexedOk7d || 0);
+          document.getElementById("seo-index-rate").textContent =
+            rep.indexing && rep.indexing.successRate != null
+              ? String(rep.indexing.successRate) + "%"
+              : "—";
+
+          var errList = document.getElementById("seo-errors-list");
+          errList.innerHTML = "";
+          var errs = Array.isArray(rep.topErrors) ? rep.topErrors : [];
+          if (!errs.length) {
+            errList.innerHTML = "<li>No critical SEO error in last 7 days.</li>";
+          } else {
+            errs.slice(0, 6).forEach(function (e) {
+              var li = document.createElement("li");
+              li.innerHTML =
+                "<strong>" +
+                escapeHtml(e.action || "Error") +
+                ":</strong> " +
+                escapeHtml(e.detail || "");
+              errList.appendChild(li);
+            });
+          }
+
+          var pages = document.getElementById("seo-pages-list");
+          pages.innerHTML = "";
+          var improve = Array.isArray(rep.pagesToImprove) ? rep.pagesToImprove : [];
+          if (!improve.length) {
+            pages.innerHTML = "<li>No page flagged. Keep publishing consistently.</li>";
+          } else {
+            improve.slice(0, 8).forEach(function (p) {
+              var li = document.createElement("li");
+              var issues = (p.issues || []).slice(0, 3).join(", ");
+              li.innerHTML =
+                "<strong>" +
+                escapeHtml(p.title || p.id || "Recipe") +
+                "</strong>" +
+                '<span class="score-badge">SEO ' +
+                escapeHtml(String(p.score != null ? p.score : "—")) +
+                "</span>" +
+                "<br>" +
+                escapeHtml(issues || "Needs content improvements.");
+              pages.appendChild(li);
+            });
+          }
+        }
+
+        function parseTsv(text) {
+          var lines = text.replace(/\r\n/g, "\n").replace(/\r/g, "\n").split("\n");
+          var out = [];
+          var header = null;
+          lines.forEach(function (line, idx) {
+            if (!line.trim()) return;
+            var cells = line.split("\t");
+            if (idx === 0 || (cells[0] && cells[0].toLowerCase().indexOf("horodatage") !== -1)) {
+              header = cells;
+              return;
+            }
+            if (cells.length < 2) return;
+            var ts = cells[0] || "";
+            var level = cells[1] || "";
+            var action = cells[2] || "";
+            var detail = cells.slice(3).join("\t") || "";
+            var iso = ts;
+            if (ts && !ts.includes("T")) {
+              var tryD = new Date(ts);
+              if (!isNaN(tryD.getTime())) iso = tryD.toISOString();
+            }
+            out.push({
+              timestamp: iso,
+              level: level,
+              action: action,
+              detail: detail,
+            });
+          });
+          out.reverse();
+          return out;
+        }
+
+        function refreshFromGas() {
+          clearErr();
+          google.script.run
+            .withSuccessHandler(loadData)
+            .withFailureHandler(function (e) {
+              showErr(e && e.message ? e.message : String(e));
+            })
+            .getAutomationLogData();
+          google.script.run
+            .withSuccessHandler(renderSeoReport)
+            .withFailureHandler(function (e) {
+              showErr(e && e.message ? e.message : String(e));
+            })
+            .getSeoMonitoringReport();
+        }
+
+        document.getElementById("btn-refresh").addEventListener("click", function () {
+          if (inGas()) refreshFromGas();
+          else {
+            var raw = document.getElementById("paste-tsv").value;
+            if (!raw.trim()) {
+              showErr("Colle d’abord un export TSV du journal.");
+              return;
+            }
+            loadData(parseTsv(raw));
+          }
+        });
+
+        document.getElementById("filter-level").addEventListener("change", function () {
+          renderTable(allRows);
+        });
+
+        document.getElementById("btn-import").addEventListener("click", function () {
+          var raw = document.getElementById("paste-tsv").value;
+          if (!raw.trim()) {
+            showErr("Colle le contenu du fichier exporté.");
+            return;
+          }
+          clearErr();
+          loadData(parseTsv(raw));
+        });
+
+        if (!inGas()) {
+          document.body.classList.add("standalone");
+          document.querySelector(".gas-hint").style.display = "none";
+        } else {
+          refreshFromGas();
+        }
+      })();
+    </script>
+  </body>
+</html>
