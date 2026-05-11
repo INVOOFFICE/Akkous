@@ -2036,8 +2036,10 @@
     if (copyBtn) {
       copyBtn.addEventListener("click", function () {
         var svgBackup = copyBtn.innerHTML;
+        var checkmark =
+          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
         function done() {
-          copyBtn.textContent = "✓ Copied!";
+          copyBtn.innerHTML = checkmark;
           setTimeout(function () {
             copyBtn.innerHTML = svgBackup;
           }, 2000);

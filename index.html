@@ -106,6 +106,10 @@
       .hero {
         min-height: min(78vh, 640px);
       }
+
+      /* Critical: prevent FOUC of nav SVGs — overridden by style.css once loaded */
+      .theme-toggle svg { width: 1.15rem; height: 1.15rem; color: #1A1A1A; }
+      .nav__search-icon { width: 1.125rem; height: 1.125rem; color: #6B6B6B; }
     </style>
     <link rel="preload" as="style" href="style.css" onload="this.rel='stylesheet'" />
     <noscript><link rel="stylesheet" href="style.css" /></noscript>
@@ -186,10 +190,10 @@
             aria-label="Toggle dark mode"
             title="Toggle theme"
           >
-            <svg data-icon="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <svg data-icon="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" height="0" width="0">
               <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
-            <svg data-icon="sun" hidden viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <svg data-icon="sun" hidden viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" height="0" width="0">
               <circle cx="12" cy="12" r="4" />
               <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke-linecap="round" />
             </svg>

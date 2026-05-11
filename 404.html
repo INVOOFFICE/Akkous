@@ -40,6 +40,11 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap"
       rel="stylesheet"
     />
+    <style>
+      /* Critical: prevent FOUC of nav SVGs — overridden by style.css once loaded */
+      .theme-toggle svg { width: 1.15rem; height: 1.15rem; color: #1A1A1A; }
+      .nav__search-icon { width: 1.125rem; height: 1.125rem; color: #6B6B6B; }
+    </style>
     <link rel="preload" as="style" href="style.css" onload="this.rel='stylesheet'" />
     <noscript><link rel="stylesheet" href="style.css" /></noscript>
     <script src="main.js" defer></script>
