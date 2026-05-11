@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1J9BFL1XZ3"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-1J9BFL1XZ3");
+    </script>
+    <meta charset="UTF-8" />
+    <meta http-equiv="content-language" content="en" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#E8572A" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Akkous" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2269008589730162"
+      crossorigin="anonymous"
+    ></script>
+    <meta name="robots" content="noindex, follow" />
+    <title>Page not found — Akkous</title>
+    <link rel="canonical" href="https://akkous.com/404.html" />
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preload" as="style" href="style.css" onload="this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="style.css" /></noscript>
+    <script defer src="/_vercel/insights/script.js"></script>
+  </head>
+  <body>
+    <main class="container error-page" id="main-content">
+      <h1>Page not found</h1>
+      <p>The page you are looking for does not exist or may have moved.</p>
+      <div class="container--narrow nav__search-wrap">
+        <label for="not-found-search" class="sr-only">Search recipes</label>
+        <input
+          class="nav__search"
+          type="search"
+          id="not-found-search"
+          name="q"
+          placeholder="Search recipes..."
+          autocomplete="off"
+        />
+      </div>
+      <p><a href="index.html">← Back to recipes</a></p>
+    </main>
+
+    <footer class="site-footer" role="contentinfo">
+      <div class="container">
+        <div class="footer__top">
+          <a class="footer__brand" href="index.html" data-site-name>Akkous</a>
+          <nav class="footer__nav" aria-label="Footer">
+            <a href="index.html">Home</a>
+            <a href="index.html#category-filters">Categories</a>
+            <a href="index.html#newsletter-heading">Newsletter</a>
+            <a href="terms-of-use.html">Terms of use</a>
+            <a href="privacy-policy.html">Privacy policy</a>
+            <a href="contact.html">Contact</a>
+          </nav>
+          <div class="footer__social">
+            <a href="https://www.pinterest.com/Akkous1" target="_blank" rel="noopener noreferrer" aria-label="Pinterest">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path
+                  d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer__bottom">
+          <p>© <span id="footer-year">2026</span> <span data-site-name>Akkous</span> — From your kitchen to the world</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById("footer-year").textContent = new Date().getFullYear();
+      document.getElementById("not-found-search").addEventListener("keydown", function (event) {
+        if (event.key !== "Enter") return;
+        event.preventDefault();
+        var value = event.currentTarget.value.trim();
+        window.location.href = "index.html" + (value ? "?q=" + encodeURIComponent(value) : "");
+      });
+    </script>
+  </body>
+</html>
