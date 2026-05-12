@@ -147,6 +147,11 @@
 - [Beetroot Aussie Beef Burgers](https://akkous.com/recipes/aussie-burgers-53099/) — Australian | Beef
 - [Creamy Chicken Curry](https://akkous.com/recipes/nutty-chicken-curry-52851/) — India | Chicken
 - [Prawn Curry Delight](https://akkous.com/recipes/thai-prawn-curry-53205/) — Thai | Seafood
+- [Venezuelan Beef Arepa](https://akkous.com/recipes/arepa-pelua-53329/) — Venezuela | Beef
+- [Delicious Chicken Handi](https://akkous.com/recipes/chicken-handi-52795/) — India | Chicken
+- [Canadian BeaverTails Pastry](https://akkous.com/recipes/beavertails-52928/) — Canadian | Dessert
+- [Quick Chicken Noodle Salad](https://akkous.com/recipes/vietnamese-chicken-salad-53232/) — Vietnamese | Chicken
+- [Quick Beef Stir Fry](https://akkous.com/recipes/beef-and-broccoli-stir-fry-53366/) — Chinese | Beef
 
 ## About
 - All recipes include ingredients, step-by-step instructions, cooking time, difficulty level, and cultural origin.

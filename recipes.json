@@ -1798,9 +1798,9 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
+        "beef-and-broccoli-stir-fry-53366",
         "bistek-53069",
-        "egyptian-fatteh-53031",
-        "jiggs-dinner-53335"
+        "egyptian-fatteh-53031"
       ]
     },
     {
@@ -1867,7 +1867,7 @@
       "relatedRecipeIds": [
         "spanish-chicken-53164",
         "chicken-enchilada-casserole-52765",
-        "nutty-chicken-curry-52851"
+        "chicken-handi-52795"
       ]
     },
     {
@@ -2121,8 +2121,8 @@
       "trending": true,
       "relatedRecipeIds": [
         "sweet-and-sour-chicken-53376",
-        "chicken-mushroom-hotpot-52846",
-        "spanish-chicken-53164"
+        "chicken-handi-52795",
+        "chicken-mushroom-hotpot-52846"
       ]
     },
     {
@@ -2327,7 +2327,7 @@
       "relatedRecipeIds": [
         "beef-wellington-52803",
         "minced-beef-pie-52876",
-        "aussie-burgers-53099"
+        "arepa-pelua-53329"
       ]
     },
     {
@@ -2391,8 +2391,8 @@
       "trending": true,
       "relatedRecipeIds": [
         "chicken-enchilada-casserole-52765",
-        "chicken-mushroom-hotpot-52846",
-        "spanish-chicken-53164"
+        "beef-and-broccoli-stir-fry-53366",
+        "chicken-handi-52795"
       ]
     },
     {
@@ -2662,8 +2662,8 @@
       "trending": true,
       "relatedRecipeIds": [
         "egyptian-fatteh-53031",
-        "beef-rendang-53053",
-        "bistek-53069"
+        "beef-and-broccoli-stir-fry-53366",
+        "beef-rendang-53053"
       ]
     },
     {
@@ -3060,8 +3060,8 @@
       "trending": true,
       "relatedRecipeIds": [
         "tom-kha-gai-53207",
-        "chicken-mushroom-hotpot-52846",
-        "nutty-chicken-curry-52851"
+        "vietnamese-chicken-salad-53232",
+        "chicken-mushroom-hotpot-52846"
       ]
     },
     {
@@ -3394,7 +3394,7 @@
       "relatedRecipeIds": [
         "strawberry-rhubarb-pie-53005",
         "battenberg-cake-52894",
-        "christmas-cake-52990"
+        "beavertails-52928"
       ]
     },
     {
@@ -4700,8 +4700,8 @@
       "trending": true,
       "relatedRecipeIds": [
         "bistek-53069",
-        "aussie-burgers-53099",
-        "beef-and-mustard-pie-52874"
+        "arepa-pelua-53329",
+        "aussie-burgers-53099"
       ]
     },
     {
@@ -4824,9 +4824,9 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
+        "beavertails-52928",
         "battenberg-cake-52894",
-        "christmas-cake-52990",
-        "churros-53153"
+        "christmas-cake-52990"
       ]
     },
     {
@@ -4891,8 +4891,8 @@
       "trending": true,
       "relatedRecipeIds": [
         "beef-caldereta-53070",
-        "beef-rendang-53053",
-        "egyptian-fatteh-53031"
+        "beef-and-broccoli-stir-fry-53366",
+        "beef-rendang-53053"
       ]
     },
     {
@@ -4949,9 +4949,9 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
+        "arepa-pelua-53329",
         "aussie-burgers-53099",
-        "beef-and-mustard-pie-52874",
-        "beef-caldereta-53070"
+        "beef-and-broccoli-stir-fry-53366"
       ]
     },
     {
@@ -5077,7 +5077,7 @@
       "relatedRecipeIds": [
         "strawberry-rhubarb-pie-53005",
         "battenberg-cake-52894",
-        "christmas-cake-52990"
+        "beavertails-52928"
       ]
     },
     {
@@ -5410,8 +5410,8 @@
       "trending": true,
       "relatedRecipeIds": [
         "battenberg-cake-52894",
-        "christmas-cake-52990",
-        "churros-53153"
+        "beavertails-52928",
+        "christmas-cake-52990"
       ]
     },
     {
@@ -5930,8 +5930,8 @@
       "trending": true,
       "relatedRecipeIds": [
         "battenberg-cake-52894",
-        "christmas-cake-52990",
-        "churros-53153"
+        "beavertails-52928",
+        "christmas-cake-52990"
       ]
     },
     {
@@ -6678,9 +6678,9 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
+        "vietnamese-chicken-salad-53232",
         "arroz-con-gambas-y-calamar-53147",
-        "baked-salmon-with-fennel-tomatoes-52959",
-        "garlicky-prawns-with-sherry-53180"
+        "baked-salmon-with-fennel-tomatoes-52959"
       ]
     },
     {
@@ -9132,9 +9132,9 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
-        "beef-and-mustard-pie-52874",
-        "beef-caldereta-53070",
-        "beef-rendang-53053"
+        "arepa-pelua-53329",
+        "beef-and-broccoli-stir-fry-53366",
+        "beef-and-mustard-pie-52874"
       ]
     },
     {
@@ -9195,9 +9195,9 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
+        "chicken-handi-52795",
         "chicken-mushroom-hotpot-52846",
-        "spanish-chicken-53164",
-        "thai-green-chicken-soup-53214"
+        "spanish-chicken-53164"
       ]
     },
     {
@@ -9260,6 +9260,345 @@
         "arroz-con-gambas-y-calamar-53147",
         "baked-salmon-with-fennel-tomatoes-52959",
         "garlicky-prawns-with-sherry-53180"
+      ]
+    },
+    {
+      "mealId": "53329",
+      "id": "arepa-pelua-53329",
+      "title": "Venezuelan Beef Arepa",
+      "category": "Beef",
+      "origin": "Venezuela",
+      "image": "https://www.themealdb.com/images/media/meals/jgl9qq1764437635.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/jgl9qq1764437635.jpg",
+      "ingredients": [
+        "500g Beef",
+        "1 Onion",
+        "1 Red Pepper",
+        "2 cloves Garlic",
+        "1 tsp Cumin",
+        "1 tsp Oregano",
+        "1 tsp Paprika",
+        "1 L Beef Stock",
+        "2 1/2 cups Water",
+        "Pinch Salt",
+        "200g Cheese",
+        "Pinch Extra Virgin Olive Oil"
+      ],
+      "instructions": "1. Cook beef in broth over low heat for 2 hours. 2. Shred the beef and sauté with onion, pepper, and garlic. 3. Mix cornmeal with warm water to form a soft dough. 4. Divide dough into 6 portions and shape into discs. 5. Cook arepas on a griddle for 2-3 minutes per side.",
+      "steps": [
+        "Cook beef in broth over low heat for 2 hours.",
+        "2. Shred the beef and sauté with onion, pepper, and garlic.",
+        "3. Mix cornmeal with warm water to form a soft dough.",
+        "4. Divide dough into 6 portions and shape into discs.",
+        "5. Cook arepas on a griddle for 2-3 minutes per side."
+      ],
+      "description": "Venezuelan Beef Arepa (Venezuela) — easy beef recipe with 12 ingredients and 5 steps. Ready in 10 min. Includes exact ingredients and clear instructions.",
+      "hook": "Cook this today to experience the authentic flavors of Venezuela in every bite",
+      "tip": "Use high-quality cornmeal for a softer arepa dough",
+      "tags": [
+        "beef arepa",
+        "venezuelan cuisine",
+        "latin american food",
+        "shredded beef",
+        "cornmeal dough",
+        "arepa recipe",
+        "cheese filling",
+        "traditional dish",
+        "Beef",
+        "Venezuela"
+      ],
+      "datePublished": "2026-05-12",
+      "publishDate": "2026-05-12T09:00:00",
+      "addedDate": "2026-05-09T04:31:09",
+      "status": "PUBLISHED",
+      "slug": "arepa-pelua-53329",
+      "youtube": "https://www.youtube.com/watch?v=bSWoRyWI6Fo",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "10 min",
+      "prepTime": "10 min",
+      "totalTime": "3 min",
+      "servings": 4,
+      "difficulty": "Easy",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "aussie-burgers-53099",
+        "beef-and-broccoli-stir-fry-53366",
+        "beef-and-mustard-pie-52874"
+      ]
+    },
+    {
+      "mealId": "52795",
+      "id": "chicken-handi-52795",
+      "title": "Delicious Chicken Handi",
+      "category": "Chicken",
+      "origin": "India",
+      "image": "https://www.themealdb.com/images/media/meals/wyxwsp1486979827.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/wyxwsp1486979827.jpg",
+      "ingredients": [
+        "1.2 kg Chicken",
+        "5 thinly sliced Onion",
+        "2 finely chopped Tomatoes",
+        "8 cloves chopped Garlic",
+        "1 tbsp Ginger paste",
+        "¼ cup Vegetable oil",
+        "2 tsp Cumin seeds",
+        "3 tsp Coriander seeds",
+        "1 tsp Turmeric powder",
+        "1 tsp Chilli powder",
+        "2 Green chilli",
+        "1 cup Yogurt",
+        "¾ cup Cream",
+        "3 tsp Dried fenugreek",
+        "1 tsp Garam masala",
+        "To taste Salt"
+      ],
+      "instructions": "Heat oil in a large pot or wok.,Add sliced onion and fry until deep golden brown.,Add chopped garlic and sauté for a minute.,Add chopped tomatoes and cook until soft.,Return fried onion to the pot and stir.,Add ginger paste, cumin seeds, coriander seeds, and green chillies.,Add spices and sauté well.,Add chicken pieces, season with salt, and cook covered on medium-low heat.,Add beaten yogurt, coriander seeds, and dried fenugreek leaves.,Add cream and mix well.,Sprinkle remaining fenugreek leaves and garam masala.",
+      "steps": [
+        "Heat oil in a large pot or wok.,Add sliced onion and fry until deep golden brown.,Add chopped garlic and sauté for a minute.,Add chopped tomatoes and cook until soft.,Return fried onion to the pot and stir.,Add ginger paste, cumin seeds, coriander seeds, and green chillies.,Add spices and sauté well.,Add chicken pieces, season with salt, and cook covered on medium-low heat.,Add beaten yogurt, coriander seeds, and dried fenugreek leaves.,Add cream and mix well.,Sprinkle remaining fenugreek leaves and garam masala."
+      ],
+      "description": "Delicious Chicken Handi (India) — easy chicken recipe with 16 ingredients and 1 step. Includes exact ingredients and clear instructions.",
+      "hook": "Cook Chicken Handi today for a flavorful and satisfying meal.",
+      "tip": "Use low heat when adding yogurt to prevent it from splitting.",
+      "tags": [
+        "chicken recipes",
+        "indian cuisine",
+        "creamy dishes",
+        "spicy food",
+        "handi recipes",
+        "yogurt based",
+        "cream based",
+        "naan recipes",
+        "Chicken",
+        "India"
+      ],
+      "datePublished": "2026-05-12",
+      "publishDate": "2026-05-12T09:00:00",
+      "addedDate": "2026-05-09T04:31:09",
+      "status": "PUBLISHED",
+      "slug": "chicken-handi-52795",
+      "youtube": "https://www.youtube.com/watch?v=IO0issT0Rmc",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "",
+      "prepTime": "",
+      "totalTime": "",
+      "servings": 4,
+      "difficulty": "Easy",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "nutty-chicken-curry-52851",
+        "chicken-enchilada-casserole-52765",
+        "chicken-mushroom-hotpot-52846"
+      ]
+    },
+    {
+      "mealId": "52928",
+      "id": "beavertails-52928",
+      "title": "Canadian BeaverTails Pastry",
+      "category": "Dessert",
+      "origin": "Canadian",
+      "image": "https://www.themealdb.com/images/media/meals/ryppsv1511815505.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/ryppsv1511815505.jpg",
+      "ingredients": [
+        "1/2 cup Water",
+        "2 parts Yeast",
+        "1/2 cup Sugar",
+        "1/2 cup Milk",
+        "6 tblsp Butter",
+        "2 Eggs",
+        "1 ½ tsp Salt",
+        "2-1/2 cups Flour",
+        "for frying Oil",
+        "garnish Lemon",
+        "garnish Sugar",
+        "garnish Cinnamon"
+      ],
+      "instructions": "1. Mix warm water, sugar, and yeast. 2. Add milk, butter, eggs, and salt, whisking until combined. 3. Add flour to form a smooth dough. 4. Proof the dough for 1 1/2 hours. 5. Cut into 12 pieces, rolling each into a long oval shape. 6. Fry in hot oil until golden brown, about 30-45 seconds per side.",
+      "steps": [
+        "Mix warm water, sugar, and yeast.",
+        "2. Add milk, butter, eggs, and salt, whisking until combined.",
+        "3. Add flour to form a smooth dough.",
+        "4. Proof the dough for 1 1/2 hours.",
+        "5. Cut into 12 pieces, rolling each into a long oval shape.",
+        "6. Fry in hot oil until golden brown, about 30-45 seconds per side."
+      ],
+      "description": "Canadian BeaverTails Pastry (Canadian) — easy dessert recipe with 12 ingredients and 6 steps. Includes exact ingredients and clear instructions.",
+      "hook": "Treat yourself to a crispy, sweet Canadian classic today",
+      "tip": "Use a thermometer to ensure the oil reaches 350 degrees for perfect frying",
+      "tags": [
+        "Dessert",
+        "Pastry",
+        "Canadian",
+        "Fried",
+        "Sweet",
+        "Treat",
+        "Specialty",
+        "Traditional",
+        "Beavertails"
+      ],
+      "datePublished": "2026-05-12",
+      "publishDate": "2026-05-12T09:00:00",
+      "addedDate": "2026-05-09T04:31:09",
+      "status": "PUBLISHED",
+      "slug": "beavertails-52928",
+      "youtube": "https://www.youtube.com/watch?v=2G07UOqU2e8",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "",
+      "prepTime": "",
+      "totalTime": "",
+      "servings": 4,
+      "difficulty": "Medium",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "nanaimo-bars-52924",
+        "battenberg-cake-52894",
+        "christmas-cake-52990"
+      ]
+    },
+    {
+      "mealId": "53232",
+      "id": "vietnamese-chicken-salad-53232",
+      "title": "Quick Chicken Noodle Salad",
+      "category": "Chicken",
+      "origin": "Vietnamese",
+      "image": "https://www.themealdb.com/images/media/meals/pk8wtn1763758591.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/pk8wtn1763758591.jpg",
+      "ingredients": [
+        "140g Rice Noodles",
+        "1 Carrots",
+        "1/2 Cucumber",
+        "2 Chicken Breasts",
+        "50g Radish",
+        "1/2 Red Onions",
+        "Bunch Mint",
+        "25g Peanuts",
+        "1 chopped Red Chilli",
+        "Zest and juice of 1 Lime",
+        "1 ½ tbsp Fish Sauce",
+        "1 ½ tbsp Soy Sauce",
+        "1 ½ tbsp Sesame Seed Oil"
+      ],
+      "instructions": "1. Whisk dressing ingredients in a bowl. Cook noodles, drain and add to bowl. 2. Peel carrot and cucumber into strips. Add to noodles with chicken, radish, onion and mint. 3. Toss to coat and serve with peanuts.",
+      "steps": [
+        "Whisk dressing ingredients in a bowl. Cook noodles, drain and add to bowl.",
+        "2. Peel carrot and cucumber into strips. Add to noodles with chicken, radish, onion and mint.",
+        "3. Toss to coat and serve with peanuts."
+      ],
+      "description": "Quick Chicken Noodle Salad (Vietnamese) — easy chicken recipe with 13 ingredients and 3 steps. Includes exact ingredients and clear instructions.",
+      "hook": "Cook this today for a refreshing and healthy meal. Perfect for a quick lunch or dinner.",
+      "tip": "Use pre-cooked chicken for a faster preparation time.",
+      "tags": [
+        "chicken salad",
+        "vietnamese food",
+        "noodle recipes",
+        "healthy meals",
+        "easy cooking",
+        "asian cuisine",
+        "lunch ideas",
+        "dinner inspiration",
+        "Chicken",
+        "Vietnamese"
+      ],
+      "datePublished": "2026-05-12",
+      "publishDate": "2026-05-12T09:00:00",
+      "addedDate": "2026-05-09T04:31:09",
+      "status": "PUBLISHED",
+      "slug": "vietnamese-chicken-salad-53232",
+      "youtube": "https://www.youtube.com/watch?v=behSkhzKpHI",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "",
+      "prepTime": "",
+      "totalTime": "",
+      "servings": 4,
+      "difficulty": "Easy",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "prawn-noodle-salad-with-crispy-shallots-53244",
+        "thai-green-chicken-soup-53214",
+        "ayam-percik-53050"
+      ]
+    },
+    {
+      "mealId": "53366",
+      "id": "beef-and-broccoli-stir-fry-53366",
+      "title": "Quick Beef Stir Fry",
+      "category": "Beef",
+      "origin": "Chinese",
+      "image": "https://www.themealdb.com/images/media/meals/m0p0j81765568742.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/m0p0j81765568742.jpg",
+      "ingredients": [
+        "1 tsp Soy Sauce",
+        "1 tsp Dry sherry",
+        "1/2 tsp Cornstarch",
+        "1/8 teaspoon Black Pepper",
+        "1 lb Sirloin steak",
+        "2 tablespoons Oyster Sauce",
+        "1 tsp Dry sherry",
+        "1 tablespoon Soy Sauce",
+        "1/4 cup Chicken Stock",
+        "1 lb Broccoli",
+        "2 tablespoons High Heat Cooking Oil",
+        "2 cloves minced Garlic",
+        "1 tsp Cornstarch",
+        "1 tablespoon Water"
+      ],
+      "instructions": "1. Marinate beef in soy sauce, sherry, and cornstarch for 10 minutes.,2. Blanch broccoli until crisp-tender, about 2 minutes.,3. Stir-fry beef and garlic in hot oil until browned, about 2 minutes.",
+      "steps": [
+        "Marinate beef in soy sauce, sherry, and cornstarch for 10 minutes.,2.",
+        "Blanch broccoli until crisp-tender, about 2 minutes.,3.",
+        "Stir-fry beef and garlic in hot oil until browned, about 2 minutes."
+      ],
+      "description": "Quick Beef Stir Fry (Chinese) — easy beef recipe with 14 ingredients and 3 steps. Ready in 10 min. Includes exact ingredients and clear instructions.",
+      "hook": "Cook this today for a fast and nutritious meal.",
+      "tip": "Use high heat for a crispy beef texture.",
+      "tags": [
+        "stir fry",
+        "beef recipes",
+        "broccoli",
+        "chinese food",
+        "easy dinner",
+        "beef stir fry",
+        "quick meals",
+        "asian cuisine",
+        "Beef",
+        "Chinese"
+      ],
+      "datePublished": "2026-05-12",
+      "publishDate": "2026-05-12T09:00:00",
+      "addedDate": "2026-05-09T04:31:09",
+      "status": "PUBLISHED",
+      "slug": "beef-and-broccoli-stir-fry-53366",
+      "youtube": "https://www.youtube.com/watch?v=BBABeZjlRM8",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "10 min",
+      "prepTime": "10 min",
+      "totalTime": "14 min",
+      "servings": 4,
+      "difficulty": "Easy",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "beef-rendang-53053",
+        "bistek-53069",
+        "egyptian-fatteh-53031"
       ]
     }
   ]
