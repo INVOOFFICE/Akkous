@@ -1865,9 +1865,9 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
+        "chicken-congee-52956",
         "spanish-chicken-53164",
-        "chicken-enchilada-casserole-52765",
-        "chicken-handi-52795"
+        "chicken-enchilada-casserole-52765"
       ]
     },
     {
@@ -2121,8 +2121,8 @@
       "trending": true,
       "relatedRecipeIds": [
         "sweet-and-sour-chicken-53376",
-        "chicken-handi-52795",
-        "chicken-mushroom-hotpot-52846"
+        "chicken-congee-52956",
+        "chicken-fajita-mac-and-cheese-52818"
       ]
     },
     {
@@ -2390,9 +2390,9 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
-        "chicken-enchilada-casserole-52765",
-        "beef-and-broccoli-stir-fry-53366",
-        "chicken-handi-52795"
+        "chinese-orange-chicken-53365",
+        "chicken-congee-52956",
+        "chicken-enchilada-casserole-52765"
       ]
     },
     {
@@ -2729,8 +2729,8 @@
       "trending": true,
       "relatedRecipeIds": [
         "thai-green-chicken-soup-53214",
-        "chicken-mushroom-hotpot-52846",
-        "nutty-chicken-curry-52851"
+        "chicken-congee-52956",
+        "chicken-fajita-mac-and-cheese-52818"
       ]
     },
     {
@@ -3061,7 +3061,7 @@
       "relatedRecipeIds": [
         "tom-kha-gai-53207",
         "vietnamese-chicken-salad-53232",
-        "chicken-mushroom-hotpot-52846"
+        "chicken-congee-52956"
       ]
     },
     {
@@ -3332,7 +3332,7 @@
       "relatedRecipeIds": [
         "ayam-percik-53050",
         "brown-stew-chicken-52940",
-        "chicken-couscous-52850"
+        "chicken-congee-52956"
       ]
     },
     {
@@ -3909,9 +3909,9 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
+        "vietnamese-grilled-pork-bun-thit-nuong-52828",
         "bbq-pork-sloppy-joes-52995",
-        "bryndzove-halusky-53190",
-        "chickpea-chorizo-spinach-stew-53166"
+        "bryndzove-halusky-53190"
       ]
     },
     {
@@ -4501,8 +4501,8 @@
       "trending": true,
       "relatedRecipeIds": [
         "spanish-chicken-pie-53155",
-        "chicken-mushroom-hotpot-52846",
-        "chicken-enchilada-casserole-52765"
+        "chicken-congee-52956",
+        "chicken-mushroom-hotpot-52846"
       ]
     },
     {
@@ -4762,7 +4762,7 @@
       "relatedRecipeIds": [
         "ayam-percik-53050",
         "brown-stew-chicken-52940",
-        "chicken-enchilada-casserole-52765"
+        "chicken-congee-52956"
       ]
     },
     {
@@ -5014,8 +5014,8 @@
       "trending": true,
       "relatedRecipeIds": [
         "ayam-percik-53050",
-        "chicken-couscous-52850",
-        "chicken-enchilada-casserole-52765"
+        "chicken-congee-52956",
+        "chicken-couscous-52850"
       ]
     },
     {
@@ -5346,8 +5346,8 @@
       "trending": true,
       "relatedRecipeIds": [
         "brown-stew-chicken-52940",
-        "chicken-couscous-52850",
-        "chicken-enchilada-casserole-52765"
+        "chicken-congee-52956",
+        "chicken-couscous-52850"
       ]
     },
     {
@@ -5842,7 +5842,7 @@
         "Serve with salad leaves drizzled with the lime dressing, and warm crusty bread."
       ],
       "description": "Chilli prawn linguine (Italian) — easy pasta recipe with 13 ingredients and 5 steps. Ready in 10 min. Includes exact ingredients and clear instructions.",
-      "hook": "Mix the dressing ingredients in a small bowl and season with salt and pepper. Set aside.\r\n\r\nCook the pasta according to the packet instructions. Add the sugar snap peas for the last minute or so of cooking time.\r\n\r\nMeanwhile, heat the oil in a wok or large frying pan, toss in the garlic and chilli and cook over a fairly gentle heat for about 30 seconds without letting the garlic brown. Tip in the prawns and cook over a high heat, stirring frequently, for about 3 minutes until they turn pink.\r\n\r\nAdd the tomatoes and cook, stirring occasionally, for 3 minutes until they just start to soften. Drain the pasta and sugar snaps well, then toss into the prawn mixture. Tear in the basil leaves, stir, and season with salt and pepper.\r\n\r\nServe with salad leaves drizzled with the lime dressing, and warm crusty bread.",
+      "hook": "Mix the dressing ingredients in a small bowl and season with salt and pepper. Set aside.\n\nCook the pasta according to the packet instructions. Add the sugar snap peas for the last minute or so of cooking time.\n\nMeanwhile, heat the oil in a wok or large frying pan, toss in the garlic and chilli and cook over a fairly gentle heat for about 30 seconds without letting the garlic brown. Tip in the prawns and cook over a high heat, stirring frequently, for about 3 minutes until they turn pink.\n\nAdd the tomatoes and cook, stirring occasionally, for 3 minutes until they just start to soften. Drain the pasta and sugar snaps well, then toss into the prawn mixture. Tear in the basil leaves, stir, and season with salt and pepper.\n\nServe with salad leaves drizzled with the lime dressing, and warm crusty bread.",
       "tip": "",
       "tags": [
         "Pasta",
@@ -6288,8 +6288,8 @@
       "trending": true,
       "relatedRecipeIds": [
         "lasagna-sandwiches-52987",
-        "fettucine-alfredo-52835",
-        "lasagne-52844"
+        "chicken-fajita-mac-and-cheese-52818",
+        "fettucine-alfredo-52835"
       ]
     },
     {
@@ -6737,9 +6737,9 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
+        "rye-bread-53308",
         "brie-wrapped-in-prosciutto-brioche-52913",
-        "feteer-meshaltet-53030",
-        "sesame-cucumber-salad-53378"
+        "feteer-meshaltet-53030"
       ]
     },
     {
@@ -6995,9 +6995,9 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
-        "brie-wrapped-in-prosciutto-brioche-52913",
-        "feteer-meshaltet-53030",
-        "venezuelan-arepas-53325"
+        "mushroom-soup-with-buckwheat-53059",
+        "runner-bean-mash-snijbonen-stamppot-53388",
+        "brie-wrapped-in-prosciutto-brioche-52913"
       ]
     },
     {
@@ -7256,7 +7256,7 @@
       "relatedRecipeIds": [
         "venezuelan-arepas-53325",
         "brie-wrapped-in-prosciutto-brioche-52913",
-        "split-pea-soup-52925"
+        "runner-bean-mash-snijbonen-stamppot-53388"
       ]
     },
     {
@@ -7512,8 +7512,8 @@
       "trending": true,
       "relatedRecipeIds": [
         "feteer-meshaltet-53030",
-        "split-pea-soup-52925",
-        "venezuelan-arepas-53325"
+        "runner-bean-mash-snijbonen-stamppot-53388",
+        "rye-bread-53308"
       ]
     },
     {
@@ -7699,9 +7699,9 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
+        "three-fish-pie-52882",
         "kedgeree-52887",
-        "salmon-prawn-risotto-52823",
-        "arroz-con-gambas-y-calamar-53147"
+        "salmon-prawn-risotto-52823"
       ]
     },
     {
@@ -7762,8 +7762,8 @@
       "trending": true,
       "relatedRecipeIds": [
         "feteer-meshaltet-53030",
-        "brie-wrapped-in-prosciutto-brioche-52913",
-        "split-pea-soup-52925"
+        "runner-bean-mash-snijbonen-stamppot-53388",
+        "brie-wrapped-in-prosciutto-brioche-52913"
       ]
     },
     {
@@ -8018,8 +8018,8 @@
       "trending": true,
       "relatedRecipeIds": [
         "tortang-talong-53075",
-        "sichuan-eggplant-53374",
-        "avocado-dip-with-new-potatoes-53107"
+        "sukuma-wiki-53113",
+        "sichuan-eggplant-53374"
       ]
     },
     {
@@ -8332,7 +8332,7 @@
       "relatedRecipeIds": [
         "garlicky-prawns-with-sherry-53180",
         "pan-fried-hake-white-bean-chorizo-broth-53152",
-        "salmon-prawn-risotto-52823"
+        "nasi-lemak-53051"
       ]
     },
     {
@@ -8392,7 +8392,7 @@
       "relatedRecipeIds": [
         "beetroot-red-cabbage-sauerkraut-53307",
         "avocado-dip-with-new-potatoes-53107",
-        "eggplant-adobo-53073"
+        "sukuma-wiki-53113"
       ]
     },
     {
@@ -8889,9 +8889,9 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
+        "three-fish-pie-52882",
         "baked-salmon-with-fennel-tomatoes-52959",
-        "garlicky-prawns-with-sherry-53180",
-        "arroz-con-gambas-y-calamar-53147"
+        "garlicky-prawns-with-sherry-53180"
       ]
     },
     {
@@ -9196,8 +9196,8 @@
       "trending": true,
       "relatedRecipeIds": [
         "chicken-handi-52795",
-        "chicken-mushroom-hotpot-52846",
-        "spanish-chicken-53164"
+        "chicken-congee-52956",
+        "chicken-fajita-mac-and-cheese-52818"
       ]
     },
     {
@@ -9394,8 +9394,8 @@
       "trending": true,
       "relatedRecipeIds": [
         "nutty-chicken-curry-52851",
-        "chicken-enchilada-casserole-52765",
-        "chicken-mushroom-hotpot-52846"
+        "chicken-congee-52956",
+        "chicken-enchilada-casserole-52765"
       ]
     },
     {
@@ -9530,7 +9530,7 @@
       "relatedRecipeIds": [
         "prawn-noodle-salad-with-crispy-shallots-53244",
         "thai-green-chicken-soup-53214",
-        "ayam-percik-53050"
+        "chinese-orange-chicken-53365"
       ]
     },
     {
@@ -9599,6 +9599,677 @@
         "beef-rendang-53053",
         "bistek-53069",
         "egyptian-fatteh-53031"
+      ]
+    },
+    {
+      "mealId": "52828",
+      "id": "vietnamese-grilled-pork-bun-thit-nuong-52828",
+      "title": "Grilled Pork Noodle Bowl",
+      "category": "Pork",
+      "origin": "Vietnamese",
+      "image": "https://www.themealdb.com/images/media/meals/qqwypw1504642429.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/qqwypw1504642429.jpg",
+      "ingredients": [
+        "1.5 pounds sliced Pork",
+        "1 package thin Rice Vermicelli",
+        "4-6 Egg Rolls",
+        "3 tablespoons minced Challots",
+        "1.5 tablespoons minced garlic Garlic",
+        "¼ cup Sugar",
+        "1 tablespoon Fish Sauce",
+        "½ tablespoon thick Soy sauce",
+        "½ tablespoon Pepper",
+        "3 tablespoons Olive Oil",
+        "Sliced Cucumber",
+        "Leaves Mint",
+        "Crushed Peanuts"
+      ],
+      "instructions": "1. Slice pork into thin strips. 2. Mix marinade ingredients. 3. Marinate pork for 1 hour. 4. Bake pork at 375F for 10-15 minutes. 5. Broil until golden brown.",
+      "steps": [
+        "Slice pork into thin strips.",
+        "2. Mix marinade ingredients.",
+        "3. Marinate pork for 1 hour.",
+        "4. Bake pork at 375F for 10-15 minutes.",
+        "5. Broil until golden brown."
+      ],
+      "description": "Grilled Pork Noodle Bowl (Vietnamese) — easy pork recipe with 13 ingredients and 5 steps. Ready in 10 min. Includes exact ingredients and clear instructions.",
+      "hook": "Cook this today for a flavorful Vietnamese meal. It's perfect for a quick dinner",
+      "tip": "Marinate pork overnight for more tender results",
+      "tags": [
+        "vietnamese food",
+        "grilled pork",
+        "noodle bowl",
+        "asian cuisine",
+        "pork recipes",
+        "rice vermicelli",
+        "egg rolls",
+        "fish sauce",
+        "Pork",
+        "Vietnamese"
+      ],
+      "datePublished": "2026-05-13",
+      "publishDate": "2026-05-13T09:00:00",
+      "addedDate": "2026-05-10T04:31:02",
+      "status": "PUBLISHED",
+      "slug": "vietnamese-grilled-pork-bun-thit-nuong-52828",
+      "youtube": "https://www.youtube.com/watch?v=Q3qcQcENzbU",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "10 min",
+      "prepTime": "10 min",
+      "totalTime": "15 min",
+      "servings": 4,
+      "difficulty": "Easy",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "barbecue-pork-buns-53242",
+        "bbq-pork-sloppy-joes-52995",
+        "fasirky-53188"
+      ]
+    },
+    {
+      "mealId": "53051",
+      "id": "nasi-lemak-53051",
+      "title": "Malaysian Nasi Lemak",
+      "category": "Seafood",
+      "origin": "Malaysian",
+      "image": "https://www.themealdb.com/images/media/meals/wai9bw1619788844.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/wai9bw1619788844.jpg",
+      "ingredients": [
+        "2 cups Coconut Milk",
+        "2 cups Water",
+        "1/4 tsp Ginger Paste",
+        "1 Ginger",
+        "1 Bay Leaf",
+        "2 cups Rice",
+        "4 Eggs",
+        "1 Cucumber",
+        "1 cup Peanuts",
+        "4 oz Anchovy Fillet",
+        "2 tbs Vegetable Oil",
+        "1 Onion",
+        "3 cloves Garlic",
+        "3 Shallots",
+        "2 tsp Chilli Powder",
+        "4 oz Anchovy Fillet",
+        "3 tbs Sugar",
+        "1/3 cup Tamarind Paste"
+      ],
+      "instructions": "1. Combine coconut milk, water, ginger paste, and rice in a saucepan, cover, and bring to a boil.,2. Place eggs in a saucepan, cover with cold water, bring to a boil, then let stand for 10-12 minutes.,3. Heat oil in a skillet, cook peanuts and anchovies until lightly browned and crisp.,4. Stir in onion, garlic, and shallots, cook until fragrant, then mix in chile paste and cook for 10 minutes.,5. Serve the onion and garlic sauce over warm rice, topped with peanuts, fried anchovies, cucumbers, and eggs.",
+      "steps": [
+        "Combine coconut milk, water, ginger paste, and rice in a saucepan, cover, and bring to a boil.,2.",
+        "Place eggs in a saucepan, cover with cold water, bring to a boil, then let stand for 10-12 minutes.,3.",
+        "Heat oil in a skillet, cook peanuts and anchovies until lightly browned and crisp.,4.",
+        "Stir in onion, garlic, and shallots, cook until fragrant, then mix in chile paste and cook for 10 minutes.,5.",
+        "Serve the onion and garlic sauce over warm rice, topped with peanuts, fried anchovies, cucumbers, and eggs."
+      ],
+      "description": "Malaysian Nasi Lemak (Malaysian) — easy seafood recipe with 18 ingredients and 5 steps. Ready in 12 min. Includes exact ingredients and clear instructions.",
+      "hook": "Cook this today to experience the authentic taste of Malaysia",
+      "tip": "Use fresh coconut milk for the best flavor",
+      "tags": [
+        "Malaysian cuisine",
+        "coconut rice",
+        "seafood",
+        "Asian recipes",
+        "spicy food",
+        "rice dishes",
+        "international cooking",
+        "anchovies",
+        "Malaysian",
+        "Nasi"
+      ],
+      "datePublished": "2026-05-13",
+      "publishDate": "2026-05-13T09:00:00",
+      "addedDate": "2026-05-10T04:31:02",
+      "status": "PUBLISHED",
+      "slug": "nasi-lemak-53051",
+      "youtube": "https://www.youtube.com/watch?v=IUIs4C86Ilo",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "12 min",
+      "prepTime": "10 min",
+      "totalTime": "22 min",
+      "servings": 4,
+      "difficulty": "Easy",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "arroz-con-gambas-y-calamar-53147",
+        "baked-salmon-with-fennel-tomatoes-52959",
+        "garlicky-prawns-with-sherry-53180"
+      ]
+    },
+    {
+      "mealId": "53388",
+      "id": "runner-bean-mash-snijbonen-stamppot-53388",
+      "title": "Creamy Runner Bean Mash",
+      "category": "Side",
+      "origin": "Netherlands",
+      "image": "https://www.themealdb.com/images/media/meals/urq5w21777540535.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/urq5w21777540535.jpg",
+      "ingredients": [
+        "400g Runner Beans",
+        "1 clove Garlic",
+        "1 chopped Onion",
+        "800g Potatoes",
+        "25g Butter",
+        "1 tablespoon Mustard",
+        "1 dash Milk",
+        "100g Cheese",
+        "75g Bacon",
+        "Pinch Salt"
+      ],
+      "instructions": "1. Wash and chop the runner beans. 2. Cook the beans in salted water until al dente. 3. Sauté the onion and garlic. 4. Mash the potatoes with butter and milk. 5. Combine the bean mixture and grated cheese.",
+      "steps": [
+        "Wash and chop the runner beans.",
+        "2. Cook the beans in salted water until al dente.",
+        "3. Sauté the onion and garlic.",
+        "4. Mash the potatoes with butter and milk.",
+        "5. Combine the bean mixture and grated cheese."
+      ],
+      "description": "Creamy Runner Bean Mash (Netherlands) — easy side recipe with 10 ingredients and 5 steps. Includes exact ingredients and clear instructions.",
+      "hook": "Cook this today for a comforting side dish that pairs well with any meal",
+      "tip": "Use leftover bacon to add a smoky flavor to the dish",
+      "tags": [
+        "runner beans",
+        "mashed potatoes",
+        "side dish",
+        "creamy sauce",
+        "comfort food",
+        "Dutch cuisine",
+        "easy recipe",
+        "vegetarian",
+        "Side",
+        "Netherlands"
+      ],
+      "datePublished": "2026-05-13",
+      "publishDate": "2026-05-13T09:00:00",
+      "addedDate": "2026-05-10T04:31:02",
+      "status": "PUBLISHED",
+      "slug": "runner-bean-mash-snijbonen-stamppot-53388",
+      "youtube": "",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "",
+      "prepTime": "",
+      "totalTime": "",
+      "servings": 4,
+      "difficulty": "Easy",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "split-pea-soup-52925",
+        "venezuelan-arepas-53325",
+        "brie-wrapped-in-prosciutto-brioche-52913"
+      ]
+    },
+    {
+      "mealId": "52818",
+      "id": "chicken-fajita-mac-and-cheese-52818",
+      "title": "Creamy Chicken Mac",
+      "category": "Chicken",
+      "origin": "United States",
+      "image": "https://www.themealdb.com/images/media/meals/qrqywr1503066605.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/qrqywr1503066605.jpg",
+      "ingredients": [
+        "500g macaroni",
+        "2 cups chicken stock",
+        "1/2 cup heavy cream",
+        "1 packet fajita seasoning",
+        "1 tsp salt",
+        "3 diced chicken breast",
+        "2 tbsp olive oil",
+        "1 small finely diced onion",
+        "2 finely diced red pepper",
+        "2 cloves minced garlic",
+        "1 cup cheddar cheese",
+        "garnish chopped parsley"
+      ],
+      "instructions": "1. Fry onion, peppers, and garlic in olive oil. 2. Add chicken and fajita seasoning. 3. Add cream, stock, and macaroni, then cook on low for 20 minutes.",
+      "steps": [
+        "Fry onion, peppers, and garlic in olive oil.",
+        "2. Add chicken and fajita seasoning.",
+        "3. Add cream, stock, and macaroni, then cook on low for 20 minutes."
+      ],
+      "description": "Creamy Chicken Mac (United States) — easy chicken recipe with 12 ingredients and 3 steps. Ready in 10 min. Includes exact ingredients and clear instructions.",
+      "hook": "Cook this today for a satisfying meal that combines the best of mac and cheese with spicy fajita flavors",
+      "tip": "Use leftover roasted peppers as a garnish for added flavor and texture",
+      "tags": [
+        "Pasta",
+        "Chicken",
+        "Comfort Food",
+        "Macaroni",
+        "Cheese",
+        "Fajita",
+        "American",
+        "United States",
+        "Creamy"
+      ],
+      "datePublished": "2026-05-13",
+      "publishDate": "2026-05-13T09:00:00",
+      "addedDate": "2026-05-10T04:31:02",
+      "status": "PUBLISHED",
+      "slug": "chicken-fajita-mac-and-cheese-52818",
+      "youtube": "https://www.youtube.com/watch?v=bwTSmLTZKNg",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "10 min",
+      "prepTime": "10 min",
+      "totalTime": "20 min",
+      "servings": 4,
+      "difficulty": "Easy",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "grilled-mac-and-cheese-sandwich-52829",
+        "chicken-congee-52956",
+        "chicken-enchilada-casserole-52765"
+      ]
+    },
+    {
+      "mealId": "52956",
+      "id": "chicken-congee-52956",
+      "title": "Homestyle Chicken Congee",
+      "category": "Chicken",
+      "origin": "Chinese",
+      "image": "https://www.themealdb.com/images/media/meals/1529446352.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/1529446352.jpg",
+      "ingredients": [
+        "8 oz Chicken",
+        "pinch Salt",
+        "pinch Pepper",
+        "1 tsp Ginger Cordial",
+        "1 tsp Ginger",
+        "1 tbs Spring Onions",
+        "1/2 cup Rice",
+        "8 cups Water",
+        "2 oz Coriander"
+      ],
+      "instructions": "1. Marinate chicken with salt, pepper, and ginger. 2. Rinse and boil rice in 8 cups of water. 3. Add marinated chicken and cook on low heat for 10 minutes.",
+      "steps": [
+        "Marinate chicken with salt, pepper, and ginger.",
+        "2. Rinse and boil rice in 8 cups of water.",
+        "3. Add marinated chicken and cook on low heat for 10 minutes."
+      ],
+      "description": "Homestyle Chicken Congee (Chinese) — easy chicken recipe with 9 ingredients and 3 steps. Ready in 10 min. Includes exact ingredients and clear instructions.",
+      "hook": "Cook this today for a soothing, comforting meal. Perfect for a chilly day.",
+      "tip": "Use low heat to prevent rice from burning or sticking to the pot.",
+      "tags": [
+        "chicken recipes",
+        "congee",
+        "comfort food",
+        "chinese cuisine",
+        "rice porridge",
+        "homestyle cooking",
+        "easy meals",
+        "traditional dishes",
+        "Chicken",
+        "Chinese"
+      ],
+      "datePublished": "2026-05-13",
+      "publishDate": "2026-05-13T09:00:00",
+      "addedDate": "2026-05-10T04:31:02",
+      "status": "PUBLISHED",
+      "slug": "chicken-congee-52956",
+      "youtube": "https://www.youtube.com/watch?v=kqEfk801E94",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "10 min",
+      "prepTime": "10 min",
+      "totalTime": "10 min",
+      "servings": 4,
+      "difficulty": "Easy",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "chinese-orange-chicken-53365",
+        "sweet-and-sour-chicken-53376",
+        "chicken-mushroom-hotpot-52846"
+      ]
+    },
+    {
+      "mealId": "52882",
+      "id": "three-fish-pie-52882",
+      "title": "Delicious Fish Pie",
+      "category": "Seafood",
+      "origin": "British",
+      "image": "https://www.themealdb.com/images/media/meals/spswqs1511558697.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/spswqs1511558697.jpg",
+      "ingredients": [
+        "1kg Potatoes",
+        "Knob Butter",
+        "Dash Milk",
+        "50g Gruyere",
+        "75g Butter",
+        "2 sliced Leek",
+        "75g Plain Flour",
+        "150ml White Wine",
+        "568ml Milk",
+        "2 tbs chopped Parsley",
+        "250g Salmon",
+        "250g Haddock",
+        "250g Smoked Haddock",
+        "6 Eggs"
+      ],
+      "instructions": "1. Preheat the oven to 200C/400F/Gas 6 (180C fan).,2. Boil potatoes until tender, then mash with butter and milk.,3. Melt butter, add leeks, and simmer until soft.,4. Whisk flour and wine, add to leeks, and stir until thickened.,5. Add fish, parsley, and eggs, then spoon into a casserole.,6. Top with mashed potatoes, mark with a fork, and sprinkle with cheese.,7. Bake for 30-40 minutes or until golden-brown",
+      "steps": [
+        "Preheat the oven to 200C/400F/Gas 6 (180C fan).,2.",
+        "Boil potatoes until tender, then mash with butter and milk.,3.",
+        "Melt butter, add leeks, and simmer until soft.,4.",
+        "Whisk flour and wine, add to leeks, and stir until thickened.,5.",
+        "Add fish, parsley, and eggs, then spoon into a casserole.,6.",
+        "Top with mashed potatoes, mark with a fork, and sprinkle with cheese.,7.",
+        "Bake for 30-40 minutes or until golden-brown"
+      ],
+      "description": "Delicious Fish Pie (British) — easy seafood recipe with 14 ingredients and 7 steps. Ready in 28 min. Includes exact ingredients and clear instructions.",
+      "hook": "Cook this today for a satisfying meal that's easy to make and delicious.",
+      "tip": "Use leftover fish for a quick and easy pie filling",
+      "tags": [
+        "Fish",
+        "Seafood",
+        "Dairy",
+        "Pie",
+        "British",
+        "Comfort Food",
+        "Haddock",
+        "Salmon",
+        "Delicious"
+      ],
+      "datePublished": "2026-05-14",
+      "publishDate": "2026-05-14T09:00:00",
+      "addedDate": "2026-05-11T04:31:08",
+      "status": "PUBLISHED",
+      "slug": "three-fish-pie-52882",
+      "youtube": "https://www.youtube.com/watch?v=Ds1Jb8H5Sg8",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "28 min",
+      "prepTime": "12 min",
+      "totalTime": "40 min",
+      "servings": 4,
+      "difficulty": "Medium",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "baked-salmon-with-fennel-tomatoes-52959",
+        "kedgeree-52887",
+        "salmon-prawn-risotto-52823"
+      ]
+    },
+    {
+      "mealId": "53308",
+      "id": "rye-bread-53308",
+      "title": "Homemade Rye Bread",
+      "category": "Side",
+      "origin": "Polish",
+      "image": "https://www.themealdb.com/images/media/meals/lmc6r51764365554.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/lmc6r51764365554.jpg",
+      "ingredients": [
+        "200g Rye",
+        "200g Strong white bread flour",
+        "10g Yeast",
+        "1/2 tsp Salt",
+        "1 tablespoon Honey",
+        "1 tsp Caraway Seed"
+      ],
+      "instructions": "1. Mix flours, yeast, and salt in a bowl, then add honey and warm water to form a dough.,2. Knead the dough for 10 minutes, then let it rise in a warm place for 1-2 hours.,3. Shape the dough into a smooth oval loaf and let it rise for another 1-1.5 hours.,4. Bake the loaf in a preheated oven at 220C for 30 minutes, then let it cool before serving.",
+      "steps": [
+        "Mix flours, yeast, and salt in a bowl, then add honey and warm water to form a dough.,2.",
+        "Knead the dough for 10 minutes, then let it rise in a warm place for 1-2 hours.,3.",
+        "Shape the dough into a smooth oval loaf and let it rise for another 1-1.5 hours.,4.",
+        "Bake the loaf in a preheated oven at 220C for 30 minutes, then let it cool before serving."
+      ],
+      "description": "Homemade Rye Bread (Polish) — easy side recipe with 6 ingredients and 4 steps. Ready in 28 min. Includes exact ingredients and clear instructions.",
+      "hook": "Cook this today for a delicious and authentic Polish bread experience.",
+      "tip": "Use warm water to help the yeast activate and give the bread a better rise.",
+      "tags": [
+        "rye bread",
+        "homemade bread",
+        "bread recipe",
+        "polish cuisine",
+        "side dish",
+        "caraway seeds",
+        "yeast bread",
+        "artisan bread",
+        "Side",
+        "Polish"
+      ],
+      "datePublished": "2026-05-14",
+      "publishDate": "2026-05-14T09:00:00",
+      "addedDate": "2026-05-11T04:31:08",
+      "status": "PUBLISHED",
+      "slug": "rye-bread-53308",
+      "youtube": "https://www.youtube.com/watch?v=bP7m7xx0GpM",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "28 min",
+      "prepTime": "12 min",
+      "totalTime": "40 min",
+      "servings": 4,
+      "difficulty": "Easy",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "brie-wrapped-in-prosciutto-brioche-52913",
+        "feteer-meshaltet-53030",
+        "griddled-flatbreads-53272"
+      ]
+    },
+    {
+      "mealId": "53113",
+      "id": "sukuma-wiki-53113",
+      "title": "Kenyan Kale Stew",
+      "category": "Vegetarian",
+      "origin": "Kenyan",
+      "image": "https://www.themealdb.com/images/media/meals/60o82j1762341177.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/60o82j1762341177.jpg",
+      "ingredients": [
+        "2 tablespoons Oil",
+        "2 medium Red Onions",
+        "1 lb Kale",
+        "Dash Salt",
+        "1 cup Double Cream"
+      ],
+      "instructions": "1. Heat oil in a large skillet over medium heat. \n2. Add onions and cook until softened. \n3. Add kale, cover, and cook for 5 minutes. \n4. Remove lid, add salt, and stir in cream. \n5. Cook for another 5 minutes, stirring occasionally.",
+      "steps": [
+        "1. Heat oil in a large skillet over medium heat.",
+        "2. Add onions and cook until softened.",
+        "3. Add kale, cover, and cook for 5 minutes.",
+        "4. Remove lid, add salt, and stir in cream.",
+        "5. Cook for another 5 minutes, stirring occasionally."
+      ],
+      "description": "Kenyan Kale Stew (Kenyan) — easy vegetarian recipe with 5 ingredients and 5 steps. Ready in 10 min. Includes exact ingredients and clear instructions.",
+      "hook": "Cook this today for a taste of Kenya's comforting cuisine. Perfect for a chilly evening",
+      "tip": "Use fresh kale for the best flavor and texture",
+      "tags": [
+        "kale recipes",
+        "kenyan food",
+        "vegetarian dishes",
+        "african cuisine",
+        "stew recipes",
+        "healthy meals",
+        "easy dinner",
+        "creamed kale",
+        "Vegetarian",
+        "Kenyan"
+      ],
+      "datePublished": "2026-05-14",
+      "publishDate": "2026-05-14T09:00:00",
+      "addedDate": "2026-05-11T04:31:08",
+      "status": "PUBLISHED",
+      "slug": "sukuma-wiki-53113",
+      "youtube": "https://www.youtube.com/watch?v=02hHtPDAxOs",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "10 min",
+      "prepTime": "10 min",
+      "totalTime": "10 min",
+      "servings": 4,
+      "difficulty": "Easy",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "eggplant-adobo-53073",
+        "cucumber-fennel-salad-53309",
+        "avocado-dip-with-new-potatoes-53107"
+      ]
+    },
+    {
+      "mealId": "53059",
+      "id": "mushroom-soup-with-buckwheat-53059",
+      "title": "Creamy Mushroom Buckwheat Soup",
+      "category": "Side",
+      "origin": "Croatian",
+      "image": "https://www.themealdb.com/images/media/meals/1ngcbf1628770793.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/1ngcbf1628770793.jpg",
+      "ingredients": [
+        "150g Mushrooms",
+        "50g Buckwheat",
+        "4 tbs Vegetable Oil",
+        "40g Onion",
+        "2 cloves Garlic",
+        "1 Bay Leaf",
+        "1tbsp Vegetable Stock Cube",
+        "50 ml Sour Cream",
+        "Dash White Wine Vinegar",
+        "Top Parsley"
+      ],
+      "instructions": "1. Chop onion and garlic, slice mushrooms, wash buckwheat. 2. Heat oil, sauté onion. 3. Add mushrooms, garlic, sauté. 4. Add salt, seasoning, buckwheat, bay leaf, cover with water. 5. Simmer, add pepper, sour cream, parsley, vinegar to taste.",
+      "steps": [
+        "Chop onion and garlic, slice mushrooms, wash buckwheat.",
+        "2. Heat oil, sauté onion.",
+        "3. Add mushrooms, garlic, sauté.",
+        "4. Add salt, seasoning, buckwheat, bay leaf, cover with water.",
+        "5. Simmer, add pepper, sour cream, parsley, vinegar to taste."
+      ],
+      "description": "Creamy Mushroom Buckwheat Soup (Croatian) — easy side recipe with 10 ingredients and 5 steps. Includes exact ingredients and clear instructions.",
+      "hook": "Cook this today for a comforting, nutritious meal",
+      "tip": "Use fresh parsley for a brighter flavor",
+      "tags": [
+        "Warming",
+        "Soup",
+        "Buckwheat",
+        "Mushroom",
+        "Croatian",
+        "Comfort Food",
+        "Healthy",
+        "Side",
+        "Creamy"
+      ],
+      "datePublished": "2026-05-14",
+      "publishDate": "2026-05-14T09:00:00",
+      "addedDate": "2026-05-11T04:31:08",
+      "status": "PUBLISHED",
+      "slug": "mushroom-soup-with-buckwheat-53059",
+      "youtube": "https://www.youtube.com/watch?v=M1ok7mG9-Qc",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "",
+      "prepTime": "",
+      "totalTime": "",
+      "servings": 4,
+      "difficulty": "Easy",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "split-pea-soup-52925",
+        "runner-bean-mash-snijbonen-stamppot-53388",
+        "brie-wrapped-in-prosciutto-brioche-52913"
+      ]
+    },
+    {
+      "mealId": "53365",
+      "id": "chinese-orange-chicken-53365",
+      "title": "Crispy Orange Chicken",
+      "category": "Chicken",
+      "origin": "Chinese",
+      "image": "https://www.themealdb.com/images/media/meals/s73ytv1765567838.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/s73ytv1765567838.jpg",
+      "ingredients": [
+        "Zest of 1 Orange",
+        "1/4 cup Orange Juice",
+        "1/4 cup Soy Sauce",
+        "1/4 cup Water",
+        "1/3 cup Rice Vinegar",
+        "1 tablespoon Cornstarch",
+        "1 tablespoon Sesame Seed Oil",
+        "1/2 cup Sugar",
+        "650g Chicken Thighs",
+        "2 large Egg",
+        "1 tsp Salt",
+        "1/4 tsp Black Pepper",
+        "1/2 cup Cornstarch",
+        "1/2 cup All purpose flour",
+        "2 cups Vegetable Oil",
+        "2 cloves chopped Garlic",
+        "1 chopped Shallots",
+        "Sliced Scallions",
+        "Garnish Sesame Seed",
+        "To serve Rice"
+      ],
+      "instructions": "1. Whisk together orange sauce ingredients in a bowl and set aside.,2. Cut chicken into 1-inch cubes and coat with egg and cornstarch mixture.,3. Fry chicken in hot oil until cooked through, about 6-8 minutes.,4. Simmer the chicken in the orange sauce until it thickens and sticks to the chicken.,5. Serve over cooked white rice, garnished with sesame seeds and scallions.",
+      "steps": [
+        "Whisk together orange sauce ingredients in a bowl and set aside.,2.",
+        "Cut chicken into 1-inch cubes and coat with egg and cornstarch mixture.,3.",
+        "Fry chicken in hot oil until cooked through, about 6-8 minutes.,4.",
+        "Simmer the chicken in the orange sauce until it thickens and sticks to the chicken.,5.",
+        "Serve over cooked white rice, garnished with sesame seeds and scallions."
+      ],
+      "description": "Crispy Orange Chicken (Chinese) — easy chicken recipe with 20 ingredients and 5 steps. Ready in 10 min. Includes exact ingredients and clear instructions.",
+      "hook": "Cook this today for a flavorful and crispy twist on traditional Chinese cuisine.",
+      "tip": "Use fresh orange zest for the best flavor in the orange sauce.",
+      "tags": [
+        "chicken recipes",
+        "orange chicken",
+        "chinese food",
+        "crispy chicken",
+        "asian cuisine",
+        "dinner ideas",
+        "easy recipes",
+        "savory dishes",
+        "Chicken",
+        "Chinese"
+      ],
+      "datePublished": "2026-05-14",
+      "publishDate": "2026-05-14T09:00:00",
+      "addedDate": "2026-05-11T04:31:08",
+      "status": "PUBLISHED",
+      "slug": "chinese-orange-chicken-53365",
+      "youtube": "https://www.youtube.com/watch?v=-222Dutomek",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "10 min",
+      "prepTime": "10 min",
+      "totalTime": "8 min",
+      "servings": 4,
+      "difficulty": "Easy",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "sweet-and-sour-chicken-53376",
+        "chicken-congee-52956",
+        "chicken-enchilada-casserole-52765"
       ]
     }
   ]

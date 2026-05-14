@@ -152,6 +152,16 @@
 - [Canadian BeaverTails Pastry](https://akkous.com/recipes/beavertails-52928/) — Canadian | Dessert
 - [Quick Chicken Noodle Salad](https://akkous.com/recipes/vietnamese-chicken-salad-53232/) — Vietnamese | Chicken
 - [Quick Beef Stir Fry](https://akkous.com/recipes/beef-and-broccoli-stir-fry-53366/) — Chinese | Beef
+- [Grilled Pork Noodle Bowl](https://akkous.com/recipes/vietnamese-grilled-pork-bun-thit-nuong-52828/) — Vietnamese | Pork
+- [Malaysian Nasi Lemak](https://akkous.com/recipes/nasi-lemak-53051/) — Malaysian | Seafood
+- [Creamy Runner Bean Mash](https://akkous.com/recipes/runner-bean-mash-snijbonen-stamppot-53388/) — Netherlands | Side
+- [Creamy Chicken Mac](https://akkous.com/recipes/chicken-fajita-mac-and-cheese-52818/) — United States | Chicken
+- [Homestyle Chicken Congee](https://akkous.com/recipes/chicken-congee-52956/) — Chinese | Chicken
+- [Delicious Fish Pie](https://akkous.com/recipes/three-fish-pie-52882/) — British | Seafood
+- [Homemade Rye Bread](https://akkous.com/recipes/rye-bread-53308/) — Polish | Side
+- [Kenyan Kale Stew](https://akkous.com/recipes/sukuma-wiki-53113/) — Kenyan | Vegetarian
+- [Creamy Mushroom Buckwheat Soup](https://akkous.com/recipes/mushroom-soup-with-buckwheat-53059/) — Croatian | Side
+- [Crispy Orange Chicken](https://akkous.com/recipes/chinese-orange-chicken-53365/) — Chinese | Chicken
 
 ## About
 - All recipes include ingredients, step-by-step instructions, cooking time, difficulty level, and cultural origin.
