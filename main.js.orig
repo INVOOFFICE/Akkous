@@ -1,0 +1,31 @@
+(function() {
+  "use strict";
+  var A = window.Akkous;
+
+  function loadFallback() {
+    if (document.querySelector('script[src="main.js.backup"]')) return;
+    var s = document.createElement("script");
+    s.src = "main.js.backup";
+    s.defer = true;
+    document.body.appendChild(s);
+  }
+
+  if (!A) { loadFallback(); return; }
+
+  var isHome = A.isHomePage();
+  var isRecipe = A.isRecipePage();
+
+  if ((isHome && typeof A.initHomePage !== "function") ||
+      (isRecipe && typeof A.renderRecipePage !== "function") ||
+      typeof A.initTheme !== "function" ||
+      typeof A.initMobileNav !== "function") {
+    loadFallback();
+    return;
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", A.boot);
+  } else {
+    A.boot();
+  }
+})();

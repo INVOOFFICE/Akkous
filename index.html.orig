@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1J9BFL1XZ3"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-1J9BFL1XZ3");
+    </script>
+    <meta charset="UTF-8" />
+    <meta http-equiv="content-language" content="en" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#E8572A" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Akkous" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://pagead2.googlesyndication.com 'unsafe-inline' 'unsafe-eval'; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com; img-src 'self' https://www.themealdb.com https://images.unsplash.com data:; connect-src 'self' https://www.google-analytics.com https://pagead2.googlesyndication.com; frame-src 'self' https://www.youtube.com https://script.google.com; form-action 'self' https://script.google.com; manifest-src 'self';" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2269008589730162"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="preload" href="recipes.json" as="fetch" type="application/json" crossorigin="anonymous" />
+    <meta name="description" content="English recipe site: browse by category—chicken, beef, pasta, seafood, vegetarian & more. Tested dishes with clear ingredients and steps." />
+    <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+    <meta name="googlebot" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+    <meta name="pinterest-rich-pin" content="true" />
+    <meta name="p:domain_verify" content="1e49b9312c23dd1bba6b615c270a0e3c" />
+    <meta name="google-adsense-account" content="ca-pub-2269008589730162" />
+    <meta property="og:title" content="Akkous — From your kitchen to the world" />
+    <meta
+      property="og:description"
+      content="Browse recipes in English by category. Practical home cooking with clear ingredients and step-by-step instructions."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://akkous.com/" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:image" content="https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=1200&h=630&fit=crop&q=80" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="Akkous" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Akkous — From your kitchen to the world" />
+    <meta
+      name="twitter:description"
+      content="Browse recipes in English by category. Practical home cooking with clear ingredients and steps."
+    />
+    <meta
+      name="twitter:image"
+      content="https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=1200&h=630&fit=crop&q=80"
+    />
+    <title>Akkous — Tried &amp; Tested Recipes for Everyday Cooking</title>
+    <link rel="canonical" href="https://akkous.com/" />
+    <link rel="alternate" hreflang="en" href="https://akkous.com/" />
+    <link rel="alternate" hreflang="en-us" href="https://akkous.com/" />
+    <link rel="alternate" hreflang="x-default" href="https://akkous.com/" />
+    <link rel="icon" href="/assets/favicon.ico" sizes="any" />
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- SAFE_PERF_PATCH -->
+    <link rel="preconnect" href="https://www.themealdb.com" crossorigin />
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap"
+      rel="stylesheet"
+    />
+    <style>:root{--primary-50:#fde8e0;--primary-100:#fbc1ae;--primary-200:#f79a7d;--primary-300:#f3734b;--primary-400:#ef4c1a;--primary:#E8572A;--primary-hover:#d14a22;--primary-600:#c0431e;--primary-700:#9e3618;--primary-800:#7c2912;--primary-900:#5a1c0c;--accent:#2D6A4F;--accent-hover:#245a42;--accent-50:#eaf5ef;--accent-100:#c5e3d3;--success:#2D6A4F;--warning:#E8A72A;--error:#d32f2f;--white:#FFFFFF;--bg:#FAFAF8;--bg-elevated:#FFFFFF;--surface-offset:#f1f5f1;--text:#1A1A1A;--text-secondary:#6B6B6B;--muted:#6B6B6B;--border:rgba(26,26,26,.08);--border-hover:rgba(26,26,26,.16);--space-1:.25rem;--space-2:.5rem;--space-3:.75rem;--space-4:1rem;--space-5:1.25rem;--space-6:1.5rem;--space-7:1.75rem;--space-8:2rem;--space-10:2.5rem;--space-12:3rem;--space-14:3.5rem;--space-16:4rem;--space-20:5rem;--text-xs:.75rem;--text-sm:.8125rem;--text-base:.95rem;--text-md:1rem;--text-lg:1.125rem;--text-xl:1.25rem;--text-2xl:1.5rem;--text-3xl:clamp(1.75rem,4vw,2.25rem);--text-4xl:clamp(2rem,5vw,3.25rem);--text-5xl:clamp(2.25rem,6vw,3.75rem);--font-sans:"Inter",system-ui,-apple-system,sans-serif;--font-serif:"Playfair Display",Georgia,serif;--leading-tight:1.1;--leading-normal:1.55;--leading-relaxed:1.65;--tracking-tight:-.02em;--tracking-normal:0;--tracking-wide:.05em;--tracking-wider:.08em;--tracking-widest:.12em;--radius-sm:8px;--radius-md:14px;--radius-lg:20px;--radius-xl:28px;--radius-full:9999px;--shadow-sm:0 1px 3px rgba(26,26,26,.06);--shadow-md:0 8px 30px rgba(26,26,26,.08);--shadow-lg:0 16px 48px rgba(26,26,26,.12);--overlay:linear-gradient(180deg,rgba(26,26,26,.05) 0%,rgba(26,26,26,.7) 100%);--nav-h:4.25rem;--nav-total-h:var(--nav-h);--transition-fast:.15s ease;--transition:.25s ease;--transition-slow:.4s ease;--gutter:1rem;--skeleton-shimmer:linear-gradient(90deg,transparent,rgba(255,255,255,.22),transparent);--v2-radius-sm:8px;--v2-radius-md:12px;--v2-radius-lg:16px;--primary-rgb:232,87,42;--v2-shadow-sm:0 1px 3px rgba(26,26,26,.06);--v2-shadow-md:0 4px 12px rgba(26,26,26,.08);--v2-shadow-lg:0 8px 24px rgba(26,26,26,.12);--v2-transition-fast:150ms;--v2-transition-base:250ms;--v2-transition-slow:350ms;--card-bg:var(--bg-elevated);color-scheme:light}[data-theme="dark"]{--bg:#121212;--bg-elevated:#1C1C1C;--surface-offset:#1e1e1e;--text:#F5F5F2;--text-secondary:#9A9A9A;--muted:#9A9A9A;--border:rgba(255,255,255,.08);--border-hover:rgba(255,255,255,.18);--shadow-sm:0 1px 3px rgba(0,0,0,.4);--shadow-md:0 12px 40px rgba(0,0,0,.45);--shadow-lg:0 20px 60px rgba(0,0,0,.5);--overlay:linear-gradient(180deg,rgba(0,0,0,.08) 0%,rgba(0,0,0,.78) 100%);--skeleton-shimmer:linear-gradient(90deg,transparent,rgba(255,255,255,.38),transparent);--v2-shadow-sm:0 1px 3px rgba(0,0,0,.4);--v2-shadow-md:0 4px 12px rgba(0,0,0,.45);--v2-shadow-lg:0 8px 24px rgba(0,0,0,.5);--card-bg:#1C1C1C;color-scheme:dark}.v2-rounded-sm{border-radius:var(--v2-radius-sm)}.v2-rounded-md{border-radius:var(--v2-radius-md)}.v2-rounded-lg{border-radius:var(--v2-radius-lg)}.v2-shadow-sm{box-shadow:var(--v2-shadow-sm)}.v2-shadow-md{box-shadow:var(--v2-shadow-md)}.v2-shadow-lg{box-shadow:var(--v2-shadow-lg)}*,*::before,*::after{box-sizing:border-box}html{scroll-behavior:smooth}section[id]{scroll-margin-top:calc(var(--nav-h) + var(--space-4))}body{margin:0;font-family:var(--font-sans);font-size:var(--text-md);line-height:var(--leading-normal);color:var(--text);background-color:var(--bg);-webkit-font-smoothing:antialiased}img{max-width:100%;height:auto;display:block}a{color:var(--accent);text-decoration:none;transition:color var(--transition)}a:visited{color:var(--primary-700)}a:hover{color:var(--primary)}[data-theme="dark"] a:visited{color:var(--primary-400)}:focus-visible{outline:2px solid var(--primary);outline-offset:2px}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}.skip-link{position:absolute;top:-100px;left:var(--space-4);z-index:200;padding:var(--space-2) var(--space-4);font-weight:600;font-size:var(--text-sm);color:var(--text);background:var(--bg-elevated);border:2px solid var(--primary);border-radius:var(--radius-sm);transition:top var(--transition-fast)}.skip-link:focus{top:var(--space-4);outline:none}.container{width:min(1120px,100% - calc(var(--gutter)*2));margin-inline:auto}.container--narrow{width:min(720px,100% - calc(var(--gutter)*2))}.section-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:var(--space-3);margin-bottom:var(--space-6)}.section-head h2{font-family:var(--font-serif);font-size:var(--text-3xl);font-weight:700;margin:0;letter-spacing:var(--tracking-tight);color:var(--text)}.section-head p{margin:0;color:var(--muted);font-size:var(--text-base)}.section-head--compact{margin-bottom:var(--space-4)}.site-header{position:sticky;top:0;z-index:100;background-color:color-mix(in srgb,var(--bg-elevated) 92%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}.nav{display:flex;align-items:center;justify-content:space-between;gap:var(--space-4);min-height:var(--nav-h);padding-block:var(--space-2)}.nav__brand{font-family:var(--font-serif);font-weight:700;font-size:var(--text-xl);letter-spacing:var(--tracking-tight);color:var(--text);flex-shrink:0}.nav__brand:hover{color:var(--primary)}.nav__toggle{display:flex;align-items:center;justify-content:center;width:2.75rem;height:2.75rem;padding:0;border:none;background:transparent;color:var(--text);cursor:pointer;border-radius:var(--radius-sm)}.nav__toggle-icon{display:block;width:1.35rem;height:2px;background:currentColor;position:relative}.nav__toggle-icon::before,.nav__toggle-icon::after{content:"";position:absolute;left:0;width:100%;height:2px;background:currentColor;transition:transform var(--transition)}.nav__toggle-icon::before{top:-7px}.nav__toggle-icon::after{top:7px}.site-header--menu-open .nav__toggle-icon{background:transparent}.site-header--menu-open .nav__toggle-icon::before{transform:translateY(7px) rotate(45deg)}.site-header--menu-open .nav__toggle-icon::after{transform:translateY(-7px) rotate(-45deg)}.nav__inner{display:flex;align-items:center;gap:var(--space-4);flex:1;justify-content:flex-end}.nav__search-wrap{position:relative;flex:1;max-width:280px}.nav__search-icon{position:absolute;left:var(--space-3);top:50%;transform:translateY(-50%);width:var(--text-lg);height:var(--text-lg);color:var(--muted);pointer-events:none}.nav__search{width:100%;padding:var(--space-3) var(--space-3) var(--space-3) 2.5rem;border:1px solid var(--border);border-radius:var(--radius-full);background:var(--bg-elevated);color:var(--text);font-family:inherit;font-size:var(--text-sm)}.nav__search::placeholder{color:var(--muted)}.nav__search:focus{box-shadow:0 0 0 3px rgba(var(--primary-rgb),.2);outline:none}.theme-toggle{display:flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;padding:0;border:1px solid var(--border);border-radius:var(--radius-sm);background:var(--bg-elevated);color:var(--text);cursor:pointer;flex-shrink:0;transition:border-color var(--transition),background var(--transition)}.theme-toggle:hover{border-color:var(--primary)}.theme-toggle svg{width:1.15rem;height:1.15rem}.nav__panel{display:none;flex-direction:column;gap:var(--space-4);padding:var(--space-4) 0 var(--space-5);border-top:1px solid var(--border)}.nav__panel[aria-hidden="false"]{display:flex}@media(max-width:767px){.nav__toggle{display:flex}.nav{flex-wrap:wrap}.nav__inner{width:100%;order:3;justify-content:space-between}.nav__search-wrap{max-width:none;flex:1}}@media(min-width:768px){.nav__toggle{display:none}.nav__panel{display:contents;border:none;padding:0}.nav__panel[aria-hidden="true"]{display:contents}.nav__inner{flex:unset;gap:var(--space-5)}.nav{flex-wrap:wrap;row-gap:0;column-gap:var(--space-4)}}.back-top{position:fixed;right:var(--space-4);bottom:var(--space-4);z-index:90;width:3rem;height:3rem;display:flex;align-items:center;justify-content:center;padding:0;border:1px solid var(--border);border-radius:50%;background:var(--bg-elevated);color:var(--text);cursor:pointer;box-shadow:var(--shadow-md);opacity:0;visibility:hidden;transform:translateY(12px);transition:opacity var(--transition),visibility var(--transition),transform var(--transition),border-color var(--transition)}.back-top.is-visible{opacity:1;visibility:visible;transform:translateY(0)}.back-top:hover{border-color:var(--primary);color:var(--primary)}.back-top svg{width:1.25rem;height:1.25rem}@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}@media(max-width:419px){:root{--gutter:.75rem}.nav{gap:var(--space-2);min-height:3.9rem}.nav__brand{font-size:var(--text-lg)}.nav__toggle,.theme-toggle{width:2.35rem;height:2.35rem}}@media(min-width:640px){:root{--gutter:1.25rem}}@media(min-width:960px){:root{--gutter:1.5rem}}.hero{position:relative;min-height:min(78vh,640px);display:flex;align-items:flex-end;margin-bottom:var(--space-12);overflow:hidden}.hero__media{position:absolute;inset:0}.hero__media img{width:100%;height:100%;object-fit:cover;transition:opacity .45s ease}@media(prefers-reduced-motion:reduce){.hero__media img{transition:none}}.hero__media img.is-hero-dim{opacity:0}.hero__overlay{position:absolute;inset:0;background:var(--overlay)}.hero__content{position:relative;z-index:1;width:min(1120px,100% - calc(2*var(--gutter)));margin-inline:auto;padding:var(--space-12) 0 var(--space-14)}.hero__tag{display:inline-block;font-size:var(--text-xs);font-weight:600;text-transform:uppercase;letter-spacing:var(--tracking-widest);color:var(--white);background:var(--primary);padding:var(--space-1) var(--space-3);border-radius:var(--radius-full);margin-bottom:var(--space-4)}.hero__title{font-family:var(--font-serif);font-size:var(--text-5xl);font-weight:700;line-height:var(--leading-tight);color:var(--white);margin:0 0 var(--space-4);max-width:16ch;text-wrap:balance;text-shadow:0 2px 24px rgba(0,0,0,.3)}.hero__meta{color:rgba(255,255,255,.9);font-size:var(--text-base);margin-bottom:var(--space-6)}.hero__dek{margin:0 0 var(--space-3);max-width:60ch;color:rgba(255,255,255,.92);font-size:var(--text-md);line-height:var(--leading-normal);text-shadow:0 1px 16px rgba(0,0,0,.2)}.hero__actions{display:flex;flex-wrap:wrap;gap:var(--space-2)}.hero__cta{display:inline-flex;align-items:center;justify-content:center;padding:var(--space-3) var(--space-7);font-family:inherit;font-size:var(--text-base);font-weight:600;color:var(--white);background:var(--primary);border:none;border-radius:var(--radius-full);cursor:pointer;transition:background var(--transition),transform var(--transition-fast);min-height:44px}.hero__cta:hover{background:var(--primary-hover);color:var(--white)}.hero__cta:active{transform:scale(.98)}.hero__cta--ghost{background:transparent;border:1px solid rgba(255,255,255,.55)}.hero__cta--ghost:hover{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.8)}.hero--loading .hero__tag,.hero--loading .hero__title,.hero--loading .hero__dek,.hero--loading .hero__meta,.hero--loading .hero__cta{color:transparent!important}.hero--loading .hero__tag,.hero--loading .hero__title,.hero--loading .hero__dek,.hero--loading .hero__meta,.hero--loading .hero__cta{position:relative;overflow:hidden}.hero--loading .hero__tag::after,.hero--loading .hero__title::after,.hero--loading .hero__dek::after,.hero--loading .hero__meta::after,.hero--loading .hero__cta::after{content:"";position:absolute;inset:0;background:var(--skeleton-shimmer);background-size:220% 100%;animation:hero-skeleton-shimmer 1.25s ease-in-out infinite}.hero--loading .hero__tag{min-width:6.8rem;min-height:1.55rem;border-radius:var(--radius-full)}.hero--loading .hero__title{min-height:3.2rem;max-width:min(16ch,75%);border-radius:var(--radius-sm)}.hero--loading .hero__dek{min-height:2.8rem;border-radius:var(--radius-sm)}.hero--loading .hero__meta{min-height:1.2rem;width:45%;border-radius:var(--radius-sm)}.hero--loading .hero__cta{min-width:9.5rem;min-height:2.9rem;border-color:transparent}@keyframes hero-skeleton-shimmer{0%{background-position:200% 0}100%{background-position:-20% 0}}@keyframes skeleton-shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}@media(prefers-reduced-motion:reduce){.hero--loading .hero__tag::after,.hero--loading .hero__title::after,.hero--loading .hero__dek::after,.hero--loading .hero__meta::after,.hero--loading .hero__cta::after{animation:none}}.hero__carousel-controls{position:absolute;inset:0;z-index:2;pointer-events:none;display:flex;align-items:center;justify-content:space-between;padding:0 var(--space-2)}.hero__nav-btn{pointer-events:auto;display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.35);background:rgba(0,0,0,.35);color:var(--white);cursor:pointer;transition:background var(--transition),border-color var(--transition),transform var(--transition-fast)}.hero__nav-btn:hover{background:rgba(0,0,0,.5);border-color:rgba(255,255,255,.55)}.hero__nav-btn:active{transform:scale(.96)}.hero__dots{display:flex;flex-wrap:wrap;justify-content:center;gap:var(--space-2);margin-top:var(--space-4);max-width:100%;pointer-events:auto}.hero__dot{width:28px;height:28px;min-width:24px;min-height:24px;display:inline-flex;align-items:center;justify-content:center;background:transparent;border:none;cursor:pointer;padding:0;position:relative}.hero__dot::after{content:"";width:12px;height:12px;border-radius:50%;background:var(--muted);transition:transform .2s,background .2s}.hero__dot:hover::after{background:var(--primary)}.hero__dot[aria-current="true"]::after{width:14px;height:14px;background:var(--primary)}@media(max-width:419px){.hero{min-height:min(72vh,560px);margin-bottom:var(--space-8)}.hero__content{padding:var(--space-8) 0 var(--space-14)}.hero__title{font-size:clamp(1.9rem,8vw,2.6rem);max-width:11ch}.hero__actions{width:100%}.hero__dek{font-size:var(--text-base);margin-bottom:var(--space-2)}.hero__meta{font-size:var(--text-sm);margin-bottom:var(--space-4)}.hero__cta{width:100%;padding:.75rem 1.2rem;font-size:var(--text-sm)}.hero__carousel-controls{display:none}.hero__nav-btn{width:36px;height:36px}}@media(min-width:640px){.hero__title{max-width:13ch}.hero__actions{width:auto}.hero__cta{width:auto}}@media(min-width:768px){.hero{min-height:min(78vh,640px);margin-bottom:var(--space-12)}.hero__content{padding:var(--space-12) 0 var(--space-14)}.hero__title{font-size:var(--text-5xl);max-width:16ch}.hero__dek{font-size:var(--text-md);margin-bottom:var(--space-3)}.hero__meta{font-size:var(--text-base);margin-bottom:var(--space-6)}.hero__cta{padding:var(--space-3) var(--space-7);font-size:var(--text-base)}.hero__carousel-controls{padding:0 var(--space-4)}.hero__nav-btn{width:44px;height:44px}}</style>
+    <link rel="preload" as="style" href="style.css" onload="this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="style.css" /></noscript>
+    <noscript><style>.v2-reveal,.v2-reveal-left,.v2-reveal-scale{opacity:1!important;transform:none!important}</style></noscript>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://akkous.com/#organization",
+            "name": "Akkous",
+            "url": "https://akkous.com/",
+            "sameAs": ["https://www.pinterest.com/Akkous1"],
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://akkous.com/assets/favicon.svg"
+            }
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://akkous.com/#website",
+            "url": "https://akkous.com/",
+            "name": "Akkous",
+            "inLanguage": "en",
+            "description": "Modern food recipes and cooking inspiration.",
+            "publisher": { "@id": "https://akkous.com/#organization" },
+            "potentialAction": {
+              "@type": "SearchAction",
+              "target": "https://akkous.com/index.html?q={search_term_string}",
+              "query-input": "required name=search_term_string"
+            }
+          }
+        ]
+      }
+    </script>
+</head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <header class="site-header" role="banner">
+      <nav class="nav container" aria-label="Primary">
+        <a class="nav__brand" href="index.html" data-site-name>Akkous</a>
+
+        <button
+          type="button"
+          class="nav__toggle"
+          id="nav-menu-toggle"
+          aria-expanded="false"
+          aria-controls="nav-panel"
+          aria-label="Open menu"
+        >
+          <span class="nav__toggle-icon" aria-hidden="true"></span>
+        </button>
+
+        <div class="nav__inner">
+          <div class="nav__search-wrap">
+            <svg class="nav__search-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="7" />
+              <path d="M21 21l-4.35-4.35" stroke-linecap="round" />
+            </svg>
+            <label for="site-search" class="sr-only">Search recipes</label>
+            <input
+              class="nav__search"
+              type="search"
+              id="site-search"
+              name="q"
+              placeholder="Search recipes…"
+              autocomplete="off"
+              enterkeyhint="search"
+            />
+            <p class="nav__search-count" id="site-search-count" hidden aria-live="polite"></p>
+          </div>
+
+          <button
+            type="button"
+            class="theme-toggle"
+            id="theme-toggle"
+            aria-label="Toggle dark mode"
+            title="Toggle theme"
+          >
+            <svg data-icon="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" height="0" width="0">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <svg data-icon="sun" hidden viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" height="0" width="0">
+              <circle cx="12" cy="12" r="4" />
+              <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke-linecap="round" />
+            </svg>
+          </button>
+        </div>
+
+        <div class="nav__panel" id="nav-panel" aria-hidden="true">
+          <div class="nav__categories" role="navigation" aria-label="Recipe categories">
+            <span class="nav__categories-label" id="cat-label">Browse</span>
+            <div id="nav-category-links" class="nav__category-links"></div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main-content">
+      <section
+        class="hero hero--loading"
+        id="hero-section"
+        aria-labelledby="hero-title"
+        aria-roledescription="carousel"
+        aria-label="Featured recipes"
+      >
+        <div class="hero__media" aria-hidden="true">
+          <img id="hero-image" src="" alt="" width="1600" height="900" fetchpriority="high" />
+        </div>
+        <div class="hero__overlay" aria-hidden="true"></div>
+        <div class="hero__carousel-controls" id="hero-carousel-controls" hidden>
+          <button type="button" class="hero__nav-btn" id="hero-prev" aria-controls="hero-title" aria-label="Previous recipe">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M15 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </button>
+          <button type="button" class="hero__nav-btn" id="hero-next" aria-controls="hero-title" aria-label="Next recipe">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </button>
+        </div>
+        <div class="hero__content">
+          <span class="hero__tag" id="hero-tag">Featured</span>
+          <h1 class="hero__title" id="hero-title">Loading…</h1>
+          <p class="hero__dek" id="hero-dek">
+            Tested recipes with clear ingredients and step-by-step guidance for everyday cooking.
+          </p>
+          <p class="hero__meta" id="hero-meta"></p>
+          <div class="hero__actions">
+            <a class="hero__cta" id="hero-cta" href="recipe.html">Read Recipe</a>
+            <a class="hero__cta hero__cta--ghost" id="hero-cta-secondary" href="#trending">Browse latest</a>
+          </div>
+          <div class="hero__dots" id="hero-dots" role="group" aria-label="Slides" hidden></div>
+        </div>
+      </section>
+
+      <section class="category-spotlight container io-fade" aria-labelledby="spotlight-heading">
+        <div class="section-head section-head--compact">
+          <h2 id="spotlight-heading">Browse by category</h2>
+          <p>Start with what you want to cook right now</p>
+        </div>
+        <div class="category-spotlight__grid" id="category-spotlight-grid" role="list"></div>
+      </section>
+
+      <section class="trust-strip container io-fade" aria-label="Why trust Akkous">
+        <article class="trust-strip__item">
+          <h3>Tested recipes</h3>
+          <p>Every recipe includes measurable ingredients and practical steps.</p>
+        </article>
+        <article class="trust-strip__item">
+          <h3>Global inspirations</h3>
+          <p>Discover flavors from multiple cuisines with simple home-friendly methods.</p>
+        </article>
+        <article class="trust-strip__item">
+          <h3>Fresh each week</h3>
+          <p>New recipes are published regularly to keep your menu ideas current.</p>
+        </article>
+      </section>
+
+      <section class="about-brief container io-fade" aria-labelledby="about-heading">
+        <div class="about-brief__content">
+          <h2 id="about-heading">Our Mission</h2>
+          <p>
+            At <strong>Akkous</strong>, we believe that great cooking should be accessible to everyone. 
+            Our mission is to provide clear, tested, and high-quality recipes that inspire you to 
+            create delicious meals in your own kitchen. Whether you're a beginner or a seasoned cook, 
+            our goal is to make your culinary journey enjoyable and successful.
+          </p>
+        </div>
+      </section>
+
+      <section class="trending container io-fade" id="trending" aria-labelledby="trending-heading">
+        <div class="section-head section-head--trending">
+          <div class="section-head__text">
+            <h2 id="trending-heading">Latest recipes</h2>
+            <p>Newest on the site — scroll sideways or use the arrows</p>
+          </div>
+          <div class="trending__nav" role="group" aria-label="Scroll latest recipes">
+            <button type="button" class="trending__nav-btn" id="trending-prev" aria-label="Previous recipes">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M15 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+            <button type="button" class="trending__nav-btn" id="trending-next" aria-label="Next recipes">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="trending__track" id="trending-track" role="list"></div>
+      </section>
+
+      <section class="filters container io-fade" id="category-filters" aria-labelledby="filters-heading">
+        <h2 id="filters-heading" class="sr-only">Filter by category</h2>
+        <div
+          class="filters__inner"
+          id="category-filter-pills"
+          role="group"
+          aria-label="Recipe categories"
+        ></div>
+      </section>
+
+      <section class="recipe-grid-section container" aria-labelledby="grid-heading">
+        <div class="section-head">
+          <h2 id="grid-heading">All Recipes</h2>
+          <p>Save your favorites — new dishes weekly</p>
+        </div>
+        <div class="masonry" id="recipe-grid" aria-live="polite"></div>
+        <div id="load-more-wrap" hidden aria-live="polite">
+          <button type="button" class="btn btn--secondary load-more__btn">Load More</button>
+        </div>
+      </section>
+
+      <section class="newsletter newsletter-container container io-fade" aria-labelledby="newsletter-heading">
+        <h2 id="newsletter-heading">Get recipes in your inbox</h2>
+        <p class="newsletter__sub" id="newsletter-subtext">Tested recipes, zero spam. Unsubscribe with one click.</p>
+        <form
+          class="newsletter__form"
+          id="newsletter-form"
+          novalidate
+          data-newsletter-endpoint="https://script.google.com/macros/s/AKfycbyUZCxHWAoYAyMdSnk2gOjZWfGaoV4W38Tm7MFRmdocyiaVdqg0aAv7kSkhNeRZrW1D/exec"
+        >
+          <label for="newsletter-email" class="sr-only">Email address</label>
+          <input
+            class="newsletter__input"
+            type="email"
+            id="newsletter-email"
+            name="email"
+            placeholder="you@example.com"
+            required
+            autocomplete="email"
+            inputmode="email"
+          />
+          <button type="submit" class="newsletter__btn">Subscribe</button>
+        </form>
+        <iframe
+          title="Newsletter sign-up"
+          name="newsletter-iframe"
+          id="newsletter-iframe"
+          class="newsletter__iframe"
+          tabindex="-1"
+        ></iframe>
+        <p id="newsletter-status" class="newsletter__status" aria-live="polite"></p>
+      </section>
+    </main>
+
+    <footer class="site-footer" role="contentinfo">
+      <div class="container">
+        <div class="footer__top">
+          <a class="footer__brand" href="index.html" data-site-name>Akkous</a>
+          <nav class="footer__nav" aria-label="Footer">
+            <a href="index.html">Home</a>
+            <a href="index.html#category-filters">Categories</a>
+            <a href="index.html#newsletter-heading">Newsletter</a>
+            <a href="terms-of-use.html">Terms of use</a>
+            <a href="privacy-policy.html">Privacy policy</a>
+            <a href="contact.html">Contact</a>
+          </nav>
+          <div class="footer__social">
+            <a href="https://www.pinterest.com/Akkous1" target="_blank" rel="noopener noreferrer" aria-label="Pinterest">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path
+                  d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer__bottom">
+          <p>© <span id="footer-year">2026</span> <span data-site-name>Akkous</span> — From your kitchen to the world</p>
+        </div>
+      </div>
+    </footer>
+
+    <button type="button" class="back-top" id="back-to-top" aria-label="Back to top">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path d="M18 15l-6-6-6 6" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+
+    <noscript>
+      <div class="container" style="padding: 2rem; text-align: center; max-width: 36rem; margin: 0 auto">
+        <p>
+          This site needs JavaScript to load recipes from <strong>recipes.json</strong>. Enable JavaScript to use
+          Akkous.
+        </p>
+      </div>
+    </noscript>
+
+    <script src="js/core.js" defer></script>
+    <script src="js/ui.js" defer></script>
+    <script src="js/home.js" defer></script>
+    <script src="main.js" defer></script>
+    <script>
+      document.getElementById("footer-year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>

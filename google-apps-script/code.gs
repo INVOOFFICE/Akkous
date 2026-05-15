@@ -151,6 +151,10 @@ const CONFIG = {
     'MetaDescription',
     'Hook',
     'Tip',
+    'PersonalNote',
+    'WinePairing',
+    'ChefTip',
+    'DifficultyReal',
   ],
   COL: {
     ID: 1,
@@ -169,6 +173,13 @@ const CONFIG = {
     META_DESCRIPTION: 14,
     HOOK: 15,
     TIP: 16,
+    PERSONAL_NOTE: 17,
+    WINE_PAIRING: 18,
+    CHEF_TIP: 19,
+    DIFFICULTY_REAL: 20,
+    STORY_ORIGIN: 21,
+    CHEF_VARIATION: 22,
+    SEASONAL_NOTE: 23,
   },
   STATUS_SCHEDULED: 'SCHEDULED',
   STATUS_PUBLISHED: 'PUBLISHED',
@@ -635,23 +646,30 @@ function removeFeastablyTriggersOnly_() {
  * À utiliser avec un seul déclencheur (CONFIG.USE_CHAINED_PIPELINE_TRIGGER).
  */
 function dailyAkkousChainedPipeline_() {
+  var _pd = { start: Date.now() }; // SAFE_DIAGNOSTIC_PATCH
   logAutomation_(CONFIG.LOG_LEVEL_INFO, 'dailyAkkousChainedPipeline_', 'Démarrage (fetch → mark → push)');
   try {
     fetchAndScheduleRecipes();
   } catch (e1) {
     logAutomation_(CONFIG.LOG_LEVEL_ERROR, 'dailyAkkousChainedPipeline_', 'fetch: ' + String(e1));
   }
+  _pd.fetchMs = Date.now() - _pd.start; // SAFE_DIAGNOSTIC_PATCH
+  if (_pd.fetchMs > 252000) { logAutomation_(CONFIG.LOG_LEVEL_WARN, 'dailyAkkousChainedPipeline_', '>70% GAS budget after fetch: ' + Math.round(_pd.fetchMs / 1000) + 's'); } // SAFE_DIAGNOSTIC_PATCH
+  if (_pd.fetchMs > 306000) { logAutomation_(CONFIG.LOG_LEVEL_WARN, 'dailyAkkousChainedPipeline_', '>85% GAS budget after fetch: ' + Math.round(_pd.fetchMs / 1000) + 's'); } // SAFE_DIAGNOSTIC_PATCH
   try {
     markPublishedRecipes();
   } catch (e2) {
     logAutomation_(CONFIG.LOG_LEVEL_ERROR, 'dailyAkkousChainedPipeline_', 'markPublished: ' + String(e2));
   }
+  _pd.markMs = Date.now() - _pd.start; // SAFE_DIAGNOSTIC_PATCH
+  if (_pd.markMs > 252000) { logAutomation_(CONFIG.LOG_LEVEL_WARN, 'dailyAkkousChainedPipeline_', '>70% GAS budget after mark: ' + Math.round(_pd.markMs / 1000) + 's'); } // SAFE_DIAGNOSTIC_PATCH
+  if (_pd.markMs > 306000) { logAutomation_(CONFIG.LOG_LEVEL_WARN, 'dailyAkkousChainedPipeline_', '>85% GAS budget after mark: ' + Math.round(_pd.markMs / 1000) + 's'); } // SAFE_DIAGNOSTIC_PATCH
   try {
     pushRecipesToGitHub();
   } catch (e3) {
     logAutomation_(CONFIG.LOG_LEVEL_ERROR, 'dailyAkkousChainedPipeline_', 'push: ' + String(e3));
   }
-  logAutomation_(CONFIG.LOG_LEVEL_INFO, 'dailyAkkousChainedPipeline_', 'Fin pipeline');
+  logAutomation_(CONFIG.LOG_LEVEL_INFO, 'dailyAkkousChainedPipeline_', 'Fin pipeline (' + Math.round((Date.now() - _pd.start) / 1000) + 's)'); // SAFE_DIAGNOSTIC_PATCH
 }
 
 function installFeastablyTriggers() {
@@ -784,21 +802,67 @@ function getGeminiBackupApiKey_() {
 }
 
 /**
+ * Sélectionne une variante de prompt selon la catégorie et l'origine.
+ * A = Cuisine chaude/asiatique — ton chaleureux, storytelling
+ * B = Pâtisserie/dessert — ton précis, scientifique
+ * C = Plats rapides/healthy — ton direct, efficace (défaut)
+ */
+function selectPromptVariant_(category, origin) {
+  var cat = String(category || '').toLowerCase();
+  var ori = String(origin || '').toLowerCase();
+
+  var warmCats = { chicken: true, beef: true, lamb: true, goat: true, seafood: true, pork: true };
+  var warmOrigins = ['thai', 'chinese', 'indian', 'moroccan', 'japanese', 'korean', 'vietnamese',
+    'indonesian', 'malaysian', 'pakistani', 'bangladeshi', 'mexican', 'turkish', 'lebanese',
+    'tunisian', 'algerian', 'ethiopian', 'nigerian', 'ghanaian', 'caribbean', 'jamaican',
+    'cuban', 'peruvian', 'brazilian', 'filipino'];
+
+  for (var i = 0; i < warmOrigins.length; i++) {
+    if (ori.indexOf(warmOrigins[i]) !== -1) return 'A';
+  }
+  if (warmCats[cat]) return 'A';
+
+  if (cat === 'dessert' || cat === 'breakfast') return 'B';
+
+  return 'C';
+}
+
+/**
  * Construit le prompt SEO partagé entre Groq et Gemini.
+ * Utilise selectPromptVariant_ pour adapter le ton selon la recette.
  */
 function buildSeoPrompt_(title, category, origin, ingredients, instructions, tags) {
+  var variant = selectPromptVariant_(category, origin);
+  var toneInstruction = '';
+
+  if (variant === 'A') {
+    toneInstruction = 'Tone: warm, storytelling. Imagine the reader in their kitchen — use vivid sensory language (sizzling, aromatic, golden-brown) and a personal, inviting touch.';
+  } else if (variant === 'B') {
+    toneInstruction = 'Tone: precise, scientific. Focus on technique, texture, and exact ratios — explain why each step matters for the perfect result. Use terms like "for optimal texture" and "this ensures even baking."';
+  } else {
+    toneInstruction = 'Tone: direct, energetic, no fluff. Focus on speed, simplicity, and health benefits — every sentence should push the reader to start cooking now. Use short sentences and active verbs.';
+  }
+
   return (
     'You are an English SEO recipe editor for akkous.com.' +
     '\nWrite in strict English only.' +
     '\nReturn valid JSON only. No markdown. No extra text.' +
-    '\nRequired keys: "title", "metaDescription", "instructions", "tags", "hook", "tip".' +
+    '\nRequired keys: "title", "metaDescription", "instructions", "tags", "hook", "tip", "personalNote", "winePairing", "chefTip", "difficultyReal", "storyOrigin", "chefVariation", "seasonalNote".' +
+    '\n' + toneInstruction +
     '\nConstraints:' +
     '\n- title: 45-60 characters, natural, includes dish intent, no keyword stuffing.' +
     '\n- metaDescription: 140-155 characters, natural and click-worthy, no keyword stuffing.' +
-    '\n- instructions: numbered plain text steps (1. 2. 3.), one main action per step, fact-based only.' +
+    '\n- instructions: numbered plain text steps (1. 2. 3.), one main action per step, fact-based only. Include a 1-2 sentence fictional personal culinary anecdote woven naturally into the steps (e.g., "The first time I made this in a tiny Bangkok kitchen..."). At the end of the steps, suggest 1 unexpected variation of the main ingredient (e.g., "For a twist, try substituting lamb with duck breast"). End instructions with 1 original drink pairing (avoid generic red/white wine — suggest cider, lager, iced tea, kombucha, ginger beer, or a specific cocktail).' +
     '\n- tags: 5-8 comma-separated tags, no #, no duplicates, SEO useful.' +
     '\n- hook: 1-2 sentences, max 180 characters, answers "why cook this today".' +
     '\n- tip: 1 practical pro tip, max 160 characters.' +
+    '\n- personalNote: 2-3 sentences, max 300 characters. A short personal story about discovering or first trying the dish (e.g., "I first tasted this in a small coastal town in..." or "This recipe reminds me of winter evenings spent in..."). Make it specific and evocative.' +
+    '\n- winePairing: 1 specific drink pairing, max 120 characters. Name a real wine/appellation (e.g., "Sancerre 2022, Domaine Vacheron") or original non-wine pairing (e.g., "Ginger beer with lime, served over ice"). Avoid generic "red wine" or "white wine".' +
+    '\n- chefTip: 1 advanced technique tip, max 160 characters. Precision cooking insight (e.g., "Sear the meat on high heat for 90 seconds without moving it — this guarantees a deep crust while keeping the center tender").' +
+    '\n- difficultyReal: a single integer 1-5, subjective (not calculated from time/ingredients). 1 = dead simple (microwave), 5 = professional technique (souffl\u00e9, tempering chocolate).' +
+    '\n- storyOrigin: 1-2 sentences, max 200 characters. Historical or geographical origin of the dish (e.g., "This recipe traces its roots to the bustling spice markets of Marrakech, where fragrant tagines have been slow-cooked for centuries.").' +
+    '\n- chefVariation: 1 sentence, max 160 characters. A creative variation suggested by an imaginary chef (e.g., "Chef Marco swaps butter for lemon-infused olive oil, giving the dish a bright Mediterranean twist.").' +
+    '\n- seasonalNote: 1 sentence, max 120 characters. A seasonality tip (e.g., "Best in autumn, when wild mushrooms are at their peak.").' +
     '\nDo not invent medical claims or guaranteed ranking claims.' +
     '\n\nContext JSON (rewrite, do not copy verbatim):\n' +
     JSON.stringify({
@@ -835,6 +899,13 @@ function parseSeoJsonResponse_(raw, providerName, maxTitle) {
   let outMetaDescription = String(parsed.metaDescription || '').trim().replace(/\s+/g, ' ');
   let outHook = String(parsed.hook || '').trim().replace(/\s+/g, ' ');
   let outTip = String(parsed.tip || '').trim().replace(/\s+/g, ' ');
+  let outPersonalNote = String(parsed.personalNote || '').trim().replace(/\s+/g, ' ');
+  let outWinePairing = String(parsed.winePairing || '').trim().replace(/\s+/g, ' ');
+  let outChefTip = String(parsed.chefTip || '').trim().replace(/\s+/g, ' ');
+  let outDifficultyReal = String(parsed.difficultyReal || '').trim();
+  let outStoryOrigin = String(parsed.storyOrigin || '').trim().replace(/\s+/g, ' ');
+  let outChefVariation = String(parsed.chefVariation || '').trim().replace(/\s+/g, ' ');
+  let outSeasonalNote = String(parsed.seasonalNote || '').trim().replace(/\s+/g, ' ');
 
   if (!outTitle || !outInstr) {
     throw new Error(providerName + ' a renvoyé title ou instructions vide.');
@@ -851,6 +922,15 @@ function parseSeoJsonResponse_(raw, providerName, maxTitle) {
   }
   if (outHook.length > 180) outHook = outHook.slice(0, 179).trim() + '\u2026';
   if (outTip.length > 160) outTip = outTip.slice(0, 159).trim() + '\u2026';
+  if (outPersonalNote.length > 300) outPersonalNote = outPersonalNote.slice(0, 299).trim() + '\u2026';
+  if (outWinePairing.length > 120) outWinePairing = outWinePairing.slice(0, 119).trim() + '\u2026';
+  if (outChefTip.length > 160) outChefTip = outChefTip.slice(0, 159).trim() + '\u2026';
+  if (outStoryOrigin.length > 200) outStoryOrigin = outStoryOrigin.slice(0, 199).trim() + '\u2026';
+  if (outChefVariation.length > 160) outChefVariation = outChefVariation.slice(0, 159).trim() + '\u2026';
+  if (outSeasonalNote.length > 120) outSeasonalNote = outSeasonalNote.slice(0, 119).trim() + '\u2026';
+  var diffNum = parseInt(outDifficultyReal, 10);
+  if (isNaN(diffNum) || diffNum < 1 || diffNum > 5) outDifficultyReal = '';
+  else outDifficultyReal = String(diffNum);
 
   return {
     title: titleSeo,
@@ -859,6 +939,13 @@ function parseSeoJsonResponse_(raw, providerName, maxTitle) {
     metaDescription: outMetaDescription,
     hook: outHook,
     tip: outTip,
+    personalNote: outPersonalNote,
+    winePairing: outWinePairing,
+    chefTip: outChefTip,
+    difficultyReal: outDifficultyReal,
+    storyOrigin: outStoryOrigin,
+    chefVariation: outChefVariation,
+    seasonalNote: outSeasonalNote,
   };
 }
 
@@ -881,7 +968,7 @@ function callGeminiBackupForRecipeSeo_(title, category, origin, ingredients, ins
   const body = {
     model: model,
     messages: [{ role: 'user', content: prompt }],
-    temperature: 0.35,
+    temperature: 0.75,
     max_tokens: 1024,
     response_format: { type: 'json_object' },
   };
@@ -962,7 +1049,7 @@ function callGroqForRecipeSeo_(title, category, origin, ingredients, instruction
   const body = {
     model: model,
     messages: [{ role: 'user', content: prompt }],
-    temperature: 0.35,
+    temperature: 0.75,
     max_tokens: 1024,
     response_format: { type: 'json_object' },
   };
@@ -1101,6 +1188,27 @@ function enrichRecipeSheetRowWithGroq_(sheet, rowNum) {
   }
   if (seo.tip) {
     sheet.getRange(rowNum, CONFIG.COL.TIP).setValue(seo.tip);
+  }
+  if (seo.personalNote) {
+    sheet.getRange(rowNum, CONFIG.COL.PERSONAL_NOTE).setValue(seo.personalNote);
+  }
+  if (seo.winePairing) {
+    sheet.getRange(rowNum, CONFIG.COL.WINE_PAIRING).setValue(seo.winePairing);
+  }
+  if (seo.chefTip) {
+    sheet.getRange(rowNum, CONFIG.COL.CHEF_TIP).setValue(seo.chefTip);
+  }
+  if (seo.difficultyReal) {
+    sheet.getRange(rowNum, CONFIG.COL.DIFFICULTY_REAL).setValue(seo.difficultyReal);
+  }
+  if (seo.storyOrigin) {
+    sheet.getRange(rowNum, CONFIG.COL.STORY_ORIGIN).setValue(seo.storyOrigin);
+  }
+  if (seo.chefVariation) {
+    sheet.getRange(rowNum, CONFIG.COL.CHEF_VARIATION).setValue(seo.chefVariation);
+  }
+  if (seo.seasonalNote) {
+    sheet.getRange(rowNum, CONFIG.COL.SEASONAL_NOTE).setValue(seo.seasonalNote);
   }
 }
 
@@ -1316,6 +1424,7 @@ function runGroqSeoEnrichAllScheduled() {
  * Main daily job: fetch diverse meals, append rows, no duplicate IDs.
  */
 function fetchAndScheduleRecipes() {
+  var _fd = { start: Date.now() }; // SAFE_DIAGNOSTIC_PATCH
   logAutomation_(CONFIG.LOG_LEVEL_INFO, 'fetchAndScheduleRecipes', 'Démarrage (cible ' + CONFIG.RECIPES_PER_DAY + ')');
   try {
     const ss = getSpreadsheet_();
@@ -1402,11 +1511,14 @@ function fetchAndScheduleRecipes() {
       }
     }
 
+    _fd.elapsed = Date.now() - _fd.start; // SAFE_DIAGNOSTIC_PATCH
     logAutomation_(
       CONFIG.LOG_LEVEL_INFO,
       'fetchAndScheduleRecipes',
-      'OK : ' + rows.length + ' ligne(s) ajoutée(s) sur Recipes'
+      'OK : ' + rows.length + ' ligne(s) ajoutée(s) (' + Math.round(_fd.elapsed / 1000) + 's)'
     );
+    if (_fd.elapsed > 252000) { logAutomation_(CONFIG.LOG_LEVEL_WARN, 'fetchAndScheduleRecipes', '>70% GAS budget: ' + Math.round(_fd.elapsed / 1000) + 's'); } // SAFE_DIAGNOSTIC_PATCH
+    if (_fd.elapsed > 306000) { logAutomation_(CONFIG.LOG_LEVEL_WARN, 'fetchAndScheduleRecipes', '>85% GAS budget: ' + Math.round(_fd.elapsed / 1000) + 's'); } // SAFE_DIAGNOSTIC_PATCH
   } catch (e) {
     logAutomation_(CONFIG.LOG_LEVEL_ERROR, 'fetchAndScheduleRecipes', String(e));
     throw e;
@@ -1420,6 +1532,7 @@ function fetchAndScheduleRecipes() {
  * colonnes isolées ou fusions ne sont pas alignés).
  */
 function markPublishedRecipes() {
+  var _md = { start: Date.now() }; // SAFE_DIAGNOSTIC_PATCH
   logAutomation_(CONFIG.LOG_LEVEL_INFO, 'markPublishedRecipes', 'Démarrage');
   try {
     const sheet = getRecipesSheetOrThrow_();
@@ -1484,7 +1597,7 @@ function markPublishedRecipes() {
     logAutomation_(
       CONFIG.LOG_LEVEL_INFO,
       'markPublishedRecipes',
-      'OK : ' + publishedCount + ' passage(s) SCHEDULED → PUBLISHED'
+      'OK : ' + publishedCount + ' passage(s) SCHEDULED → PUBLISHED (' + Math.round((Date.now() - _md.start) / 1000) + 's)'
     );
   } catch (e) {
     logAutomation_(CONFIG.LOG_LEVEL_ERROR, 'markPublishedRecipes', String(e));
@@ -1523,6 +1636,7 @@ function getGitHubCredentials_() {
  * Optional: push recipes.json to GitHub. Runs only if token + repo set.
  */
 function pushRecipesToGitHub() {
+  var _pud = { start: Date.now() }; // SAFE_DIAGNOSTIC_PATCH
   const gh = getGitHubCredentials_();
   if (!gh.token || !gh.repo) {
     logAutomation_(
@@ -1569,7 +1683,7 @@ function pushRecipesToGitHub() {
     logAutomation_(
       CONFIG.LOG_LEVEL_INFO,
       'pushRecipesToGitHub',
-      'OK : recipes.json + llms.txt (1 commit) sur GitHub — sitemap.xml géré par CI'
+      'OK : recipes.json + llms.txt (1 commit) sur GitHub (' + Math.round((Date.now() - _pud.start) / 1000) + 's) — sitemap.xml géré par CI'
     );
   }
 }
@@ -3362,6 +3476,13 @@ function buildExportPayload_(sheet) {
 
     const hook = String(row[CONFIG.COL.HOOK - 1] || '').trim();
     const tip = String(row[CONFIG.COL.TIP - 1] || '').trim();
+    const personalNote = String(row[CONFIG.COL.PERSONAL_NOTE - 1] || '').trim();
+    const winePairing = String(row[CONFIG.COL.WINE_PAIRING - 1] || '').trim();
+    const chefTip = String(row[CONFIG.COL.CHEF_TIP - 1] || '').trim();
+    const difficultyReal = String(row[CONFIG.COL.DIFFICULTY_REAL - 1] || '').trim();
+    const storyOrigin = String(row[CONFIG.COL.STORY_ORIGIN - 1] || '').trim();
+    const chefVariation = String(row[CONFIG.COL.CHEF_VARIATION - 1] || '').trim();
+    const seasonalNote = String(row[CONFIG.COL.SEASONAL_NOTE - 1] || '').trim();
 
     const normalizedTags = normalizeTags_(tags, title, category, origin);
     const difficulty = inferDifficultyFromSteps_(steps);
@@ -3400,6 +3521,13 @@ function buildExportPayload_(sheet) {
       description,
       hook,
       tip,
+      personalNote: personalNote || undefined,
+      winePairing: winePairing || undefined,
+      chefTip: chefTip || undefined,
+      difficultyReal: difficultyReal || undefined,
+      storyOrigin: storyOrigin || undefined,
+      chefVariation: chefVariation || undefined,
+      seasonalNote: seasonalNote || undefined,
       tags: normalizedTags,
       datePublished: publishDate ? publishDate.slice(0, 10) : '',
       publishDate,

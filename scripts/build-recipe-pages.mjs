@@ -194,7 +194,9 @@ function buildRecipeFaqItems(recipe) {
     dessert: "Swap ingredients with similar texture and moisture content. Adjust sweetness to taste and test doneness with a toothpick.",
     seafood: "Substitute with a similar type of fish or shellfish, keeping cooking time and thickness in mind. Adjust seasoning to complement.",
     pasta: "Different pasta shapes work well interchangeably. Adjust cooking time and sauce consistency as needed.",
+    breakfast: "Swap ingredients with similar textures and cook times. Adjust seasoning and sweetness gradually to keep the final dish balanced.",
     vegetable: "Swap vegetables based on season and availability, keeping cooking times similar. Adjust seasoning to balance flavors.",
+    starter: "Substitute with ingredients of similar texture and moisture. Adjust seasoning gradually and test as you go for best results.",
     default: "Use ingredients with similar texture and flavor, then adjust seasoning gradually to keep balance in the final dish.",
   }[group];
 
@@ -457,7 +459,12 @@ function buildStaticRecipePage(template, recipe, site) {
 
   html = html.replace(
     /<img id="recipe-hero-image"[^>]*>/,
-    `<img id="recipe-hero-image" src="${escapeHtml(img)}" alt="${escapeHtml(imgAlt)}" width="1600" height="900" fetchpriority="high" />`
+    `<img id="recipe-hero-image" src="${escapeHtml(img)}" alt="${escapeHtml(imgAlt)}" width="1600" height="900" fetchpriority="high" decoding="async" />`
+  );
+
+  html = html.replace(
+    /<!-- hero-preload -->/,
+    `<link rel="preload" as="image" href="${escapeHtml(img)}" fetchpriority="high" />`
   );
 
   html = html.replace(
@@ -493,6 +500,16 @@ function buildStaticRecipePage(template, recipe, site) {
   html = html.replace(
     /<p class="recipe-article__intro container--narrow" id="recipe-intro"><\/p>/,
     `<p class="recipe-article__intro container--narrow" id="recipe-intro">${escapeHtml(intro)}</p>`
+  );
+
+  const hasNote = recipe.personalNote && String(recipe.personalNote).trim();
+  html = html.replace(
+    /<div class="recipe-note" id="recipe-personal-note" hidden>/,
+    `<div class="recipe-note" id="recipe-personal-note"${hasNote ? "" : " hidden"}>`
+  );
+  html = html.replace(
+    /<p class="recipe-note__text" id="recipe-personal-note-text"><\/p>/,
+    `<p class="recipe-note__text" id="recipe-personal-note-text">${escapeHtml(hasNote)}</p>`
   );
 
   const tags = renderTagsHtml(recipe);
@@ -534,6 +551,56 @@ function buildStaticRecipePage(template, recipe, site) {
     `<ol id="recipe-steps" aria-labelledby="steps-heading">${stepItems}</ol>`
   );
 
+  const hasWine = recipe.winePairing && String(recipe.winePairing).trim();
+  html = html.replace(
+    /<section class="recipe-pairing container container--narrow" id="recipe-wine-pairing" hidden/,
+    `<section class="recipe-pairing container container--narrow" id="recipe-wine-pairing"${hasWine ? "" : " hidden"}`
+  );
+  html = html.replace(
+    /<p id="recipe-wine-pairing-text"><\/p>/,
+    `<p id="recipe-wine-pairing-text">${escapeHtml(hasWine)}</p>`
+  );
+
+  const hasChefTip = recipe.chefTip && String(recipe.chefTip).trim();
+  html = html.replace(
+    /<div class="recipe-chef-tip" id="recipe-chef-tip" hidden>/,
+    `<div class="recipe-chef-tip" id="recipe-chef-tip"${hasChefTip ? "" : " hidden"}>`
+  );
+  html = html.replace(
+    /<p id="recipe-chef-tip-text"><\/p>/,
+    `<p id="recipe-chef-tip-text">${escapeHtml(hasChefTip)}</p>`
+  );
+
+  const hasStory = recipe.storyOrigin && String(recipe.storyOrigin).trim();
+  html = html.replace(
+    /<section class="recipe-story" id="recipe-story" hidden>/,
+    `<section class="recipe-story" id="recipe-story"${hasStory ? "" : " hidden"}>`
+  );
+  html = html.replace(
+    /<p id="recipe-story-text"><\/p>/,
+    `<p id="recipe-story-text">${escapeHtml(hasStory)}</p>`
+  );
+
+  const hasChefVar = recipe.chefVariation && String(recipe.chefVariation).trim();
+  html = html.replace(
+    /<section class="recipe-chef" id="recipe-chef" hidden>/,
+    `<section class="recipe-chef" id="recipe-chef"${hasChefVar ? "" : " hidden"}>`
+  );
+  html = html.replace(
+    /<p id="recipe-chef-text"><\/p>/,
+    `<p id="recipe-chef-text">${escapeHtml(hasChefVar)}</p>`
+  );
+
+  const hasSeasonal = recipe.seasonalNote && String(recipe.seasonalNote).trim();
+  html = html.replace(
+    /<div class="recipe-season" id="recipe-season" hidden>/,
+    `<div class="recipe-season" id="recipe-season"${hasSeasonal ? "" : " hidden"}>`
+  );
+  html = html.replace(
+    /<p id="recipe-season-text"><\/p>/,
+    `<p id="recipe-season-text">${escapeHtml(hasSeasonal)}</p>`
+  );
+
   html = html.replace(
     /<div id="recipe-faq-list"><\/div>/,
     `<div id="recipe-faq-list">${renderFaqHtml(recipe)}</div>`
@@ -542,23 +609,23 @@ function buildStaticRecipePage(template, recipe, site) {
   return html;
 }
 
-function writeSitemap(site, recipes) {
+function writeSitemap(site, recipes, buildDate) {
   const canon = (site.canonicalOrigin || "https://akkous.com").replace(/\/+$/, "");
   const staticPages = [
-    { loc: `${canon}/`, changefreq: "daily", priority: "1.0", lastmod: null },
+    { loc: `${canon}/`, changefreq: "daily", priority: "1.0", lastmod: buildDate },
     {
       loc: `${canon}/terms-of-use.html`,
       changefreq: "monthly",
       priority: "0.5",
-      lastmod: null,
+      lastmod: buildDate,
     },
     {
       loc: `${canon}/privacy-policy.html`,
       changefreq: "monthly",
       priority: "0.5",
-      lastmod: null,
+      lastmod: buildDate,
     },
-    { loc: `${canon}/contact.html`, changefreq: "monthly", priority: "0.5", lastmod: null },
+    { loc: `${canon}/contact.html`, changefreq: "monthly", priority: "0.5", lastmod: buildDate },
   ];
 
   const lines = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'];
@@ -568,19 +635,23 @@ function writeSitemap(site, recipes) {
     lines.push(`    <loc>${escapeXml(p.loc)}</loc>`);
     if (p.changefreq) lines.push(`    <changefreq>${p.changefreq}</changefreq>`);
     if (p.priority) lines.push(`    <priority>${p.priority}</priority>`);
+    if (p.lastmod) lines.push(`    <lastmod>${p.lastmod}</lastmod>`);
     lines.push("  </url>");
   }
 
   for (const r of recipes) {
     const slug = String(r.slug || r.id || "").trim();
     if (!slug) continue;
-    const lastmod =
+    const pubDate =
       (r.datePublished && String(r.datePublished).slice(0, 10)) ||
       (r.publishDate && String(r.publishDate).slice(0, 10)) ||
       "";
+    const lastmod = !pubDate || buildDate.slice(0, 10) > pubDate
+      ? buildDate
+      : pubDate + "T00:00:00+00:00";
     lines.push("  <url>");
     lines.push(`    <loc>${escapeXml(`${canon}/recipes/${slug}/`)}</loc>`);
-    if (lastmod) lines.push(`    <lastmod>${lastmod}</lastmod>`);
+    lines.push(`    <lastmod>${lastmod}</lastmod>`);
     lines.push("    <changefreq>weekly</changefreq>");
     lines.push("    <priority>0.8</priority>");
     lines.push("  </url>");
@@ -613,6 +684,7 @@ function removeOrphanRecipeDirs(wantedSlugs) {
 }
 
 function main() {
+  const buildDate = process.env.CI_BUILD_DATE || new Date().toISOString().replace(/Z$/, "+00:00");
   const raw = JSON.parse(fs.readFileSync(RECIPES_JSON, "utf8"));
   const site = raw.site || {};
   const list = (raw.recipes || []).map(prepareRecipe);
@@ -634,7 +706,7 @@ function main() {
   }
 
   removeOrphanRecipeDirs(wantedSlugs);
-  writeSitemap(site, list);
+  writeSitemap(site, list, buildDate);
   console.log(`Wrote ${n} recipe pages under recipes/<slug>/index.html and updated sitemap.xml`);
 }
 

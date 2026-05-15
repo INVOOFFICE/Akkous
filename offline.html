@@ -15,7 +15,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#E8572A" />
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://pagead2.googlesyndication.com 'unsafe-inline' 'unsafe-eval'; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com; img-src 'self' https://www.themealdb.com https://images.unsplash.com data:; connect-src 'self' https://www.google-analytics.com https://pagead2.googlesyndication.com; frame-src 'self' https://www.youtube.com https://script.google.com; form-action 'self' https://script.google.com; manifest-src 'self';" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://pagead2.googlesyndication.com 'unsafe-inline' 'unsafe-eval'; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com; img-src 'self' https://www.themealdb.com https://images.unsplash.com https://googleads.g.doubleclick.net data:; connect-src 'self' https://www.google-analytics.com https://pagead2.googlesyndication.com https://ep1.adtrafficquality.google; frame-src 'self' https://www.youtube.com https://script.google.com https://googleads.g.doubleclick.net https://pagead2.googlesyndication.com; form-action 'self' https://script.google.com; manifest-src 'self';" />
     <meta name="google-adsense-account" content="ca-pub-2269008589730162" />
     <title>Offline — Akkous</title>
     <style>
@@ -55,6 +55,10 @@
         background: #e8572a;
         color: #fff;
         font-weight: 600;
+      }
+      @media (prefers-color-scheme: dark) {
+        body { background: #1a1a1a; color: #e8e8e8; }
+        main { background: #2a2a2a; border-color: rgba(255,255,255,0.1); }
       }
     </style>
   </head>

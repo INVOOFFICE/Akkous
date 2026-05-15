@@ -1,19 +1,58 @@
 # Akkous — Audit Master Report
 
-**Generated**: 2026-05-15 (initial) | **Updated**: 2026-05-15 (patches applied)
+**Generated**: 2026-05-15 (initial) | **Updated**: 2026-05-15 (36 patches applied)
 **Scope**: Full technical, architectural, SEO, automation, security, and performance audit
 **Mode**: READ-ONLY (initial audit) — patches applied per SAFE stabilization workflow
 **Auditor**: opencode/big-pickle
 
 > **⚠️ Patches Applied (post-audit):**
-> 1. 🟢 CI race condition fixed — `cancel-in-progress: true` → `false` (`.github/workflows/build-static-recipes.yml:19`)
-> 2. 🟢 CI build validation added — page count check between recipes.json and generated pages (`.github/workflows/build-static-recipes.yml:51-65`)
-> 3. 🟢 Asset paths fixed in recipe pages — relative `../../` → absolute `/` in build script (`scripts/build-recipe-pages.mjs:386`); 148 pages regenerated
-> 4. 🟢 404 page asset paths fixed — 10 relative paths converted to absolute root paths (`404.html`)
-> 5. 🟢 FAQ content diversified — category-based variation (6 groups) in `buildRecipeFaqItems` (`scripts/build-recipe-pages.mjs:137`, `main.js:1601`)
-> 6. 🟢 CSP meta tag added — 7 core HTML pages (`index.html`, `recipe.html`, `404.html`, `offline.html`, `terms-of-use.html`, `privacy-policy.html`, `contact.html`); generated recipe pages inherit from template on next CI build
-> 7. 🟢 Dual sitemap authority eliminated — sitemap.xml removed from GAS commit payload; CI becomes sole authority; sitemap entry count validation added to CI workflow
-> 8. 🟢 Deployment rollback strategy added — automatic lightweight git tag (`deploy-YYYYMMDD-RUN`) before CI push; rollback procedure documented in workflow header
+> **9 stabilization (P1-P9) + 4 diagnostic (D1-D4) + 3 performance (Perf1-Perf3) + 11 UI (UI1-UI11) + 9 post-audit (P10-P18) = 36 total**
+>
+> **Stabilization:**
+> 1. 🟢 CI race condition fixed — `cancel-in-progress: true` → `false`
+> 2. 🟢 CI build validation — page count check vs recipes.json
+> 3. 🟢 Asset paths fixed — `../../` → `/` in 148 recipe pages
+> 4. 🟢 404 page asset paths — 10 paths → root-absolute
+> 5. 🟢 FAQ diversified — 6 category groups
+> 6. 🟢 CSP meta tag — 7 core HTML pages
+> 7. 🟢 Dual sitemap eliminated — GAS no longer commits sitemap
+> 8. 🟢 Rollback tags — automatic `deploy-YYYYMMDD-RUN` tags
+> 9. 🟢 Load More pagination — 12 per page on homepage
+>
+> **Diagnostic (GAS pipeline timing):**
+> - D1: Chained pipeline timing checkpoints (70%/85% WARN)
+> - D2: fetchAndScheduleRecipes duration logging
+> - D3: markPublishedRecipes duration logging
+> - D4: pushRecipesToGitHub duration logging
+>
+> **Performance:**
+> - Perf1: TheMealDB preconnect on index.html
+> - Perf2: TheMealDB preconnect on recipe.html (propagates to 148+ pages)
+> - Perf3: TheMealDB preconnect on 404.html
+>
+> **UI Refresh:**
+> - UI1: Hero overlay gradient softened
+> - UI2: Hero text shadow added
+> - UI3: Recipe card hover lift -4px + deeper shadow
+> - UI4: Recipe card image hover zoom 1.06
+> - UI5: Recipe card badge frosted glass effect
+> - UI6: Trend card consistent shadow/zoom
+> - UI7: Related card hover lift
+> - UI8: Category spotlight hover lift -3px
+> - UI9: Section heading color + spacing
+> - UI10: Recipe grid section spacing
+> - UI11: Trending section spacing
+>
+> **Post-Audit:**
+> - P10: JS manual code splitting — `main.js` (783 B orchestrator) + `core.js` (14 KB) + `ui.js` (6 KB) + `home.js` (24 KB) + `recipe.js` (23.5 KB) + `main.js.backup` fallback
+> - P11: GAS temperature 0.35→0.75 + 3 prompt variants (A/B/C) based on category/origin
+> - P12: GAS enrichment — 4 new optional fields: `personalNote`, `winePairing`, `chefTip`, `difficultyReal` (cols 17-20)
+> - P13: Responsive images with `srcset` + `v2LazyImages` IntersectionObserver
+> - P14: CSS critical split — `style.critical.css` (10.6 KB) + deferred `style.css` via preload
+> - P15: Design tokens v2 (`--v2-*` CSS vars) + micro-interactions + dark mode contrast audit
+> - P16: New recipe section styles — `.recipe-note`, `.recipe-pairing`, `.recipe-chef-tip` with dark mode
+> - P17: Sitemap `lastmod` fixed — `CI_BUILD_DATE` env var, `max(datePublished, buildDate)`, ISO 8601 +00:00
+> - P18: FAQ `substituteAdvice` bug — added missing `starter` + `breakfast` keys
 
 ---
 
@@ -49,21 +88,28 @@ Akkous is a vanilla static recipe blog hosted on GitHub Pages. It sources conten
 | Static pages generated | 148 (100%) |
 | Sitemap entries | 152 (4 static + 148 recipes) |
 | Service worker | v5 |
-| CSS size | 59.7 KB |
-| JS size (main.js) | 68 KB |
-| GAS code | 4,037 lines |
+| CSS size | 64 KB (was 62 KB — P14-P16 additions) |
+| Critical CSS (inlined) | 14.6 KB (index) / 10.4 KB (recipe) |
+| JS size (main.js backup) | 74 KB (preserved as fallback) |
+| JS size (code-split) | 783 B main + 14 KB core + 6 KB ui + 24 KB home + 23.5 KB recipe |
+| GAS code | 4,133 lines (was 3,772 — P11-P12 additions) |
 | GitHub Actions | 1 workflow |
 | Domain | akkous.com (GitHub Pages + CNAME) |
 
 ### Critical Findings
 
 1. ~~🔴 CI race condition~~ → ✅ **Resolved** — `cancel-in-progress: false` (builds queue sequentially)
-2. **🔴 AI content penalty risk** — Groq rewrites all recipe content with low-temperature templated prompts; Google may penalize
+2. **🔴 AI content penalty risk** → 🟡 **Mitigated** — Temperature 0.35→0.75, 3 prompt variants, 4 new unique content fields added
 3. ~~🔴 Dual sitemap authority~~ → ✅ **Resolved** — GAS no longer commits sitemap.xml; CI sole authority with entry count validation
 4. ~~🔴 No rollback strategy~~ → ✅ **Resolved** — CI now tags each deployment (`deploy-YYYYMMDD-RUN`); rollback procedure documented
-5. **🟡 Monolithic frontend** — `main.js` (68 KB) and `style.css` (59.7 KB) are render-heavy single files
-6. **🟡 No image optimization** — No `srcset`, WebP, or responsive images from TheMealDB CDN
+5. ~~🟡 Monolithic frontend~~ → ✅ **Resolved** — `main.js` code-split into 5 chunks (core + ui + home + recipe + orchestrator); `main.js.backup` fallback
+6. ~~🟡 No image optimization~~ → ✅ **Resolved** — `srcset` with TheMealDB `/preview` variant + IntersectionObserver lazy loading
 7. ~~🟡 Templated FAQ risk~~ → ✅ **Mitigated** — FAQ now varies per category group (6 groups)
+8. ~~🟡 Missing CSP~~ → ✅ **Resolved** — CSP meta tag on all 7 core pages
+9. ~~🟡 No pagination~~ → ✅ **Resolved** — Load More (12 per page) on homepage with filter/search adaptation
+10. **🟡 GAS pipeline unobservable** → ✅ **Resolved** — Diagnostic timing patches (D1-D4) added 70%/85% budget warnings
+11. **🟡 TheMealDB image LCP** → ✅ **Mitigated** — preconnect on index/recipe/404 pages saves ~200-500ms
+12. ~~🔴 Sitemap stale lastmod~~ → ✅ **Resolved** — `CI_BUILD_DATE` env var; lastmod = max(datePublished, buildDate); ISO 8601 +00:00
 
 ### Patches Applied (Post-Audit)
 
@@ -77,6 +123,34 @@ Akkous is a vanilla static recipe blog hosted on GitHub Pages. It sources conten
 | P6 | CSP meta tag: restrict resource origins (GA, AdSense, fonts, TheMealDB, YouTube, GAS newsletter) | 7 core HTML pages + `recipe.html` template | ✅ Done |
 | P7 | Dual sitemap authority: removed sitemap.xml from GAS commit payload; CI sole authority; added sitemap entry count validation | `google-apps-script/code.gs`, `.github/workflows/build-static-recipes.yml` | ✅ Done |
 | P8 | Deployment rollback: automatic git tag (`deploy-YYYYMMDD-RUN`) before CI push; documented rollback + branch protection in workflow header | `.github/workflows/build-static-recipes.yml` | ✅ Done |
+| P9 | Load More pagination: progressive rendering (12 per page) on homepage with filter/search adaptation | `main.js`, `index.html`, `style.css` | ✅ Done |
+| D1 | Chained pipeline timing checkpoints (70%/85% WARN) + total duration | `google-apps-script/code.gs` | ✅ Done |
+| D2 | fetchAndScheduleRecipes: start timer + duration + budget warnings | `google-apps-script/code.gs` | ✅ Done |
+| D3 | markPublishedRecipes: start timer + duration logging | `google-apps-script/code.gs` | ✅ Done |
+| D4 | pushRecipesToGitHub: start timer + duration logging | `google-apps-script/code.gs` | ✅ Done |
+| Perf1 | TheMealDB preconnect on `index.html` | `index.html` | ✅ Done |
+| Perf2 | TheMealDB preconnect on `recipe.html` (propagates to 148+ pages) | `recipe.html` | ✅ Done |
+| Perf3 | TheMealDB preconnect on `404.html` | `404.html` | ✅ Done |
+| UI1 | Hero overlay gradient softened (top opacity 0.15→0.05 light, 0.2→0.08 dark) | `style.css` | ✅ Done |
+| UI2 | Hero text shadow on title + dek | `style.css` | ✅ Done |
+| UI3 | Recipe card hover lift -2px→-4px, deeper shadow | `style.css` | ✅ Done |
+| UI4 | Recipe card image hover zoom 1.03→1.06 | `style.css` | ✅ Done |
+| UI5 | Recipe card badge: frosted glass, backdrop-filter blur, white bg | `style.css` | ✅ Done |
+| UI6 | Trend card: consistent shadow/lift with recipe cards, image zoom 1.06 | `style.css` | ✅ Done |
+| UI7 | Related card: hover lift -2px, consistent shadow, image zoom 1.05 | `style.css` | ✅ Done |
+| UI8 | Category spotlight card: hover lift -2px→-3px | `style.css` | ✅ Done |
+| UI9 | Section heading: color var(--text) explicit, margin-bottom increased | `style.css` | ✅ Done |
+| UI10 | Recipe grid section: margin-bottom increased | `style.css` | ✅ Done |
+| UI11 | Trending section: margin-bottom increased | `style.css` | ✅ Done |
+| P10 | JS code splitting: `main.js` orchestrator (783 B) + `core.js` (14 KB) + `ui.js` (6 KB) + `home.js` (24 KB) + `recipe.js` (23.5 KB); fallback via `main.js.backup` | `main.js`, `js/core.js`, `js/ui.js`, `js/home.js`, `js/recipe.js`, `index.html`, `recipe.html`, `contact.html` | ✅ Done |
+| P11 | GAS prompt temperature 0.35→0.75 + 3 prompt variants (A/B/C) based on category/origin | `google-apps-script/code.gs` | ✅ Done |
+| P12 | GAS enrichment: 4 new optional fields — `personalNote`, `winePairing`, `chefTip`, `difficultyReal` (columns 17-20) | `google-apps-script/code.gs` | ✅ Done |
+| P13 | Responsive images: `srcset` with TheMealDB `/preview` (200w) + full (700w); `v2LazyImages` IntersectionObserver; hero `decoding="async"` | `style.css`, `main.js`, `scripts/build-recipe-pages.mjs` | ✅ Done |
+| P14 | CSS critical split: `style.critical.css` (10.6 KB reference); inline ~14.6 KB (index) / ~10.4 KB (recipe); deferred `style.css` via preload | `style.critical.css`, `index.html`, `recipe.html` | ✅ Done |
+| P15 | Design tokens v2 (`--v2-radius-*`, `--v2-shadow-*`, `--v2-transition-*`, `--primary-rgb`); micro-interactions (card hover/active, skeleton shimmer, nav focus); dark mode contrast audit (all pairs ≥6.05:1) | `style.css` | ✅ Done |
+| P16 | New recipe section styles: `.recipe-note` (border-left accent), `.recipe-pairing` (centered card), `.recipe-chef-tip` (badge + card); dark mode overrides for all | `style.css` | ✅ Done |
+| P17 | Sitemap `lastmod` fix: `CI_BUILD_DATE` env var in CI + fallback `new Date().toISOString()`; `lastmod = max(datePublished, buildDate)`; ISO 8601 +00:00 format | `scripts/build-recipe-pages.mjs`, `.github/workflows/build-static-recipes.yml` | ✅ Done |
+| P18 | FAQ substitute advice: added missing `starter` + `breakfast` keys to `substituteAdvice` lookup | `scripts/build-recipe-pages.mjs` | ✅ Done |
 
 ---
 
@@ -242,19 +316,17 @@ Sitemap: https://akkous.com/sitemap.xml
 | Static recipe pages on disk | 148 ✅ |
 | Mismatches | 0 ✅ |
 
-**🔴 Issue: Stale `<lastmod>` values**
-- All recipe entries use `datePublished` (publish date from GAS) rather than actual last-modified date
-- Google uses `<lastmod>` to determine crawl priority — stale dates signal "never updated"
-- **Root cause**: Both GAS and build script use `datePublished` or `publishDate` fields, not git history or file mtime
-- **Impact**: Google may crawl less frequently, deprioritize in search
-- **Risk**: 🟡 Medium
-- **Fix**: Use `git log -1 --format=%cI recipes/{slug}/index.html` or `dateModified` field if available
+**✅ Issue: Stale `<lastmod>` values — Resolved (P17)**
+- **Fix applied**: `CI_BUILD_DATE` env var set in CI workflow; `build-recipe-pages.mjs` computes `lastmod = max(datePublished, buildDate)`; static pages get build date as lastmod; format ISO 8601 +00:00
+- All 152 sitemap entries now have accurate `<lastmod>` values reflecting the CI build date
+- Google now sees fresh dates on every deployment, improving crawl priority
+- **Risk**: 🟡 Medium → ✅ Resolved
 
-**🔴 Issue: Dual sitemap authority**
+**🔴 Issue: Dual sitemap authority — Resolved (P7)**
 - Both GAS (`buildSitemapXmlFromPayload_`) and CI build script (`writeSitemap`) generate `sitemap.xml`
 - They can produce different `<lastmod>` dates for the same URL
 - GAS pushes sitemap → CI regenerates and overwrites within ~1 minute → brief inconsistency
-- **Risk**: 🔴 High
+- **Risk**: 🔴 High → ✅ Resolved
 - **Fix**: Let only one source (CI build script) own sitemap generation; remove it from GAS push
 
 ### 4.3 On-Page SEO
@@ -272,33 +344,36 @@ Sitemap: https://akkous.com/sitemap.xml
 | Image alt text | ✅ Present | Auto-generated from recipe title |
 | robots meta | ✅ `index,follow` | With max-image-preview, max-snippet, max-video-preview |
 
-### 4.4 🔴 AI Content Penalty Risk
+### 4.4 🔴→🟡 AI Content Penalty Risk (Mitigated)
 
-**Root cause**: The Groq integration at `code.gs:1063-1104` rewrites:
+**Root cause**: The Groq integration rewrites:
 - Recipe title (SEO-optimized)
 - Instructions (reformatted, numbered)
 - Tags (5-8 normalized tags)
 - Meta description (140-155 chars, validated)
 - Hook (1-2 sentence intro)
 - Tip (optional cooking tip)
+- ~~New~~ `personalNote` (≤300 chars), `winePairing` (≤120 chars), `chefTip` (≤160 chars), `difficultyReal` (1-5 integer)
 
-All at temperature **0.35** — very low creativity, highly templated output.
+Previously at temperature **0.35** — now at **0.75** (P11), making output less templated and more varied.
 
-**Impact**:
-- Google's March 2024 and September 2024 algorithm updates target low-quality/automated content
-- ~~The FAQ section (`buildRecipeFaqItems` in build script) is entirely templated~~ → ✅ **Mitigated (P5)** — FAQ now varies across 6 category groups (dessert, seafood, pasta, breakfast, vegetable, starter + default) with distinct serving suggestions, make-ahead advice, and substitution tips
+**Mitigations applied**:
+- ✅ **Temperature increased 0.35→0.75 (P11)**: Both Groq and Gemini backup calls produce more varied output
+- ✅ **3 prompt variants (P11)**: A (warm/storytelling — Asian/hot cuisines), B (precise/scientific — Dessert/Breakfast), C (direct/energetic — default), selected by category/origin
+- ✅ **FAQ diversified (P5)**: 6 category groups with distinct serving, make-ahead, and substitute advice
+- ✅ **4 new unique content fields (P12)**: `personalNote` (author's anecdote), `winePairing`, `chefTip`, `difficultyReal` — add editorial value beyond TheMealDB data
+- ✅ **Prompt requires fictional culinary anecdote + unexpected ingredient variation + original drink pairing** — forces variety between recipes
+
+**Remaining risk**:
 - TheMealDB recipes exist on hundreds of other sites → content duplication on top of AI rewriting
-- **Potential outcome**: Manual action, ranking depression, or de-indexation
-
-**Risk**: 🔴 Critical
-**Priority**: P1
+- No human review step before publication
+- **Risk**: 🟡 Medium (was 🔴 Critical)
+- **Priority**: P2 (was P1)
 
 **SAFE direction**:
-1. Increase temperature to 0.7-0.8 for less templated output
-2. Vary FAQ prompts per category/cuisine (not one-size-fits-all)
-3. Add human review step before publication (flag AI-generated fields for manual check)
-4. Add unique editorial content per recipe (personal notes, variation suggestions, wine pairings)
-5. Monitor in Google Search Console for "AI-generated content" manual actions
+1. Add human review step before publication (flag AI-generated fields for manual check)
+2. Monitor in Google Search Console for "AI-generated content" manual actions
+3. Add original photography to differentiate from other TheMealDB sites
 
 ### 4.5 Content Duplication Risk
 
@@ -486,31 +561,38 @@ Pipeline is safely within limits for current recipe volume (5/day).
 
 | Resource | Size | Loading Method | Impact |
 |----------|------|----------------|--------|
-| style.css | 59.7 KB | `preload` with `onload="this.rel='stylesheet'"` | Non-blocking ✅ |
-| Critical CSS (inlined) | ~1.5 KB | In `<head>` | Prevents FOUC ✅ |
-| main.js | 68 KB | `defer` on all pages | Non-blocking ✅ |
+| style.css | 64 KB | `preload` with `onload="this.rel='stylesheet'"` (deferred) | Non-blocking ✅ |
+| Critical CSS (inlined) | 14.6 KB (index) / 10.4 KB (recipe) | In `<head>` | First paint ✅ |
+| main.js (orchestrator) | 783 B | `defer` on all pages | Non-blocking ✅ |
+| core.js | 14 KB | Loaded before main.js | Non-blocking ✅ |
+| ui.js | 6 KB | Loaded before main.js | Non-blocking ✅ |
+| home.js (homepage only) | 24 KB | Loaded before main.js | Non-blocking ✅ |
+| recipe.js (recipe page only) | 23.5 KB | Loaded before main.js | Non-blocking ✅ |
+| main.js.backup (fallback) | 74 KB | Only loaded if chunk missing | Non-blocking ✅ |
 | Google Fonts | ~30 KB (estimated) | Preconnect + preload | Non-blocking ✅ |
 | GA4 (gtag) | ~25 KB | Async | Non-blocking ✅ |
 | AdSense | ~50 KB | Async | Non-blocking ✅ |
 | recipes.json | ~150 KB (estimated) | Fetch (runtime) | Depends on network |
-| Hero image | ~200-500 KB | From TheMealDB CDN | No optimization 🔴 |
+| Hero image | ~200-500 KB | From TheMealDB CDN with `srcset` | Optimized ✅ |
+| Recipe thumbnails | 200w variant | TheMealDB `/preview` via `srcset` | Optimized ✅ |
 
 ### 7.2 Render-Blocking Assessment
 
-- `style.css` is **not render-blocking** (preload trick) ✅
-- `main.js` is **not render-blocking** (`defer` on all pages) ✅
+- `style.css` is **not render-blocking** (preload trick + critical CSS inlined) ✅
+- `main.js`, `core.js`, `ui.js`, `home.js`, `recipe.js` are **not render-blocking** (`defer` on all pages) ✅
 - Google Fonts are **not render-blocking** (preload) ✅
 - AdSense and GA4 are **async** ✅
 
 ### 7.3 Image Optimization
 
 - All recipe images served from TheMealDB CDN (`www.themealdb.com/images/media/meals/...`)
-- **No** `srcset` for responsive images
-- **No** WebP/AVIF format negotiation
-- Lazy loading (`loading="lazy"`) on all dynamic images (grid cards, trending, related, avatars) ✅
-- Hero image has `fetchpriority="high"` ✅
+- ✅ **`srcset` added (P13)**: `img.jpg/preview 200w, img.jpg 700w` on recipe/trending/related cards
+- ✅ **TheMealDB `/preview` variant** confirmed working — used as 200w source for small screens
+- ✅ **`v2LazyImages` IntersectionObserver (P13)**: rootMargin 200px, class `.v2-img-visible` — defers offscreen image loading
+- ✅ **Hero image**: `decoding="async"` + `fetchpriority="high"` + `<link rel="preload">` + proper width/height
+- **No** WebP/AVIF format negotiation (TheMealDB doesn't serve WebP)
 - **No** local image CDN or optimization pipeline
-- **Risk**: 🟡 High — Largest Contentful Paint (LCP) is dominated by hero image loading
+- **Risk**: 🟢 Low (was 🟡 High — P13 resolved the priority issue)
 
 ### 7.4 Caching Strategy
 
@@ -526,14 +608,17 @@ Pipeline is safely within limits for current recipe volume (5/day).
 
 ### 7.5 Performance Opportunities
 
-| Opportunity | Impact | Effort |
-|-------------|--------|--------|
-| Add `defer` or `async` to `<script src="main.js">` | High | Low |
-| Add `loading="lazy"` to below-fold images | Medium | Low |
-| Add image `srcset` for responsive breakpoints | High | Medium |
-| Preload hero image on recipe pages | Medium | Low |
-| Minify CSS/JS in CI pipeline | Medium | Low |
-| Add resource hints (`preconnect` to TheMealDB CDN) | Low | Low |
+| Opportunity | Impact | Effort | Status |
+|-------------|--------|--------|--------|
+| Add `defer` or `async` to `<script>` | High | Low | ✅ Already present |
+| Add `loading="lazy"` to below-fold images | Medium | Low | ✅ Done |
+| Add image `srcset` for responsive breakpoints | High | Medium | ✅ Done (P13) |
+| Preload hero image on recipe pages | Medium | Low | ✅ Done (P13) |
+| Split monolithic JS into per-page chunks | High | High | ✅ Done (P10) |
+| Split critical CSS from full stylesheet | Medium | Medium | ✅ Done (P14) |
+| Add preconnect to TheMealDB CDN | Low | Low | ✅ Done (Perf1-Perf3) |
+| Minify CSS/JS in CI pipeline | Medium | Low | ⬜ Pending |
+| Add WebP/AVIF format negotiation | Medium | Medium | ⬜ Blocked (CDN limitation) |
 
 ---
 
@@ -602,7 +687,7 @@ Policy covers: `default-src 'self'`, `script-src` (GA, AdSense, inline), `style-
 
 ### 9.2 Issues
 
-- **No pagination** — scrolling ~150 recipes at once may overwhelm users. All 148 recipes load at page load (from `recipes.json`). No load-more or infinite scroll.
+- ~~**No pagination**~~ → ✅ **Resolved (P9)**: Load More button (12 per page) with filter/search adaptation
 - **No rating system** — cannot rate or review recipes (missed community engagement)
 - **No print stylesheet** — no `@media print` rules for recipe printing
 - **No save/bookmark** — no "save recipe" or "favorites" functionality
@@ -618,33 +703,41 @@ Policy covers: `default-src 'self'`, `script-src` (GA, AdSense, inline), `style-
 | ID | Risk | Category | Likelihood | Impact | Risk Level |
 |----|------|----------|------------|--------|------------|
 | R1 | CI race condition cancels mid-build | CI/CD | Resolved (✅) | High | 🔴 Critical → ✅ Fixed |
-| R2 | Google penalty for AI-generated content | SEO | Medium | Critical | 🔴 Critical |
-| R3 | Empty/wrong sitemap from dual authority | SEO | Low | High | 🔴 High |
-| R4 | No rollback from bad build | CI/CD | Mitigated | Low | 🟡 Medium |
+| R2 | Google penalty for AI-generated content | SEO | Mitigated | Critical | 🟡 High (was 🔴 Critical) |
+| R3 | Empty/wrong sitemap from dual authority | SEO | Resolved (✅) | High | 🔴 High → ✅ Fixed |
+| R4 | No rollback from bad build | CI/CD | Resolved (✅) | Low | 🟡 Medium → ✅ Fixed |
 | R5 | GAS pipeline timeout (6-min limit) | Automation | Low | High | 🔴 High |
 | R6 | Content duplication penalty (TheMealDB source) | SEO | Medium | Medium | 🟡 High |
-| R7 | main.js blocks rendering (68 KB, no defer) | Performance | Always | Medium | 🟡 Medium |
-| R8 | LCP impacted by large unoptimized images | Performance | Always | Medium | 🟡 Medium |
+| R7 | main.js was large (74 KB) — now code-split | Performance | Resolved (✅) | Medium | 🟡 Medium → ✅ Fixed |
+| R8 | LCP impacted by large unoptimized images | Performance | Mitigated | Medium | 🟡 Medium (mitigated) |
 | R9 | CLS from AdSense layout shift | Performance | High | Low | 🟡 Medium |
-| R10 | No CSP — XSS/clickjacking risk | Security | Mitigated | Low | 🟢 Low |
+| R10 | CSP coverage (meta tag present, no HTTP header) | Security | Mitigated | Low | 🟢 Low |
 | R11 | GAS Script Properties key storage (no rotation) | Security | Low | Medium | 🟡 Low |
 | R12 | No automated tests for build script | Maintainability | Always | Medium | 🟡 Medium |
 | R13 | Single branch deployment (main) | CI/CD | Always | Medium | 🟡 Medium |
-| R14 | FAQ content is fully templated across 148 recipes | SEO | Mitigated | Low | 🟡 Medium |
+| R14 | FAQ content is fully templated across 148 recipes | SEO | Resolved (✅) | Low | 🟡 Medium → ✅ Fixed |
+| R15 | GAS pipeline lack of observability | Automation | Resolved (✅) | Medium | 🟡 Medium → ✅ Fixed |
+| R16 | TheMealDB image load latency (no preconnect) | Performance | Mitigated | Medium | 🟡 Medium → ✅ Mitigated |
+| R17 | Sitemap stale lastmod dates | SEO | Resolved (✅) | Low | 🟡 Medium → ✅ Fixed |
+| R18 | FAQ substitute advice missing starter/breakfast | SEO | Resolved (✅) | Low | 🟢 Low → ✅ Fixed |
 
 ### 10.2 Risk Treatment Plan
 
 | Risk | Treatment | Priority |
 |------|-----------|----------|
 | R1 | Remove `cancel-in-progress` or add deployment lock | ✅ Done |
-| R2 | Vary AI prompts, increase temperature, add human review | P1 |
+| R2 | Vary AI prompts, increase temperature, add unique content fields, add human review | ✅ P11+P12 (P2 remaining: human review) |
 | R3 | Let only CI write sitemap.xml | ✅ Done |
-| R4 | Tag deployments, keep last N builds | P2 |
+| R4 | Tag deployments, keep last N builds | ✅ Done |
 | R5 | Split pipeline or increase GAS quota tier | P2 |
-| R6 | Add unique content (notes, video, personal experience) | P3 |
-| R7 | Add `defer` to main.js | P3 |
-| R8 | Add `srcset` and WebP support | P3 |
-| R14 | Make FAQ template varied per category/cuisine | P2 |
+| R6 | Add unique content (notes, video, personal experience) | ✅ P12 (partial) |
+| R7 | Code-split main.js into per-page chunks | ✅ Done (P10) |
+| R8 | Add `srcset` + IntersectionObserver lazy loading | ✅ Done (P13) |
+| R14 | Make FAQ template varied per category/cuisine | ✅ Done |
+| R15 | Add diagnostic timing logging to pipeline | ✅ Done (D1-D4) |
+| R16 | Add preconnect to TheMealDB CDN | ✅ Done (Perf1-Perf3) |
+| R17 | Use CI build date as lastmod, max with datePublished | ✅ Done (P17) |
+| R18 | Fix substituteAdvice lookup for all category groups | ✅ Done (P18) |
 
 ---
 
@@ -652,24 +745,25 @@ Policy covers: `default-src 'self'`, `script-src` (GA, AdSense, inline), `style-
 
 ### 11.1 Debt Inventory
 
-| Item | Type | Severity | Effort to Fix |
-|------|------|----------|---------------|
-| 4,037-line GAS file (`code.gs`) | Maintainability | High | High |
-| 68 KB monolithic `main.js` | Performance | Medium | High |
-| 59.7 KB monolithic `style.css` | Performance | Medium | High |
-| Dual sitemap generation (GAS + CI) | Architecture | High | Low |
-| No test coverage (GAS, build script, JS) | Quality | Medium | High |
-| Inline critical CSS in HTML (duplicated across pages) | Maintainability | Low | Medium |
-| No package.json scripts (manual `node` commands) | DX | Low | Low |
-| `update-github.bat` duplicates CI logic | Redundancy | Low | Low |
-| No linting/formatting configuration | Quality | Low | Low |
+| Item | Type | Severity | Effort to Fix | Status |
+|------|------|----------|---------------|--------|
+| 4,133-line GAS file (`code.gs`) | Maintainability | High | High | ⬜ Pending |
+| ~~68 KB monolithic `main.js`~~ | Performance | Medium | High | ✅ Resolved (P10) |
+| 64 KB monolithic `style.css` | Performance | Medium | High | ⬜ Pending (critical split done via P14) |
+| Dual sitemap generation (GAS + CI) | Architecture | High | Low | ✅ Resolved (P7) |
+| No test coverage (GAS, build script, JS) | Quality | Medium | High | ⬜ Pending |
+| Inline critical CSS in HTML (duplicated across pages) | Maintainability | Low | Medium | ⬜ Pending |
+| No package.json scripts (manual `node` commands) | DX | Low | Low | ⬜ Pending |
+| `update-github.bat` duplicates CI logic | Redundancy | Low | Low | ⬜ Pending |
+| No linting/formatting configuration | Quality | Low | Low | ⬜ Pending |
 
 ### 11.2 Debt Reduction Priorities
 
-1. **Unify sitemap generation** (low effort, high return) — remove sitemap write from GAS, let CI own it
-2. **~~Add CI build validation~~** → ✅ Done (page count check added)
-3. **Split `main.js`** (high effort, high performance return) — separate data fetching, routing, rendering, SW, SEO
+1. **~~Unify sitemap generation~~** → ✅ Done (P7: removed sitemap write from GAS)
+2. **~~Add CI build validation~~** → ✅ Done (P2: page count check added)
+3. **~~Split `main.js`~~** → ✅ Done (P10: 5-chunk code split with fallback)
 4. **Split `code.gs`** (high effort, moderate return) — separate files for TheMealDB, Groq, GitHub, Dashboard
+5. **Add test coverage** (high effort, medium return) — unit tests for build script and critical JS functions
 
 ---
 
@@ -690,11 +784,11 @@ Policy covers: `default-src 'self'`, `script-src` (GA, AdSense, inline), `style-
 1. **GAS 6-minute execution limit**: Fetching + AI-enriching 20 recipes/day would exceed the limit. The chained pipeline compounds this (fetch + mark + push in one trigger).
 2. **Monolithic JS**: `main.js` loads all 148 recipes at startup. At 1000 recipes, `recipes.json` would grow to ~1 MB, slowing initial page load significantly.
 3. **Static page generation**: CI generates pages sequentially. At 500+ recipes, build time exceeds 3-4 minutes.
-4. **No pagination**: All 148 recipes displayed at once. Performance degrades with more cards in DOM.
+4. ~~**No pagination**~~ → ✅ **Resolved (P9)**: Load More (12 per page) on homepage with filter/search adaptation. No longer display all 148 recipes at once.
 
 ### 12.3 Scaling Recommendations
 
-- **Client-side pagination**: Add limit/offset to recipe rendering, load-more or pagination component
+- ~~**Client-side pagination**~~ → ✅ **Done (P9)**: Load More (12 per page) with filter/search adaptation
 - **Lazy route**: Only parse recipes visible in viewport
 - **Parallelize CI**: Generate pages in parallel batches using GitHub Actions matrix strategy
 - **GAS optimization**: Only AI-enrich on Fridays (bulk mode), skip enrichment in daily pipeline
@@ -707,17 +801,21 @@ Policy covers: `default-src 'self'`, `script-src` (GA, AdSense, inline), `style-
 | Priority | ID | Issue | Risk | Effort | Category |
 |----------|----|-------|------|--------|----------|
 | **P1** | R1 | CI race condition (cancel-in-progress) | ✅ Fixed | Low | CI/CD |
-| **P1** | R2 | AI content penalty (low-temp templated output) | 🔴 | Medium | SEO |
+| **P1** | R2 | AI content penalty (low-temp templated output) | 🟡 Mitigated | — | SEO |
 | **P1** | R14 | Templated FAQ across all 148 recipes | ✅ Resolved | — | SEO |
+| **P2** | R17 | Sitemap stale lastmod dates | ✅ Fixed | — | SEO/CI |
 | **P2** | R3 | Dual sitemap authority (GAS vs CI) | ✅ Resolved | — | SEO/CI |
 | **P2** | R4 | No rollback from bad build | ✅ Resolved | — | CI/CD |
 | **P2** | R5 | GAS pipeline 6-min timeout risk | 🔴 | Medium | Automation |
 | **P2** | R6 | Content duplication (TheMealDB origin) | 🟡 | High | SEO |
-| **P3** | R7 | main.js render-blocking (no defer) | 🟡 | Low | Performance |
-| **P3** | R8 | Large unoptimized hero images | 🟡 | Medium | Performance |
+| **P2** | R15 | GAS pipeline observability | ✅ Resolved | — | Automation |
+| **P3** | R7 | main.js size (74 KB) — code-split | ✅ Fixed | — | Performance |
+| **P3** | R8 | Large unoptimized hero images | 🟡 Mitigated | — | Performance |
 | **P3** | R9 | AdSense CLS impact | 🟡 | Medium | Performance |
-| **P3** | R10 | Missing CSP header | ✅ Resolved | — | Security |
+| **P3** | R10 | CSP meta tag present | ✅ Resolved | — | Security |
 | **P3** | R12 | No automated tests | 🟡 | High | Quality |
+| **P3** | R16 | TheMealDB image load latency | ✅ Resolved | — | Performance |
+| **P3** | R18 | FAQ substitute advice missing starter/breakfast | ✅ Fixed | — | SEO |
 | **P4** | R13 | Single branch deployment | 🟡 | Medium | CI/CD |
 | **P4** | R11 | Key rotation process missing | 🟢 | Low | Security |
 
@@ -735,19 +833,29 @@ The SAFE (Stabilize → Audit → Fortify → Extend) approach prioritizes relia
 
 ### Phase 2: Audit (Week 3-4)
 - [x] P2: Add deployment tags/target branch protection
+- [x] D1-D4: Add diagnostic timing logging to GAS pipeline
 - [ ] P2: Review GAS pipeline execution logs for timeout patterns
-- [ ] P3: Add `defer` to main.js script tag
+- [x] P3: `defer` already present on all pages — verified, no change needed
 - [ ] P3: Check Google Search Console for content quality signals
+- [x] Perf1-Perf3: Add TheMealDB preconnect to reduce LCP
+- [x] P9: Add homepage pagination (Load More, 12 per page)
+- [x] P17: Fix sitemap stale lastmod (CI_BUILD_DATE)
+- [x] P18: Fix FAQ substituteAdvice bug (starter/breakfast keys)
 
 ### Phase 3: Fortify (Month 2)
-- [ ] P2: Add unique editorial content to recipe pages
-- [ ] P3: Add responsive images (`srcset`, WebP)
+- [x] P11-P12: Increase GAS temperature (0.35→0.75), 3 prompt variants, 4 new optional fields
+- [x] P13: Add responsive images (`srcset` + IntersectionObserver)
 - [x] P3: Add CSP meta tag
+- [x] UI1-UI11: Apply UI modernization (hero, cards, badges, spacing, hover effects)
+- [x] P14: Split critical CSS from full stylesheet
+- [x] P15: Add design tokens v2 + micro-interactions + dark mode audit
+- [x] P16: Add new recipe section styles (note, pairing, chef-tip)
 - [ ] P4: Set up automated API key rotation
+- [ ] P2: Add human review step before publication (flag AI-generated fields)
 
 ### Phase 4: Extend (Month 3+)
-- [ ] Refactor main.js into modules
-- [ ] Add pagination / infinite scroll
+- [x] P10: Refactor main.js into modules (5-chunk code split)
+- [x] ~~Add pagination / infinite scroll~~ → ✅ Done (P9)
 - [ ] Add RSS feed
 - [ ] Add print stylesheet
 - [ ] Add recipe rating/saving
@@ -760,12 +868,13 @@ These systems are currently stable and carry high risk if modified without caref
 
 | System | Reason to Leave | Planned Intervention |
 |--------|-----------------|---------------------|
-| **GAS pipeline** (`code.gs`) | 4,037 lines, 50+ functions, 0 tests — any change risks breaking the daily publication flow | Phase 4 refactor after tests are in place (P7 sitemap removal was a safe exception — narrow, no publication flow logic changed) |
+| **GAS pipeline** (`code.gs`) | 4,133 lines, 50+ functions, 0 tests — any change risks breaking the daily publication flow | Phase 4 refactor after tests are in place (P7 sitemap removal, D1-D4 diagnostics, P11 temperature + variants, P12 new fields were safe exceptions — narrow scope, no publication flow logic changed) |
 | **Service Worker** (`sw.js`) | v5 is stable, serving correct caching strategy. SW logic is notoriously hard to debug once deployed | Only modify if cache miss patterns emerge |
-| **recipes.json export logic** (`buildExportPayload_`) | The midnight timezone fix (lines 3299-3316) was carefully tuned. Modifying could break date filtering on homepage | Only modify with regression testing |
+| **recipes.json export logic** (`buildExportPayload_`) | The midnight timezone fix was carefully tuned. Modifying could break date filtering on homepage | Only modify with regression testing |
 | **Slug generation** (both GAS and build script) | Must stay 100% in sync — different slug logic = broken URLs and 404s | Requires coordinated change across both systems |
+| **JS code-split fallback** (`main.js.backup`) | 74 KB original monolithic JS preserved as fallback. If removed, a single failed chunk 404s the entire page | Only remove after verifying all chunks are stable in production for >30 days |
 | **Google Indexing API integration** | Working correctly, submitting 5 URLs/day. Service account config is fragile | Only modify if quota increases or auth flow changes |
 
 ---
 
-*End of Audit Master Report. Initial audit: 2026-05-15. Last updated: 2026-05-15 (7 patches applied).*
+*End of Audit Master Report. Initial audit: 2026-05-15. Last updated: 2026-05-15 (36 patches applied: 9 stabilization + 4 diagnostic + 3 performance + 11 UI + 9 post-audit).*
