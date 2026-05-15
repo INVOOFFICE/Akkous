@@ -383,7 +383,7 @@ function buildStaticRecipePage(template, recipe, site) {
   const socialImg = img || "https://akkous.com/assets/og-default.jpg";
   const imgAlt = recipe.title ? "Photo of " + recipe.title : "";
 
-  let html = applyPathPrefix(template, "../../");
+  let html = applyPathPrefix(template, "/");
 
   const headMeta = `
     <meta
