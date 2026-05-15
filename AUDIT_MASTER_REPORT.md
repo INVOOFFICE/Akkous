@@ -1,12 +1,12 @@
 # Akkous — Audit Master Report
 
-**Generated**: 2026-05-15 (initial) | **Updated**: 2026-05-15 (36 patches applied)
+**Generated**: 2026-05-15 (initial) | **Updated**: 2026-05-15 (44 patches applied)
 **Scope**: Full technical, architectural, SEO, automation, security, and performance audit
 **Mode**: READ-ONLY (initial audit) — patches applied per SAFE stabilization workflow
 **Auditor**: opencode/big-pickle
 
 > **⚠️ Patches Applied (post-audit):**
-> **9 stabilization (P1-P9) + 4 diagnostic (D1-D4) + 3 performance (Perf1-Perf3) + 11 UI (UI1-UI11) + 9 post-audit (P10-P18) = 36 total**
+> **9 stabilization (P1-P9) + 4 diagnostic (D1-D4) + 3 performance (Perf1-Perf3) + 11 UI (UI1-UI11) + 17 post-audit (P10-P22) = 44 total**
 >
 > **Stabilization:**
 > 1. 🟢 CI race condition fixed — `cancel-in-progress: true` → `false`
@@ -53,6 +53,14 @@
 > - P16: New recipe section styles — `.recipe-note`, `.recipe-pairing`, `.recipe-chef-tip` with dark mode
 > - P17: Sitemap `lastmod` fixed — `CI_BUILD_DATE` env var, `max(datePublished, buildDate)`, ISO 8601 +00:00
 > - P18: FAQ `substituteAdvice` bug — added missing `starter` + `breakfast` keys
+> - P19: CSP OPTION A — `default-src 'self'`, script-src (GA, AdSense), img-src https:, frame-src (YouTube, googleads), form-action 'self'
+> - P19b: CSP enriched — YouTube (`https://www.youtube.com`) in frame-src + form-action `https://script.google.com` (newsletter)
+> - P20: SEO enrichment — BreadcrumbList JSON-LD on 5 static pages + Article/Recipe/BreadcrumbList in generated pages
+> - P21: RSS Atom feed — `feed.xml` (20 entries), CI workflow step, `<link>` in index.html
+> - P22a: estimateReadMinutes refactor — wordCount/200 + Long read badge (>8min)
+> - P22b: Jump to Recipe button — mobile <769px, 3s delay, smooth scroll to .ingredients
+> - P22c: Print stylesheet — separate `print.css` with `@media print` rules
+> - P22d: UI enhancements — persistent category filters (`#category=` hash) + TOC (>8 steps, 30-char excerpt)
 
 ---
 
@@ -105,7 +113,7 @@ Akkous is a vanilla static recipe blog hosted on GitHub Pages. It sources conten
 5. ~~🟡 Monolithic frontend~~ → ✅ **Resolved** — `main.js` code-split into 5 chunks (core + ui + home + recipe + orchestrator); `main.js.backup` fallback
 6. ~~🟡 No image optimization~~ → ✅ **Resolved** — `srcset` with TheMealDB `/preview` variant + IntersectionObserver lazy loading
 7. ~~🟡 Templated FAQ risk~~ → ✅ **Mitigated** — FAQ now varies per category group (6 groups)
-8. ~~🟡 Missing CSP~~ → ✅ **Resolved** — CSP meta tag on all 7 core pages
+8. ~~🟡 Missing CSP~~ → ✅ **Resolved** — CSP OPTION A on all 7 core pages (P19+P19b, YouTube + newsletter allowed)
 9. ~~🟡 No pagination~~ → ✅ **Resolved** — Load More (12 per page) on homepage with filter/search adaptation
 10. **🟡 GAS pipeline unobservable** → ✅ **Resolved** — Diagnostic timing patches (D1-D4) added 70%/85% budget warnings
 11. **🟡 TheMealDB image LCP** → ✅ **Mitigated** — preconnect on index/recipe/404 pages saves ~200-500ms
@@ -151,7 +159,15 @@ Akkous is a vanilla static recipe blog hosted on GitHub Pages. It sources conten
 | P16 | New recipe section styles: `.recipe-note` (border-left accent), `.recipe-pairing` (centered card), `.recipe-chef-tip` (badge + card); dark mode overrides for all | `style.css` | ✅ Done |
 | P17 | Sitemap `lastmod` fix: `CI_BUILD_DATE` env var in CI + fallback `new Date().toISOString()`; `lastmod = max(datePublished, buildDate)`; ISO 8601 +00:00 format | `scripts/build-recipe-pages.mjs`, `.github/workflows/build-static-recipes.yml` | ✅ Done |
 | P18 | FAQ substitute advice: added missing `starter` + `breakfast` keys to `substituteAdvice` lookup | `scripts/build-recipe-pages.mjs` | ✅ Done |
-
+| P19 | CSP OPTION A: `default-src 'self'`, script-src (GA, AdSense), img-src https:, frame-src (YouTube, googleads), form-action 'self' | 7 core HTML pages + recipe.html template | ✅ Done |
+| P19b | CSP enriched: YouTube (`https://www.youtube.com`) in frame-src, form-action `https://script.google.com` for newsletter | 7 core HTML pages + recipe.html template | ✅ Done |
+| P20 | SEO enrichment: BreadcrumbList JSON-LD on 5 static pages + Article/Recipe/BreadcrumbList on generated pages | `index.html`, `contact.html`, `privacy-policy.html`, `terms-of-use.html`, `404.html`, `scripts/build-recipe-pages.mjs`, `recipe.html`, `js/recipe.js` | ✅ Done |
+| P21 | RSS Atom feed: `feed.xml` (20 entries), CI workflow step, `<link rel="alternate">` in index.html | `feed.xml`, `scripts/generate-rss.mjs`, `.github/workflows/build-static-recipes.yml`, `index.html` | ✅ Done |
+| P22a | estimateReadMinutes: wordCount/200 runtime calc + Long read badge (>8min) in quick stats | `scripts/build-recipe-pages.mjs`, `style.css` | ✅ Done |
+| P22b | Jump to Recipe: mobile button (<769px, 3s delay), smooth scroll to `.ingredients` | `recipe.html`, `style.css`, `js/recipe.js` | ✅ Done |
+| P22c | Print stylesheet: separate `print.css` with `@media print` rules, linked in recipe.html | `print.css`, `recipe.html` | ✅ Done |
+| P22d | UI enhancements: persistent category filters (`#category=` hash + `?cat=` fallback) + TOC (>8 steps, 30-char excerpt, native smooth scroll) | `js/home.js`, `style.css`, `scripts/build-recipe-pages.mjs` | ✅ Done |
+ 
 ---
 
 ## 2. Full Architecture Overview
@@ -395,8 +411,8 @@ Previously at temperature **0.35** — now at **0.75** (P11), making output less
 
 | Missing | Impact | Priority |
 |---------|--------|----------|
-| RSS/Atom feed | No feed for subscribers/news readers | 🟡 Medium |
-| Breadcrumb JSON-LD on non-recipe pages | Only on recipe pages | 🟢 Low |
+| ~~RSS/Atom feed~~ | ~~No feed for subscribers/news readers~~ | ~~🟡 Medium~~ → ✅ **Resolved (P21)** |
+| ~~Breadcrumb JSON-LD on non-recipe pages~~ | ~~Only on recipe pages~~ | ~~🟢 Low~~ → ✅ **Resolved (P20)** |
 | Article:published_time/article:modified_time meta | Article OG type used but no time metadata | 🟢 Low |
 | `lastModified` field in schema | Only `datePublished` present | 🟢 Low |
 
@@ -654,9 +670,9 @@ No secrets leaked in the repository. ✅
 
 ### 8.3 CSP (Content-Security-Policy)
 
-**Resolved** ✅ — `<meta http-equiv="Content-Security-Policy">` tag added to 7 core HTML pages (P6).
+**Resolved** ✅ — CSP OPTION A applied to 7 core HTML pages (P19 + P19b).
 
-Policy covers: `default-src 'self'`, `script-src` (GA, AdSense, inline), `style-src` (fonts.googleapis, inline), `font-src` (fonts.gstatic), `img-src` (TheMealDB, Unsplash, data:), `connect-src` (GA, AdSense), `frame-src` (YouTube, GAS), `form-action` (GAS newsletter endpoint).
+Policy covers: `default-src 'self'`, `script-src` (GA, AdSense, inline), `style-src` (fonts.googleapis, inline), `font-src` (fonts.gstatic), `img-src` (TheMealDB, Unsplash, data:, https:), `frame-src` (YouTube, googleads.g.doubleclick.net, https://www.youtube.com), `form-action` (https://script.google.com for newsletter). No `'unsafe-eval'`, no `connect-src` (falls back to `default-src 'self'`), no `form-action` to unknown origins.
 
 **Note**: `frame-ancestors` is not supported in `<meta>` CSP tags — clickjacking prevention requires HTTP header. Risk is low for this static site (no user input, no sensitive actions).
 
@@ -689,7 +705,7 @@ Policy covers: `default-src 'self'`, `script-src` (GA, AdSense, inline), `style-
 
 - ~~**No pagination**~~ → ✅ **Resolved (P9)**: Load More button (12 per page) with filter/search adaptation
 - **No rating system** — cannot rate or review recipes (missed community engagement)
-- **No print stylesheet** — no `@media print` rules for recipe printing
+- ~~**No print stylesheet** — no `@media print` rules for recipe printing~~ → ✅ **Resolved (P22c)**
 - **No save/bookmark** — no "save recipe" or "favorites" functionality
 - **Search is client-only** — depends on `recipes.json` load. FOUC of empty search results until data arrives.
 - **Ad load impact** — AdSense may shift layout on load (layout shift = CLS impact)
@@ -856,8 +872,8 @@ The SAFE (Stabilize → Audit → Fortify → Extend) approach prioritizes relia
 ### Phase 4: Extend (Month 3+)
 - [x] P10: Refactor main.js into modules (5-chunk code split)
 - [x] ~~Add pagination / infinite scroll~~ → ✅ Done (P9)
-- [ ] Add RSS feed
-- [ ] Add print stylesheet
+- [x] Add RSS Atom feed → ✅ Done (P21)
+- [x] Add print stylesheet → ✅ Done (P22c)
 - [ ] Add recipe rating/saving
 
 ---
@@ -877,4 +893,4 @@ These systems are currently stable and carry high risk if modified without caref
 
 ---
 
-*End of Audit Master Report. Initial audit: 2026-05-15. Last updated: 2026-05-15 (36 patches applied: 9 stabilization + 4 diagnostic + 3 performance + 11 UI + 9 post-audit).*
+*End of Audit Master Report. Initial audit: 2026-05-15. Last updated: 2026-05-15 (44 patches applied: 9 stabilization + 4 diagnostic + 3 performance + 11 UI + 17 post-audit).*
