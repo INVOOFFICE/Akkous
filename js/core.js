@@ -53,7 +53,7 @@
     return new URL(".", window.location.href).href;
   };
 
-  A.homeIndexFileUrl = function() { return A.siteRootRelativePrefix() + "index.html"; };
+  A.homeIndexFileUrl = function() { return A.siteRootRelativePrefix(); };
 
   A.isRecipePage = function() { return !!document.getElementById("recipe-main"); };
   A.isHomePage = function() { return !!document.getElementById("recipe-grid"); };
@@ -309,7 +309,7 @@
       if (e.key !== "Enter") return;
       e.preventDefault();
       var raw = (input.value || "").trim();
-      window.location.href = A.siteRootRelativePrefix() + "index.html" + (raw ? "?q=" + encodeURIComponent(raw) : "") + "#recipe-grid";
+      window.location.href = A.siteRootRelativePrefix() + (raw ? "?q=" + encodeURIComponent(raw) : "") + "#recipe-grid";
     });
   };
 

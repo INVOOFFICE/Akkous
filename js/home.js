@@ -47,7 +47,7 @@
     if (dek) dek.textContent = "Publish recipes in your sheet to populate the homepage carousel and latest sections.";
     A.$("#hero-title").textContent = "No recipes yet";
     A.$("#hero-meta").textContent = "recipes.json is empty or could not be read. Check the file and try again.";
-    if (cta) { cta.href = "index.html"; cta.textContent = "Reload"; cta.hidden = false; }
+    if (cta) { cta.href = "/"; cta.textContent = "Reload"; cta.hidden = false; }
     if (cta2) cta2.hidden = true;
     var dots = A.$("#hero-dots");
     var controls = A.$("#hero-carousel-controls");

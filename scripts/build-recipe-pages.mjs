@@ -527,7 +527,7 @@ function applyPathPrefix(html, prefix) {
     .replace(/href="assets\//g,               `href="${prefix}assets/`)
     .replace(/href="style\.css"/g,            `href="${prefix}style.css"`)
     .replace(/src="main\.js"/g,               `src="${prefix}main.js"`)
-    .replace(/href="index\.html/g,            `href="${prefix}index.html`)
+    .replace(/href="index\.html/g,            `href="${prefix}`)
     .replace(/href="terms-of-use\.html"/g,    `href="${prefix}terms-of-use.html"`)
     .replace(/href="privacy-policy\.html"/g,  `href="${prefix}privacy-policy.html"`)
     .replace(/href="contact\.html"/g,         `href="${prefix}contact.html"`);

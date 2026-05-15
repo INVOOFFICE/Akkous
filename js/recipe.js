@@ -264,7 +264,7 @@
     var main = A.$("#recipe-main");
 
     if (!recipe) {
-      if (main) { main.innerHTML = '<div class="container error-page"><h1>Recipe not found</h1><p>The link may be outdated.</p><p><a href="index.html">Back to home</a></p></div>'; }
+      if (main) { main.innerHTML = '<div class="container error-page"><h1>Recipe not found</h1><p>The link may be outdated.</p><p><a href="/">Back to home</a></p></div>'; }
       document.title = "Not found \u2014 " + (A.state.site.name || "Recipes");
       return;
     }
