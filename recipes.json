@@ -856,8 +856,8 @@
       "trending": true,
       "relatedRecipeIds": [
         "falafel-53266",
-        "aubergine-hummus-grills-53278",
-        "avocado-dip-with-new-potatoes-53107"
+        "vegetarian-shakshuka-53222",
+        "aubergine-hummus-grills-53278"
       ]
     },
     {
@@ -1866,8 +1866,8 @@
       "trending": true,
       "relatedRecipeIds": [
         "chicken-congee-52956",
-        "spanish-chicken-53164",
-        "chicken-enchilada-casserole-52765"
+        "lancashire-hotpot-52884",
+        "spanish-chicken-53164"
       ]
     },
     {
@@ -2534,9 +2534,9 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
+        "farikal-norwegian-national-dish-53123",
         "lamb-tagine-52843",
-        "chickpea-chorizo-spinach-stew-53166",
-        "hot-cumin-lamb-wrap-with-crunchy-slaw-spicy-mayo-53258"
+        "lancashire-hotpot-52884"
       ]
     },
     {
@@ -2861,8 +2861,8 @@
       "trending": true,
       "relatedRecipeIds": [
         "lamb-rogan-josh-52808",
-        "hot-cumin-lamb-wrap-with-crunchy-slaw-spicy-mayo-53258",
-        "lamb-and-lemon-souvlaki-53009"
+        "farikal-norwegian-national-dish-53123",
+        "hot-cumin-lamb-wrap-with-crunchy-slaw-spicy-mayo-53258"
       ]
     },
     {
@@ -2928,9 +2928,9 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
+        "shakshouka-53215",
         "syrian-rice-with-meat-53095",
-        "duck-confit-52907",
-        "osso-buco-alla-milanese-52810"
+        "duck-confit-52907"
       ]
     },
     {
@@ -3194,9 +3194,9 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
+        "farikal-norwegian-national-dish-53123",
         "hot-cumin-lamb-wrap-with-crunchy-slaw-spicy-mayo-53258",
-        "spanish-style-slow-cooked-lamb-shoulder-beans-53175",
-        "lamb-and-lemon-souvlaki-53009"
+        "lancashire-hotpot-52884"
       ]
     },
     {
@@ -3457,9 +3457,9 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
+        "farikal-norwegian-national-dish-53123",
         "lamb-pilaf-plov-53083",
-        "spanish-style-slow-cooked-lamb-shoulder-beans-53175",
-        "lamb-and-lemon-souvlaki-53009"
+        "lancashire-hotpot-52884"
       ]
     },
     {
@@ -3715,8 +3715,8 @@
       "trending": true,
       "relatedRecipeIds": [
         "spanish-style-slow-cooked-lamb-shoulder-beans-53175",
-        "hot-cumin-lamb-wrap-with-crunchy-slaw-spicy-mayo-53258",
-        "lamb-and-lemon-souvlaki-53009"
+        "farikal-norwegian-national-dish-53123",
+        "lancashire-hotpot-52884"
       ]
     },
     {
@@ -5140,8 +5140,8 @@
       "trending": true,
       "relatedRecipeIds": [
         "lamb-biryani-52805",
-        "hot-cumin-lamb-wrap-with-crunchy-slaw-spicy-mayo-53258",
-        "lamb-and-lemon-souvlaki-53009"
+        "farikal-norwegian-national-dish-53123",
+        "hot-cumin-lamb-wrap-with-crunchy-slaw-spicy-mayo-53258"
       ]
     },
     {
@@ -5478,9 +5478,9 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
+        "farikal-norwegian-national-dish-53123",
         "hot-cumin-lamb-wrap-with-crunchy-slaw-spicy-mayo-53258",
-        "lamb-and-lemon-souvlaki-53009",
-        "lamb-biryani-52805"
+        "lamb-and-lemon-souvlaki-53009"
       ]
     },
     {
@@ -5730,9 +5730,9 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
+        "farikal-norwegian-national-dish-53123",
         "hot-cumin-lamb-wrap-with-crunchy-slaw-spicy-mayo-53258",
-        "lamb-biryani-52805",
-        "lamb-pilaf-plov-53083"
+        "lamb-biryani-52805"
       ]
     },
     {
@@ -5807,7 +5807,7 @@
       "relatedRecipeIds": [
         "chakchouka-52969",
         "duck-confit-52907",
-        "spanish-meatballs-with-clams-chorizo-squid-53183"
+        "shakshouka-53215"
       ]
     },
     {
@@ -5996,9 +5996,9 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
+        "farikal-norwegian-national-dish-53123",
         "hot-cumin-lamb-wrap-with-crunchy-slaw-spicy-mayo-53258",
-        "lamb-and-lemon-souvlaki-53009",
-        "lamb-biryani-52805"
+        "lamb-and-lemon-souvlaki-53009"
       ]
     },
     {
@@ -6997,7 +6997,7 @@
       "relatedRecipeIds": [
         "mushroom-soup-with-buckwheat-53059",
         "runner-bean-mash-snijbonen-stamppot-53388",
-        "brie-wrapped-in-prosciutto-brioche-52913"
+        "snert-dutch-split-pea-soup-52981"
       ]
     },
     {
@@ -9074,9 +9074,9 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
+        "vegetarian-shakshuka-53222",
         "bread-omelette-53076",
-        "breakfast-potatoes-52965",
-        "dutch-poffertjes-mini-pancakes-53379"
+        "breakfast-potatoes-52965"
       ]
     },
     {
@@ -9805,9 +9805,9 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
+        "snert-dutch-split-pea-soup-52981",
         "split-pea-soup-52925",
-        "venezuelan-arepas-53325",
-        "brie-wrapped-in-prosciutto-brioche-52913"
+        "venezuelan-arepas-53325"
       ]
     },
     {
@@ -10191,9 +10191,9 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
+        "snert-dutch-split-pea-soup-52981",
         "split-pea-soup-52925",
-        "runner-bean-mash-snijbonen-stamppot-53388",
-        "brie-wrapped-in-prosciutto-brioche-52913"
+        "runner-bean-mash-snijbonen-stamppot-53388"
       ]
     },
     {
@@ -10270,6 +10270,333 @@
         "sweet-and-sour-chicken-53376",
         "chicken-congee-52956",
         "chicken-enchilada-casserole-52765"
+      ]
+    },
+    {
+      "mealId": "52981",
+      "id": "snert-dutch-split-pea-soup-52981",
+      "title": "Hearty Dutch Split Pea Soup",
+      "category": "Side",
+      "origin": "Netherlands",
+      "image": "https://www.themealdb.com/images/media/meals/9ptx0a1565090843.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/9ptx0a1565090843.jpg",
+      "ingredients": [
+        "2L Water",
+        "300g Peas",
+        "100g Pork",
+        "1 Vegetable Stock Cube",
+        "2 Celery",
+        "2 Carrots",
+        "1 large Potatoes",
+        "1 small Onion",
+        "1 small Leek",
+        "1 cup Celeriac",
+        "1 pound Sausages"
+      ],
+      "instructions": "1. Combine water, split peas, pork, and stock cube in a large pot, bringing to a boil.,2. Reduce heat, cover, and simmer for 45 minutes, stirring occasionally.,3. Add celery, carrots, potato, onion, leek, and celeriac, cooking for 30 minutes.,4. Add smoked sausage for the last 15 minutes, then season to taste.",
+      "steps": [
+        "Combine water, split peas, pork, and stock cube in a large pot, bringing to a boil.,2.",
+        "Reduce heat, cover, and simmer for 45 minutes, stirring occasionally.,3.",
+        "Add celery, carrots, potato, onion, leek, and celeriac, cooking for 30 minutes.,4.",
+        "Add smoked sausage for the last 15 minutes, then season to taste."
+      ],
+      "description": "Hearty Dutch Split Pea Soup (Netherlands) — easy side recipe with 11 ingredients and 4 steps. Includes exact ingredients and clear instructions.",
+      "hook": "Cook this today for a warm, comforting meal that's easy to make and packed with flavor.",
+      "tip": "Use a stick blender for a smooth consistency, or leave chunky for a more rustic feel.",
+      "tags": [
+        "Soup",
+        "Peas",
+        "Dutch Cuisine",
+        "Comfort Food",
+        "Hearty Meals",
+        "Winter Recipes",
+        "Easy Cooking",
+        "Traditional Dishes",
+        "Side",
+        "Netherlands"
+      ],
+      "datePublished": "2026-05-15",
+      "publishDate": "2026-05-15T09:00:00",
+      "addedDate": "2026-05-12T04:31:31",
+      "status": "PUBLISHED",
+      "slug": "snert-dutch-split-pea-soup-52981",
+      "youtube": "https://www.youtube.com/watch?v=5YV0sJLtLt8",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "63 min",
+      "prepTime": "27 min",
+      "totalTime": "90 min",
+      "servings": 4,
+      "difficulty": "Easy",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "runner-bean-mash-snijbonen-stamppot-53388",
+        "mushroom-soup-with-buckwheat-53059",
+        "split-pea-soup-52925"
+      ]
+    },
+    {
+      "mealId": "53222",
+      "id": "vegetarian-shakshuka-53222",
+      "title": "Shakshuka with Eggs",
+      "category": "Vegetarian",
+      "origin": "Saudi Arabian",
+      "image": "https://www.themealdb.com/images/media/meals/eo0yfb1763600916.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/eo0yfb1763600916.jpg",
+      "ingredients": [
+        "1/2 Red Onions",
+        "1/2 Red Pepper",
+        "400g Tomato",
+        "1/2 teaspoon Cumin",
+        "1/2 tsp Garlic Granules",
+        "1/2 teaspoon Cayenne Pepper",
+        "1 tsp Paprika",
+        "2 Egg",
+        "Garnish Parsley",
+        "Garnish Chilli Flakes",
+        "2 sliced Toast"
+      ],
+      "instructions": "1. Fry onion and pepper together on medium heat until onion is soft. \n2. Add garlic granules, cook for a minute. \n3. Add chopped tomatoes and remaining spices, stir well. \n4. Simmer for about 20 minutes. \n5. Make indents for in the sauce and crack an egg into each one. \n6. Once egg whites are cooked through, garnish and serve with toast",
+      "steps": [
+        "1. Fry onion and pepper together on medium heat until onion is soft.",
+        "2. Add garlic granules, cook for a minute.",
+        "3. Add chopped tomatoes and remaining spices, stir well.",
+        "4. Simmer for about 20 minutes.",
+        "5. Make indents for in the sauce and crack an egg into each one.",
+        "6. Once egg whites are cooked through, garnish and serve with toast"
+      ],
+      "description": "Shakshuka with Eggs (Saudi Arabian) — easy vegetarian recipe with 11 ingredients and 6 steps. Includes exact ingredients and clear instructions.",
+      "hook": "Cook this today for a flavorful twist on a classic dish, perfect for any meal.",
+      "tip": "Use fresh parsley for garnish to add a burst of freshness",
+      "tags": [
+        "vegetarian",
+        "saudi arabian",
+        "egg dishes",
+        "breakfast ideas",
+        "dinner recipes",
+        "spicy food",
+        "tomato based",
+        "middle eastern",
+        "Shakshuka",
+        "With"
+      ],
+      "datePublished": "2026-05-15",
+      "publishDate": "2026-05-15T09:00:00",
+      "addedDate": "2026-05-12T04:31:31",
+      "status": "PUBLISHED",
+      "slug": "vegetarian-shakshuka-53222",
+      "youtube": "https://www.youtube.com/watch?v=ZNEos6ybryg",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "10 min",
+      "prepTime": "10 min",
+      "totalTime": "20 min",
+      "servings": 4,
+      "difficulty": "Medium",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "falafel-53266",
+        "falafel-pita-sandwich-with-tahini-sauce-53091",
+        "sichuan-eggplant-53374"
+      ]
+    },
+    {
+      "mealId": "52884",
+      "id": "lancashire-hotpot-52884",
+      "title": "Hearty Lamb Hotpot",
+      "category": "Lamb",
+      "origin": "British",
+      "image": "https://www.themealdb.com/images/media/meals/uttrxw1511637813.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/uttrxw1511637813.jpg",
+      "ingredients": [
+        "100g Butter",
+        "900g Lamb",
+        "3 Lamb Kidney",
+        "2 medium Onions",
+        "4 sliced Carrots",
+        "25g Plain Flour",
+        "2 tsp Worcestershire Sauce",
+        "500ml Chicken Stock",
+        "2 Bay Leaves",
+        "900g Potatoes"
+      ],
+      "instructions": "1. Heat oven to 160C/fan 140C/gas 3.,2. Brown lamb and kidneys in batches, then set aside.,3. Fry onions and carrots until golden, add flour and cook for 2 minutes.,4. Add Worcestershire sauce, stock, and browned meat, then bring to a boil.,5. Arrange sliced potatoes on top and cover, baking for 1½ hours.",
+      "steps": [
+        "Heat oven to 160C/fan 140C/gas 3.,2.",
+        "Brown lamb and kidneys in batches, then set aside.,3.",
+        "Fry onions and carrots until golden, add flour and cook for 2 minutes.,4.",
+        "Add Worcestershire sauce, stock, and browned meat, then bring to a boil.,5.",
+        "Arrange sliced potatoes on top and cover, baking for 1½ hours."
+      ],
+      "description": "Hearty Lamb Hotpot (British) — easy lamb recipe with 10 ingredients and 5 steps. Ready in 10 min. Includes exact ingredients and clear instructions.",
+      "hook": "Cook this today for a warm, comforting meal.",
+      "tip": "Use high-quality lamb for the best flavor.",
+      "tags": [
+        "lamb recipes",
+        "british cuisine",
+        "comfort food",
+        "hotpot",
+        "potatoes",
+        "carrots",
+        "onions",
+        "lamb kidney",
+        "Lamb",
+        "British"
+      ],
+      "datePublished": "2026-05-15",
+      "publishDate": "2026-05-15T09:00:00",
+      "addedDate": "2026-05-12T04:31:31",
+      "status": "PUBLISHED",
+      "slug": "lancashire-hotpot-52884",
+      "youtube": "https://www.youtube.com/watch?v=w6TS5J8YRA4",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "10 min",
+      "prepTime": "10 min",
+      "totalTime": "2 min",
+      "servings": 4,
+      "difficulty": "Easy",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "chicken-mushroom-hotpot-52846",
+        "farikal-norwegian-national-dish-53123",
+        "spanish-style-slow-cooked-lamb-shoulder-beans-53175"
+      ]
+    },
+    {
+      "mealId": "53123",
+      "id": "farikal-norwegian-national-dish-53123",
+      "title": "Norwegian Lamb Stew",
+      "category": "Lamb",
+      "origin": "Norway",
+      "image": "https://www.themealdb.com/images/media/meals/ttfxxn1762773067.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/ttfxxn1762773067.jpg",
+      "ingredients": [
+        "3 Lbs Lamb",
+        "1 head White Cabbage",
+        "3  tablespoons Whole black peppercorns",
+        "3 tsp Salt",
+        "1 1/2 cups Water",
+        "5 tablespoons Flour"
+      ],
+      "instructions": "1. Cut the lamb into large pieces.,2. Slice the cabbage into large wedges, keeping the core attached.,3. Layer lamb, peppercorns, and cabbage in a large pot, ending with cabbage on top.,4. Add water to the pot, bring to a boil, then reduce heat and cook for 2-3 hours.,5. Serve with boiled potatoes and fresh parsley, covering with the stew broth.",
+      "steps": [
+        "Cut the lamb into large pieces.,2.",
+        "Slice the cabbage into large wedges, keeping the core attached.,3.",
+        "Layer lamb, peppercorns, and cabbage in a large pot, ending with cabbage on top.,4.",
+        "Add water to the pot, bring to a boil, then reduce heat and cook for 2-3 hours.,5.",
+        "Serve with boiled potatoes and fresh parsley, covering with the stew broth."
+      ],
+      "description": "Norwegian Lamb Stew (Norway) — easy lamb recipe with 6 ingredients and 5 steps. Includes exact ingredients and clear instructions.",
+      "hook": "Cook this today for a taste of Norway's national dish, perfect for a cozy night in.",
+      "tip": "Use a slow cooker for easier cooking and more tender lamb.",
+      "tags": [
+        "lamb recipes",
+        "norwegian cuisine",
+        "stew",
+        "cabbage",
+        "comfort food",
+        "winter dishes",
+        "traditional recipes",
+        "european cooking",
+        "Lamb",
+        "Norway"
+      ],
+      "datePublished": "2026-05-15",
+      "publishDate": "2026-05-15T09:00:00",
+      "addedDate": "2026-05-12T04:31:31",
+      "status": "PUBLISHED",
+      "slug": "farikal-norwegian-national-dish-53123",
+      "youtube": "https://www.youtube.com/shorts/2mMT71Knp8E",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "",
+      "prepTime": "",
+      "totalTime": "",
+      "servings": 4,
+      "difficulty": "Easy",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "lancashire-hotpot-52884",
+        "spanish-style-slow-cooked-lamb-shoulder-beans-53175",
+        "hot-cumin-lamb-wrap-with-crunchy-slaw-spicy-mayo-53258"
+      ]
+    },
+    {
+      "mealId": "53215",
+      "id": "shakshouka-53215",
+      "title": "Shakshouka Recipe",
+      "category": "Miscellaneous",
+      "origin": "Saudi Arabian",
+      "image": "https://www.themealdb.com/images/media/meals/crd1jz1763592990.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/crd1jz1763592990.jpg",
+      "ingredients": [
+        "250g Tomato",
+        "40 ml Extra Virgin Olive Oil",
+        "4 Egg",
+        "4 sliced Garlic Clove",
+        "To taste Black Pepper",
+        "To taste Salt"
+      ],
+      "instructions": "1. Pan fry garlic over medium heat. 2. Add olive oil and infuse. 3. Add tomatoes and salt, cover, and simmer. 4. Mash tomatoes and reduce. 5. Make craters for eggs. 6. Cover eggs and cook. 7. Remove from heat. 8. Serve with flatbread.",
+      "steps": [
+        "Pan fry garlic over medium heat.",
+        "2. Add olive oil and infuse.",
+        "3. Add tomatoes and salt, cover, and simmer.",
+        "4. Mash tomatoes and reduce.",
+        "5. Make craters for eggs.",
+        "6. Cover eggs and cook.",
+        "7. Remove from heat.",
+        "8. Serve with flatbread."
+      ],
+      "description": "Shakshouka Recipe (Saudi Arabian) — easy miscellaneous recipe with 6 ingredients and 8 steps. Includes exact ingredients and clear instructions.",
+      "hook": "Cook Shakshouka today for a delicious twist on breakfast",
+      "tip": "Use fresh tomatoes for the best flavor",
+      "tags": [
+        "Saudi Arabian food",
+        "egg recipes",
+        "tomato dishes",
+        "olive oil",
+        "garlic",
+        "breakfast ideas",
+        "brunch recipes",
+        "Middle Eastern cuisine",
+        "Miscellaneous",
+        "Saudi Arabian"
+      ],
+      "datePublished": "2026-05-15",
+      "publishDate": "2026-05-15T09:00:00",
+      "addedDate": "2026-05-12T04:31:31",
+      "status": "PUBLISHED",
+      "slug": "shakshouka-53215",
+      "youtube": "https://www.youtube.com/watch?v=618QsMaVXp8",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "",
+      "prepTime": "",
+      "totalTime": "",
+      "servings": 4,
+      "difficulty": "Medium",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "chakchouka-52969",
+        "duck-confit-52907",
+        "osso-buco-alla-milanese-52810"
       ]
     }
   ]

@@ -162,6 +162,11 @@
 - [Kenyan Kale Stew](https://akkous.com/recipes/sukuma-wiki-53113/) — Kenyan | Vegetarian
 - [Creamy Mushroom Buckwheat Soup](https://akkous.com/recipes/mushroom-soup-with-buckwheat-53059/) — Croatian | Side
 - [Crispy Orange Chicken](https://akkous.com/recipes/chinese-orange-chicken-53365/) — Chinese | Chicken
+- [Hearty Dutch Split Pea Soup](https://akkous.com/recipes/snert-dutch-split-pea-soup-52981/) — Netherlands | Side
+- [Shakshuka with Eggs](https://akkous.com/recipes/vegetarian-shakshuka-53222/) — Saudi Arabian | Vegetarian
+- [Hearty Lamb Hotpot](https://akkous.com/recipes/lancashire-hotpot-52884/) — British | Lamb
+- [Norwegian Lamb Stew](https://akkous.com/recipes/farikal-norwegian-national-dish-53123/) — Norway | Lamb
+- [Shakshouka Recipe](https://akkous.com/recipes/shakshouka-53215/) — Saudi Arabian | Miscellaneous
 
 ## About
 - All recipes include ingredients, step-by-step instructions, cooking time, difficulty level, and cultural origin.
