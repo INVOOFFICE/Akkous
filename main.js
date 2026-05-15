@@ -1604,6 +1604,7 @@
     var cook = recipe.cookTime || "";
     var prep = recipe.prepTime || "";
     var servings = recipe.servings || 4;
+    var cat = (recipe.category || "").toLowerCase();
     var ingredientHint = (recipe.ingredients || [])
       .slice(0, 2)
       .map(function (s) {
@@ -1620,36 +1621,54 @@
         (prep && cook ? prep + " prep + " + cook + " cooking time." : cook || prep)
       : "Timing depends on your pace, but most home cooks can finish " + t + " in under one hour.";
 
+    var group = cat === "dessert" ? "dessert"
+      : /^(seafood|fish)$/.test(cat) ? "seafood"
+      : /^(pasta|lasagna)$/.test(cat) ? "pasta"
+      : cat === "breakfast" ? "breakfast"
+      : /^(vegetarian|vegan|side)$/.test(cat) ? "vegetable"
+      : /^(starter|appetizer)$/.test(cat) ? "starter"
+      : "default";
+
+    var serveSides = {
+      dessert: "a scoop of ice cream, fresh berries, or a drizzle of sauce",
+      seafood: "a light salad, steamed vegetables, or crusty bread",
+      pasta: "garlic bread, a fresh green salad, and a glass of wine",
+      breakfast: "fresh fruit, yogurt, or a side of toast",
+      vegetable: "quinoa, roasted potatoes, or a light grain bowl",
+      starter: "as an appetizer with drinks or as part of a larger spread",
+      default: "simple sides like salad, rice, or roasted vegetables",
+    }[group];
+
     var serveAnswer =
-      "Serve " +
-      t +
-      " with simple sides like salad, rice, or roasted vegetables. " +
-      "Plan for about " +
-      servings +
-      " serving" +
-      (servings === 1 ? "" : "s") +
-      ".";
+      "Serve " + t + " with " + serveSides + ". " +
+      "Plan for about " + servings + " serving" + (servings === 1 ? "" : "s") + ".";
     if (ingredientHint) {
       serveAnswer += " Main ingredients include " + ingredientHint + ".";
     }
 
+    var aheadAdvice = {
+      dessert: "Most desserts keep well in the fridge for up to 3 days or freeze for up to a month. Thaw and add fresh toppings before serving.",
+      seafood: "Seafood is best enjoyed fresh, but you can prep ingredients up to a day ahead and cook just before serving. Store leftovers in the fridge for up to 2 days.",
+      pasta: "You can assemble the dish ahead and refrigerate for up to 2 days before baking, or store leftovers in an airtight container for up to 3 days.",
+      breakfast: "You can prep components the night before and finish cooking in the morning. Store leftovers in the fridge for up to 2 days.",
+      vegetable: "Cooked vegetable dishes keep well in the fridge for up to 4 days. Reheat gently to preserve texture and flavor.",
+      starter: "Most appetizers can be prepared a day ahead and reheated or assembled just before serving.",
+      default: "You can cook it ahead and store it in an airtight container in the fridge for up to 3 days. Reheat gently before serving.",
+    }[group];
+
+    var substituteAdvice = {
+      dessert: "Swap ingredients with similar texture and moisture content. Adjust sweetness to taste and test doneness with a toothpick.",
+      seafood: "Substitute with a similar type of fish or shellfish, keeping cooking time and thickness in mind. Adjust seasoning to complement.",
+      pasta: "Different pasta shapes work well interchangeably. Adjust cooking time and sauce consistency as needed.",
+      vegetable: "Swap vegetables based on season and availability, keeping cooking times similar. Adjust seasoning to balance flavors.",
+      default: "Use ingredients with similar texture and flavor, then adjust seasoning gradually to keep balance in the final dish.",
+    }[group];
+
     return [
-      {
-        q: "How long does it take to make " + t + "?",
-        a: timeAnswer,
-      },
-      {
-        q: "Can I make " + t + " ahead of time?",
-        a: "Yes. You can cook it ahead and store it in an airtight container in the fridge for up to 3 days. Reheat gently before serving.",
-      },
-      {
-        q: "What should I serve with " + t + "?",
-        a: serveAnswer,
-      },
-      {
-        q: "Can I substitute ingredients in " + t + "?",
-        a: "Yes. Use ingredients with similar texture and flavor, then adjust seasoning gradually to keep balance in the final dish.",
-      },
+      { q: "How long does it take to make " + t + "?", a: timeAnswer },
+      { q: "Can I make " + t + " ahead of time?", a: "Yes. " + aheadAdvice },
+      { q: "What should I serve with " + t + "?", a: serveAnswer },
+      { q: "Can I substitute ingredients in " + t + "?", a: "Yes. " + substituteAdvice },
     ];
   }
 

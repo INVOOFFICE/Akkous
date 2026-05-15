@@ -1537,7 +1537,7 @@ function pushRecipesToGitHub() {
   logAutomation_(
     CONFIG.LOG_LEVEL_INFO,
     'pushRecipesToGitHub',
-    'Démarrage PUT ' + CONFIG.GITHUB_FILE + ' + ' + CONFIG.GITHUB_SITEMAP_FILE + ' + ' + CONFIG.GITHUB_LLMS_FILE
+    'Démarrage PUT ' + CONFIG.GITHUB_FILE + ' + ' + CONFIG.GITHUB_LLMS_FILE + ' (sitemap.xml CI-only)'
   );
   const sheet = getRecipesSheetOrThrow_();
   const payload = buildExportPayload_(sheet);
@@ -1553,15 +1553,13 @@ function pushRecipesToGitHub() {
   const tz = getTimezone_();
   const dayStamp = Utilities.formatDate(new Date(), tz, 'yyyy-MM-dd');
   const recipesJson = JSON.stringify(payload, null, 2);
-  const sitemapXml = buildSitemapXmlFromPayload_(payload);
   const llmsTxt = buildLlmsTxt_(payload);
 
-  const commitMsg = '🍽️ Akkous recipes + sitemap — ' + dayStamp;
-  const ok = gitPushRecipesAndSitemapOneCommit_(
+  const commitMsg = '🍽️ Akkous recipes — ' + dayStamp;
+  const ok = gitPushRecipesOneCommit_(
     owner,
     repo,
     recipesJson,
-    sitemapXml,
     llmsTxt,
     commitMsg,
     gh.token
@@ -1571,17 +1569,21 @@ function pushRecipesToGitHub() {
     logAutomation_(
       CONFIG.LOG_LEVEL_INFO,
       'pushRecipesToGitHub',
-      'OK : recipes.json + sitemap.xml + llms.txt (1 commit) sur GitHub — un seul déploiement Pages'
+      'OK : recipes.json + llms.txt (1 commit) sur GitHub — sitemap.xml géré par CI'
     );
   }
 }
 
 /**
- * Un commit Git contenant recipes.json et sitemap.xml.
+ * Un commit Git contenant recipes.json (+ llms.txt).
+ * sitemap.xml retiré du payload GAS — CI seule autorité (build-recipe-pages.mjs).
  * Évite deux commits successifs qui déclenchent deux workflows GitHub Pages ;
  * le second annulait souvent le premier (« Canceling since a higher priority waiting request… »).
+ *
+ * ANCIEN NOM : gitPushRecipesAndSitemapOneCommit_ (sitemapXml en 4e paramètre)
+ * ROLLBACK : réinsérer le paramètre sitemapXml + l'entrée tree pour CONFIG.GITHUB_SITEMAP_FILE
  */
-function gitPushRecipesAndSitemapOneCommit_(owner, repo, recipesJson, sitemapXml, llmsTxt, message, token) {
+function gitPushRecipesOneCommit_(owner, repo, recipesJson, llmsTxt, message, token) {
   const branch = String(CONFIG.GITHUB_BRANCH || 'main').trim() || 'main';
   const apiRoot = 'https://api.github.com/repos/' + encodeURIComponent(owner) + '/' + encodeURIComponent(repo);
   const headers = {
@@ -1647,12 +1649,14 @@ function gitPushRecipesAndSitemapOneCommit_(owner, repo, recipesJson, sitemapXml
           type: 'blob',
           content: String(recipesJson || ''),
         },
+        /* ROLLBACK: réinsérer l'entrée sitemap.xml si GAS reprend la main
         {
           path: CONFIG.GITHUB_SITEMAP_FILE.replace(/^\//, ''),
           mode: '100644',
           type: 'blob',
           content: String(sitemapXml || ''),
         },
+        */
         {
           path: CONFIG.GITHUB_LLMS_FILE.replace(/^\//, ''),
           mode: '100644',
@@ -1783,8 +1787,10 @@ function recipeSeoUrl_(base, id) {
 }
 
 /**
- * Sitemap XML poussé avec recipes.json (pushRecipesToGitHub).
- * Les entrées recettes utilisent recipeSeoUrl_ (URLs statiques /recipes/{id}/).
+ * Sitemap XML — DÉPRÉCIÉ (GAS ne pousse plus sitemap.xml).
+ * CI seule autorité : scripts/build-recipe-pages.mjs génère sitemap.xml.
+ * Conservé pour référence / rollback éventuel.
+ * ROLLBACK: dé-commenter l'appel dans pushRecipesToGitHub + l'entrée tree dans gitPushRecipesOneCommit_
  */
 function buildSitemapXmlFromPayload_(payload) {
   const site = payload && payload.site ? payload.site : {};

@@ -1,5 +1,18 @@
 # After recipes.json changes (e.g. Google Apps Script), generate recipes/<slug>/index.html
 # and sitemap.xml so /recipes/.../ URLs exist on GitHub Pages (avoids 404).
+#
+# ROLLBACK (if deployment breaks):
+#   1. List tags:  git tag -l 'deploy-*' | sort
+#   2. Revert:    git checkout deploy-<PREVIOUS_TAG>
+#                 git checkout -b rollback/$(date +%Y%m%d)
+#                 git push origin rollback/$(date +%Y%m%d)
+#   3. Create a PR from rollback/ branch to main, or force-push after review.
+#
+# BRANCH PROTECTION (recommended — manual setup, NOT enforced by this workflow):
+#   1. GitHub repo → Settings → Branches → Add branch protection rule for `main`
+#   2. Require pull request reviews before merging (at least 1 review)
+#   3. Require status checks to pass before merging
+#   4. Do NOT enable "Include administrators" until rule is verified
 name: Build static recipe pages
 
 on:
@@ -64,6 +77,25 @@ jobs:
           fi
           echo "All $COUNT pages validated — count matches recipes.json"
 
+      - name: Validate sitemap entry count
+        run: |
+          RECIPE_COUNT=$(node -e "
+            const r = require('fs').readFileSync('recipes.json','utf8');
+            const d = JSON.parse(r);
+            const n = (d.recipes || []).length;
+            console.log(n);
+          ")
+          STATIC_PAGES=4
+          EXPECTED=$((RECIPE_COUNT + STATIC_PAGES))
+          SITEMAP_ENTRIES=$(grep -c '<url>' sitemap.xml || true)
+          echo "Sitemap URL entries: $SITEMAP_ENTRIES"
+          echo "Expected ($RECIPE_COUNT recipes + $STATIC_PAGES static): $EXPECTED"
+          if [ "$SITEMAP_ENTRIES" -ne "$EXPECTED" ]; then
+            echo "::error::Sitemap mismatch: $SITEMAP_ENTRIES entries but $EXPECTED expected"
+            exit 1
+          fi
+          echo "Sitemap validated — $SITEMAP_ENTRIES entries ($RECIPE_COUNT recipes + $STATIC_PAGES static)"
+
       - name: Commit and push if changed
         env:
           BRANCH: ${{ github.ref_name }}
@@ -79,4 +111,7 @@ jobs:
           git commit -m "chore: regenerate static recipe pages ($COUNT pages)"
           # Integrate any commit that landed on the branch between checkout and push (rare).
           git pull --rebase origin "$BRANCH"
-          git push origin "HEAD:refs/heads/$BRANCH"
+          # Tag deployment for rollback: deploy-YYYYMMDD-RUN (lightweight, post-rebase)
+          TAG="deploy-$(date +%Y%m%d)-${{ github.run_number }}"
+          git tag "$TAG"
+          git push origin "HEAD:refs/heads/$BRANCH" --tags
