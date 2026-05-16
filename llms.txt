@@ -168,6 +168,10 @@
 - [Norwegian Lamb Stew](https://akkous.com/recipes/farikal-norwegian-national-dish-53123/) — Norway | Lamb
 - [Shakshouka Recipe](https://akkous.com/recipes/shakshouka-53215/) — Saudi Arabian | Miscellaneous
 - [Quinoa Stuffed Peppers](https://akkous.com/recipes/stuffed-bell-peppers-with-quinoa-and-black-beans-53067/) — Mexican | Vegetarian
+- [Thai Beef Noodle Stew](https://akkous.com/recipes/lemongrass-beef-stew-with-noodles-53211/) — Thai | Beef
+- [Lentil Tahini Delight](https://akkous.com/recipes/tahini-lentils-52869/) — Moroccan | Vegetarian
+- [Sticky Toffee Pudding Delight](https://akkous.com/recipes/sticky-toffee-pudding-ultimate-52793/) — British | Dessert
+- [Thai Peanut Pork Curry](https://akkous.com/recipes/thai-pork-peanut-curry-53197/) — Thai | Pork
 
 ## About
 - All recipes include ingredients, step-by-step instructions, cooking time, difficulty level, and cultural origin.

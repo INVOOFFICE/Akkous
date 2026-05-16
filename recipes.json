@@ -856,8 +856,8 @@
       "trending": true,
       "relatedRecipeIds": [
         "falafel-53266",
-        "vegetarian-shakshuka-53222",
-        "aubergine-hummus-grills-53278"
+        "tahini-lentils-52869",
+        "vegetarian-shakshuka-53222"
       ]
     },
     {
@@ -2466,9 +2466,9 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
+        "sticky-toffee-pudding-ultimate-52793",
         "christmas-cake-52990",
-        "strawberry-rhubarb-pie-53005",
-        "jam-roly-poly-52890"
+        "strawberry-rhubarb-pie-53005"
       ]
     },
     {
@@ -3392,9 +3392,9 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
+        "sticky-toffee-pudding-ultimate-52793",
         "strawberry-rhubarb-pie-53005",
-        "battenberg-cake-52894",
-        "beavertails-52928"
+        "battenberg-cake-52894"
       ]
     },
     {
@@ -3645,7 +3645,7 @@
       "relatedRecipeIds": [
         "battenberg-cake-52894",
         "christmas-cake-52990",
-        "strawberry-rhubarb-pie-53005"
+        "sticky-toffee-pudding-ultimate-52793"
       ]
     },
     {
@@ -4240,8 +4240,8 @@
       "trending": true,
       "relatedRecipeIds": [
         "battenberg-cake-52894",
-        "jam-roly-poly-52890",
-        "strawberry-rhubarb-pie-53005"
+        "sticky-toffee-pudding-ultimate-52793",
+        "jam-roly-poly-52890"
       ]
     },
     {
@@ -5670,8 +5670,8 @@
       "trending": true,
       "relatedRecipeIds": [
         "battenberg-cake-52894",
-        "christmas-cake-52990",
-        "jam-roly-poly-52890"
+        "sticky-toffee-pudding-ultimate-52793",
+        "christmas-cake-52990"
       ]
     },
     {
@@ -7574,8 +7574,8 @@
       "trending": true,
       "relatedRecipeIds": [
         "roast-aubergine-with-goat-s-cheese-toasted-flatbread-53273",
-        "thai-pumpkin-soup-53210",
-        "aubergine-hummus-grills-53278"
+        "tahini-lentils-52869",
+        "thai-pumpkin-soup-53210"
       ]
     },
     {
@@ -9666,8 +9666,8 @@
       "trending": true,
       "relatedRecipeIds": [
         "barbecue-pork-buns-53242",
-        "bbq-pork-sloppy-joes-52995",
-        "fasirky-53188"
+        "thai-pork-peanut-curry-53197",
+        "bbq-pork-sloppy-joes-52995"
       ]
     },
     {
@@ -10666,6 +10666,270 @@
         "chickpea-fajitas-52870",
         "aubergine-hummus-grills-53278",
         "avocado-dip-with-new-potatoes-53107"
+      ]
+    },
+    {
+      "mealId": "53211",
+      "id": "lemongrass-beef-stew-with-noodles-53211",
+      "title": "Thai Beef Noodle Stew",
+      "category": "Beef",
+      "origin": "Thai",
+      "image": "https://www.themealdb.com/images/media/meals/ntafxw1763586291.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/ntafxw1763586291.jpg",
+      "ingredients": [
+        "1 tablespoon chopped Ginger",
+        "2 chopped Garlic Clove",
+        "3 Lemongrass Stalks",
+        "2 tblsp Coriander Leaves",
+        "2 sliced Red Chilli",
+        "2 tblsp Vegetable Oil",
+        "250g Beef",
+        "2 tblsp Soy Sauce",
+        "1 tsp Five Spice Powder",
+        "1 tsp Brown Sugar",
+        "400ml Beef Stock",
+        "100g Rice Noodles",
+        "To serve Lime"
+      ],
+      "instructions": "1. Purée ginger, garlic, lemongrass, coriander, and chilli, then cook in oil. Add beef, soy, five-spice, sugar, and stock, simmering for 1 hour 15 minutes. 2. Prepare noodles, then serve with the stew, garnished with chilli, coriander, and lime",
+      "steps": [
+        "Purée ginger, garlic, lemongrass, coriander, and chilli, then cook in oil.",
+        "Add beef, soy, five-spice, sugar, and stock, simmering for 1 hour 15 minutes. 2.",
+        "Prepare noodles, then serve with the stew, garnished with chilli, coriander, and lime"
+      ],
+      "description": "Thai Beef Noodle Stew (Thai) — easy beef recipe with 13 ingredients and 3 steps. Ready in 10 min. Includes exact ingredients and clear instructions.",
+      "hook": "Cook this today for a flavorful Thai-inspired meal",
+      "tip": "Use fresh lemongrass for the best flavor",
+      "tags": [
+        "beef stew",
+        "thai cuisine",
+        "noodle dishes",
+        "lemongrass",
+        "soy sauce",
+        "five spice powder",
+        "rice noodles",
+        "coriander",
+        "Beef",
+        "Thai"
+      ],
+      "datePublished": "2026-05-16",
+      "publishDate": "2026-05-16T09:00:00",
+      "addedDate": "2026-05-14T04:31:03",
+      "status": "PUBLISHED",
+      "slug": "lemongrass-beef-stew-with-noodles-53211",
+      "youtube": "",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "10 min",
+      "prepTime": "10 min",
+      "totalTime": "15 min",
+      "servings": 4,
+      "difficulty": "Easy",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "beef-rendang-53053",
+        "bistek-53069",
+        "traditional-croatian-goulash-53057"
+      ]
+    },
+    {
+      "mealId": "52869",
+      "id": "tahini-lentils-52869",
+      "title": "Lentil Tahini Delight",
+      "category": "Vegetarian",
+      "origin": "Moroccan",
+      "image": "https://www.themealdb.com/images/media/meals/vpxyqt1511464175.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/vpxyqt1511464175.jpg",
+      "ingredients": [
+        "50g Tahini",
+        "zest and juice of 1 Lemon",
+        "2 tblsp Olive Oil",
+        "1 chopped Red Onions",
+        "1 clove peeled crushed Garlic",
+        "1 thinly sliced Yellow Pepper",
+        "200g Green Beans",
+        "1 sliced Courgettes",
+        "100g shredded Kale",
+        "250g pack Lentils"
+      ],
+      "instructions": "1. Mix tahini with lemon zest, juice, and water to make a dressing.,2. Heat oil in a wok, adding onion, salt, and frying for 2 minutes.,3. Add garlic, pepper, green beans, and courgette, frying for 5 minutes.",
+      "steps": [
+        "Mix tahini with lemon zest, juice, and water to make a dressing.,2.",
+        "Heat oil in a wok, adding onion, salt, and frying for 2 minutes.,3.",
+        "Add garlic, pepper, green beans, and courgette, frying for 5 minutes."
+      ],
+      "description": "Lentil Tahini Delight (Moroccan) — easy vegetarian recipe with 10 ingredients and 3 steps. Includes exact ingredients and clear instructions.",
+      "hook": "Cook this today for a nutritious and flavorful meal",
+      "tip": "Use fresh lemon juice for the best flavor",
+      "tags": [
+        "Vegetarian",
+        "Lentils",
+        "Moroccan",
+        "Pulse",
+        "Healthy",
+        "Easy",
+        "Delicious",
+        "Nutritious",
+        "Lentil",
+        "Tahini"
+      ],
+      "datePublished": "2026-05-16",
+      "publishDate": "2026-05-16T09:00:00",
+      "addedDate": "2026-05-14T04:31:03",
+      "status": "PUBLISHED",
+      "slug": "tahini-lentils-52869",
+      "youtube": "https://www.youtube.com/watch?v=8kRlmz8pW0I",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "10 min",
+      "prepTime": "10 min",
+      "totalTime": "7 min",
+      "servings": 4,
+      "difficulty": "Easy",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "baingan-bharta-52807",
+        "falafel-pita-sandwich-with-tahini-sauce-53091",
+        "aubergine-hummus-grills-53278"
+      ]
+    },
+    {
+      "mealId": "52793",
+      "id": "sticky-toffee-pudding-ultimate-52793",
+      "title": "Sticky Toffee Pudding Delight",
+      "category": "Dessert",
+      "origin": "British",
+      "image": "https://www.themealdb.com/images/media/meals/xrptpq1483909204.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/xrptpq1483909204.jpg",
+      "ingredients": [
+        "225g Medjool dates",
+        "175ml Boiling water",
+        "1 tsp vanilla extract",
+        "175g self-raising flour",
+        "1 tsp bicarbonate of soda",
+        "2 eggs",
+        "85g butter",
+        "140g demerara sugar",
+        "2 tbsp black treacle",
+        "100ml milk",
+        "1 scoop ice cream",
+        "175g muscovado sugar",
+        "50g butter",
+        "225ml double cream",
+        "1 tbsp black treacle"
+      ],
+      "instructions": "1. Soak dates in boiling water for 30 minutes, then mash and mix with vanilla extract.,2. Prepare pudding tins and mix the batter with flour, eggs, and sugar.,3. Bake the puddings for 20-25 minutes, then remove and let cool.",
+      "steps": [
+        "Soak dates in boiling water for 30 minutes, then mash and mix with vanilla extract.,2.",
+        "Prepare pudding tins and mix the batter with flour, eggs, and sugar.,3.",
+        "Bake the puddings for 20-25 minutes, then remove and let cool."
+      ],
+      "description": "Sticky Toffee Pudding Delight (British) — easy dessert recipe with 15 ingredients and 3 steps. Includes exact ingredients and clear instructions.",
+      "hook": "Treat yourself to a warm and comforting dessert today, perfect for a cozy evening.",
+      "tip": "Let the puddings sit for a day or two coated in the sauce for an even stickier treat.",
+      "tags": [
+        "Pudding",
+        "Dessert",
+        "British",
+        "Cake",
+        "Toffee",
+        "Sweet",
+        "Sticky",
+        "Classic"
+      ],
+      "datePublished": "2026-05-16",
+      "publishDate": "2026-05-16T09:00:00",
+      "addedDate": "2026-05-14T04:31:03",
+      "status": "PUBLISHED",
+      "slug": "sticky-toffee-pudding-ultimate-52793",
+      "youtube": "https://www.youtube.com/watch?v=hKq6RbxJHBo",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "38 min",
+      "prepTime": "17 min",
+      "totalTime": "55 min",
+      "servings": 4,
+      "difficulty": "Easy",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "battenberg-cake-52894",
+        "christmas-cake-52990",
+        "strawberry-rhubarb-pie-53005"
+      ]
+    },
+    {
+      "mealId": "53197",
+      "id": "thai-pork-peanut-curry-53197",
+      "title": "Thai Peanut Pork Curry",
+      "category": "Pork",
+      "origin": "Thai",
+      "image": "https://www.themealdb.com/images/media/meals/snmtd61763426568.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/snmtd61763426568.jpg",
+      "ingredients": [
+        "1 tablespoon Vegetable Oil",
+        "Bunch Spring Onions",
+        "Bunch Coriander",
+        "400g Pork Tenderloin",
+        "4 tablespoons Thai Red Curry Paste",
+        "4 tablespoons Peanut Butter",
+        "1 tablespoon Brown Sugar",
+        "1 tbsp Soy Sauce",
+        "400ml Coconut Milk",
+        "175g Sweetcorn",
+        "Juice of 1 Lime",
+        "Steamed Jasmine Rice"
+      ],
+      "instructions": "1. Heat oil in a large saucepan, cook spring onions and coriander for 1 min. 2. Stir in curry paste and peanut butter, then add sugar, soy, and coconut milk. 3. Add baby corn, increase heat, and bubble for 3 mins until corn is cooked and sauce thickens.",
+      "steps": [
+        "Heat oil in a large saucepan, cook spring onions and coriander for 1 min.",
+        "2. Stir in curry paste and peanut butter, then add sugar, soy, and coconut milk.",
+        "3. Add baby corn, increase heat, and bubble for 3 mins until corn is cooked and sauce thickens."
+      ],
+      "description": "Thai Peanut Pork Curry (Thai) — easy pork recipe with 12 ingredients and 3 steps. Ready in 10 min. Includes exact ingredients and clear instructions.",
+      "hook": "Cook this today for a flavorful and spicy Thai-inspired meal. Perfect for a weeknight dinner.",
+      "tip": "Use fresh lime juice for the best flavor.",
+      "tags": [
+        "Thai food",
+        "peanut curry",
+        "pork recipes",
+        "coconut milk",
+        "sweetcorn",
+        "jasmine rice",
+        "curry dishes",
+        "Asian cuisine",
+        "Pork",
+        "Thai"
+      ],
+      "datePublished": "2026-05-16",
+      "publishDate": "2026-05-16T09:00:00",
+      "addedDate": "2026-05-14T04:31:03",
+      "status": "PUBLISHED",
+      "slug": "thai-pork-peanut-curry-53197",
+      "youtube": "https://www.youtube.com/watch?v=cxryD8ZHCdQ",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "10 min",
+      "prepTime": "10 min",
+      "totalTime": "4 min",
+      "servings": 4,
+      "difficulty": "Easy",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "vietnamese-grilled-pork-bun-thit-nuong-52828",
+        "bbq-pork-sloppy-joes-52995",
+        "fasirky-53188"
       ]
     }
   ]
