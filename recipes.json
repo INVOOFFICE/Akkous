@@ -534,9 +534,9 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
+        "dal-fry-52785",
         "baingan-bharta-52807",
-        "eggplant-adobo-53073",
-        "patatas-bravas-53172"
+        "eggplant-adobo-53073"
       ]
     },
     {
@@ -1866,8 +1866,8 @@
       "trending": true,
       "relatedRecipeIds": [
         "chicken-congee-52956",
-        "lancashire-hotpot-52884",
-        "spanish-chicken-53164"
+        "chicken-parmentier-52879",
+        "lancashire-hotpot-52884"
       ]
     },
     {
@@ -2325,9 +2325,9 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
+        "oxtail-with-broad-beans-52943",
         "beef-wellington-52803",
-        "minced-beef-pie-52876",
-        "arepa-pelua-53329"
+        "minced-beef-pie-52876"
       ]
     },
     {
@@ -3330,9 +3330,9 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
+        "chicken-with-saffron-raisins-pine-nuts-53186",
         "ayam-percik-53050",
-        "brown-stew-chicken-52940",
-        "chicken-congee-52956"
+        "brown-stew-chicken-52940"
       ]
     },
     {
@@ -4500,9 +4500,9 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
+        "chicken-with-saffron-raisins-pine-nuts-53186",
         "spanish-chicken-pie-53155",
-        "chicken-congee-52956",
-        "chicken-mushroom-hotpot-52846"
+        "chicken-congee-52956"
       ]
     },
     {
@@ -5594,9 +5594,9 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
+        "chicken-with-saffron-raisins-pine-nuts-53186",
         "spanish-chicken-53164",
-        "ayam-percik-53050",
-        "brown-stew-chicken-52940"
+        "ayam-percik-53050"
       ]
     },
     {
@@ -6933,9 +6933,9 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
+        "spring-onion-and-prawn-empanadas-53040",
         "pan-fried-hake-white-bean-chorizo-broth-53152",
-        "arroz-con-gambas-y-calamar-53147",
-        "baked-salmon-with-fennel-tomatoes-52959"
+        "arroz-con-gambas-y-calamar-53147"
       ]
     },
     {
@@ -7446,9 +7446,9 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
+        "spring-onion-and-prawn-empanadas-53040",
         "arroz-con-gambas-y-calamar-53147",
-        "baked-salmon-with-fennel-tomatoes-52959",
-        "garlicky-prawns-with-sherry-53180"
+        "baked-salmon-with-fennel-tomatoes-52959"
       ]
     },
     {
@@ -7573,9 +7573,9 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
+        "dal-fry-52785",
         "roast-aubergine-with-goat-s-cheese-toasted-flatbread-53273",
-        "tahini-lentils-52869",
-        "thai-pumpkin-soup-53210"
+        "tahini-lentils-52869"
       ]
     },
     {
@@ -8641,9 +8641,9 @@
       "featured": false,
       "trending": true,
       "relatedRecipeIds": [
+        "dal-fry-52785",
         "eggplant-adobo-53073",
-        "thai-pumpkin-soup-53210",
-        "aubergine-hummus-grills-53278"
+        "thai-pumpkin-soup-53210"
       ]
     },
     {
@@ -8701,8 +8701,8 @@
       "trending": true,
       "relatedRecipeIds": [
         "cucumber-fennel-salad-53309",
-        "aubergine-hummus-grills-53278",
-        "avocado-dip-with-new-potatoes-53107"
+        "dal-fry-52785",
+        "aubergine-hummus-grills-53278"
       ]
     },
     {
@@ -10930,6 +10930,345 @@
         "vietnamese-grilled-pork-bun-thit-nuong-52828",
         "bbq-pork-sloppy-joes-52995",
         "fasirky-53188"
+      ]
+    },
+    {
+      "mealId": "52785",
+      "id": "dal-fry-52785",
+      "title": "Homemade Dal Fry",
+      "category": "Vegetarian",
+      "origin": "India",
+      "image": "https://www.themealdb.com/images/media/meals/wuxrtu1483564410.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/wuxrtu1483564410.jpg",
+      "ingredients": [
+        "1 cup Toor dal",
+        "2-1/2 cups Water",
+        "1 tsp Salt",
+        "1/4 tsp Turmeric",
+        "3 tbs Ghee",
+        "1 cup Chopped tomatoes",
+        "1/2 tsp Cumin seeds",
+        "1/2 tsp Mustard Seeds",
+        "2 Bay Leaf",
+        "1 tbs chopped Green Chilli",
+        "2 tsp shredded Ginger",
+        "2 tbs Cilantro",
+        "1/2 tsp Red Pepper",
+        "1/2 tsp Salt",
+        "1 tsp Sugar",
+        "1/4 tsp Garam Masala"
+      ],
+      "instructions": "1. Wash and soak toor dal for an hour. 2. Cook dal with water, salt, and turmeric. 3. Heat ghee, add cumin seeds, mustard seeds, and bay leaves. 4. Add green chili, ginger, and cook for a minute. 5. Add tomatoes, salt, and sugar, cook until tender. 6. Add cilantro and garam masala, cook for a minute. 7. Mix with dal and serve",
+      "steps": [
+        "Wash and soak toor dal for an hour.",
+        "2. Cook dal with water, salt, and turmeric.",
+        "3. Heat ghee, add cumin seeds, mustard seeds, and bay leaves.",
+        "4. Add green chili, ginger, and cook for a minute.",
+        "5. Add tomatoes, salt, and sugar, cook until tender.",
+        "6. Add cilantro and garam masala, cook for a minute.",
+        "7. Mix with dal and serve"
+      ],
+      "description": "Homemade Dal Fry (India) — easy vegetarian recipe with 16 ingredients and 7 steps. Includes exact ingredients and clear instructions.",
+      "hook": "Cook this today for a comforting and flavorful meal",
+      "tip": "Use fresh cilantro for the best flavor",
+      "tags": [
+        "Vegetarian",
+        "Indian",
+        "Curry",
+        "Spicy",
+        "Toor Dal",
+        "Comfort Food",
+        "Easy Recipe",
+        "India",
+        "Homemade"
+      ],
+      "datePublished": "2026-05-17",
+      "publishDate": "2026-05-17T09:00:00",
+      "addedDate": "2026-05-15T04:31:04",
+      "status": "PUBLISHED",
+      "slug": "dal-fry-52785",
+      "youtube": "https://www.youtube.com/watch?v=J4D855Q9-jg",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "",
+      "prepTime": "",
+      "totalTime": "",
+      "servings": 4,
+      "difficulty": "Medium",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "baingan-bharta-52807",
+        "thai-pumpkin-soup-53210",
+        "beetroot-red-cabbage-sauerkraut-53307"
+      ]
+    },
+    {
+      "mealId": "52943",
+      "id": "oxtail-with-broad-beans-52943",
+      "title": "Jamaican Oxtail Stew",
+      "category": "Beef",
+      "origin": "Jamaican",
+      "image": "https://www.themealdb.com/images/media/meals/1520083578.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/1520083578.jpg",
+      "ingredients": [
+        "450g Oxtail",
+        "1 chopped Onion",
+        "1 Spring Onions",
+        "2 cloves minced Garlic",
+        "1 tsp Ginger",
+        "1 chopped Scotch Bonnet",
+        "2 tbs Soy Sauce",
+        "1 chopped Fresh Thyme",
+        "2 tbs Vegetable Oil",
+        "350ml Water",
+        "200g Broad Beans",
+        "1 tbs Corn Flour",
+        "2 tbs Water"
+      ],
+      "instructions": "1. Toss oxtail with onion, garlic, ginger, and spices. 2. Brown oxtail in a pan. 3. Cook in a pressure cooker with water.",
+      "steps": [
+        "Toss oxtail with onion, garlic, ginger, and spices.",
+        "2. Brown oxtail in a pan.",
+        "3. Cook in a pressure cooker with water."
+      ],
+      "description": "Jamaican Oxtail Stew (Jamaican) — easy beef recipe with 13 ingredients and 3 steps. Includes exact ingredients and clear instructions.",
+      "hook": "Cook this today for a hearty meal with a Caribbean twist",
+      "tip": "Use a pressure cooker to reduce cooking time",
+      "tags": [
+        "Beef",
+        "Stew",
+        "Main Course",
+        "Jamaican",
+        "Comfort Food",
+        "Specialty",
+        "Oxtail"
+      ],
+      "datePublished": "2026-05-17",
+      "publishDate": "2026-05-17T09:00:00",
+      "addedDate": "2026-05-15T04:31:04",
+      "status": "PUBLISHED",
+      "slug": "oxtail-with-broad-beans-52943",
+      "youtube": "https://www.youtube.com/watch?v=DIhxk-98Hz8",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "",
+      "prepTime": "",
+      "totalTime": "",
+      "servings": 4,
+      "difficulty": "Easy",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "jamaican-beef-patties-52938",
+        "croatian-bean-stew-53058",
+        "beef-wellington-52803"
+      ]
+    },
+    {
+      "mealId": "53186",
+      "id": "chicken-with-saffron-raisins-pine-nuts-53186",
+      "title": "Spanish Chicken with Saffron",
+      "category": "Chicken",
+      "origin": "Spanish",
+      "image": "https://www.themealdb.com/images/media/meals/4mhr3u1763481087.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/4mhr3u1763481087.jpg",
+      "ingredients": [
+        "1.25kg Chicken",
+        "2 tblsp Olive Oil",
+        "3 cloves Chopped Garlic",
+        "Pinch Saffron",
+        "125ml Dry sherry",
+        "200ml Chicken Stock",
+        "1 tbsp Thyme",
+        "50g Raisins",
+        "2 tbsp Pine Nuts",
+        "Handful Parsley"
+      ],
+      "instructions": "1. Heat a large frying pan on high heat, season the chicken, and brown for about 5 mins on each side.,2. Lower the heat to medium, fry the onions for 3 mins, then add garlic and saffron, cooking for 3-4 mins more.,3. Put the chicken back into the pan, add stock, thyme, and raisins, cover, and cook on low heat for 20 mins.,4. Roast pine nuts in the oven at 200C/180C fan/gas 6 for 10 mins until golden and toasted.",
+      "steps": [
+        "Heat a large frying pan on high heat, season the chicken, and brown for about 5 mins on each side.,2.",
+        "Lower the heat to medium, fry the onions for 3 mins, then add garlic and saffron, cooking for 3-4 mins more.,3.",
+        "Put the chicken back into the pan, add stock, thyme, and raisins, cover, and cook on low heat for 20 mins.,4.",
+        "Roast pine nuts in the oven at 200C/180C fan/gas 6 for 10 mins until golden and toasted."
+      ],
+      "description": "Spanish Chicken with Saffron (Spanish) — easy chicken recipe with 10 ingredients and 4 steps. Includes exact ingredients and clear instructions.",
+      "hook": "Cook this today for a flavorful and aromatic Spanish-inspired meal.",
+      "tip": "Use high-quality saffron for the best flavor and color.",
+      "tags": [
+        "chicken recipes",
+        "Spanish cuisine",
+        "saffron dishes",
+        "pine nuts",
+        "raisins",
+        "thyme",
+        "garlic",
+        "olive oil",
+        "Chicken",
+        "Spanish"
+      ],
+      "datePublished": "2026-05-17",
+      "publishDate": "2026-05-17T09:00:00",
+      "addedDate": "2026-05-15T04:31:04",
+      "status": "PUBLISHED",
+      "slug": "chicken-with-saffron-raisins-pine-nuts-53186",
+      "youtube": "https://www.youtube.com/watch?v=uKWjI2DNq0Q",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "29 min",
+      "prepTime": "13 min",
+      "totalTime": "42 min",
+      "servings": 4,
+      "difficulty": "Easy",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "spanish-chicken-53164",
+        "spanish-chicken-pie-53155",
+        "chicken-congee-52956"
+      ]
+    },
+    {
+      "mealId": "52879",
+      "id": "chicken-parmentier-52879",
+      "title": "Chicken and Potato Bake",
+      "category": "Chicken",
+      "origin": "France",
+      "image": "https://www.themealdb.com/images/media/meals/uwvxpv1511557015.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/uwvxpv1511557015.jpg",
+      "ingredients": [
+        "1.5kg Potatoes",
+        "30g Butter",
+        "5 tblsp Double Cream",
+        "2 Egg Yolks",
+        "30g Butter",
+        "7 Shallots",
+        "3 chopped Carrots",
+        "2 sticks Celery",
+        "1 finely chopped Garlic Clove",
+        "4 tbsp White Wine",
+        "1 tbls Tomato Puree",
+        "400g Tinned Tomatos",
+        "350ml Chicken Stock",
+        "600g Chicken",
+        "16 Black Olives",
+        "2 tbs Parsley",
+        "50g Gruyere cheese"
+      ],
+      "instructions": "1. Boil potatoes in salted water until tender, then mash with butter, cream, and egg yolks.,2. Melt butter in a large pan, add shallots, carrots, and celery, and gently fry until soft.,3. Add garlic, wine, tomato purée, chopped tomatoes, and stock, and cook for 10-15 minutes.,4. Add shredded chicken, olives, and parsley, and season to taste.,5. Preheat the oven to 180C/160C Fan/Gas 4 and bake for 30-35 minutes.",
+      "steps": [
+        "Boil potatoes in salted water until tender, then mash with butter, cream, and egg yolks.,2.",
+        "Melt butter in a large pan, add shallots, carrots, and celery, and gently fry until soft.,3.",
+        "Add garlic, wine, tomato purée, chopped tomatoes, and stock, and cook for 10-15 minutes.,4.",
+        "Add shredded chicken, olives, and parsley, and season to taste.,5.",
+        "Preheat the oven to 180C/160C Fan/Gas 4 and bake for 30-35 minutes."
+      ],
+      "description": "Chicken and Potato Bake (France) — easy chicken recipe with 17 ingredients and 5 steps. Ready in 35 min. Includes exact ingredients and clear instructions.",
+      "hook": "Cook this today for a hearty, satisfying meal that's perfect for a chilly evening.",
+      "tip": "Use high-quality ingredients, like fresh parsley, for the best flavor.",
+      "tags": [
+        "Chicken",
+        "Potatoes",
+        "French",
+        "Meat",
+        "Dairy",
+        "Baking",
+        "Casserole",
+        "Comfort Food",
+        "France"
+      ],
+      "datePublished": "2026-05-17",
+      "publishDate": "2026-05-17T09:00:00",
+      "addedDate": "2026-05-15T04:31:04",
+      "status": "PUBLISHED",
+      "slug": "chicken-parmentier-52879",
+      "youtube": "https://www.youtube.com/watch?v=tiG-xlmeyjg",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "35 min",
+      "prepTime": "15 min",
+      "totalTime": "50 min",
+      "servings": 4,
+      "difficulty": "Easy",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "chicken-mushroom-hotpot-52846",
+        "chicken-congee-52956",
+        "chicken-enchilada-casserole-52765"
+      ]
+    },
+    {
+      "mealId": "53040",
+      "id": "spring-onion-and-prawn-empanadas-53040",
+      "title": "Prawn Empanadas with Spring Onions",
+      "category": "Seafood",
+      "origin": "Portuguese",
+      "image": "https://www.themealdb.com/images/media/meals/1c5oso1614347493.jpg",
+      "imageCard": "https://www.themealdb.com/images/media/meals/1c5oso1614347493.jpg",
+      "ingredients": [
+        "1  bunch Spring Onions",
+        "Dash Olive Oil",
+        "1 finely sliced Red Chilli",
+        "1 clove Garlic",
+        "350g Prawns",
+        "75g Feta",
+        "15g Butter",
+        "250g Plain Flour",
+        "1 Seperated Egg",
+        "1/2 tsp White Wine Vinegar"
+      ],
+      "instructions": "1. Mix flour, butter, egg white, vinegar, and water to make a soft dough, then knead and rest for 30 minutes.,2. Heat oil in a pan, fry spring onions until soft, add chilli, garlic, and prawns, cook until prawns are opaque.,3. Divide dough into eight balls, roll out to thin circles, fill with prawn mixture and feta, fold and crimp the dough.,4. Brush with egg yolk and bake at 180c for 30 minutes or until golden.",
+      "steps": [
+        "Mix flour, butter, egg white, vinegar, and water to make a soft dough, then knead and rest for 30 minutes.,2.",
+        "Heat oil in a pan, fry spring onions until soft, add chilli, garlic, and prawns, cook until prawns are opaque.,3.",
+        "Divide dough into eight balls, roll out to thin circles, fill with prawn mixture and feta, fold and crimp the dough.,4.",
+        "Brush with egg yolk and bake at 180c for 30 minutes or until golden."
+      ],
+      "description": "Prawn Empanadas with Spring Onions (Portuguese) — easy seafood recipe with 10 ingredients and 4 steps. Includes exact ingredients and clear instructions.",
+      "hook": "Cook these empanadas today for a flavorful seafood treat, perfect for any occasion.",
+      "tip": "Use cold water to make the dough to ensure it's soft and pliable.",
+      "tags": [
+        "seafood",
+        "empanadas",
+        "prawns",
+        "spring onions",
+        "feta",
+        "pastry",
+        "baked goods",
+        "portuguese cuisine",
+        "Portuguese",
+        "Prawn"
+      ],
+      "datePublished": "2026-05-17",
+      "publishDate": "2026-05-17T09:00:00",
+      "addedDate": "2026-05-15T04:31:04",
+      "status": "PUBLISHED",
+      "slug": "spring-onion-and-prawn-empanadas-53040",
+      "youtube": "https://www.youtube.com/watch?v=Q24haJU-1dI",
+      "author": {
+        "name": "Akkous",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop&q=80"
+      },
+      "cookTime": "42 min",
+      "prepTime": "18 min",
+      "totalTime": "60 min",
+      "servings": 4,
+      "difficulty": "Easy",
+      "featured": false,
+      "trending": true,
+      "relatedRecipeIds": [
+        "grilled-portuguese-sardines-53041",
+        "arroz-con-gambas-y-calamar-53147",
+        "garlicky-prawns-with-sherry-53180"
       ]
     }
   ]

@@ -172,6 +172,11 @@
 - [Lentil Tahini Delight](https://akkous.com/recipes/tahini-lentils-52869/) — Moroccan | Vegetarian
 - [Sticky Toffee Pudding Delight](https://akkous.com/recipes/sticky-toffee-pudding-ultimate-52793/) — British | Dessert
 - [Thai Peanut Pork Curry](https://akkous.com/recipes/thai-pork-peanut-curry-53197/) — Thai | Pork
+- [Homemade Dal Fry](https://akkous.com/recipes/dal-fry-52785/) — India | Vegetarian
+- [Jamaican Oxtail Stew](https://akkous.com/recipes/oxtail-with-broad-beans-52943/) — Jamaican | Beef
+- [Spanish Chicken with Saffron](https://akkous.com/recipes/chicken-with-saffron-raisins-pine-nuts-53186/) — Spanish | Chicken
+- [Chicken and Potato Bake](https://akkous.com/recipes/chicken-parmentier-52879/) — France | Chicken
+- [Prawn Empanadas with Spring Onions](https://akkous.com/recipes/spring-onion-and-prawn-empanadas-53040/) — Portuguese | Seafood
 
 ## About
 - All recipes include ingredients, step-by-step instructions, cooking time, difficulty level, and cultural origin.
