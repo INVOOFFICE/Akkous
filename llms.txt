@@ -177,6 +177,16 @@
 - [Spanish Chicken with Saffron](https://akkous.com/recipes/chicken-with-saffron-raisins-pine-nuts-53186/) — Spanish | Chicken
 - [Chicken and Potato Bake](https://akkous.com/recipes/chicken-parmentier-52879/) — France | Chicken
 - [Prawn Empanadas with Spring Onions](https://akkous.com/recipes/spring-onion-and-prawn-empanadas-53040/) — Portuguese | Seafood
+- [Spicy Beef Noodle Stir Fry](https://akkous.com/recipes/drunken-noodles-pad-kee-mao-53193/) — Thai | Beef
+- [French Chicken Basquaise](https://akkous.com/recipes/chicken-basquaise-52934/) — France | Chicken
+- [Fluffy Banana Pancakes](https://akkous.com/recipes/banana-pancakes-52855/) — United States | Dessert
+- [Eggplant With Harissa and Yogurt](https://akkous.com/recipes/stovetop-eggplant-with-harissa-chickpeas-and-cumin-yogurt-52817/) — United States | Vegetarian
+- [Tunisian Lamb Stew](https://akkous.com/recipes/keleya-zaara-52974/) — Tunisian | Lamb
+- [Savory Beef Meatloaf with Roasted Vegetables](https://akkous.com/recipes/soy-glazed-meatloaves-with-wasabi-mashed-potatoes-roasted-carrots-52992/) — United States | Beef
+- [Chicken and Potato Gratin](https://akkous.com/recipes/potato-gratin-with-chicken-52780/) — Italian | Chicken
+- [Greek Honey Cheesecake](https://akkous.com/recipes/honey-yogurt-cheesecake-53007/) — Greek | Dessert
+- [Grilled Lamb Shawarma](https://akkous.com/recipes/turkish-style-lamb-53270/) — Turkish | Lamb
+- [Egyptian Koshari Bowl](https://akkous.com/recipes/koshari-53027/) — Egyptian | Vegetarian
 
 ## About
 - All recipes include ingredients, step-by-step instructions, cooking time, difficulty level, and cultural origin.
